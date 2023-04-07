@@ -5,16 +5,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<link rel="apple-touch-icon" sizes="180x180" href="{{ asset('assets/frontend/favicon/apple-touch-icon.png') }}">
-<link rel="icon" type="image/png" sizes="32x32" href="{{ asset('assets/frontend/favicon/favicon-32x32.png') }}">
-<link rel="icon" type="image/png" sizes="16x16" href="{{ asset('assets/frontend/favicon/favicon-16x16.png') }}">
-<link rel="manifest" href="{{ asset('assets/frontend/favicon/site.webmanifest') }}">
-<link rel="mask-icon" href="{{ asset('assets/frontend/favicon/safari-pinned-tab.svg') }}" color="#6366f1">
-<link rel="shortcut icon" href="{{ asset('assets/frontend/favicon/favicon.ico') }}">
 <meta name="msapplication-TileColor" content="#080032">
-<meta name="msapplication-config" content="{{ asset('assets/frontend/favicon/browserconfig.xml') }}">
 <meta name="theme-color" content="#ffffff">
 
+<link rel="icon" href="{{ asset('assets/frontend/img/logo.png') }}" type="image/x-icon">
 <link rel="stylesheet" media="screen" href="{{ asset('assets/frontend/vendor/boxicons/css/boxicons.min.css') }}" />
 <link rel="stylesheet" media="screen" href="{{ asset('assets/frontend/vendor/swiper/swiper-bundle.min.css') }}" />
 <link rel="stylesheet" media="screen"
