@@ -31,8 +31,8 @@
                     <li class="nav-item {{ request()->is('ppid') ? 'active' : '' }}">
                         <a href="{{ route('ppid_home') }}" class="nav-link">PPID</a>
                     </li>
-                    <li class="nav-item">
-                        <a href="docs/getting-started.html" class="nav-link">Dataset</a>
+                    <li class="nav-item {{ request()->is('data') ? 'active' : '' }}">
+                        <a href="{{ route('index_dataset') }}" class="nav-link">Dataset</a>
                     </li>
                     <li class="nav-item">
                         <a href="docs/getting-started.html" class="nav-link">Infografis</a>
