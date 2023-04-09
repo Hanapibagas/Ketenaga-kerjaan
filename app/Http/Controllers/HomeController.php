@@ -44,4 +44,46 @@ class HomeController extends Controller
     {
         return view('components.pages.dataset.data-integrasi');
     }
+
+    public function index_infografis()
+    {
+        return view('components.pages.infografis.infrografis');
+    }
+    public function infografis_details($slug)
+    {
+        return view('components.pages.infografis.details-info');
+    }
+
+    public function index_berita()
+    {
+        return view('components.pages.berita.index');
+    }
+    public function details_berita($slug)
+    {
+        return view('components.pages.berita.details-berita');
+    }
+
+    public function index_informasi_public()
+    {
+        return view('components.pages.informasai-public');
+    }
+
+    public function index_publikasi()
+    {
+        return view('components.pages.publikasi.index-publikasi');
+    }
+    public function details_pulikasi($slug)
+    {
+        return view('components.pages.publikasi.details-publikasi');
+    }
+
+    public function layanan()
+    {
+        return view('components.pages.layanan');
+    }
+
+    public function pengumuman()
+    {
+        return view('components.pages.pengumuman');
+    }
 }

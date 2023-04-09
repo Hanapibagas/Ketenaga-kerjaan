@@ -14,7 +14,7 @@ Dataset
             <li class="breadcrumb-item">
                 <a href="{{ route('index_dataset') }}">Dataset</a>
             </li>
-            <li class="breadcrumb-item active" aria-current="page">Unduh Data</li>
+            <li class="breadcrumb-item active" aria-current="page">Data integrasi</li>
         </ol>
     </nav>
 </div>

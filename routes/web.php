@@ -14,6 +14,20 @@ Route::get('/data/guest', [HomeController::class, 'permintaan_data_guest'])->nam
 Route::get('/data/auth', [HomeController::class, 'permintaan_data_auth'])->name('permintaan_data_auth');
 Route::get('/data/unduh-data', [HomeController::class, 'unduh_data'])->name('unduh_data');
 Route::get('/data/data-integrasi', [HomeController::class, 'data_integrasi'])->name('data_integrasi');
+//
+Route::get('/infografis', [HomeController::class, 'index_infografis'])->name('index_infografis');
+Route::get('/infografis/{slug}', [HomeController::class, 'infografis_details'])->name('infografis_details');
+//
+Route::get('/berita', [HomeController::class, 'index_berita'])->name('index_berita');
+Route::get('/berita/{slug}', [HomeController::class, 'details_berita'])->name('details_berita');
+//
+Route::get('/informasi-public', [HomeController::class, 'index_informasi_public'])->name('index_informasi_public');
+//
+Route::get('/publikasi', [HomeController::class, 'index_publikasi'])->name('index_publikasi');
+Route::get('/publikasi/{slug}', [HomeController::class, 'details_pulikasi'])->name('details_pulikasi');
+//
+Route::get('/layanan', [HomeController::class, 'layanan'])->name('layanan');
+Route::get('/pengumuman', [HomeController::class, 'pengumuman'])->name('pengumuman');
 
 Auth::routes();
 

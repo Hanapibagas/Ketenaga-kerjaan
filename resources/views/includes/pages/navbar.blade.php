@@ -31,23 +31,42 @@
                     <li class="nav-item {{ request()->is('ppid') ? 'active' : '' }}">
                         <a href="{{ route('ppid_home') }}" class="nav-link">PPID</a>
                     </li>
-                    <li class="nav-item {{ request()->is('data') ? 'active' : '' }}">
+                    <li
+                        class="nav-item {{ request()->is('data') || request()->is('data/guest') || request()->is('data/unduh-data') || request()->is('data/data-integrasi') ? 'active' : '' }}">
                         <a href="{{ route('index_dataset') }}" class="nav-link">Dataset</a>
                     </li>
-                    <li class="nav-item">
-                        <a href="docs/getting-started.html" class="nav-link">Infografis</a>
+                    <li
+                        class="nav-item {{ request()->is('infografis') || request()->is('infografis/*') ? 'active' : '' }}">
+                        <a href="{{ route('index_infografis') }}" class="nav-link">Infografis</a>
                     </li>
-                    <li class="nav-item">
-                        <a href="docs/getting-started.html" class="nav-link">Berita</a>
+                    <li class="nav-item {{ request()->is('berita') || request()->is('berita/*') ? 'active' : '' }}">
+                        <a href="{{ route('index_berita') }}" class="nav-link">Berita</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Lainnya</a>
+                        <a href="#"
+                            class="nav-link dropdown-toggle {{ request()->is('informasi-public') || request()->is('login') || request()->is('pengumuman') || request()->is('layanan') || request()->is('publikasi') || request()->is('publikasi/*') ? 'active' : '' }}"
+                            data-bs-toggle="dropdown">Lainnya</a>
                         <ul class="dropdown-menu">
-                            <li><a href="account-details.html" class="dropdown-item">Informasi</a></li>
-                            <li><a href="account-security.html" class="dropdown-item">Publikasi</a></li>
-                            <li><a href="account-notifications.html" class="dropdown-item">Layanan</a></li>
-                            <li><a href="account-messages.html" class="dropdown-item">Pengumuman</a></li>
-                            <li><a href="account-signup.html" class="dropdown-item">Login</a></li>
+                            <li>
+                                <a href="{{ route('index_informasi_public') }}"
+                                    class="dropdown-item {{ request()->is('informasi-public') ? 'active' : '' }}">Informasi</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('index_publikasi') }}"
+                                    class="dropdown-item {{ request()->is('publikasi') ? 'active' : '' }}">Publikasi</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('layanan') }}"
+                                    class="dropdown-item {{ request()->is('layanan') ? 'active' : '' }}">Layanan</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('pengumuman') }}"
+                                    class="dropdown-item {{ request()->is('pengumuman') ? 'active' : '' }}">Pengumuman</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('login') }}"
+                                    class="dropdown-item {{ request()->is('login') ? 'active' : '' }}">Login</a>
+                            </li>
                         </ul>
                     </li>
                 </ul>
