@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\InfografisController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -31,4 +33,10 @@ Route::get('/pengumuman', [HomeController::class, 'pengumuman'])->name('pengumum
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function () {
+    Route::get('/', [DashboardController::class, 'index_dashboard'])->name('index_dashboard');
+
+    //
+    Route::get('/infografis', [InfografisController::class, 'dashboard_infografis'])->name('dashboard_infografis');
+    Route::get('/infografis/create', [InfografisController::class, 'create_infografis'])->name('create_infografis');
+});
