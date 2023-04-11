@@ -39,4 +39,8 @@ Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function () {
     //
     Route::get('/infografis', [InfografisController::class, 'dashboard_infografis'])->name('dashboard_infografis');
     Route::get('/infografis/create', [InfografisController::class, 'create_infografis'])->name('create_infografis');
+    Route::post('/infografis/create/post', [InfografisController::class, 'store'])->name('store_infografis');
+    Route::get('/infografis/update/{id}', [InfografisController::class, 'edit_infografis'])->name('edit_infografis');
+    Route::put('/infografis/create/update/{id}', [InfografisController::class, 'update_inforgrafis'])->name('update_inforgrafis');
+    Route::delete('/infografis/delete/{id}', [InfografisController::class, 'destroy_infografis'])->name('destroy_infografis');
 });

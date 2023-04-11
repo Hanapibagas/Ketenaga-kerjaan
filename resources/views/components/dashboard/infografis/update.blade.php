@@ -36,37 +36,49 @@ Infografis
                 <div class="col-lg-12">
                     <div class="card-style mb-30">
                         <h6 class="mb-25">Infografis</h6>
-                        <form action="{{ route('store_infografis') }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('update_inforgrafis', $infografis->id) }}" method="POST"
+                            enctype="multipart/form-data">
                             @csrf
+                            @method('PUT')
                             <div class="row">
                                 <div class="col-12">
                                     <div class="input-style-1">
                                         <label>Judul</label>
-                                        <input type="text" name="title" placeholder="Masukkan Judul" />
+                                        <input type="text" value="{{ $infografis->title }}" name="title"
+                                            placeholder="Masukkan Judul" />
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="input-style-1">
                                         <label>Tipe Informasi</label>
-                                        <input type="text" name="type_infografis" placeholder="Masukkan Type" />
+                                        <input type="text" value="{{ $infografis->type_infografis }}"
+                                            name="type_infografis" placeholder="Masukkan Type" />
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="input-style-1">
                                         <label>Tanggal</label>
-                                        <input type="date" name="tanggal" placeholder="Masukkan Tanggal" />
+                                        <input type="date" name="tanggal" value="{{ $infografis->tanggal }}"
+                                            placeholder="Masukkan Tanggal" />
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="input-style-1">
                                         <label>Deskripsi</label>
-                                        <textarea name="deskripsi"></textarea>
+                                        <textarea name="deskripsi">{!! $infografis->deskripsi !!}</textarea>
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="input-style-1">
                                         <label>Gambar</label>
-                                        <input name="gambar" type="file" />
+                                        <small>Pilih gambar jika ingin mengubah</small>
+                                        <input name="gambar" type="file" value="{{ $infografis->gambar }}">
+                                        @if ( $infografis->gambar )
+                                        <img src="{{ Storage::url($infografis->gambar) }}" alt="" style="width: 150px"
+                                            class="img-thumbnail">
+                                        @else
+                                        <p>Gambar Tidak Sedia</p>
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="col-12">

@@ -5,6 +5,16 @@ Infografis
 @endsection
 
 @section('content')
+@if (session('status'))
+<script>
+    Swal.fire({
+        icon: 'success',
+        title: 'Sukses!',
+        text : "{{ session('status') }}",
+    });
+</script>
+@endif
+
 <section class="table-components">
     <div class="container-fluid">
         <div class="title-wrapper pt-30">
@@ -38,49 +48,42 @@ Infografis
                                 <thead>
                                     <tr>
                                         <th>
-                                            <h6>Judul</h6>
+                                            Judul
                                         </th>
                                         <th>
-                                            <h6>Type Infografis</h6>
+                                            Type Infografis
                                         </th>
                                         <th>
-                                            <h6>Tanggal</h6>
+                                            Tanggal
                                         </th>
                                         <th>
-                                            <h6>Gambar</h6>
+                                            Gambar
                                         </th>
                                         <th>
-                                            <h6>Aksi</h6>
+                                            Aksi
                                         </th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach ( $infografis as $data )
                                     <tr>
+                                        <td>{{ $data->title }}</td>
+                                        <td>{{ $data->type_infografis }}</td>
+                                        <td>{{ $data->tanggal }}</td>
                                         <td>
-                                            <p>{{ $data->title }}</p>
+                                            <img src="{{ Storage::url($data->gambar) }}" alt="" style="width: 150px"
+                                                class="img-thumbnail">
                                         </td>
                                         <td>
-                                            <p>{{ $data->type_infografis }}</p>
-                                        </td>
-                                        <td>
-                                            <p>{{ $data->tanggal }}</p>
-                                        </td>
-                                        <td>
-                                            <p>
-                                                <img src="{{ Storage::url($data->gambar) }}" alt="" style="width: 150px"
-                                                    class="img-thumbnail">
-                                            </p>
-                                        </td>
-                                        <td>
-                                            <p>
-                                                <a href="" class="btn btn-primary">
-                                                    <i class="lni lni-pencil" style="color: whitesmoke"></i>
-                                                </a>
-                                            <form action="" method="POST" class="d-inline">
+                                            <a href="{{ route('edit_infografis', $data->id) }}" class="btn btn-primary">
+                                                <i class="lni lni-pencil" style="color: whitesmoke"></i>
+                                            </a>
+                                            <input type="hidden" class="delete_id" value="{{ $data->id }}">
+                                            <form action="{{ route('destroy_infografis', $data->id) }}" method="POST"
+                                                class="d-inline">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button class="btn btn-danger">
+                                                <button class="btn btn-danger btndelete">
                                                     <i class="lni lni-trash-can"></i>
                                                 </button>
                                             </form>
@@ -100,10 +103,58 @@ Infografis
 @endsection
 
 @push('add-script')
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script>
+    $(document).ready(function () {
+
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
+        $('.btndelete').click(function (e) {
+            e.preventDefault();
+
+            var deleteid = $(this).closest("tr").find('.delete_id').val();
+
+            swal({
+                    title: "Apakah anda yakin?",
+                    text: "Setelah dihapus, Anda tidak dapat memulihkan data ini lagi!",
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: true,
+                })
+                .then((willDelete) => {
+                    if (willDelete) {
+
+                        var data = {
+                            "_token": $('input[name=_token]').val(),
+                            'id': deleteid,
+                        };
+                        $.ajax({
+                            type: "DELETE",
+                            url: 'infografis/delete/' + deleteid,
+                            data: data,
+                            success: function (response) {
+                                swal(response.status, {
+                                        icon: "success",
+                                    })
+                                    .then((result) => {
+                                        location.reload();
+                                    });
+                            }
+                        });
+                    }
+                });
+        });
+
+    });
+
+</script>
 <script>
     const dataTable = new simpleDatatables.DataTable("#table", {
       searchable: true,
     });
 </script>
-
 @endpush
