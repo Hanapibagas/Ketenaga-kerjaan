@@ -32,7 +32,7 @@
                         <a href="{{ route('ppid_home') }}" class="nav-link">PPID</a>
                     </li>
                     <li
-                        class="nav-item {{ request()->is('data') || request()->is('data/guest') || request()->is('data/unduh-data') || request()->is('data/data-integrasi') ? 'active' : '' }}">
+                        class="nav-item {{ request()->is('data') || request()->is('data/guest') || request()->is('data/unduh-data') || request()->is('data/unduh-data/*') || request()->is('data/data-integrasi') ? 'active' : '' }}">
                         <a href="{{ route('index_dataset') }}" class="nav-link">Dataset</a>
                     </li>
                     <li

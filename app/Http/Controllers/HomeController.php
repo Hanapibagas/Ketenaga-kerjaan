@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Berita;
+use App\Models\DataSet;
+use App\Models\Infografis;
+use App\Models\Publikasi;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -37,7 +41,15 @@ class HomeController extends Controller
 
     public function unduh_data()
     {
-        return view('components.pages.dataset.unduh-data');
+        $datset = DataSet::all();
+        return view('components.pages.dataset.unduh-data', compact('datset'));
+    }
+
+    public function details_dataset($slug)
+    {
+        $datset = DataSet::paginate(3);
+        $details = DataSet::where('slug', $slug)->firstOrFail();
+        return view('components.pages.dataset.details-undu-data', compact('datset', 'details'));
     }
 
     public function data_integrasi()
@@ -47,20 +59,24 @@ class HomeController extends Controller
 
     public function index_infografis()
     {
-        return view('components.pages.infografis.infrografis');
+        $infografis = Infografis::all();
+        return view('components.pages.infografis.infrografis', compact('infografis'));
     }
     public function infografis_details($slug)
     {
-        return view('components.pages.infografis.details-info');
+        $infografis = Infografis::where('slug', $slug)->firstOrFail();
+        return view('components.pages.infografis.details-info', compact('infografis'));
     }
 
     public function index_berita()
     {
-        return view('components.pages.berita.index');
+        $berita = Berita::all();
+        return view('components.pages.berita.index', compact('berita'));
     }
     public function details_berita($slug)
     {
-        return view('components.pages.berita.details-berita');
+        $berita = Berita::where('slug', $slug)->firstOrFail();
+        return view('components.pages.berita.details-berita', compact('berita'));
     }
 
     public function index_informasi_public()
@@ -70,11 +86,13 @@ class HomeController extends Controller
 
     public function index_publikasi()
     {
-        return view('components.pages.publikasi.index-publikasi');
+        $publlikasi = Publikasi::all();
+        return view('components.pages.publikasi.index-publikasi', compact('publlikasi'));
     }
     public function details_pulikasi($slug)
     {
-        return view('components.pages.publikasi.details-publikasi');
+        $publlikasi = Publikasi::where('slug', $slug)->firstOrFail();
+        return view('components.pages.publikasi.details-publikasi', compact('publlikasi'));
     }
 
     public function layanan()

@@ -1,7 +1,7 @@
 @extends('layouts.dashboard')
 
 @section('title')
-Infografis
+Berita
 @endsection
 
 @section('content')
@@ -21,7 +21,7 @@ Infografis
             <div class="row align-items-center">
                 <div class="col-md-6">
                     <div class="title mb-30">
-                        <h2>Data Infografis</h2>
+                        <h2>Data Berita</h2>
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -29,7 +29,7 @@ Infografis
                         <nav aria-label="breadcrumb">
                             <ul class="buttons-group">
                                 <li class="breadcrumb-item">
-                                    <a href="{{ route('create_infografis') }}"
+                                    <a href="{{ route('create_berita') }}"
                                         class="main-btn primary-btn rounded-md btn-hover">+ Tambah Data</a>
                                 </li>
                             </ul>
@@ -42,44 +42,32 @@ Infografis
             <div class="row">
                 <div class="col-lg-12">
                     <div class="card-style mb-30">
-                        <h6 class="mb-10">Infografis Data Table</h6>
+                        <h6 class="mb-10">Berita Data Table</h6>
                         <div class="table-responsive">
                             <table id="table" class="table">
                                 <thead>
                                     <tr>
-                                        <th>
-                                            Judul
-                                        </th>
-                                        <th>
-                                            Type Infografis
-                                        </th>
-                                        <th>
-                                            Tanggal
-                                        </th>
-                                        <th>
-                                            Gambar
-                                        </th>
-                                        <th>
-                                            Aksi
-                                        </th>
+                                        <th>Judul</th>
+                                        <th>Tanggal</th>
+                                        <th>Gambar</th>
+                                        <th>Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ( $infografis as $data )
+                                    @foreach ( $berita as $data )
                                     <tr>
                                         <td>{{ $data->title }}</td>
-                                        <td>{{ $data->type_infografis }}</td>
                                         <td>{{ $data->tanggal }}</td>
                                         <td>
                                             <img src="{{ Storage::url($data->gambar) }}" alt="" style="width: 150px"
                                                 class="img-thumbnail">
                                         </td>
                                         <td>
-                                            <a href="{{ route('edit_infografis', $data->id) }}" class="btn btn-primary">
+                                            <a href="{{ route('edit_berita', $data->id) }}" class="btn btn-primary">
                                                 <i class="lni lni-pencil" style="color: whitesmoke"></i>
                                             </a>
                                             <input type="hidden" class="delete_id" value="{{ $data->id }}">
-                                            <form action="{{ route('destroy_infografis', $data->id) }}" method="POST"
+                                            <form action="{{ route('destroy_berita', $data->id) }}" method="POST"
                                                 class="d-inline">
                                                 @csrf
                                                 @method('DELETE')
@@ -134,7 +122,7 @@ Infografis
                         };
                         $.ajax({
                             type: "DELETE",
-                            url: 'infografis/delete/' + deleteid,
+                            url: 'berita/delete/' + deleteid,
                             data: data,
                             success: function (response) {
                                 swal(response.status, {

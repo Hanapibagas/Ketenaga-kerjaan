@@ -1,7 +1,7 @@
 @extends('layouts.dashboard')
 
 @section('title')
-Infografis
+Publikasi
 @endsection
 
 @section('content')
@@ -11,7 +11,7 @@ Infografis
             <div class="row align-items-center">
                 <div class="col-md-6">
                     <div class="title mb-30">
-                        <h2>Tambah Infografis</h2>
+                        <h2>Tambah Berita</h2>
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -19,7 +19,7 @@ Infografis
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item">
-                                    <a href="{{ route('dashboard_infografis') }}">
+                                    <a href="{{ route('dashboard_berita') }}">
                                         <i>
                                             <- Kembali </i>
                                     </a>
@@ -36,7 +36,7 @@ Infografis
                 <div class="col-lg-12">
                     <div class="card-style mb-30">
                         <h6 class="mb-25">Infografis</h6>
-                        <form action="{{ route('update_inforgrafis', $infografis->id) }}" method="POST"
+                        <form action="{{ route('update_publikasi', $publikasi->id) }}" method="POST"
                             enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
@@ -44,38 +44,43 @@ Infografis
                                 <div class="col-12">
                                     <div class="input-style-1">
                                         <label>Judul</label>
-                                        <input type="text" value="{{ $infografis->title }}" name="title"
+                                        <input type="text" value="{{ $publikasi->title }}" name="title"
                                             placeholder="Masukkan Judul" />
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="input-style-1">
-                                        <label>Tipe Informasi</label>
-                                        <input type="text" value="{{ $infografis->type_infografis }}"
-                                            name="type_infografis" placeholder="Masukkan Type" />
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <div class="input-style-1">
                                         <label>Tanggal</label>
-                                        <input type="date" name="tanggal" value="{{ $infografis->tanggal }}"
+                                        <input type="date" name="tanggal" value="{{ $publikasi->tanggal }}"
                                             placeholder="Masukkan Tanggal" />
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="input-style-1">
                                         <label>Deskripsi</label>
-                                        <textarea name="deskripsi">{!! $infografis->deskripsi !!}</textarea>
+                                        <textarea name="deskripsi">{!! $publikasi->deskripsi !!}</textarea>
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="input-style-1">
                                         <label>Gambar</label>
                                         <small>Pilih gambar jika ingin mengubah</small>
-                                        <input name="gambar" type="file" value="{{ $infografis->gambar }}">
-                                        @if ( $infografis->gambar )
-                                        <img src="{{ Storage::url($infografis->gambar) }}" alt=""
+                                        <input name="gambar" type="file" value="{{ $publikasi->gambar }}">
+                                        @if ( $publikasi->gambar )
+                                        <img src="{{ Storage::url($publikasi->gambar) }}" alt=""
                                             style="width: 150px; margin-top: 10px" class="img-thumbnail">
+                                        @else
+                                        <p>Gambar Tidak Sedia</p>
+                                        @endif
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="input-style-1">
+                                        <label>Dokumen</label>
+                                        <small>Pilih dokumen jika ingin mengubah</small>
+                                        <input name="file" type="file" value="{{ $publikasi->file }}">
+                                        @if ( $publikasi->file )
+                                        <p style="margin-top: 10px"><i>{{ $publikasi->file }}</i></p>
                                         @else
                                         <p>Gambar Tidak Sedia</p>
                                         @endif

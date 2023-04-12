@@ -1,7 +1,7 @@
 @extends('layouts.dashboard')
 
 @section('title')
-Infografis
+Dataset
 @endsection
 
 @section('content')
@@ -11,7 +11,7 @@ Infografis
             <div class="row align-items-center">
                 <div class="col-md-6">
                     <div class="title mb-30">
-                        <h2>Tambah Infografis</h2>
+                        <h2>Tambah Dataset</h2>
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -35,8 +35,8 @@ Infografis
             <div class="row">
                 <div class="col-lg-12">
                     <div class="card-style mb-30">
-                        <h6 class="mb-25">Infografis</h6>
-                        <form action="{{ route('update_inforgrafis', $infografis->id) }}" method="POST"
+                        <h6 class="mb-25">Dataset</h6>
+                        <form action="{{ route('update_unduhdata', $unduhdata->id) }}" method="POST"
                             enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
@@ -44,40 +44,32 @@ Infografis
                                 <div class="col-12">
                                     <div class="input-style-1">
                                         <label>Judul</label>
-                                        <input type="text" value="{{ $infografis->title }}" name="title"
+                                        <input type="text" value="{{ $unduhdata->title }}" name="title"
                                             placeholder="Masukkan Judul" />
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="input-style-1">
-                                        <label>Tipe Informasi</label>
-                                        <input type="text" value="{{ $infografis->type_infografis }}"
-                                            name="type_infografis" placeholder="Masukkan Type" />
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <div class="input-style-1">
                                         <label>Tanggal</label>
-                                        <input type="date" name="tanggal" value="{{ $infografis->tanggal }}"
+                                        <input type="date" name="tanggal" value="{{ $unduhdata->tanggal }}"
                                             placeholder="Masukkan Tanggal" />
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="input-style-1">
                                         <label>Deskripsi</label>
-                                        <textarea name="deskripsi">{!! $infografis->deskripsi !!}</textarea>
+                                        <textarea name="deskripsi">{!! $unduhdata->deskripsi !!}</textarea>
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="input-style-1">
-                                        <label>Gambar</label>
-                                        <small>Pilih gambar jika ingin mengubah</small>
-                                        <input name="gambar" type="file" value="{{ $infografis->gambar }}">
-                                        @if ( $infografis->gambar )
-                                        <img src="{{ Storage::url($infografis->gambar) }}" alt=""
-                                            style="width: 150px; margin-top: 10px" class="img-thumbnail">
+                                        <label>Dokumen</label>
+                                        <small>Pilih dokumen jika ingin mengubah</small>
+                                        <input name="file" type="file" value="{{ $unduhdata->file }}">
+                                        @if ( $unduhdata->file )
+                                        <p style="margin-top: 10px"><i>{{ $unduhdata->file }}</i></p>
                                         @else
-                                        <p>Gambar Tidak Sedia</p>
+                                        <p>Dokumen Tidak Sedia</p>
                                         @endif
                                     </div>
                                 </div>

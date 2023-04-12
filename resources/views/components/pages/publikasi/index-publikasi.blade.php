@@ -28,7 +28,7 @@ Publikasi
     <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 gx-3 gx-md-4 mt-n2 mt-sm-0">
         <style>
             .download {
-                margin-left: 190px
+                margin-left: 140px
             }
 
             @media screen and (max-width: 992px) {
@@ -37,31 +37,30 @@ Publikasi
                 }
             }
         </style>
+        @foreach ( $publlikasi as $files )
         <div class="col pb-1 pb-lg-3 mb-4">
             <article class="card h-100 border-0 shadow-sm">
                 <div class="position-relative">
-                    <img src="{{ asset('assets/frontend/img/data/download (1).png') }}" class="card-img-top"
-                        alt="Image">
+                    <img src="{{ Storage::url($files->gambar) }}" class="card-img-top" alt="Image">
                 </div>
                 <div class="card-body pb-3">
                     <h3 class="h5 mb-2" style="margin-top: 20px">
-                        <a href="portfolio-single-course.html">Tenaga Kerja Asing (TKA) yang Berlaku di Indonesia
-                            Januari-Februari 2023</a>
+                        <a href="{{ route('details_pulikasi', $files->slug) }}">{{ $files->title }}</a>
                     </h3>
-                    <p class="fs-sm mb-2">Total dokumen pengesahan TKA yang Berlaku di Indonesia Januari-Februari 2023
-                        sebanyak 21.724 dokumen</p>
+                    <p class="fs-sm mb-2">{!! Str::limit($files->deskripsi, 100) !!}</p>
                 </div>
                 <div class="card-footer d-flex align-items-center fs-sm text-muted py-4">
                     <div class="d-flex align-items-center me-4">
-                        tanggal
+                        {{ $files->tanggal }}
                     </div>
                     <div class="d-flex align-items-center me-4 download">
                         <i class="bx bx-download fs-xl me-1"></i>
-                        <a href="">download</a>
+                        <a href="storage/{{ $files->file }}" target="_blank">download</a>
                     </div>
                 </div>
             </article>
         </div>
+        @endforeach
     </div>
 </div>
 @endsection

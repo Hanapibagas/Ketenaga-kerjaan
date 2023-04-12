@@ -1,16 +1,16 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Kab;
 
 use App\Http\Controllers\Controller;
 use App\Models\DataSet;
 use Illuminate\Http\Request;
 
-class DashboardController extends Controller
+class KabKotaController extends Controller
 {
-    public function index_dashboard()
+    public function index_kab()
     {
-        return view('components.dashboard.dashboard', [
+        return view('components.kab-kota.dashboard', [
             'jumlahdataunduhdata' => DataSet::count()
         ]);
     }
