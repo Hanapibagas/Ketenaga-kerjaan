@@ -1,14 +1,14 @@
 <div class="sidebar-nav-wrapper">
     <div class="navbar-logo">
-        <a href="index-2.html">
+        <a href="{{ route('index_home') }}">
             <img src="{{ asset('assets/frontend/img/logo.png') }}" style="width: 30px" alt="logo" />
             <h3 style="font-size: 18px; margin-top: 10px">Dashboard Ketenagakerjaan</h3>
         </a>
     </div>
     <nav class="sidebar-nav">
         <ul>
-            <li class="nav-item {{ request()->is('dashboard') ? 'active' : '' }}">
-                <a href="{{ route('index_dashboard') }}">
+            <li class="nav-item {{ request()->is('admin') ? 'active' : '' }}">
+                <a href="{{ route('dashboard_kab') }}">
                     <span class="icon">
                         <svg width="22" height="22" viewBox="0 0 22 22">
                             <path
@@ -23,9 +23,8 @@
             <span class="divider">
                 <hr />
             </span>
-            <li
-                class="nav-item {{ request()->is('dashboard/infografis') || request()->is('dashboard/infografis/create') || request()->is('dashboard/infografis/update/*')  ? 'active' : '' }}">
-                <a href="{{ route('dashboard_infografis') }}">
+            <li class="nav-item {{ request()->is('admin/permintaan-kab') ? 'active' : '' }}">
+                <a href="{{ route('index_kab') }}">
                     <span class="icon">
                         <svg width="18" height="20" viewBox="0 0 18 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path

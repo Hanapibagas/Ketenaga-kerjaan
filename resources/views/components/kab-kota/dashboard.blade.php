@@ -23,7 +23,7 @@ Dashboard
                 </div>
                 <div class="content">
                     <h6 class="mb-10">Unduh Data</h6>
-                    <h3 class="text-bold mb-10">{{ $jumlahdataunduhdata }}</h3>
+                    <h3 class="text-bold mb-10">{{ $jumlahdatapermintaan }}</h3>
                 </div>
             </div>
         </div>

@@ -50,29 +50,31 @@ Route::middleware('auth', 'checkroll:oprator')->group(function () {
     Route::put('/infografis-oprator/create/update/{id}', [InfografisController::class, 'update_inforgrafis'])->name('update_inforgrafis');
     Route::delete('/infografis-oprator/delete/{id}', [InfografisController::class, 'destroy_infografis'])->name('destroy_infografis');
     //
-    Route::get('/berita->oprator', [BeritaController::class, 'index_berita'])->name('dashboard_berita');
-    Route::get('/berita->oprator/create', [BeritaController::class, 'create_berita'])->name('create_berita');
-    Route::post('/berita->oprator/create/post', [BeritaController::class, 'store'])->name('store_berita');
-    Route::get('/berita->oprator/update/{id}', [BeritaController::class, 'edit_berita'])->name('edit_berita');
-    Route::put('/berita->oprator/create/update/{id}', [BeritaController::class, 'update_berita'])->name('update_berita');
-    Route::delete('/berita->oprator/delete/{id}', [BeritaController::class, 'destroy_berita'])->name('destroy_berita');
+    Route::get('/berita-oprator', [BeritaController::class, 'index_berita'])->name('dashboard_berita');
+    Route::get('/berita-oprator/create', [BeritaController::class, 'create_berita'])->name('create_berita');
+    Route::post('/berita-oprator/create/post', [BeritaController::class, 'store'])->name('store_berita');
+    Route::get('/berita-oprator/update/{id}', [BeritaController::class, 'edit_berita'])->name('edit_berita');
+    Route::put('/berita-oprator/create/update/{id}', [BeritaController::class, 'update_berita'])->name('update_berita');
+    Route::delete('/berita-oprator/delete/{id}', [BeritaController::class, 'destroy_berita'])->name('destroy_berita');
     //
-    Route::get('/publikasi->oprator', [PublikasiController::class, 'index_publikasi'])->name('dashboard_publikasi');
-    Route::get('/publikasi->oprator/create', [PublikasiController::class, 'create_publikasi'])->name('create_publikasi');
-    Route::post('/publikasi->oprator/create/post', [PublikasiController::class, 'store'])->name('store_publikasi');
-    Route::get('/publikasi->oprator/update/{id}', [PublikasiController::class, 'edit_publikasi'])->name('edit_publikasi');
-    Route::put('/publikasi->oprator/create/update/{id}', [PublikasiController::class, 'update_publikasi'])->name('update_publikasi');
-    Route::delete('/publikasi->oprator/delete/{id}', [PublikasiController::class, 'destroy_publikasi'])->name('destroy_publikasi');
+    Route::get('/publikasi-oprator', [PublikasiController::class, 'index_publikasi'])->name('dashboard_publikasi');
+    Route::get('/publikasi-oprator/create', [PublikasiController::class, 'create_publikasi'])->name('create_publikasi');
+    Route::post('/publikasi-oprator/create/post', [PublikasiController::class, 'store'])->name('store_publikasi');
+    Route::get('/publikasi-oprator/update/{id}', [PublikasiController::class, 'edit_publikasi'])->name('edit_publikasi');
+    Route::put('/publikasi-oprator/create/update/{id}', [PublikasiController::class, 'update_publikasi'])->name('update_publikasi');
+    Route::delete('/publikasi-oprator/delete/{id}', [PublikasiController::class, 'destroy_publikasi'])->name('destroy_publikasi');
     //
-    Route::get('/unduhdata->oprator', [UnduhdataController::class, 'index_unduhdata'])->name('dashboard_unduhdata');
-    Route::get('/unduhdata->oprator/create', [UnduhdataController::class, 'create_unduhdata'])->name('create_unduhdata');
-    Route::post('/unduhdata->oprator/create/post', [UnduhdataController::class, 'store'])->name('store_unduhdata');
-    Route::get('/unduhdata/update/{id}', [UnduhdataController::class, 'edit_unduhdata'])->name('edit_unduhdata');
-    Route::put('/unduhdata->oprator/create/update/{id}', [UnduhdataController::class, 'update_unduhdata'])->name('update_unduhdata');
-    Route::delete('/unduhdata->oprator/delete/{id}', [UnduhdataController::class, 'destroy_unduhdata'])->name('destroy_unduhdata');
+    Route::get('/unduhdata-oprator', [UnduhdataController::class, 'index_unduhdata'])->name('dashboard_unduhdata');
+    Route::get('/unduhdata-oprator/create', [UnduhdataController::class, 'create_unduhdata'])->name('create_unduhdata');
+    Route::post('/unduhdata-oprator/create/post', [UnduhdataController::class, 'store'])->name('store_unduhdata');
+    Route::get('/unduhdata-oprator/update/{id}', [UnduhdataController::class, 'edit_unduhdata'])->name('edit_unduhdata');
+    Route::put('/unduhdata-oprator/create/update/{id}', [UnduhdataController::class, 'update_unduhdata'])->name('update_unduhdata');
+    Route::delete('/unduhdata-oprator/delete/{id}', [UnduhdataController::class, 'destroy_unduhdata'])->name('destroy_unduhdata');
 });
 
 //admin kab/kota
 Route::middleware('auth', 'checkroll:admin')->group(function () {
-    Route::get('/admin', [KabKotaController::class, 'index_kab'])->name('index_kab');
+    Route::get('/admin', [KabKotaController::class, 'index_kab'])->name('dashboard_kab');
+    //
+    Route::get('/admin/permintaan-kab', [PermintaanController::class, 'index_kab'])->name('index_kab');
 });

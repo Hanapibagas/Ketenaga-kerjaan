@@ -17,7 +17,7 @@
                             data-bs-toggle="dropdown" aria-expanded="false">
                             <div class="profile-info">
                                 <div class="info">
-                                    <h6>{{ Auth::user()->name }} | {{ Auth::user()->roles }}</h6>
+                                    <h6>{{ Auth::user()->name }} | <i>{{ Auth::user()->roles }}</i></h6>
                                     <div class="image">
                                         <img src="https://ui-avatars.com/api/?name={{ Auth::user()->name }}" width="40"
                                             class="rounded-circle" />
@@ -34,7 +34,7 @@
                                     <button type="submit">
                                         <i class="lni lni-exit"></i>
                                         Logout
-                                        </button>
+                                    </button>
                                 </form>
                             </li>
                         </ul>
