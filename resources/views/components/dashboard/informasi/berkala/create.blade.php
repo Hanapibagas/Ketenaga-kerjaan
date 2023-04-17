@@ -1,7 +1,7 @@
 @extends('layouts.dashboard')
 
 @section('title')
-Unduh Data
+Berkala
 @endsection
 
 @section('content')
@@ -11,7 +11,7 @@ Unduh Data
             <div class="row align-items-center">
                 <div class="col-md-6">
                     <div class="title mb-30">
-                        <h2>Tambah Unduh Data</h2>
+                        <h2>Tambah Berkala</h2>
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -19,7 +19,7 @@ Unduh Data
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item">
-                                    <a href="{{ route('dashboard_infografis') }}">
+                                    <a href="{{ route('index_berkala') }}">
                                         <i>
                                             <- Kembali </i>
                                     </a>
@@ -35,31 +35,19 @@ Unduh Data
             <div class="row">
                 <div class="col-lg-12">
                     <div class="card-style mb-30">
-                        <h6 class="mb-25">Unduh Data</h6>
-                        <form action="{{ route('store_unduhdata') }}" method="POST" enctype="multipart/form-data">
+                        <h6 class="mb-25">Berkala</h6>
+                        <form action="{{ route('store_berkala') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="row">
                                 <div class="col-12">
                                     <div class="input-style-1">
-                                        <label>Judul</label>
-                                        <input type="text" name="title" placeholder="Masukkan Judul" />
+                                        <label>Nama</label>
+                                        <input type="text" name="nama" placeholder="Masukkan Nama" />
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="input-style-1">
-                                        <label>Tanggal</label>
-                                        <input type="date" name="tanggal" placeholder="Masukkan Tanggal" />
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <div class="input-style-1">
-                                        <label>Deskripsi</label>
-                                        <textarea name="deskripsi"></textarea>
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <div class="input-style-1">
-                                        <label>Dokumen</label>
+                                        <label>File</label>
                                         <input name="file" type="file" />
                                     </div>
                                 </div>

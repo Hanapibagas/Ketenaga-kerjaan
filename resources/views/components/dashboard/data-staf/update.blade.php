@@ -1,7 +1,7 @@
 @extends('layouts.dashboard')
 
 @section('title')
-Dataset
+Berita
 @endsection
 
 @section('content')
@@ -11,7 +11,7 @@ Dataset
             <div class="row align-items-center">
                 <div class="col-md-6">
                     <div class="title mb-30">
-                        <h2>Tambah Dataset</h2>
+                        <h2>Tambah Berita</h2>
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -19,7 +19,7 @@ Dataset
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item">
-                                    <a href="{{ route('dashboard_infografis') }}">
+                                    <a href="{{ route('dashboard_berita') }}">
                                         <i>
                                             <- Kembali </i>
                                     </a>
@@ -35,41 +35,50 @@ Dataset
             <div class="row">
                 <div class="col-lg-12">
                     <div class="card-style mb-30">
-                        <h6 class="mb-25">Dataset</h6>
-                        <form action="{{ route('update_unduhdata', $unduhdata->id) }}" method="POST"
+                        <h6 class="mb-25">Infografis</h6>
+                        <form action="{{ route('update_staf', $staf->id) }}" method="POST"
                             enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
                             <div class="row">
                                 <div class="col-12">
                                     <div class="input-style-1">
-                                        <label>Judul</label>
-                                        <input type="text" value="{{ $unduhdata->title }}" name="title"
+                                        <label>Nama</label>
+                                        <input type="text" value="{{ $staf->nama }}" name="nama"
                                             placeholder="Masukkan Judul" />
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="input-style-1">
-                                        <label>Tanggal</label>
-                                        <input type="date" name="tanggal" value="{{ $unduhdata->tanggal }}"
+                                        <label>Jabatan</label>
+                                        <input type="text" name="jabatan" value="{{ $staf->jabatan }}"
                                             placeholder="Masukkan Tanggal" />
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="input-style-1">
-                                        <label>Deskripsi</label>
-                                        <textarea name="deskripsi">{!! $unduhdata->deskripsi !!}</textarea>
+                                        <label>Akun Sosial Media</label>
+                                        <input type="text" name="instagram"
+                                            placeholder="Masukkan Link Instagram (jika memiliki)"
+                                            value="{{ $staf->instagram }}" />
+                                        <input type=" text" name="facebook"
+                                            placeholder="Masukkan Link Facebook (jika memiliki)"
+                                            style=" margin-top: 20px" value="{{ $staf->facebook }}" />
+                                        <input type=" text" name="twitter"
+                                            placeholder="Masukkan Link Twitter (jika memiliki)"
+                                            style=" margin-top: 20px" value="{{ $staf->twitter }}" />
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="input-style-1">
-                                        <label>Dokumen</label>
-                                        <small>Pilih dokumen jika ingin mengubah</small>
-                                        <input name="file" type="file" value="{{ $unduhdata->file }}">
-                                        @if ( $unduhdata->file )
-                                        <p style="margin-top: 10px"><i>{{ $unduhdata->file }}</i></p>
+                                        <label>Gambar</label>
+                                        <small>Pilih gambar jika ingin mengubah</small>
+                                        <input name="gambar" type="file" value="{{ $staf->gambar }}">
+                                        @if ( $staf->gambar )
+                                        <img src="{{ Storage::url($staf->gambar) }}" alt=""
+                                            style="width: 150px; margin-top: 10px" class="img-thumbnail">
                                         @else
-                                        <p>Dokumen Tidak Sedia</p>
+                                        <p>Gambar Tidak Sedia</p>
                                         @endif
                                     </div>
                                 </div>

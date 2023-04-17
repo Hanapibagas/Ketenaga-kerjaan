@@ -1,7 +1,7 @@
 @extends('layouts.dashboard')
 
 @section('title')
-Unduh Data
+Data Staf
 @endsection
 
 @section('content')
@@ -21,7 +21,7 @@ Unduh Data
             <div class="row align-items-center">
                 <div class="col-md-6">
                     <div class="title mb-30">
-                        <h2>Data Unduh Data</h2>
+                        <h2>Data Staf</h2>
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -29,8 +29,8 @@ Unduh Data
                         <nav aria-label="breadcrumb">
                             <ul class="buttons-group">
                                 <li class="breadcrumb-item">
-                                    <a href="{{ route('create_unduhdata') }}"
-                                        class="main-btn primary-btn rounded-md btn-hover">+ Tambah Data</a>
+                                    <a href="{{ route('create_staf') }}"
+                                        class="main-btn primary-btn rounded-md btn-hover">+ Tambah Data Staf</a>
                                 </li>
                             </ul>
                         </nav>
@@ -42,33 +42,32 @@ Unduh Data
             <div class="row">
                 <div class="col-lg-12">
                     <div class="card-style mb-30">
-                        <h6 class="mb-10">Unduh Data Data Table</h6>
+                        <h6 class="mb-10">Staf Data Table</h6>
                         <div class="table-responsive">
                             <table id="table" class="table">
                                 <thead>
                                     <tr>
-                                        <th>
-                                            Judul
-                                        </th>
-                                        <th>
-                                            Tanggal
-                                        </th>
-                                        <th>
-                                            Aksi
-                                        </th>
+                                        <th>Nama</th>
+                                        <th>Jabatan</th>
+                                        <th>Gambar</th>
+                                        <th>Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ( $unduhdata as $data )
+                                    @foreach ( $staf as $data )
                                     <tr>
-                                        <td>{{ $data->title }}</td>
-                                        <td>{{ $data->tanggal }}</td>
+                                        <td>{{ $data->nama }}</td>
+                                        <td>{{ $data->jabatan }}</td>
                                         <td>
-                                            <a href="{{ route('edit_unduhdata', $data->id) }}" class="btn btn-primary">
+                                            <img src="{{ Storage::url($data->gambar) }}" alt="" style="width: 150px"
+                                                class="img-thumbnail">
+                                        </td>
+                                        <td>
+                                            <a href="{{ route('edit_staf', $data->id) }}" class="btn btn-primary">
                                                 <i class="lni lni-pencil" style="color: whitesmoke"></i>
                                             </a>
                                             <input type="hidden" class="delete_id" value="{{ $data->id }}">
-                                            <form action="{{ route('destroy_unduhdata', $data->id) }}" method="POST"
+                                            <form action="{{ route('destroy_staf', $data->id) }}" method="POST"
                                                 class="d-inline">
                                                 @csrf
                                                 @method('DELETE')
@@ -123,7 +122,7 @@ Unduh Data
                         };
                         $.ajax({
                             type: "DELETE",
-                            url: 'unduhdata/delete/' + deleteid,
+                            url: 'staf-oprator/delete/' + deleteid,
                             data: data,
                             success: function (response) {
                                 swal(response.status, {

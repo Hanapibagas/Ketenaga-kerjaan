@@ -2,7 +2,10 @@
 
 use App\Http\Controllers\Admin\BeritaController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\DataStafController;
 use App\Http\Controllers\Admin\InfografisController;
+use App\Http\Controllers\Admin\InformasiBerkalaController;
+use App\Http\Controllers\Admin\InformasiSertaMertaController;
 use App\Http\Controllers\Admin\PublikasiController;
 use App\Http\Controllers\Admin\UnduhdataController;
 use App\Http\Controllers\HomeController;
@@ -34,7 +37,12 @@ Route::get('/informasi-public', [HomeController::class, 'index_informasi_public'
 Route::get('/publikasi', [HomeController::class, 'index_publikasi'])->name('index_publikasi');
 Route::get('/publikasi/{slug}', [HomeController::class, 'details_pulikasi'])->name('details_pulikasi');
 //
-Route::get('/layanan', [HomeController::class, 'layanan'])->name('layanan');
+Route::get('/simpas', [HomeController::class, 'simpas'])->name('simpas');
+Route::get('/permohonan-informasi-publik', [HomeController::class, 'permohonan_publik'])->name('permohonan_publik');
+Route::get('/permohonan-keberatan-informasi-publik', [HomeController::class, 'keberatan_publik'])->name('keberatan_publik');
+Route::get('/keran-sulsel', [HomeController::class, 'keran_sulsel'])->name('keran_sulsel');
+Route::get('/lapor', [HomeController::class, 'lapor'])->name('lapor');
+//
 Route::get('/pengumuman', [HomeController::class, 'pengumuman'])->name('pengumuman');
 
 Auth::routes();
@@ -42,6 +50,27 @@ Auth::routes();
 // super admin
 Route::middleware('auth', 'checkroll:oprator')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index_dashboard'])->name('index_dashboard');
+    //
+    Route::get('/serta-merta-oprator', [InformasiSertaMertaController::class, 'index_serta_merta'])->name('index_serta_merta');
+    Route::get('/serta-merta-oprator/create', [InformasiSertaMertaController::class, 'create_serta_merta'])->name('create_serta_merta');
+    Route::post('/serta-merta-oprator/create/post', [InformasiSertaMertaController::class, 'store'])->name('store_serta_merta');
+    Route::get('/serta-merta-oprator/update/{id}', [InformasiSertaMertaController::class, 'edit_serta_merta'])->name('edit_serta_merta');
+    Route::put('/serta-merta-oprator/create/update/{id}', [InformasiSertaMertaController::class, 'update_serta_merta'])->name('update_serta_merta');
+    Route::delete('/serta-merta-oprator/delete/{id}', [InformasiSertaMertaController::class, 'destroy_serta_merta'])->name('destroy_serta_merta');
+    //
+    Route::get('/berkala-oprator', [InformasiBerkalaController::class, 'index_berkala'])->name('index_berkala');
+    Route::get('/berkala-oprator/create', [InformasiBerkalaController::class, 'create_berkala'])->name('create_berkala');
+    Route::post('/berkala-oprator/create/post', [InformasiBerkalaController::class, 'store'])->name('store_berkala');
+    Route::get('/berkala-oprator/update/{id}', [InformasiBerkalaController::class, 'edit_berkala'])->name('edit_berkala');
+    Route::put('/berkala-oprator/create/update/{id}', [InformasiBerkalaController::class, 'update_berkala'])->name('update_berkala');
+    Route::delete('/berkala-oprator/delete/{id}', [InformasiBerkalaController::class, 'destroy_berkala'])->name('destroy_berkala');
+    //
+    Route::get('/staf-oprator', [DataStafController::class, 'index_staf'])->name('index_staf');
+    Route::get('/staf-oprator/create', [DataStafController::class, 'create_staf'])->name('create_staf');
+    Route::post('/staf-oprator/create/post', [DataStafController::class, 'store'])->name('store_staf');
+    Route::get('/staf-oprator/update/{id}', [DataStafController::class, 'edit_staf'])->name('edit_staf');
+    Route::put('/staf-oprator/create/update/{id}', [DataStafController::class, 'update_staf'])->name('update_staf');
+    Route::delete('/staf-oprator/delete/{id}', [DataStafController::class, 'destroy_staf'])->name('destroy_staf');
     //
     Route::get('/infografis-oprator', [InfografisController::class, 'dashboard_infografis'])->name('dashboard_infografis');
     Route::get('/infografis-oprator/create', [InfografisController::class, 'create_infografis'])->name('create_infografis');

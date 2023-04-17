@@ -1,7 +1,7 @@
 @extends('layouts.dashboard')
 
 @section('title')
-Publikasi
+Serta Merta
 @endsection
 
 @section('content')
@@ -21,7 +21,7 @@ Publikasi
             <div class="row align-items-center">
                 <div class="col-md-6">
                     <div class="title mb-30">
-                        <h2>Data Publikasi</h2>
+                        <h2>Data Serta Merta</h2>
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -29,7 +29,7 @@ Publikasi
                         <nav aria-label="breadcrumb">
                             <ul class="buttons-group">
                                 <li class="breadcrumb-item">
-                                    <a href="{{ route('create_publikasi') }}"
+                                    <a href="{{ route('create_serta_merta') }}"
                                         class="main-btn primary-btn rounded-md btn-hover">+ Tambah Data</a>
                                 </li>
                             </ul>
@@ -42,32 +42,30 @@ Publikasi
             <div class="row">
                 <div class="col-lg-12">
                     <div class="card-style mb-30">
-                        <h6 class="mb-10">Publikasi Data Table</h6>
+                        <h6 class="mb-10">Serta Merta Data Table</h6>
                         <div class="table-responsive">
                             <table id="table" class="table">
                                 <thead>
                                     <tr>
-                                        <th>Judul</th>
-                                        <th>Tanggal</th>
-                                        <th>Gambar</th>
-                                        <th>Aksi</th>
+                                        <th>
+                                            Nama
+                                        </th>
+                                        <th>
+                                            Aksi
+                                        </th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ( $publikasi as $data )
+                                    @foreach ( $sertamerta as $data )
                                     <tr>
-                                        <td>{{ $data->title }}</td>
-                                        <td>{{ $data->tanggal }}</td>
+                                        <td>{{ $data->nama }}</td>
                                         <td>
-                                            <img src="{{ Storage::url($data->gambar) }}" alt="" style="width: 150px"
-                                                class="img-thumbnail">
-                                        </td>
-                                        <td>
-                                            <a href="{{ route('edit_publikasi', $data->id) }}" class="btn btn-primary">
+                                            <a href="{{ route('edit_serta_merta', $data->id) }}"
+                                                class="btn btn-primary">
                                                 <i class="lni lni-pencil" style="color: whitesmoke"></i>
                                             </a>
                                             <input type="hidden" class="delete_id" value="{{ $data->id }}">
-                                            <form action="{{ route('destroy_publikasi', $data->id) }}" method="POST"
+                                            <form action="{{ route('destroy_serta_merta', $data->id) }}" method="POST"
                                                 class="d-inline">
                                                 @csrf
                                                 @method('DELETE')
@@ -122,7 +120,7 @@ Publikasi
                         };
                         $.ajax({
                             type: "DELETE",
-                            url: 'publikasi-oprator/delete/' + deleteid,
+                            url: 'serta-merta-oprator/delete/' + deleteid,
                             data: data,
                             success: function (response) {
                                 swal(response.status, {

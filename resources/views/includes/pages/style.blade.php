@@ -1,13 +1,3 @@
-<meta name="description" content="Silicon - Multipurpose Technology Bootstrap Template">
-<meta name="keywords"
-    content="bootstrap, business, creative agency, mobile app showcase, saas, fintech, finance, online courses, software, medical, conference landing, services, e-commerce, shopping cart, multipurpose, shop, ui kit, marketing, seo, landing, blog, portfolio, html5, css3, javascript, gallery, slider, touch, creative">
-<meta name="author" content="Createx Studio">
-
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
-<meta name="msapplication-TileColor" content="#080032">
-<meta name="theme-color" content="#ffffff">
-
 <link rel="icon" href="{{ asset('assets/frontend/img/logo.png') }}" type="image/x-icon">
 <link rel="stylesheet" media="screen" href="{{ asset('assets/frontend/vendor/boxicons/css/boxicons.min.css') }}" />
 <link rel="stylesheet" media="screen" href="{{ asset('assets/frontend/vendor/swiper/swiper-bundle.min.css') }}" />
@@ -112,12 +102,4 @@
       } else {
         root.classList.remove('dark-mode');
       }
-</script>
-
-<script>
-    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-      '../www.googletagmanager.com/gtm5445.html?id='+i+dl;f.parentNode.insertBefore(j,f);
-      })(window,document,'script','dataLayer','GTM-WKV3GT5');
 </script>

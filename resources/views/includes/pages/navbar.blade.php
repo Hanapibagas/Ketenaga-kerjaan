@@ -39,12 +39,37 @@
                         class="nav-item {{ request()->is('infografis') || request()->is('infografis/*') ? 'active' : '' }}">
                         <a href="{{ route('index_infografis') }}" class="nav-link">Infografis</a>
                     </li>
-                    <li class="nav-item {{ request()->is('berita') || request()->is('berita/*') ? 'active' : '' }}">
-                        <a href="{{ route('index_berita') }}" class="nav-link">Berita</a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle {{ request()->is('simpas') || request()->is('lapor') || request()->is('keran-sulsel') || request()->is('permohonan-keberatan-informasi-publik') || request()->is('permohonan-informasi-publik') ? 'active' : '' }}"
+                            data-bs-toggle="dropdown">Layanan</a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="{{ route('simpas') }}"
+                                    class="dropdown-item {{ request()->is('simpas') ? 'active' : '' }}">SIMPAS</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('permohonan_publik') }}"
+                                    class="dropdown-item {{ request()->is('permohonan-informasi-publik') ? 'active' : '' }}">Permohonan
+                                    Informasi Publik</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('keberatan_publik') }}"
+                                    class="dropdown-item {{ request()->is('permohonan-keberatan-informasi-publik') ? 'active' : '' }}">Pengajuan
+                                    Keberatan Informasi Publik</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('keran_sulsel') }}"
+                                    class="dropdown-item {{ request()->is('keran-sulsel') ? 'active' : '' }}">KERAN
+                                    SULSEL</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('lapor') }}"
+                                    class="dropdown-item {{ request()->is('lapor') ? 'active' : '' }}">LAPOR!</a>
+                            </li>
+                        </ul>
                     </li>
                     <li class="nav-item dropdown">
-                        <a href="#"
-                            class="nav-link dropdown-toggle {{ request()->is('informasi-public') || request()->is('login') || request()->is('pengumuman') || request()->is('layanan') || request()->is('publikasi') || request()->is('publikasi/*') ? 'active' : '' }}"
+                        <a class="nav-link dropdown-toggle {{ request()->is('informasi-public') || request()->is('login') || request()->is('pengumuman') || request()->is('berita') || request()->is('berita/*') || request()->is('publikasi') || request()->is('publikasi/*') ? 'active' : '' }}"
                             data-bs-toggle="dropdown">Lainnya</a>
                         <ul class="dropdown-menu">
                             <li>
@@ -56,11 +81,11 @@
                                     class="dropdown-item {{ request()->is('publikasi') ? 'active' : '' }}">Publikasi</a>
                             </li>
                             <li>
-                                <a href="{{ route('layanan') }}"
-                                    class="dropdown-item {{ request()->is('layanan') ? 'active' : '' }}">Layanan</a>
+                                <a href="{{ route('index_berita') }}" class="dropdown-item {{ request()->is('berita')
+                                    || request()->is('berita/*') ? 'active' : '' }}">Berita</a>
                             </li>
                             <li>
-                                <a href="{{ route('pengumuman') }}"
+                                <a href=" {{ route('pengumuman') }}"
                                     class="dropdown-item {{ request()->is('pengumuman') ? 'active' : '' }}">Pengumuman</a>
                             </li>
                             <li>

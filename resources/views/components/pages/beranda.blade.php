@@ -490,13 +490,22 @@ Beranda
                         <div class="swiper-slide h-auto" data-swiper-tab="#author-1">
                             <figure class="card h-100 position-relative border-0 bg-transparent">
                                 <blockquote class="card-body p-0 mb-0">
-                                    <p class="fs-lg mb-0">Dolor, a eget elementum, integer nulla volutpat, nunc,
-                                        sit. Quam iaculis varius mauris magna sem. Egestas sed sed suscipit
-                                        dolor faucibus dui imperdiet at eget. Tincidunt imperdiet quis hendrerit
-                                        aliquam feugiat neque cras sed. Dictum quam integer volutpat tellus,
-                                        faucibus platea. Pulvinar turpis proin faucibus at mauris. Sagittis
-                                        gravida vitae porta enim, nulla arcu fermentum massa. Tortor ullamcorper
-                                        lacus. Pellentesque lectus adipiscing aenean volutpat tortor habitant.
+                                    <p class="fs-lg mb-0" style="text-indent: 20px">Website ini dibuat sebagai salah satu media informasi, agar
+                                        masyarakat mendapatkan informasi yang cukup mengenai pelayanan perizinan,
+                                        potensi daerah, peluang investasi, promosi, dan realisasi investasi sesuai tugas
+                                        yang diamanahkan (Peraturan Gubernur No.50 Tahun 2021) tentang kedudukan,
+                                        susunan organisasi, tugas, fungsi serta tata kerja perangkat daerah. Bahwa hak
+                                        memperoleh informasi merupakan hak asasi manusia dan keterbukaan informasi
+                                        publik merupakan salah satu ciri negara demokratis yang berorientasi pada
+                                        peningkatan kualitas kinerja organisasi yang berkualitas, profesional, dan tata
+                                        kelola pemerintahan yang berbasis elektronik. Dinas Tenaga Kerja dan
+                                        Transmigrasi Provinsi Sulawesi Selatan, menyajikan data dan informasi serta
+                                        pelayanan yang berkualitas, sehingga mendorong iklim investasi yang kondusif
+                                        untuk pertumbuhan ekonomi dan kesejahteraan masyarakat. Dengan adanya website
+                                        ini, kami menyampaikan terima kasih kepada seluruh Perangkat Daerah Pemerintah
+                                        Provinsi Sulawesi Selatan, Pemerintah Kabupaten/Kota serta kepada seluruh
+                                        stakeholder yang telah memberikan dukungan penuh terhadap keberadaan website
+                                        www.disnaker.sulselprov.go.id. Terima kasih
                                     </p>
                                 </blockquote>
                                 <figcaption class="card-footer border-0 d-sm-flex d-md-none w-100 pb-2">
@@ -504,8 +513,9 @@ Beranda
                                         <img src="{{ asset('assets/frontend/img/logo.png') }}" width="48"
                                             class="rounded-circle" alt="Ralph Edwards">
                                         <div class="ps-3">
-                                            <h5 class="fw-semibold lh-base mb-0">Ralph Edwards</h5>
-                                            <span class="fs-sm text-muted">Head of Marketing</span>
+                                            <h5 class="fw-semibold lh-base mb-0">Ardiles Saggaf, S.STP, M.Si</h5>
+                                            <span class="fs-sm text-muted">Kepala Dinas Tenaga Kerja dan Transmigrasi
+                                                Pemerintah Provinsi Sulawesi Selatan</span>
                                         </div>
                                     </div>
                                 </figcaption>
@@ -522,9 +532,9 @@ Beranda
                         style="background-image: url({{ asset('assets/frontend/img/logo.png') }});"></div>
                     <div class="card-footer d-flex w-100 border-0 pb-0">
                         <div class="border-start-xl ps-xl-4 ms-xl-2">
-                            <h5 class="fw-semibold lh-base mb-0">Ralph Edwards</h5>
-                            <span class="fs-sm text-muted">Head of Marketing <span class="d-xl-none d-inline">at
-                                    Lorem Ltd.</span></span>
+                            <h5 class="fw-semibold lh-base mb-0">Ardiles Saggaf, S.STP, M.Si</h5>
+                            <span class="fs-sm text-muted">Kepala Dinas Tenaga Kerja dan Transmigrasi Pemerintah
+                                Provinsi Sulawesi Selatan</span>
                         </div>
                     </div>
                 </div>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Berita;
 use App\Models\DataSet;
+use App\Models\DataStaf;
 use App\Models\Infografis;
 use App\Models\Publikasi;
 use Illuminate\Http\Request;
@@ -17,7 +18,8 @@ class HomeController extends Controller
 
     public function profile()
     {
-        return view('components.pages.profile');
+        $profiles = DataStaf::all();
+        return view('components.pages.profile', compact('profiles'));
     }
 
     public function ppid()
@@ -95,13 +97,33 @@ class HomeController extends Controller
         return view('components.pages.publikasi.details-publikasi', compact('publlikasi'));
     }
 
-    public function layanan()
-    {
-        return view('components.pages.layanan');
-    }
-
     public function pengumuman()
     {
         return view('components.pages.pengumuman');
+    }
+
+    public function simpas()
+    {
+        return view('components.pages.layanan.simpas');
+    }
+
+    public function permohonan_publik()
+    {
+        return view('components.pages.layanan.permohonan-publik');
+    }
+
+    public function keberatan_publik()
+    {
+        return view('components.pages.layanan.pengajuan-publik');
+    }
+
+    public function keran_sulsel()
+    {
+        return view('components.pages.layanan.keran-sulsel');
+    }
+
+    public function lapor()
+    {
+        return view('components.pages.layanan.lapor');
     }
 }

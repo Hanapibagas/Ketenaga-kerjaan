@@ -122,7 +122,7 @@ Berita
                         };
                         $.ajax({
                             type: "DELETE",
-                            url: 'berita/delete/' + deleteid,
+                            url: 'berita-oprator/delete/' + deleteid,
                             data: data,
                             success: function (response) {
                                 swal(response.status, {
