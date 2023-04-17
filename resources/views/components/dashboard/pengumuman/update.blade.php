@@ -1,7 +1,7 @@
 @extends('layouts.dashboard')
 
 @section('title')
-Setiap Saat
+Pengumunan
 @endsection
 
 @section('content')
@@ -11,7 +11,7 @@ Setiap Saat
             <div class="row align-items-center">
                 <div class="col-md-6">
                     <div class="title mb-30">
-                        <h2>Tambah Setiap Saat</h2>
+                        <h2>Tambah Pengumuman</h2>
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -19,7 +19,7 @@ Setiap Saat
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item">
-                                    <a href="{{ route('index_setiap_saat') }}">
+                                    <a href="{{ route('index_pengumuman') }}">
                                         <i>
                                             <- Kembali </i>
                                     </a>
@@ -35,20 +35,41 @@ Setiap Saat
             <div class="row">
                 <div class="col-lg-12">
                     <div class="card-style mb-30">
-                        <h6 class="mb-25">Setiap Saat</h6>
-                        <form action="{{ route('store_setiap_saat') }}" method="POST" enctype="multipart/form-data">
+                        <h6 class="mb-25">Pengumuman</h6>
+                        <form action="{{ route('update_pengumuman', $pengumuman->id) }}" method="POST"
+                            enctype="multipart/form-data">
                             @csrf
+                            @method('PUT')
                             <div class="row">
                                 <div class="col-12">
                                     <div class="input-style-1">
-                                        <label>Nama</label>
-                                        <input type="text" name="nama" placeholder="Masukkan Nama" />
+                                        <label>Judul</label>
+                                        <input type="text" value="{{ $pengumuman->title }}" name="title"
+                                            placeholder="Masukkan Judul" />
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="input-style-1">
+                                        <label>Gambar</label>
+                                        <small>Pilih gambar jika ingin mengubah</small>
+                                        <input name="gambar" type="file" value="{{ $pengumuman->gambar }}">
+                                        @if ( $pengumuman->gambar )
+                                        <img src="{{ Storage::url($pengumuman->gambar) }}" alt=""
+                                            style="width: 150px; margin-top: 10px" class="img-thumbnail">
+                                        @else
+                                        <p>Gambar Tidak Sedia</p>
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="input-style-1">
                                         <label>File</label>
-                                        <input name="file" type="file" />
+                                        <small>Pilih file jika ingin mengubah</small>
+                                        <input name="file" type="file" value="{{ $pengumuman->file }}">
+                                        @if ( $pengumuman->file )
+                                        @else
+                                        <p>File Tidak Sedia</p>
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="col-12">

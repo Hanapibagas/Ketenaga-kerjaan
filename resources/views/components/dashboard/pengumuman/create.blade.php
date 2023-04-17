@@ -1,7 +1,7 @@
 @extends('layouts.dashboard')
 
 @section('title')
-Setiap Saat
+Pengumuman
 @endsection
 
 @section('content')
@@ -11,7 +11,7 @@ Setiap Saat
             <div class="row align-items-center">
                 <div class="col-md-6">
                     <div class="title mb-30">
-                        <h2>Tambah Setiap Saat</h2>
+                        <h2>Tambah Pengumuman</h2>
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -19,7 +19,7 @@ Setiap Saat
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item">
-                                    <a href="{{ route('index_setiap_saat') }}">
+                                    <a href="{{ route('index_pengumuman') }}">
                                         <i>
                                             <- Kembali </i>
                                     </a>
@@ -35,20 +35,26 @@ Setiap Saat
             <div class="row">
                 <div class="col-lg-12">
                     <div class="card-style mb-30">
-                        <h6 class="mb-25">Setiap Saat</h6>
-                        <form action="{{ route('store_setiap_saat') }}" method="POST" enctype="multipart/form-data">
+                        <h6 class="mb-25">Pengumuman</h6>
+                        <form action="{{ route('store_pengumuman') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="row">
                                 <div class="col-12">
                                     <div class="input-style-1">
                                         <label>Nama</label>
-                                        <input type="text" name="nama" placeholder="Masukkan Nama" />
+                                        <input type="text" name="title" placeholder="Masukkan Nama" />
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="input-style-1">
                                         <label>File</label>
                                         <input name="file" type="file" />
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="input-style-1">
+                                        <label>Gambar</label>
+                                        <input name="gambar" type="file" />
                                     </div>
                                 </div>
                                 <div class="col-12">

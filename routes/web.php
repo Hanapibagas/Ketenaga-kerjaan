@@ -6,6 +6,8 @@ use App\Http\Controllers\Admin\DataStafController;
 use App\Http\Controllers\Admin\InfografisController;
 use App\Http\Controllers\Admin\InformasiBerkalaController;
 use App\Http\Controllers\Admin\InformasiSertaMertaController;
+use App\Http\Controllers\Admin\InformasiSetiapSaatController;
+use App\Http\Controllers\Admin\PengumumanController;
 use App\Http\Controllers\Admin\PublikasiController;
 use App\Http\Controllers\Admin\UnduhdataController;
 use App\Http\Controllers\HomeController;
@@ -18,23 +20,34 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [HomeController::class, 'index'])->name('index_home');
 Route::get('/profile', [HomeController::class, 'profile'])->name('profile_home');
 Route::get('/ppid', [HomeController::class, 'ppid'])->name('ppid_home');
-//
+
+//route data
 Route::get('/data', [HomeController::class, 'index_dataset'])->name('index_dataset');
 Route::get('/data/guest', [HomeController::class, 'permintaan_data_guest'])->name('permintaan_data_guest');
 Route::get('/data/auth', [HomeController::class, 'permintaan_data_auth'])->name('permintaan_data_auth');
 Route::get('/data/unduh-data', [HomeController::class, 'unduh_data'])->name('unduh_data');
 Route::get('/data/unduh-data/{slug}', [HomeController::class, 'details_dataset'])->name('details_dataset');
 Route::get('/data/data-integrasi', [HomeController::class, 'data_integrasi'])->name('data_integrasi');
-//
+
+//route infografis
 Route::get('/infografis', [HomeController::class, 'index_infografis'])->name('index_infografis');
+Route::get('/infografis/pencarian-infografis', [HomeController::class, 'pencarian_infografis'])->name('pencarian_infografis');
 Route::get('/infografis/{slug}', [HomeController::class, 'infografis_details'])->name('infografis_details');
-//
+
+//route berita
 Route::get('/berita', [HomeController::class, 'index_berita'])->name('index_berita');
+Route::get('/berita/pencarian-berita', [HomeController::class, 'pencarian_berita'])->name('pencarian_berita');
 Route::get('/berita/{slug}', [HomeController::class, 'details_berita'])->name('details_berita');
+
 //
 Route::get('/informasi-public', [HomeController::class, 'index_informasi_public'])->name('index_informasi_public');
-//
+Route::get('/informasi-public/cari-informasi-berkala', [HomeController::class, 'pencarian_infromasi_berkala'])->name('pencarian_infromasi_berkala');
+Route::get('/informasi-public/cari-informasi-serta-merta', [HomeController::class, 'pencarian_infromasi_serta_merta'])->name('pencarian_infromasi_serta_merta');
+Route::get('/informasi-public/cari-informasi-setiap-saat', [HomeController::class, 'pencarian_infromasi_setiap_saat'])->name('pencarian_infromasi_setiap_saat');
+
+//route publikasi
 Route::get('/publikasi', [HomeController::class, 'index_publikasi'])->name('index_publikasi');
+Route::get('/publikasi/pencarian-publikasi', [HomeController::class, 'pencarian_publikasi'])->name('pencarian_publikasi');
 Route::get('/publikasi/{slug}', [HomeController::class, 'details_pulikasi'])->name('details_pulikasi');
 //
 Route::get('/simpas', [HomeController::class, 'simpas'])->name('simpas');
@@ -50,6 +63,20 @@ Auth::routes();
 // super admin
 Route::middleware('auth', 'checkroll:oprator')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index_dashboard'])->name('index_dashboard');
+    //
+    Route::get('/pengumuman-oprator', [PengumumanController::class, 'index_pengumuman'])->name('index_pengumuman');
+    Route::get('/pengumuman-oprator/create', [PengumumanController::class, 'create_pengumuman'])->name('create_pengumuman');
+    Route::post('/pengumuman-oprator/create/post', [PengumumanController::class, 'store'])->name('store_pengumuman');
+    Route::get('/pengumuman-oprator/update/{id}', [PengumumanController::class, 'edit_pengumuman'])->name('edit_pengumuman');
+    Route::put('/pengumuman-oprator/create/update/{id}', [PengumumanController::class, 'update_pengumuman'])->name('update_pengumuman');
+    Route::delete('/pengumuman-oprator/delete/{id}', [PengumumanController::class, 'destroy_pengumuman'])->name('destroy_pengumuman');
+    //
+    Route::get('/sertiap-saat-oprator', [InformasiSetiapSaatController::class, 'index_setiap_saat'])->name('index_setiap_saat');
+    Route::get('/sertiap-saat-oprator/create', [InformasiSetiapSaatController::class, 'create_setiap_saat'])->name('create_setiap_saat');
+    Route::post('/sertiap-saat-oprator/create/post', [InformasiSetiapSaatController::class, 'store'])->name('store_setiap_saat');
+    Route::get('/sertiap-saat-oprator/update/{id}', [InformasiSetiapSaatController::class, 'edit_setiap_saat'])->name('edit_setiap_saat');
+    Route::put('/sertiap-saat-oprator/create/update/{id}', [InformasiSetiapSaatController::class, 'update_setiap_saat'])->name('update_setiap_saat');
+    Route::delete('/sertiap-saat-oprator/delete/{id}', [InformasiSetiapSaatController::class, 'destroy_setiap_saat'])->name('destroy_setiap_saat');
     //
     Route::get('/serta-merta-oprator', [InformasiSertaMertaController::class, 'index_serta_merta'])->name('index_serta_merta');
     Route::get('/serta-merta-oprator/create', [InformasiSertaMertaController::class, 'create_serta_merta'])->name('create_serta_merta');

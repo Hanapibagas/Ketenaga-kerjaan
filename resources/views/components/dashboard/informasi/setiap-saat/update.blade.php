@@ -1,7 +1,7 @@
 @extends('layouts.dashboard')
 
 @section('title')
-Infografis
+Setiap Saat
 @endsection
 
 @section('content')
@@ -11,7 +11,7 @@ Infografis
             <div class="row align-items-center">
                 <div class="col-md-6">
                     <div class="title mb-30">
-                        <h2>Tambah Infografis</h2>
+                        <h2>Tambah Setiap Saat</h2>
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -19,7 +19,7 @@ Infografis
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item">
-                                    <a href="{{ route('dashboard_infografis') }}">
+                                    <a href="{{ route('index_setiap_saat') }}">
                                         <i>
                                             <- Kembali </i>
                                     </a>
@@ -35,49 +35,27 @@ Infografis
             <div class="row">
                 <div class="col-lg-12">
                     <div class="card-style mb-30">
-                        <h6 class="mb-25">Infografis</h6>
-                        <form action="{{ route('update_inforgrafis', $infografis->id) }}" method="POST"
+                        <h6 class="mb-25">Setiap Saat</h6>
+                        <form action="{{ route('update_setiap_saat', $setiapsaat->id) }}" method="POST"
                             enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
                             <div class="row">
                                 <div class="col-12">
                                     <div class="input-style-1">
-                                        <label>Judul</label>
-                                        <input type="text" value="{{ $infografis->title }}" name="title"
+                                        <label>Nama</label>
+                                        <input type="text" value="{{ $setiapsaat->nama }}" name="nama"
                                             placeholder="Masukkan Judul" />
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="input-style-1">
-                                        <label>Tipe Informasi</label>
-                                        <input type="text" value="{{ $infografis->type_infografis }}"
-                                            name="type_infografis" placeholder="Masukkan Type" />
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <div class="input-style-1">
-                                        <label>Tanggal</label>
-                                        <input type="date" name="tanggal" value="{{ $infografis->tanggal }}"
-                                            placeholder="Masukkan Tanggal" />
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <div class="input-style-1">
-                                        <label>Deskripsi</label>
-                                        <textarea name="deskripsi">{!! $infografis->deskripsi !!}</textarea>
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <div class="input-style-1">
-                                        <label>Gambar</label>
-                                        <small>Pilih gambar jika ingin mengubah</small>
-                                        <input name="gambar" type="file" value="{{ $infografis->gambar }}">
-                                        @if ( $infografis->gambar )
-                                        <img src="{{ Storage::url($infografis->gambar) }}" alt=""
-                                            style="width: 150px; margin-top: 10px" class="img-thumbnail">
+                                        <label>File</label>
+                                        <small>Pilih file jika ingin mengubah</small>
+                                        <input name="file" type="file" value="{{ $setiapsaat->file }}">
+                                        @if ( $setiapsaat->file )
                                         @else
-                                        <p>Gambar Tidak Sedia</p>
+                                        <p>File Tidak Sedia</p>
                                         @endif
                                     </div>
                                 </div>

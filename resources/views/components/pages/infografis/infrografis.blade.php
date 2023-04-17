@@ -18,8 +18,8 @@ Infografis
     <div class="d-lg-flex align-items-center justify-content-between py-4 mt-lg-2">
         <h1 class="me-3">Infografis</h1>
         <div class="position-relative" style="min-width: 300px;">
-            <form action="">
-                <input type="text" class="form-control pe-5" placeholder="Search courses">
+            <form action="{{ route('pencarian_infografis') }}">
+                <input type="text" name="search" class="form-control pe-5" placeholder="Search courses">
                 <i class="bx bx-search text-nav fs-lg position-absolute top-50 end-0 translate-middle-y me-3"></i>
             </form>
         </div>

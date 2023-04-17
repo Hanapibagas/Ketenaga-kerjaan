@@ -1,7 +1,7 @@
 @extends('layouts.dashboard')
 
 @section('title')
-Setiap Saat
+Pengumuman
 @endsection
 
 @section('content')
@@ -21,7 +21,7 @@ Setiap Saat
             <div class="row align-items-center">
                 <div class="col-md-6">
                     <div class="title mb-30">
-                        <h2>Data Setiap Saat</h2>
+                        <h2>Data Pengumuman</h2>
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -29,7 +29,7 @@ Setiap Saat
                         <nav aria-label="breadcrumb">
                             <ul class="buttons-group">
                                 <li class="breadcrumb-item">
-                                    <a href="{{ route('create_setiap_saat') }}"
+                                    <a href="{{ route('create_pengumuman') }}"
                                         class="main-btn primary-btn rounded-md btn-hover">+ Tambah Data</a>
                                 </li>
                             </ul>
@@ -42,30 +42,30 @@ Setiap Saat
             <div class="row">
                 <div class="col-lg-12">
                     <div class="card-style mb-30">
-                        <h6 class="mb-10">Setap Saat Data Table</h6>
+                        <h6 class="mb-10">Pengumuman Data Table</h6>
                         <div class="table-responsive">
                             <table id="table" class="table">
                                 <thead>
                                     <tr>
-                                        <th>
-                                            Nama
-                                        </th>
-                                        <th>
-                                            Aksi
-                                        </th>
+                                        <th>Nama</th>
+                                        <th>Gambar</th>
+                                        <th>Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ( $setiapsaat as $data )
+                                    @foreach ( $pengumuman as $data )
                                     <tr>
-                                        <td>{{ $data->nama }}</td>
+                                        <td>{{ $data->title }}</td>
                                         <td>
-                                            <a href="{{ route('edit_setiap_saat', $data->id) }}"
-                                                class="btn btn-primary">
+                                            <img src="{{ Storage::url($data->gambar) }}" alt="" style="width: 150px"
+                                                class="img-thumbnail">
+                                        </td>
+                                        <td>
+                                            <a href="{{ route('edit_pengumuman', $data->id) }}" class="btn btn-primary">
                                                 <i class="lni lni-pencil" style="color: whitesmoke"></i>
                                             </a>
                                             <input type="hidden" class="delete_id" value="{{ $data->id }}">
-                                            <form action="{{ route('destroy_setiap_saat', $data->id) }}" method="POST"
+                                            <form action="{{ route('destroy_pengumuman', $data->id) }}" method="POST"
                                                 class="d-inline">
                                                 @csrf
                                                 @method('DELETE')
@@ -120,7 +120,7 @@ Setiap Saat
                         };
                         $.ajax({
                             type: "DELETE",
-                            url: 'sertiap-saat-oprator/delete/' + deleteid,
+                            url: 'pengumuman-oprator/delete/' + deleteid,
                             data: data,
                             success: function (response) {
                                 swal(response.status, {
