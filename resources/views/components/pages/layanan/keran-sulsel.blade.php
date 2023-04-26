@@ -35,7 +35,9 @@ Layanan
                 <p class="fs-lg mb-0">Teman Ketenagakerjaan dan Ketransmigrasian (KERAN) SULSEL adalah Podcast milik
                     Dinas Tenaga Kerja dan Transmigrasi Provinsi Sulawesi Selatan melalui aplikasi spotify. Di Podcast
                     ini, kami bakal sharing ke kamu tentang info terkait Ketenagakerjaan dan Ketransmigrasian plus
-                    Informasi Publik.
+                    Informasi Publik. <br><br>
+                    Untuk lebih lanjut ( <a href="https://open.spotify.com/show/0B02I0NT07Rq8p4HwAZhEX"
+                        target="_blank">Klik di sini</a> )
                 </p>
             </div>
         </div>

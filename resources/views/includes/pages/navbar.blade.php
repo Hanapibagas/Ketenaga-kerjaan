@@ -40,7 +40,7 @@
                         <a href="{{ route('index_infografis') }}" class="nav-link">Infografis</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle {{ request()->is('simpas') || request()->is('lapor') || request()->is('keran-sulsel') || request()->is('permohonan-keberatan-informasi-publik') || request()->is('permohonan-informasi-publik') ? 'active' : '' }}"
+                        <a class="nav-link dropdown-toggle {{ request()->is('simpas') || request()->is('permohonan-informasi-publik/form-pengaduan-publik') || request()->is('lapor') || request()->is('keran-sulsel') || request()->is('permohonan-keberatan-informasi-publik') || request()->is('permohonan-informasi-publik') ? 'active' : '' }}"
                             data-bs-toggle="dropdown">Layanan</a>
                         <ul class="dropdown-menu">
                             <li>
@@ -49,7 +49,7 @@
                             </li>
                             <li>
                                 <a href="{{ route('permohonan_publik') }}"
-                                    class="dropdown-item {{ request()->is('permohonan-informasi-publik') ? 'active' : '' }}">Permohonan
+                                    class="dropdown-item {{ request()->is('permohonan-informasi-publik') || request()->is('permohonan-informasi-publik/form-pengaduan-publik') ? 'active' : '' }}">Permohonan
                                     Informasi Publik</a>
                             </li>
                             <li>

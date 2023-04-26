@@ -9,7 +9,9 @@ use App\Models\Infografis;
 use App\Models\InformasiBerkala;
 use App\Models\InformasiSertaMerta;
 use App\Models\InformasiSetiapSaat;
+use App\Models\PengajuanKeberatan;
 use App\Models\Pengumuman;
+use App\Models\PermohonanInformasiPublik;
 use App\Models\Publikasi;
 use Illuminate\Http\Request;
 
@@ -162,14 +164,86 @@ class HomeController extends Controller
         return view('components.pages.layanan.simpas');
     }
 
+    // permohonan publik
     public function permohonan_publik()
     {
-        return view('components.pages.layanan.permohonan-publik');
+        $jumlahpemohon = PermohonanInformasiPublik::count();
+        return view('components.pages.layanan.permohonan-publik', compact('jumlahpemohon'));
     }
 
+    public function form_permohonan_publik()
+    {
+        return view('components.pages.layanan.form-permohonan-informasi-publik');
+    }
+
+    public function store_permohonan_publik(Request $request)
+    {
+        $message = [
+            'required' => 'Mohon maaf anda lupa untuk mengisi ini dan harap anda mangisi terlebih dahulu'
+        ];
+
+        $this->validate($request, [
+            'email' => 'required',
+            'nama' => 'required',
+            'no_hp' => 'required',
+            'no_ktp' => 'required',
+            'nomor_pengesahaan' => 'required',
+            'alamat' => 'required',
+            'pekerjaan' => 'required',
+            'rincian' => 'required',
+            'tujuan' => 'required',
+            'foto_ktp' => 'required',
+        ], $message);
+
+        if ($request->file('foto_ktp')) {
+            $file = $request->file('foto_ktp')->store('permohonan-publik', 'public');
+        }
+
+        PermohonanInformasiPublik::create([
+            'email' => $request->input('email'),
+            'nama' => $request->input('nama'),
+            'no_hp' => $request->input('no_hp'),
+            'no_ktp' => $request->input('no_ktp'),
+            'nomor_pengesahaan' => $request->input('nomor_pengesahaan'),
+            'alamat' => $request->input('alamat'),
+            'pekerjaan' => $request->input('pekerjaan'),
+            'rincian' => $request->input('rincian'),
+            'tujuan' => $request->input('tujuan'),
+            'foto_ktp' => $file
+        ]);
+
+        return redirect()->route('form_permohonan_publik')->with('status', 'Selamat data permohonan publik berhasil ditambahkan');
+    }
+
+    // keberatan publik
     public function keberatan_publik()
     {
-        return view('components.pages.layanan.pengajuan-publik');
+        $jumlahkeberatan = PengajuanKeberatan::count();
+        return view('components.pages.layanan.pengajuan-publik', compact('jumlahkeberatan'));
+    }
+
+    public function form_keberatan_publik()
+    {
+        return view('components.pages.layanan.form-keberatan-informasi-publik');
+    }
+
+    public function store_keberatan_publik(Request $request)
+    {
+        $message = [
+            'required' => 'Mohon maaf anda lupa untuk mengisi ini dan harap anda mangisi terlebih dahulu'
+        ];
+
+        $this->validate($request, [
+            'no_pendaftaran' => 'required',
+            'tujuan_pengguna' => 'required'
+        ], $message);
+
+        PengajuanKeberatan::create([
+            'no_pendaftaran' => $request->input('no_pendaftaran'),
+            'tujuan_pengguna' => $request->input('tujuan_pengguna')
+        ]);
+
+        return redirect()->route('form_keberatan_publik')->with('status', 'Selamat data keberatan publik berhasil ditambahkan');
     }
 
     public function keran_sulsel()

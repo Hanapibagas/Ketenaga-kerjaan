@@ -10,12 +10,12 @@ Layanan
         <li class="breadcrumb-item">
             <a href="{{ route('index_home') }}"><i class="bx bx-home-alt fs-lg me-1"></i>Beranda</a>
         </li>
-        <li class="breadcrumb-item active" aria-current="page">LAPOR!.</li>
+        <li class="breadcrumb-item active" aria-current="page">LAPOR!</li>
     </ol>
 </nav>
 
 <section class="container pb-4 mb-2 mb-lg-3">
-    <h1>LAPOR!.</h1>
+    <h1>LAPOR!</h1>
 </section>
 
 <section class="jarallax" data-jarallax data-speed="0.4">
@@ -50,7 +50,8 @@ Layanan
                     (KSP) sebagai Pengawas Program Prioritas Nasional dan Ombudsman Republik Indonesia sebagai Pengawas
                     Pelayanan Publik. LAPOR! telah ditetapkan sebagai Sistem Pengelolaan Pengaduan Pelayanan Publik
                     Nasional (SP4N) berdasarkan Peraturan Presiden Nomor 76 Tahun 2013 dan Peraturan Menteri
-                    Pendayagunaan Aparatur Negara dan Reformasi Birokrasi Nomor 3 Tahun 2015.
+                    Pendayagunaan Aparatur Negara dan Reformasi Birokrasi Nomor 3 Tahun 2015. <br> <br>
+                    Menuju SP4N-LAPOR! ( <a href="https://www.lapor.go.id/">Klik di sini</a> )
                 </p>
             </div>
         </div>

@@ -10,6 +10,8 @@ use App\Http\Controllers\Admin\InformasiSetiapSaatController;
 use App\Http\Controllers\Admin\PengumumanController;
 use App\Http\Controllers\Admin\PublikasiController;
 use App\Http\Controllers\Admin\UnduhdataController;
+use App\Http\Controllers\AdminSuper\DashboarAdminSuperdController;
+use App\Http\Controllers\AdminSuper\TambahPenggunaAdminSuperController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Kab\KabKotaController;
 use App\Http\Controllers\Kab\PermintaanController;
@@ -49,10 +51,17 @@ Route::get('/informasi-public/cari-informasi-setiap-saat', [HomeController::clas
 Route::get('/publikasi', [HomeController::class, 'index_publikasi'])->name('index_publikasi');
 Route::get('/publikasi/pencarian-publikasi', [HomeController::class, 'pencarian_publikasi'])->name('pencarian_publikasi');
 Route::get('/publikasi/{slug}', [HomeController::class, 'details_pulikasi'])->name('details_pulikasi');
-//
+
+// route layanan
 Route::get('/simpas', [HomeController::class, 'simpas'])->name('simpas');
 Route::get('/permohonan-informasi-publik', [HomeController::class, 'permohonan_publik'])->name('permohonan_publik');
+Route::get('/permohonan-informasi-publik/form-pengaduan-publik', [HomeController::class, 'form_permohonan_publik'])->name('form_permohonan_publik');
+Route::post('/permohonan-informasi-publik/form-pengaduan-publik/store', [HomeController::class, 'store_permohonan_publik'])->name('store_permohonan_publik');
+
 Route::get('/permohonan-keberatan-informasi-publik', [HomeController::class, 'keberatan_publik'])->name('keberatan_publik');
+Route::get('/permohonan-keberatan-publik/form-keberatan-publik', [HomeController::class, 'form_keberatan_publik'])->name('form_keberatan_publik');
+Route::post('/permohonan-keberatan-publik/form-keberatan-publik/store', [HomeController::class, 'store_keberatan_publik'])->name('store_keberatan_publik');
+
 Route::get('/keran-sulsel', [HomeController::class, 'keran_sulsel'])->name('keran_sulsel');
 Route::get('/lapor', [HomeController::class, 'lapor'])->name('lapor');
 //
@@ -61,7 +70,7 @@ Route::get('/pengumuman', [HomeController::class, 'pengumuman'])->name('pengumum
 Auth::routes();
 
 // super admin
-Route::middleware('auth', 'checkroll:oprator')->group(function () {
+Route::middleware('auth', 'checkroll:admin web')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index_dashboard'])->name('index_dashboard');
     //
     Route::get('/pengumuman-oprator', [PengumumanController::class, 'index_pengumuman'])->name('index_pengumuman');
@@ -128,8 +137,18 @@ Route::middleware('auth', 'checkroll:oprator')->group(function () {
     Route::delete('/unduhdata-oprator/delete/{id}', [UnduhdataController::class, 'destroy_unduhdata'])->name('destroy_unduhdata');
 });
 
+//admin super admin
+Route::middleware('auth', 'checkroll:admin super')->group(function () {
+    Route::get('/admin-super', [DashboarAdminSuperdController::class, 'index_admin_super'])->name('index_admin_super');
+    //
+    Route::get('/penguna-admin-super', [TambahPenggunaAdminSuperController::class, 'index_tambah_penguuna'])->name('index_tambah_penguuna');
+    Route::get('/penguna-admin-super/create', [TambahPenggunaAdminSuperController::class, 'create_pengguna'])->name('create_pengguna');
+    Route::post('/penguna-admin-super/post', [TambahPenggunaAdminSuperController::class, 'store_pengguna'])->name('store_pengguna');
+    Route::delete('/penguna-admin-super/delete/{id}', [TambahPenggunaAdminSuperController::class, 'destroy_pengguna'])->name('destroy_pengguna');
+});
+
 //admin kab/kota
-Route::middleware('auth', 'checkroll:admin')->group(function () {
+Route::middleware('auth', 'checkroll:kab')->group(function () {
     Route::get('/admin', [KabKotaController::class, 'index_kab'])->name('dashboard_kab');
     //
     Route::get('/admin/permintaan-kab', [PermintaanController::class, 'index_kab'])->name('index_kab');

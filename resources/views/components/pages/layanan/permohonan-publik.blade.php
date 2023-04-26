@@ -33,8 +33,12 @@ Layanan
         <div class="col-lg-12 mb-4 mb-lg-0">
             <div class="pe-lg-4 me-lg-3 pe-xl-0 me-xl-0">
                 <h2 class="h1 mb-4">About</h2>
-                <p class="fs-lg mb-0"><b>Hak-hak Pemohon Informasi Berdasarkan Undang-Undang
-                        Nomor 14 Tahun 2008 tentang Keterbukaan Informasi Publik</b> <br><br><br>
+                <p class="fs-lg mb-0">
+                    Jumlah permohonan informasi publik yang diterima: {{ $jumlahpemohon }}
+                    <hr> <br>
+
+                    <b>Hak-hak Pemohon Informasi Berdasarkan Undang-Undang
+                        Nomor 14 Tahun 2008 tentang Keterbukaan Informasi Publik</b> <br><br>
 
                     <b>Pemohon Informasi berhak untuk meminta seluruh informasi yang berada di Badan Publik kecuali</b>
                     <br>
@@ -64,7 +68,9 @@ Layanan
                     diterima/dicatatnya pengajuan keberatan dalam register keberatan.
                     Apabila Pemohon Informasi tidak puas dengan keputusan Atasan PPID, maka pemohon informasi dapat
                     mengajukan keberatan kepada Komisi Informasi dalam jangka waktu 14 (empat belas) hari kerja sejak
-                    diterimanya keputusan atasan PPID oleh Pemohon Informasi Publik.
+                    diterimanya keputusan atasan PPID oleh Pemohon Informasi Publik. <br><br>
+                    Klik Link untuk mengajukan Permohonan Informasi Publik ( <a
+                        href="{{ route('form_permohonan_publik') }}">Klik di sini</a> )
                 </p>
             </div>
         </div>

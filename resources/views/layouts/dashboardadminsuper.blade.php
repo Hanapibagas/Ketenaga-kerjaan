@@ -20,19 +20,19 @@
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.min.js"></script>
 
-    @include('includes.dashboard.style')
+    @include('includes.admin-super.style')
 
 </head>
 
 <body>
 
-    @include('includes.kab-kota.sidebar')
+    @include('includes.admin-super.sidebar')
 
     <div class="overlay"></div>
 
     <main class="main-wrapper">
 
-        @include('includes.kab-kota.navbar')
+        @include('includes.admin-super.navbar')
 
         <section class="section">
 
@@ -40,7 +40,7 @@
 
         </section>
 
-        @include('includes.kab-kota.footer')
+        @include('includes.admin-super.footer')
 
     </main>
 
@@ -80,7 +80,7 @@
         </ul>
     </div>
 
-    @include('includes.kab-kota.script')
+    @include('includes.admin-super.script')
 
     @stack('add-script')
 </body>
