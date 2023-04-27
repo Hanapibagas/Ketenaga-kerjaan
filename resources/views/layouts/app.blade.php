@@ -27,7 +27,7 @@
 
 </head>
 
-<body>
+<body id="body">
     <main class="page-wrapper">
 
         @include('includes.pages.navbar')

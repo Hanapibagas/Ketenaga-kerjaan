@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\PengumumanController;
 use App\Http\Controllers\Admin\PublikasiController;
 use App\Http\Controllers\Admin\UnduhdataController;
 use App\Http\Controllers\AdminSuper\DashboarAdminSuperdController;
+use App\Http\Controllers\AdminSuper\PermintaanDataAdminSuperController;
 use App\Http\Controllers\AdminSuper\TambahPenggunaAdminSuperController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Kab\KabKotaController;
@@ -140,6 +141,11 @@ Route::middleware('auth', 'checkroll:admin web')->group(function () {
 //admin super admin
 Route::middleware('auth', 'checkroll:admin super')->group(function () {
     Route::get('/admin-super', [DashboarAdminSuperdController::class, 'index_admin_super'])->name('index_admin_super');
+    //
+    Route::get('/permintaan-admin-super', [PermintaanDataAdminSuperController::class, 'index_permintaan'])->name('index_permintaan');
+    Route::get('/permintaan-admin-super/create', [PermintaanDataAdminSuperController::class, 'create_pengguna'])->name('create_pengguna');
+    Route::post('/permintaan-admin-super/post', [PermintaanDataAdminSuperController::class, 'store_pengguna'])->name('store_pengguna');
+    Route::delete('/permintaan-admin-super/delete/{id}', [PermintaanDataAdminSuperController::class, 'destroy_pengguna'])->name('destroy_pengguna');
     //
     Route::get('/penguna-admin-super', [TambahPenggunaAdminSuperController::class, 'index_tambah_penguuna'])->name('index_tambah_penguuna');
     Route::get('/penguna-admin-super/create', [TambahPenggunaAdminSuperController::class, 'create_pengguna'])->name('create_pengguna');
