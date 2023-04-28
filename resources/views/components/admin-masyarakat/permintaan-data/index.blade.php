@@ -68,7 +68,7 @@ Permintaan Data
                                             {{ $data->jenis_data }}
                                         </td>
                                         <td>
-                                            {!! $data->deskripsi !!}
+                                            {!! Str::limit($data->deskripsi, 100) !!}
                                         </td>
                                         <td>
                                             {{ $data->opd_produsen_data }}

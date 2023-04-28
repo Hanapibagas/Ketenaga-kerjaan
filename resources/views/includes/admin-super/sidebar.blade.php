@@ -63,7 +63,7 @@
                 </a>
             </li>
             <li
-                class="nav-item {{ request()->is('permintaan-admin-super') || request()->is('permintaan-admin-super/create') ? 'active' : '' }}">
+                class="nav-item {{ request()->is('permintaan-admin-super') || request()->is('permintaan-admin-super/update/*') ? 'active' : '' }}">
                 <a href="{{ route('index_permintaan') }}">
                     <span class="icon">
                         <svg width="18" height="20" viewBox="0 0 18 20" fill="none" xmlns="http://www.w3.org/2000/svg">

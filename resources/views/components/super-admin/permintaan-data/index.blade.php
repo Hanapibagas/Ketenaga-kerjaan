@@ -57,7 +57,7 @@ Permintaan Data
                                             {{ $data->jenis_data }}
                                         </td>
                                         <td>
-                                            {!! $data->deskripsi !!}
+                                            {!! Str::limit($data->deskripsi, 100) !!}
                                         </td>
                                         <td>
                                             {{ $data->opd_produsen_data }}
@@ -69,7 +69,7 @@ Permintaan Data
                                             {{ $data->status }}
                                         </td>
                                         <td>
-                                            <a href="" class="btn btn-primary">
+                                            <a href="{{ route('edit_permintaan', $data->id) }}" class="btn btn-primary">
                                                 <i class="lni lni-pencil" style="color: whitesmoke"></i>
                                             </a>
                                         </td>

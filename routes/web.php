@@ -151,9 +151,8 @@ Route::middleware('auth', 'checkroll:admin super')->group(function () {
     Route::delete('/metadata-admin-super/delete/{id}', [MetadataVariableAdminSuperController::class, 'destroy_pengguna'])->name('destroy_pengguna');
     //
     Route::get('/permintaan-admin-super', [PermintaanDataAdminSuperController::class, 'index_permintaan'])->name('index_permintaan');
-    Route::get('/permintaan-admin-super/create', [PermintaanDataAdminSuperController::class, 'create_pengguna'])->name('create_pengguna');
-    Route::post('/permintaan-admin-super/post', [PermintaanDataAdminSuperController::class, 'store_pengguna'])->name('store_pengguna');
-    Route::delete('/permintaan-admin-super/delete/{id}', [PermintaanDataAdminSuperController::class, 'destroy_pengguna'])->name('destroy_pengguna');
+    Route::get('/permintaan-admin-super/details/{id}', [PermintaanDataAdminSuperController::class, 'edit_permintaan'])->name('edit_permintaan');
+    Route::put('/permintaan-admin-super/update/{id}', [PermintaanDataAdminSuperController::class, 'update_permintaan'])->name('update_permintaan');
     //
     Route::get('/penguna-admin-super', [TambahPenggunaAdminSuperController::class, 'index_tambah_penguuna'])->name('index_tambah_penguuna');
     Route::get('/penguna-admin-super/create', [TambahPenggunaAdminSuperController::class, 'create_pengguna'])->name('create_pengguna');
