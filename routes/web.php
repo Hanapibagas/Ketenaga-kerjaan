@@ -11,11 +11,13 @@ use App\Http\Controllers\Admin\PengumumanController;
 use App\Http\Controllers\Admin\PublikasiController;
 use App\Http\Controllers\Admin\UnduhdataController;
 use App\Http\Controllers\AdminSuper\DashboarAdminSuperdController;
+use App\Http\Controllers\AdminSuper\MetadataVariableAdminSuperController;
 use App\Http\Controllers\AdminSuper\PermintaanDataAdminSuperController;
 use App\Http\Controllers\AdminSuper\TambahPenggunaAdminSuperController;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\Kab\KabKotaController;
+use App\Http\Controllers\Kab\DashboardKabKotaController;
 use App\Http\Controllers\Kab\PermintaanController;
+use App\Http\Controllers\Masyarakat\DasboardMasyrakatController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -70,7 +72,7 @@ Route::get('/pengumuman', [HomeController::class, 'pengumuman'])->name('pengumum
 
 Auth::routes();
 
-// super admin
+// admin web
 Route::middleware('auth', 'checkroll:admin web')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index_dashboard'])->name('index_dashboard');
     //
@@ -138,9 +140,14 @@ Route::middleware('auth', 'checkroll:admin web')->group(function () {
     Route::delete('/unduhdata-oprator/delete/{id}', [UnduhdataController::class, 'destroy_unduhdata'])->name('destroy_unduhdata');
 });
 
-//admin super admin
+// super admin
 Route::middleware('auth', 'checkroll:admin super')->group(function () {
     Route::get('/admin-super', [DashboarAdminSuperdController::class, 'index_admin_super'])->name('index_admin_super');
+    //
+    Route::get('/metadata-admin-super', [MetadataVariableAdminSuperController::class, 'index_metadata'])->name('index_metadata');
+    Route::get('/metadata-admin-super/create', [MetadataVariableAdminSuperController::class, 'create_pengguna'])->name('create_pengguna');
+    Route::post('/metadata-admin-super/post', [MetadataVariableAdminSuperController::class, 'store_pengguna'])->name('store_pengguna');
+    Route::delete('/metadata-admin-super/delete/{id}', [MetadataVariableAdminSuperController::class, 'destroy_pengguna'])->name('destroy_pengguna');
     //
     Route::get('/permintaan-admin-super', [PermintaanDataAdminSuperController::class, 'index_permintaan'])->name('index_permintaan');
     Route::get('/permintaan-admin-super/create', [PermintaanDataAdminSuperController::class, 'create_pengguna'])->name('create_pengguna');
@@ -153,9 +160,16 @@ Route::middleware('auth', 'checkroll:admin super')->group(function () {
     Route::delete('/penguna-admin-super/delete/{id}', [TambahPenggunaAdminSuperController::class, 'destroy_pengguna'])->name('destroy_pengguna');
 });
 
-//admin kab/kota
-Route::middleware('auth', 'checkroll:kab')->group(function () {
-    Route::get('/admin', [KabKotaController::class, 'index_kab'])->name('dashboard_kab');
+// admin kab/kota
+Route::middleware('auth', 'checkroll:kab/kota')->group(function () {
+    Route::get('/admin-kab-kota', [DashboardKabKotaController::class, 'dashboard_kab'])->name('dashboard_kab');
+    //
+    Route::get('/admin/permintaan-kab', [PermintaanController::class, 'index_kab'])->name('index_kab');
+});
+
+//admin masyarakat
+Route::middleware('auth', 'checkroll:masyarakat')->group(function () {
+    Route::get('/admin-masyarakat', [DasboardMasyrakatController::class, 'dashboard_masyarakat'])->name('dashboard_masyarakat');
     //
     Route::get('/admin/permintaan-kab', [PermintaanController::class, 'index_kab'])->name('index_kab');
 });

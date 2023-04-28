@@ -1,7 +1,7 @@
 @extends('layouts.dashboardadminsuper')
 
 @section('title')
-Akun Pengguna
+Berita
 @endsection
 
 @section('content')
@@ -11,7 +11,7 @@ Akun Pengguna
             <div class="row align-items-center">
                 <div class="col-md-6">
                     <div class="title mb-30">
-                        <h2>Tambah Akun Pengguna</h2>
+                        <h2>Tambah Berita</h2>
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -19,7 +19,7 @@ Akun Pengguna
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item">
-                                    <a href="{{ route('index_tambah_penguuna') }}">
+                                    <a href="{{ route('dashboard_berita') }}">
                                         <i>
                                             <- Kembali </i>
                                     </a>
@@ -35,16 +35,19 @@ Akun Pengguna
             <div class="row">
                 <div class="col-lg-12">
                     <div class="card-style mb-30">
-                        <h6 class="mb-25">Akun Pengguna</h6>
-                        <form action="{{ route('store_pengguna') }}" method="POST" enctype="multipart/form-data">
+                        <h6 class="mb-25">Infografis</h6>
+                        <form action="{{ route('index_tambah_penguuna', $pengguna->id) }}" method="POST"
+                            enctype="multipart/form-data">
                             @csrf
+                            @method('PUT')
                             <div class="row">
                                 <div class="col-12">
                                     <div class="input-style-1">
                                         <label>Email</label>
                                         <select id="select-state" name="email"
                                             class="form-select @error('email') is-invalid @enderror">
-                                            <option value="">-- Silahkan Pilih --</option>
+                                            <option value="{{ $pengguna->email }}">{{ $pengguna->email }}</option>
+                                            <option value="">-- Silahkan pilih jika ingin di ubah --</option>
                                             <option value="soppeng@gmail.com">soppeng@gmail.com</option>
                                             <option value="takalar@gmail.com">takalar@gmail.com</option>
                                             <option value="tanahtoraja@gmail.com">tanahtoraja@gmail.com</option>
@@ -81,11 +84,24 @@ Akun Pengguna
                                     <div class="input-style-1">
                                         <label>Role</label>
                                         <select name="roles" class="form-select  @error('roles') is-invalid @enderror">
+                                            <option value="">{{ $pengguna->roles }}</option>
                                             <option value="">-- Silahkan Pilih --</option>
-                                            <option value="admin web">Oprator</option>
+                                            <option value="oprator">Oprator</option>
                                             <option value="masyakat">Masyakat</option>
                                             <option value="kab/kota">Kab/kota</option>
                                         </select>
+                                        @error('roles')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="input-style-1">
+                                        <label>Sandi</label>
+                                        <input type="text" name="password" value="{{ $pengguna->password }}"
+                                            placeholder="Masukkan Tanggal" />
                                         @error('roles')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>

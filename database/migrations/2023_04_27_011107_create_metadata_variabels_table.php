@@ -17,13 +17,9 @@ return new class extends Migration
             $table->id();
             $table->string('nama_master_data');
             $table->string('klasifikasi');
-            $table->string('no_hp');
-            $table->string('no_ktp');
-            $table->string('foto_ktp');
-            $table->string('nomor_pengesahaan');
-            $table->string('alamat');
-            $table->string('pekerjaan');
-            $table->longText('rincian');
+            $table->string('tipe_data');
+            $table->string('instansi');
+            $table->string('status');
             $table->timestamps();
         });
     }

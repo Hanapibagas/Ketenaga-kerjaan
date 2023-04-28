@@ -34,7 +34,8 @@ Layanan
                 <h2 class="h1 mb-4">About</h2>
                 <p class="fs-lg mb-0" style="text-indent: 20px">SIMPAS kepanjangan dari Sistem Informasi Pengawasan
                     Ketenagakerjaan. Aplikasi web ini merupakan aplikasi pengawasan ketenagakerjaan di Provinsi Sulawesi
-                    Selatan.
+                    Selatan.<br><br>
+                    Kunjungi Link ( <a href="https://disnakertrans.sulselprov.go.id/simpas" target="_blank">SIMPAS</a> )
                 </p>
             </div>
         </div>
