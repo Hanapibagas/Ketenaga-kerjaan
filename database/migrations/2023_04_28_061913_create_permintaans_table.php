@@ -13,16 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('peremintaans', function (Blueprint $table) {
+        Schema::create('permintaans', function (Blueprint $table) {
             $table->id();
             $table->string('nama');
             $table->string('email');
             $table->string('jenis_data');
-            $table->string('asal');
             $table->longText('deskripsi');
             $table->string('opd_produsen_data');
             $table->string('tujuan');
-            $table->string('status');
+            $table->string('status')->default('Menunggu Verifikasi');
             $table->timestamps();
         });
     }
@@ -34,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('peremintaans');
+        Schema::dropIfExists('permintaans');
     }
 };

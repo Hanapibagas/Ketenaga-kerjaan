@@ -1,7 +1,7 @@
 @extends('layouts.dashboardadminsuper')
 
 @section('title')
-Dashboard
+Permintaan Data
 @endsection
 
 @section('content')
@@ -35,6 +35,7 @@ Dashboard
                             <table id="table" class="table">
                                 <thead>
                                     <tr>
+                                        <th>No</th>
                                         <th>Pemohonan</th>
                                         <th>Judul Dataset</th>
                                         <th>Deskripsi</th>
@@ -45,28 +46,32 @@ Dashboard
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ( $permintaan as $data )
+                                    @foreach ( $permintaan as $key => $data )
                                     <tr>
-                                        <td>{{ $data->title }}</td>
-                                        <td>{{ $data->tanggal }}</td>
+                                        <th>{{ $key+1 }}</th>
                                         <td>
-                                            <img src="{{ Storage::url($data->gambar) }}" alt="" style="width: 150px"
-                                                class="img-thumbnail">
+                                            {{ $data->nama }}
+                                            {{ $data->email }}
                                         </td>
                                         <td>
-                                            <a href="{{ route('edit_berita', $data->id) }}" class="btn btn-primary">
+                                            {{ $data->jenis_data }}
+                                        </td>
+                                        <td>
+                                            {!! $data->deskripsi !!}
+                                        </td>
+                                        <td>
+                                            {{ $data->opd_produsen_data }}
+                                        </td>
+                                        <td>
+                                            {{ $data->tujuan }}
+                                        </td>
+                                        <td>
+                                            {{ $data->status }}
+                                        </td>
+                                        <td>
+                                            <a href="" class="btn btn-primary">
                                                 <i class="lni lni-pencil" style="color: whitesmoke"></i>
                                             </a>
-                                            <input type="hidden" class="delete_id" value="{{ $data->id }}">
-                                            <form action="{{ route('destroy_berita', $data->id) }}" method="POST"
-                                                class="d-inline">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button class="btn btn-danger btndelete">
-                                                    <i class="lni lni-trash-can"></i>
-                                                </button>
-                                            </form>
-                                            </p>
                                         </td>
                                     </tr>
                                     @endforeach

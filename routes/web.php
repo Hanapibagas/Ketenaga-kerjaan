@@ -18,6 +18,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Kab\DashboardKabKotaController;
 use App\Http\Controllers\Kab\PermintaanController;
 use App\Http\Controllers\Masyarakat\DasboardMasyrakatController;
+use App\Http\Controllers\Masyarakat\PermintaanDataMasyarakatController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -171,5 +172,7 @@ Route::middleware('auth', 'checkroll:kab/kota')->group(function () {
 Route::middleware('auth', 'checkroll:masyarakat')->group(function () {
     Route::get('/admin-masyarakat', [DasboardMasyrakatController::class, 'dashboard_masyarakat'])->name('dashboard_masyarakat');
     //
-    Route::get('/admin/permintaan-kab', [PermintaanController::class, 'index_kab'])->name('index_kab');
+    Route::get('/admin-masyarakat/index', [PermintaanDataMasyarakatController::class, 'index_permintaan_masyarakat'])->name('index_permintaan_masyarakat');
+    Route::get('/admin-masyarakat/create', [PermintaanDataMasyarakatController::class, 'create_permintaan_masyrakat'])->name('create_permintaan_masyrakat');
+    Route::post('/admin-masyarakat/post', [PermintaanDataMasyarakatController::class, 'store_permintaan_data'])->name('store_permintaan_data');
 });

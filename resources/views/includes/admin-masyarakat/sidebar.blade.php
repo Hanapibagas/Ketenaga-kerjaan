@@ -23,8 +23,8 @@
             <span class="divider">
                 <hr />
             </span>
-            <li class="nav-item">
-                <a href="">
+            <li class="nav-item {{ request()->is('admin-masyarakat/index') || request()->is('admin-masyarakat/create') ? 'active' : '' }}">
+                <a href="{{ route('index_permintaan_masyarakat') }}">
                     <span class="icon">
                         <svg width="18" height="20" viewBox="0 0 18 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path

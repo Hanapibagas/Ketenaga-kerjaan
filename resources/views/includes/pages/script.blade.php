@@ -8,7 +8,7 @@
 <script src="{{ asset('assets/frontend/vendor/shufflejs/dist/shuffle.min.js') }}"></script>
 <script src="{{ asset('assets/frontend/js/theme.min.js') }}"></script>
 
-{{-- <script src="https://code.responsivevoice.org/responsivevoice.js?key=gFfVeFCZ"></script> --}}
+<script src="https://code.responsivevoice.org/responsivevoice.js?key=gFfVeFCZ"></script>
 
 {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.26.0/feather.min.js?v=1"></script>
 <script src="https://code.responsivevoice.org/responsivevoice.js?key=yGDCVrqM"></script>
