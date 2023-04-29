@@ -5,26 +5,26 @@ namespace App\Http\Controllers\AdminSuper;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\SendEmail;
-use App\Models\Permintaan;
+use App\Models\PermohonanInformasiPublik;
 use Illuminate\Http\Request;
 
 class PermintaanDataAdminSuperController extends Controller
 {
     public function index_permintaan()
     {
-        $permintaan = Permintaan::all();
+        $permintaan = PermohonanInformasiPublik::all();
         return view('components.super-admin.permintaan-data.index', compact('permintaan'));
     }
 
     public function edit_permintaan(Request $request, $id)
     {
-        $permintaan = Permintaan::where('id', $id)->first();
+        $permintaan = PermohonanInformasiPublik::where('id', $id)->first();
         return view('components.super-admin.permintaan-data.update', compact('permintaan'));
     }
 
     public function update_permintaan(Request $request, $id)
     {
-        $permintaan = Permintaan::where('id', $id)->first();
+        $permintaan = PermohonanInformasiPublik::where('id', $id)->first();
 
         if (
             $request->input('status') == 'Telah DiTerima'

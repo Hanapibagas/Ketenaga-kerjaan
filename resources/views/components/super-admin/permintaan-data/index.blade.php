@@ -37,9 +37,7 @@ Permintaan Data
                                     <tr>
                                         <th>No</th>
                                         <th>Pemohonan</th>
-                                        <th>Judul Dataset</th>
-                                        <th>Deskripsi</th>
-                                        <th>OPD Produsen data</th>
+                                        <th>Rician</th>
                                         <th>Tujuan</th>
                                         <th>Status</th>
                                         <th>Aksi</th>
@@ -54,23 +52,17 @@ Permintaan Data
                                             {{ $data->email }}
                                         </td>
                                         <td>
-                                            {{ $data->jenis_data }}
+                                            {!! Str::limit($data->rincian, 100) !!}
                                         </td>
                                         <td>
-                                            {!! Str::limit($data->deskripsi, 100) !!}
-                                        </td>
-                                        <td>
-                                            {{ $data->opd_produsen_data }}
-                                        </td>
-                                        <td>
-                                            {{ $data->tujuan }}
+                                            {!! Str::limit($data->tujuan, 100) !!}
                                         </td>
                                         <td>
                                             {{ $data->status }}
                                         </td>
                                         <td>
                                             <a href="{{ route('edit_permintaan', $data->id) }}" class="btn btn-primary">
-                                                <i class="lni lni-pencil" style="color: whitesmoke"></i>
+                                                <i class="lni lni-eye" style="color: whitesmoke"></i>
                                             </a>
                                         </td>
                                     </tr>

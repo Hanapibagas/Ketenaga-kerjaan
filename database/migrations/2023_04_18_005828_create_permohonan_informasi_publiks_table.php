@@ -20,11 +20,12 @@ return new class extends Migration
             $table->string('no_hp');
             $table->string('no_ktp');
             $table->string('foto_ktp');
-            $table->string('nomor_pengesahaan');
+            $table->string('nomor_pengesahaan')->nullable();
             $table->string('alamat');
             $table->string('pekerjaan');
             $table->longText('rincian');
             $table->longText('tujuan');
+            $table->string('status')->default('Menunggu verifikasi');
             $table->timestamps();
         });
     }

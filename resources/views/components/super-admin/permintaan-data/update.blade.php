@@ -11,7 +11,7 @@ Permintaan Data
             <div class="row align-items-center">
                 <div class="col-md-6">
                     <div class="title mb-30">
-                        <h2>Details Data Permintaan Data</h2>
+                        <h2>Details Data Permintaan Data Masyarakat</h2>
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -55,26 +55,53 @@ Permintaan Data
                                 </div>
                                 <div class="col-12">
                                     <div class="input-style-1">
-                                        <label style="font-size: 20px;">Judul Dataset</label>
-                                        <i>{{ $permintaan->jenis_data }}</i>
+                                        <label style="font-size: 20px;">Nomor Handphone</label>
+                                        <i>{{ $permintaan->no_hp }}</i>
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="input-style-1">
-                                        <label style="font-size: 20px;">Opd Produsen Data</label>
-                                        <i>{{ $permintaan->opd_produsen_data }}</i>
+                                        <label style="font-size: 20px;">Nomor KTP</label>
+                                        <i>{{ $permintaan->no_ktp }}</i>
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="input-style-1">
-                                        <label style="font-size: 20px;">Tujuan</label>
-                                        <i>{{ $permintaan->tujuan }}</i>
+                                        <label style="font-size: 20px;">Nomor Pengesahan</label>
+                                        <i>{{ $permintaan->nomor_pengesahaan }}</i>
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="input-style-1">
-                                        <label style="font-size: 20px;">Deskripsi</label>
-                                        <i>{!! $permintaan->deskripsi !!}</i>
+                                        <label style="font-size: 20px;">Alamat</label>
+                                        <i>{{ $permintaan->alamat }}</i>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="input-style-1">
+                                        <label style="font-size: 20px;">Pekerjaan</label>
+                                        <i>{{ $permintaan->pekerjaan }}</i>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="input-style-1">
+                                        <label style="font-size: 20px;">Rincian Informasi Yang Dibutuhkan</label>
+                                        <i>{!! $permintaan->rincian !!}</i>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="input-style-1">
+                                        <label style="font-size: 20px;">Tujuan Permohonan Informasi</label>
+                                        <i>{!! $permintaan->tujuan !!}</i>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="input-style-1">
+                                        <label style="font-size: 20px;">Foto KTP</label>
+                                        <i>
+                                            <img src="{{ Storage::url($permintaan->foto_ktp) }}" alt=""
+                                                style="width: 500px" class="img-thumbnail">
+                                        </i>
                                     </div>
                                 </div>
                                 <div class="input-style-1">

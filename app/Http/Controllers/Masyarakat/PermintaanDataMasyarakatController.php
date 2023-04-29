@@ -3,14 +3,14 @@
 namespace App\Http\Controllers\Masyarakat;
 
 use App\Http\Controllers\Controller;
-use App\Models\Permintaan;
+use App\Models\PermohonanInformasiPublik;
 use Illuminate\Http\Request;
 
 class PermintaanDataMasyarakatController extends Controller
 {
     public function index_permintaan_masyarakat()
     {
-        $permintaan = Permintaan::all();
+        $permintaan = PermohonanInformasiPublik::all();
         return view('components.admin-masyarakat.permintaan-data.index', compact('permintaan'));
     }
 
@@ -25,24 +25,33 @@ class PermintaanDataMasyarakatController extends Controller
             'required' => 'Mohon maaf anda lupa untuk mengisi ini dan harap anda mangisi terlebih dahulu'
         ];
 
-        // dd($request->all());
-
         $this->validate($request, [
-            'nama' => 'required',
             'email' => 'required',
-            'jenis_data' => 'required',
-            'deskripsi' => 'required',
-            'opd_produsen_data' => 'required',
+            'nama' => 'required',
+            'no_hp' => 'required',
+            'no_ktp' => 'required',
+            'alamat' => 'required',
+            'pekerjaan' => 'required',
+            'rincian' => 'required',
             'tujuan' => 'required',
+            'foto_ktp' => 'required',
         ], $message);
 
-        Permintaan::create([
-            'nama' => $request->input('nama'),
+        if ($request->file('foto_ktp')) {
+            $file = $request->file('foto_ktp')->store('permohonan-publik', 'public');
+        }
+
+        PermohonanInformasiPublik::create([
             'email' => $request->input('email'),
-            'jenis_data' => $request->input('jenis_data'),
-            'deskripsi' => $request->input('deskripsi'),
-            'opd_produsen_data' => $request->input('opd_produsen_data'),
+            'nama' => $request->input('nama'),
+            'no_hp' => $request->input('no_hp'),
+            'no_ktp' => $request->input('no_ktp'),
+            'nomor_pengesahaan' => $request->input('nomor_pengesahaan'),
+            'alamat' => $request->input('alamat'),
+            'pekerjaan' => $request->input('pekerjaan'),
+            'rincian' => $request->input('rincian'),
             'tujuan' => $request->input('tujuan'),
+            'foto_ktp' => $file
         ]);
 
         return redirect()->route('index_permintaan_masyarakat')->with('status', 'Selamat permintaan data berhasil dikirim');

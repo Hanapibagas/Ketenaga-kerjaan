@@ -54,7 +54,7 @@ Permintaan Data
                                 <div class="col-12">
                                     <div class="input-style-1">
                                         <label>Email<i class="text-danger" style="font-size: 14px;">*</i></label>
-                                        <input class="@error('email') is-invalid @enderror" type="text" name="email"
+                                        <input class="@error('email') is-invalid @enderror" type="email" name="email"
                                             placeholder="Masukkan Email" />
                                         @error('email')
                                         <span class="invalid-feedback" role="alert">
@@ -65,11 +65,11 @@ Permintaan Data
                                 </div>
                                 <div class="col-12">
                                     <div class="input-style-1">
-                                        <label>Judul Dataset<i class="text-danger"
+                                        <label>Nomor Handphone<i class="text-danger"
                                                 style="font-size: 14px;">*</i></label>
-                                        <input class="@error('jenis_data') is-invalid @enderror" type="text"
-                                            name="jenis_data" placeholder="Masukkan Judul Dataset" />
-                                        @error('jenis_data')
+                                        <input class="@error('no_hp') is-invalid @enderror" type="number" name="no_hp"
+                                            placeholder="Masukkan Nomor Handphone" />
+                                        @error('no_hp')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
@@ -78,16 +78,67 @@ Permintaan Data
                                 </div>
                                 <div class="col-12">
                                     <div class="input-style-1">
-                                        <label>Opd Produsen Data</label>
-                                        <input class="" type="text" name="opd_produsen_data"
-                                            placeholder="Masukkan Opd Produsen Data" />
+                                        <label>Nomor KTP<i class="text-danger" style="font-size: 14px;">*</i></label>
+                                        <input class="@error('no_ktp') is-invalid @enderror" type="number" name="no_ktp"
+                                            placeholder="Masukkan Nomor KTP" />
+                                        @error('no_ktp')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="input-style-1">
-                                        <label>Tujuan<i class="text-danger" style="font-size: 14px;">*</i></label>
-                                        <input class="@error('tujuan') is-invalid @enderror" type="text" name="tujuan"
-                                            placeholder="Masukkan Tujuan" />
+                                        <label>Nomor Pengesahan</label>
+                                        <input class="" type="number" name="nomor_pengesahaan"
+                                            placeholder="Masukkan Nomor Pengesahan" />
+                                            <small><i>kosongkan jika tidak mengetahuinya atau berikan tanda (-)</i></small>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="input-style-1">
+                                        <label>Alamat<i class="text-danger" style="font-size: 14px;">*</i></label>
+                                        <input class="@error('alamat') is-invalid @enderror" type="text" name="alamat"
+                                            placeholder="Masukkan Alamat" />
+                                        @error('alamat')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="input-style-1">
+                                        <label>Pekerjaan<i class="text-danger" style="font-size: 14px;">*</i></label>
+                                        <input class="@error('pekerjaan') is-invalid @enderror" type="text"
+                                            name="pekerjaan" placeholder="Masukkan Pekerjaan" />
+                                        @error('pekerjaan')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="input-style-1">
+                                        <label>Rincian Informasi Yang Dibutuhkan<i class="text-danger"
+                                                style="font-size: 14px;">*</i></label>
+                                        <textarea class="@error('rincian') is-invalid @enderror"
+                                            name="rincian"></textarea>
+                                        @error('rincian')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="input-style-1">
+                                        <label>Tujuan Permohonan Informasi<i class="text-danger"
+                                                style="font-size: 14px;">*</i></label>
+                                        <textarea class="@error('tujuan') is-invalid @enderror"
+                                            name="tujuan"></textarea>
                                         @error('tujuan')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -97,10 +148,11 @@ Permintaan Data
                                 </div>
                                 <div class="col-12">
                                     <div class="input-style-1">
-                                        <label>Deskripsi<i class="text-danger" style="font-size: 14px;">*</i></label>
-                                        <textarea class="@error('deskripsi') is-invalid @enderror"
-                                            name="deskripsi"></textarea>
-                                        @error('deskripsi')
+                                        <label>Upload Foto KTP<i class="text-danger"
+                                                style="font-size: 14px;">*</i></label>
+                                        <input class="@error('foto_ktp') is-invalid @enderror" type="file"
+                                            name="foto_ktp" placeholder="" />
+                                        @error('foto_ktp')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
@@ -110,7 +162,7 @@ Permintaan Data
                                 <div class="col-12">
                                     <div class="button-group d-flex justify-content-center flex-wrap">
                                         <button class="main-btn primary-btn btn-hover m-2">
-                                            Kirim Premintaan data Data
+                                            Kirim Permintaan Data
                                         </button>
                                     </div>
                                 </div>
@@ -127,6 +179,7 @@ Permintaan Data
 @push('add-script')
 <script src="https://cdn.ckeditor.com/4.19.1/standard/ckeditor.js"></script>
 <script>
-    CKEDITOR.replace('deskripsi');
+    CKEDITOR.replace('rincian');
+    CKEDITOR.replace('tujuan');
 </script>
 @endpush

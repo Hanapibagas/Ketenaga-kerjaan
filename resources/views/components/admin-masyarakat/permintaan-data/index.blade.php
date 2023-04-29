@@ -49,9 +49,7 @@ Permintaan Data
                                     <tr>
                                         <th>No</th>
                                         <th>Pemohonan</th>
-                                        <th>Judul Dataset</th>
-                                        <th>Deskripsi</th>
-                                        <th>OPD Produsen data</th>
+                                        <th>Rincian</th>
                                         <th>Tujuan</th>
                                         <th>Status</th>
                                     </tr>
@@ -65,16 +63,10 @@ Permintaan Data
                                             {{ $data->email }}
                                         </td>
                                         <td>
-                                            {{ $data->jenis_data }}
+                                            {!! Str::limit($data->rincian, 100) !!}
                                         </td>
                                         <td>
-                                            {!! Str::limit($data->deskripsi, 100) !!}
-                                        </td>
-                                        <td>
-                                            {{ $data->opd_produsen_data }}
-                                        </td>
-                                        <td>
-                                            {{ $data->tujuan }}
+                                            {!! Str::limit($data->tujuan, 100) !!}
                                         </td>
                                         <td>
                                             {{ $data->status }}
