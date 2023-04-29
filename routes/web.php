@@ -11,11 +11,13 @@ use App\Http\Controllers\Admin\PengumumanController;
 use App\Http\Controllers\Admin\PublikasiController;
 use App\Http\Controllers\Admin\UnduhdataController;
 use App\Http\Controllers\AdminSuper\DashboarAdminSuperdController;
+use App\Http\Controllers\AdminSuper\LaporanAdminSuperController;
 use App\Http\Controllers\AdminSuper\MetadataVariableAdminSuperController;
 use App\Http\Controllers\AdminSuper\PermintaanDataAdminSuperController;
 use App\Http\Controllers\AdminSuper\TambahPenggunaAdminSuperController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Kab\DashboardKabKotaController;
+use App\Http\Controllers\Kab\LaporanAdminKabController;
 use App\Http\Controllers\Kab\PermintaanController;
 use App\Http\Controllers\Masyarakat\DasboardMasyrakatController;
 use App\Http\Controllers\Masyarakat\PermintaanDataMasyarakatController;
@@ -145,6 +147,9 @@ Route::middleware('auth', 'checkroll:admin web')->group(function () {
 Route::middleware('auth', 'checkroll:admin super')->group(function () {
     Route::get('/admin-super', [DashboarAdminSuperdController::class, 'index_admin_super'])->name('index_admin_super');
     //
+    Route::get('/laporan-admin-super', [LaporanAdminSuperController::class, 'index_laporan_admin_super'])->name('index_laporan_admin_super');
+    Route::get('/export-laporan-admin-super', [LaporanAdminSuperController::class, 'export_excel_laporan'])->name('export_excel_laporan');
+    //
     Route::get('/metadata-admin-super', [MetadataVariableAdminSuperController::class, 'index_metadata'])->name('index_metadata');
     Route::get('/metadata-admin-super/create', [MetadataVariableAdminSuperController::class, 'create_pengguna'])->name('create_pengguna');
     Route::post('/metadata-admin-super/post', [MetadataVariableAdminSuperController::class, 'store_pengguna'])->name('store_pengguna');
@@ -164,7 +169,8 @@ Route::middleware('auth', 'checkroll:admin super')->group(function () {
 Route::middleware('auth', 'checkroll:kab/kota')->group(function () {
     Route::get('/admin-kab-kota', [DashboardKabKotaController::class, 'dashboard_kab'])->name('dashboard_kab');
     //
-    Route::get('/admin/permintaan-kab', [PermintaanController::class, 'index_kab'])->name('index_kab');
+    Route::get('/laporan-admin-kab-kota', [LaporanAdminKabController::class, 'index_laporan_kab'])->name('index_laporan_kab');
+    Route::get('/export-laporan-admin-kab-kota', [LaporanAdminKabController::class, 'export_excel_laporan_kab'])->name('export_excel_laporan_kab');
 });
 
 //admin masyarakat

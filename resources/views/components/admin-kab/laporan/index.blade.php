@@ -1,7 +1,7 @@
-@extends('layouts.dashboardadminsuper')
+@extends('layouts.dashboardadminkab')
 
 @section('title')
-Metadata variable
+Laporan
 @endsection
 
 @section('content')
@@ -21,7 +21,7 @@ Metadata variable
             <div class="row align-items-center">
                 <div class="col-md-6">
                     <div class="title mb-30">
-                        <h2>Data Metadata</h2>
+                        <h2>Daftar Laporan Masyarakat</h2>
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -29,7 +29,8 @@ Metadata variable
                         <nav aria-label="breadcrumb">
                             <ul class="buttons-group">
                                 <li class="breadcrumb-item">
-                                    <a href="" class="main-btn success-btn rounded-md btn-hover">
+                                    <a href="{{ route('export_excel_laporan_kab') }}"
+                                        class="main-btn success-btn rounded-md btn-hover">
                                         <i class="lni lni-download" style="margin-right: 20px; margin-left: -10px"></i>
                                         Download
                                     </a>
@@ -49,37 +50,29 @@ Metadata variable
                             <table id="table" class="table">
                                 <thead>
                                     <tr>
-                                        <th>Nama Master Data</th>
-                                        <th>Klasifikasi</th>
-                                        <th>Tipe Data</th>
-                                        <th>Instansi</th>
+                                        <th>No</th>
+                                        <th>Pemohonan</th>
+                                        <th>Rincian</th>
+                                        <th>Tujuan</th>
                                         <th>Status</th>
-                                        <th>Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ( $metadata as $data )
+                                    @foreach ( $laporan as $key => $data )
                                     <tr>
-                                        <td>{{ $data->title }}</td>
-                                        <td>{{ $data->tanggal }}</td>
+                                        <th>{{ $key+1 }}</th>
                                         <td>
-                                            <img src="{{ Storage::url($data->gambar) }}" alt="" style="width: 150px"
-                                                class="img-thumbnail">
+                                            {{ $data->nama }}
+                                            {{ $data->email }}
                                         </td>
                                         <td>
-                                            <a href="{{ route('edit_berita', $data->id) }}" class="btn btn-primary">
-                                                <i class="lni lni-pencil" style="color: whitesmoke"></i>
-                                            </a>
-                                            <input type="hidden" class="delete_id" value="{{ $data->id }}">
-                                            <form action="{{ route('destroy_berita', $data->id) }}" method="POST"
-                                                class="d-inline">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button class="btn btn-danger btndelete">
-                                                    <i class="lni lni-trash-can"></i>
-                                                </button>
-                                            </form>
-                                            </p>
+                                            {!! Str::limit($data->rincian, 100) !!}
+                                        </td>
+                                        <td>
+                                            {!! Str::limit($data->tujuan, 100) !!}
+                                        </td>
+                                        <td>
+                                            {{ $data->status }}
                                         </td>
                                     </tr>
                                     @endforeach
