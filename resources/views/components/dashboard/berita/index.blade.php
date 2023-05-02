@@ -56,7 +56,7 @@ Berita
                                 <tbody>
                                     @foreach ( $berita as $data )
                                     <tr>
-                                        <td>{{ $data->title }}</td>
+                                        <td>{{ Str::limit($data->title, 50) }}</td>
                                         <td>{{ $data->tanggal }}</td>
                                         <td>
                                             <img src="{{ Storage::url($data->gambar) }}" alt="" style="width: 150px"

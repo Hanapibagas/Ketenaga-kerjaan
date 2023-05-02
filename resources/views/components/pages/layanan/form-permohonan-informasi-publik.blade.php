@@ -39,7 +39,8 @@ Layanan
                     enctype="multipart/form-data">
                     @csrf
                     <div class="col-sm-12 mb-4">
-                        <label for="fn" class="form-label">Email</label>
+                        <label for="fn" class="form-label">Email<i class="text-danger"
+                                style="font-size: 14px;">*</i></label>
                         <input type="text" class="form-control @error('email') is-invalid @enderror" name="email">
                         @error('email')
                         <span class="invalid-feedback" role="alert">
@@ -48,7 +49,8 @@ Layanan
                         @enderror
                     </div>
                     <div class="col-sm-12 mb-4">
-                        <label for="fn" class="form-label">Nama</label>
+                        <label for="fn" class="form-label">Nama<i class="text-danger"
+                                style="font-size: 14px;">*</i></label>
                         <input type="text" class="form-control @error('nama') is-invalid @enderror" name="nama">
                         @error('nama')
                         <span class="invalid-feedback" role="alert">
@@ -57,7 +59,8 @@ Layanan
                         @enderror
                     </div>
                     <div class="col-sm-12 mb-4">
-                        <label for="fn" class="form-label">Nomor Handphone</label>
+                        <label for="fn" class="form-label">Nomor Handphone<i class="text-danger"
+                                style="font-size: 14px;">*</i></label>
                         <input type="text" class="form-control @error('no_hp') is-invalid @enderror" name="no_hp">
                         @error('no_hp')
                         <span class="invalid-feedback" role="alert">
@@ -66,7 +69,8 @@ Layanan
                         @enderror
                     </div>
                     <div class="col-sm-12 mb-4">
-                        <label for="fn" class="form-label">Nomor KTP</label>
+                        <label for="fn" class="form-label">Nomor KTP<i class="text-danger"
+                                style="font-size: 14px;">*</i></label>
                         <input type="text" class="form-control @error('no_ktp') is-invalid @enderror" name="no_ktp">
                         @error('no_ktp')
                         <span class="invalid-feedback" role="alert">
@@ -76,16 +80,11 @@ Layanan
                     </div>
                     <div class="col-sm-12 mb-4">
                         <label for="fn" class="form-label">Nomor Pengesahan</label>
-                        <input type="text" class="form-control @error('nomor_pengesahaan') is-invalid @enderror"
-                            name="nomor_pengesahaan">
-                        @error('nomor_pengesahaan')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                        @enderror
+                        <input type="text" class="form-control" name="nomor_pengesahaan">
                     </div>
                     <div class="col-sm-12 mb-4">
-                        <label for="fn" class="form-label">Alamat</label>
+                        <label for="fn" class="form-label">Alamat<i class="text-danger"
+                                style="font-size: 14px;">*</i></label>
                         <input type="text" class="form-control @error('alamat') is-invalid @enderror" name="alamat">
                         @error('alamat')
                         <span class="invalid-feedback" role="alert">
@@ -94,7 +93,8 @@ Layanan
                         @enderror
                     </div>
                     <div class="col-sm-12 mb-4">
-                        <label for="fn" class="form-label">Pekerjaan</label>
+                        <label for="fn" class="form-label">Pekerjaan<i class="text-danger"
+                                style="font-size: 14px;">*</i></label>
                         <input type="text" class="form-control @error('pekerjaan') is-invalid @enderror"
                             name="pekerjaan">
                         @error('pekerjaan')
@@ -104,7 +104,8 @@ Layanan
                         @enderror
                     </div>
                     <div class="col-sm-12 mb-4">
-                        <label for="fn" class="form-label ">Rincian Informasi Yang Dibutuhkan</label>
+                        <label for="fn" class="form-label ">Rincian Informasi Yang Dibutuhkan<i class="text-danger"
+                                style="font-size: 14px;">*</i></label>
                         <input type="text" class="form-control @error('rincian') is-invalid @enderror" name="rincian">
                         @error('rincian')
                         <span class="invalid-feedback" role="alert">
@@ -113,16 +114,18 @@ Layanan
                         @enderror
                     </div>
                     <div class="col-sm-12 mb-4">
-                        <label for="fn" class="form-label">Tujuan Permohonan Informasi</label>
-                        <input type="text" class="form-control @error('email') is-invalid @enderror" name="tujuan">
-                        @error('email')
+                        <label for="fn" class="form-label">Tujuan Permohonan Informasi<i class="text-danger"
+                                style="font-size: 14px;">*</i></label>
+                        <input type="text" class="form-control @error('tujuan') is-invalid @enderror" name="tujuan">
+                        @error('tujuan')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
                         @enderror
                     </div>
                     <div class="col-sm-12 mb-4">
-                        <label for="fn" class="form-label">Upload Foto KTP</label>
+                        <label for="fn" class="form-label">Upload Foto KTP<i class="text-danger"
+                                style="font-size: 14px;">*</i></label>
                         <input type="file" class="form-control @error('foto_ktp') is-invalid @enderror" name="foto_ktp">
                         @error('foto_ktp')
                         <span class="invalid-feedback" role="alert">
@@ -150,3 +153,11 @@ Layanan
     </div>
 </section>
 @endsection
+
+@push('js')
+<script src="https://cdn.ckeditor.com/4.19.1/standard/ckeditor.js"></script>
+<script>
+    CKEDITOR.replace('rincian');
+    CKEDITOR.replace('tujuan');
+</script>
+@endpush

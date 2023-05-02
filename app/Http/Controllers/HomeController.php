@@ -19,7 +19,8 @@ class HomeController extends Controller
 {
     public function index()
     {
-        return view('components.pages.beranda');
+        $berita = Berita::paginate(10);
+        return view('components.pages.beranda', compact('berita'));
     }
 
     public function profile()
@@ -187,7 +188,6 @@ class HomeController extends Controller
             'nama' => 'required',
             'no_hp' => 'required',
             'no_ktp' => 'required',
-            'nomor_pengesahaan' => 'required',
             'alamat' => 'required',
             'pekerjaan' => 'required',
             'rincian' => 'required',

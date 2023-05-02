@@ -264,66 +264,13 @@ Beranda
                     }
                     }'>
         <div class="swiper-wrapper">
+            @foreach ( $berita as $data )
             <div class="swiper-slide py-3">
                 <a class="card card-body card-hover px-2 mx-2">
-                    <img src="{{ asset('assets/frontend/img/slide-foto/download.png') }}" class="d-block mx-auto my-2"
-                        width="154" alt="Brand">
+                    <img src="{{ Storage::url($data->gambar) }}" class="d-block mx-auto my-2" width="154" alt="Brand">
                 </a>
             </div>
-            <div class="swiper-slide py-3">
-                <a class="card card-body card-hover px-2 mx-2">
-                    <img src="{{ asset('assets/frontend/img/slide-foto/download.png') }}" class="d-block mx-auto my-2"
-                        width="154" alt="Brand">
-                </a>
-            </div>
-            <div class="swiper-slide py-3">
-                <a class="card card-body card-hover px-2 mx-2">
-                    <img src="{{ asset('assets/frontend/img/slide-foto/download.png') }}" class="d-block mx-auto my-2"
-                        width="154" alt="Brand">
-                </a>
-            </div>
-            <div class="swiper-slide py-3">
-                <a class="card card-body card-hover px-2 mx-2">
-                    <img src="{{ asset('assets/frontend/img/slide-foto/download.png') }}" class="d-block mx-auto my-2"
-                        width="154" alt="Brand">
-                </a>
-            </div>
-            <div class="swiper-slide py-3">
-                <a class="card card-body card-hover px-2 mx-2">
-                    <img src="{{ asset('assets/frontend/img/slide-foto/download.png') }}" class="d-block mx-auto my-2"
-                        width="154" alt="Brand">
-                </a>
-            </div>
-            <div class="swiper-slide py-3">
-                <a class="card card-body card-hover px-2 mx-2">
-                    <img src="{{ asset('assets/frontend/img/slide-foto/download.png') }}" class="d-block mx-auto my-2"
-                        width="154" alt="Brand">
-                </a>
-            </div>
-            <div class="swiper-slide py-3">
-                <a class="card card-body card-hover px-2 mx-2">
-                    <img src="{{ asset('assets/frontend/img/slide-foto/download.png') }}" class="d-block mx-auto my-2"
-                        width="154" alt="Brand">
-                </a>
-            </div>
-            <div class="swiper-slide py-3">
-                <a class="card card-body card-hover px-2 mx-2">
-                    <img src="{{ asset('assets/frontend/img/slide-foto/download.png') }}" class="d-block mx-auto my-2"
-                        width="154" alt="Brand">
-                </a>
-            </div>
-            <div class="swiper-slide py-3">
-                <a class="card card-body card-hover px-2 mx-2">
-                    <img src="{{ asset('assets/frontend/img/slide-foto/download.png') }}" class="d-block mx-auto my-2"
-                        width="154" alt="Brand">
-                </a>
-            </div>
-            <div class="swiper-slide py-3">
-                <a class="card card-body card-hover px-2 mx-2">
-                    <img src="{{ asset('assets/frontend/img/slide-foto/download.png') }}" class="d-block mx-auto my-2"
-                        width="154" alt="Brand">
-                </a>
-            </div>
+            @endforeach
         </div>
         <div class="swiper-pagination position-relative pt-3 mt-4 d-md-none d-flex"></div>
     </div>
@@ -490,7 +437,8 @@ Beranda
                         <div class="swiper-slide h-auto" data-swiper-tab="#author-1">
                             <figure class="card h-100 position-relative border-0 bg-transparent">
                                 <blockquote class="card-body p-0 mb-0">
-                                    <p class="fs-lg mb-0" style="text-indent: 20px">Website ini dibuat sebagai salah satu media informasi, agar
+                                    <p class="fs-lg mb-0" style="text-indent: 20px">Website ini dibuat sebagai salah
+                                        satu media informasi, agar
                                         masyarakat mendapatkan informasi yang cukup mengenai pelayanan perizinan,
                                         potensi daerah, peluang investasi, promosi, dan realisasi investasi sesuai tugas
                                         yang diamanahkan (Peraturan Gubernur No.50 Tahun 2021) tentang kedudukan,
@@ -510,8 +458,8 @@ Beranda
                                 </blockquote>
                                 <figcaption class="card-footer border-0 d-sm-flex d-md-none w-100 pb-2">
                                     <div class="d-flex align-items-center border-end-sm pe-sm-4 me-sm-2">
-                                        <img src="{{ asset('assets/frontend/img/logo.png') }}" width="48"
-                                            class="rounded-circle" alt="Ralph Edwards">
+                                        <img src="{{ asset('assets/frontend/img/profile/kepala-dinas.jpg') }}"
+                                            width="48" class="rounded-circle" alt="Ralph Edwards">
                                         <div class="ps-3">
                                             <h5 class="fw-semibold lh-base mb-0">Ardiles Saggaf, S.STP, M.Si</h5>
                                             <span class="fs-sm text-muted">Kepala Dinas Tenaga Kerja dan Transmigrasi
@@ -529,7 +477,8 @@ Beranda
             <div class="swiper-tabs">
                 <div id="author-1" class="card bg-transparent border-0 swiper-tab active">
                     <div class="card-body p-0 rounded-3 bg-size-cover bg-repeat-0 bg-position-top-center"
-                        style="background-image: url({{ asset('assets/frontend/img/logo.png') }});"></div>
+                        style="background-image: url({{ asset('assets/frontend/img/profile/kepala-dinas.jpg') }});">
+                    </div>
                     <div class="card-footer d-flex w-100 border-0 pb-0">
                         <div class="border-start-xl ps-xl-4 ms-xl-2">
                             <h5 class="fw-semibold lh-base mb-0">Ardiles Saggaf, S.STP, M.Si</h5>

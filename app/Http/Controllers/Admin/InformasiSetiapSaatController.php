@@ -22,9 +22,13 @@ class InformasiSetiapSaatController extends Controller
 
     public function store(Request $request)
     {
+        $message = [
+            'required' => 'Mohon maaf anda lupa untuk mengisi ini dan harap anda mangisi terlebih dahulu'
+        ];
+
         $this->validate($request, [
             'nama' => 'required',
-        ]);
+        ], $message);
 
         if ($request->file('file')) {
             $file = $request->file('file')->store('data-setiap-saat', 'public');

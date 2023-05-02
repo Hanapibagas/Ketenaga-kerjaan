@@ -70,7 +70,7 @@ Profile
             <div class="col-md-4">
                 <div class="position-relative d-flex h-100">
                     <div class="position-absolute top-0 start-0 w-100 h-100 rounded-3 bg-size-cover bg-repeat-0 bg-position-center"
-                        style="background-image: url({{ asset('assets/frontend/img/slide-foto/03.jpg') }});"></div>
+                        style="background-image: url({{ asset('assets/frontend/img/profile/kepala-dinas.jpg') }});"></div>
                 </div>
             </div>
             <div class="col-md-8">
@@ -87,7 +87,7 @@ Profile
                     </blockquote>
                     <figcaption class="card-footer border-0 d-sm-flex pt-0 mt-n3 mt-lg-0">
                         <div class="d-flex align-items-center border-end-sm pe-sm-4 me-sm-4">
-                            <img src="{{ asset('assets/frontend/img/slide-foto/03.jpg') }}" width="48"
+                            <img src="{{ asset('assets/frontend/img/profile/kepala-dinas.jpg') }}" width="48"
                                 class="d-md-none rounded-circle" alt="Ralph Edwards">
                             <div class="ps-3 ps-md-0">
                                 <h5 class="fw-semibold lh-base mb-0">Ardiles Saggaf, S.STP, M.Si</h5>

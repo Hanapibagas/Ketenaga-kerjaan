@@ -41,14 +41,26 @@ Serta Merta
                             <div class="row">
                                 <div class="col-12">
                                     <div class="input-style-1">
-                                        <label>Nama</label>
-                                        <input type="text" name="nama" placeholder="Masukkan Nama" />
+                                        <label>Nama<i class="text-danger" style="font-size: 14px;">*</i></label>
+                                        <input type="text" class="@error('nama') is-invalid @enderror" name="nama"
+                                            placeholder="Masukkan Nama" />
+                                        @error('nama')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="input-style-1">
-                                        <label>Link Terkait</label>
-                                        <input type="text" name="link" placeholder="Masukkan Link Terkait" />
+                                        <label>Link Terkait<i class="text-danger" style="font-size: 14px;">*</i></label>
+                                        <input type="text" class="@error('link') is-invalid @enderror" name="link"
+                                            placeholder="Masukkan Link Terkait" />
+                                        @error('link')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="col-12">

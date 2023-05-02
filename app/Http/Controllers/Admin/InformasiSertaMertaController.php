@@ -21,10 +21,14 @@ class InformasiSertaMertaController extends Controller
 
     public function store(Request $request)
     {
+        $message = [
+            'required' => 'Mohon maaf anda lupa untuk mengisi ini dan harap anda mangisi terlebih dahulu'
+        ];
+
         $this->validate($request, [
             'nama' => 'required',
             'link' => 'required',
-        ]);
+        ], $message);
 
         InformasiSertaMerta::create([
             'nama' => $request->input('nama'),

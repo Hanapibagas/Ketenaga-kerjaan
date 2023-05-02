@@ -68,9 +68,7 @@ Layanan
                     diterima/dicatatnya pengajuan keberatan dalam register keberatan.
                     Apabila Pemohon Informasi tidak puas dengan keputusan Atasan PPID, maka pemohon informasi dapat
                     mengajukan keberatan kepada Komisi Informasi dalam jangka waktu 14 (empat belas) hari kerja sejak
-                    diterimanya keputusan atasan PPID oleh Pemohon Informasi Publik. <br><br>
-                    Klik Link untuk mengajukan Permohonan Informasi Publik ( <a
-                        href="{{ route('form_permohonan_publik') }}">Klik di sini</a> )
+                    diterimanya keputusan atasan PPID oleh Pemohon Informasi Publik.
                 </p>
             </div>
         </div>

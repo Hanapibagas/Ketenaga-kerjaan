@@ -18,43 +18,27 @@ Berita
         </ol>
     </nav>
 
-    <article class="card border-0 shadow-sm overflow-hidden mb-4" style="margin-top: 40px">
-        <div class="row g-0">
-            <div class="col-sm-4 position-relative bg-position-center bg-repeat-0 bg-size-cover"
-                style="background-image: url({{ Storage::url($berita->gambar) }}); min-height: 15rem;">
-            </div>
-            <div class="col-sm-8">
-                <div class="card-body">
-                    <div class="d-flex align-items-center mb-3">
-                        By: admin
-                        <span class="fs-sm text-muted border-start ps-3 ms-3">{{ $berita->tanggal }}</span>
-                    </div>
-                    <h3 class="h4">
-                        {{ $berita->title }}
-                    </h3>
-                    <p>
-                        {!! $berita->deskripsi !!}
-                    </p>
-                    <hr class="my-4">
-                    <div class="d-flex align-items-center justify-content-between">
-                        <div class="d-flex align-items-center text-muted">
-                            <div class="d-flex align-items-center me-3">
-                                <i class="bx bx-like fs-lg me-1"></i>
-                                <span class="fs-sm">8</span>
-                            </div>
-                            <div class="d-flex align-items-center me-3">
-                                <i class="bx bx-comment fs-lg me-1"></i>
-                                <span class="fs-sm">7</span>
-                            </div>
-                            <div class="d-flex align-items-center">
-                                <i class="bx bx-share-alt fs-lg me-1"></i>
-                                <span class="fs-sm">4</span>
-                            </div>
-                        </div>
-                    </div>
+    <section class="container pb-4 mb-2 mb-lg-3"> <br>
+        <h1>{{ $berita->title }}</h1>
+    </section>
+
+    <section class="jarallax" data-jarallax data-speed="0.4">
+        <div class="jarallax-img" style="background-image: url({{ Storage::url($berita->gambar) }});"></div>
+        <div class="d-none d-xxl-block" style="height: 800px;"></div>
+        <div class="d-none d-lg-block d-xxl-none" style="height: 600px;"></div>
+        <div class="d-none d-md-block d-lg-none" style="height: 450px;"></div>
+        <div class="d-md-none" style="height: 400px;"></div>
+    </section>
+
+    <section class="container py-5 my-1 my-md-4 my-lg-5">
+        <div class="row">
+            <div class="col-lg-12 mb-4 mb-lg-0">
+                <div class="pe-lg-4 me-lg-3 pe-xl-0 me-xl-0">
+                    <h2 class="h1 mb-4">About</h2>
+                    <p class="fs-lg mb-0">{!! $berita->deskripsi !!}</p>
                 </div>
             </div>
         </div>
-    </article>
+    </section>
 </div>
 @endsection

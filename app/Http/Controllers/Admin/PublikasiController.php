@@ -23,12 +23,16 @@ class PublikasiController extends Controller
 
     public function store(Request $request)
     {
+        $message = [
+            'required' => 'Mohon maaf anda lupa untuk mengisi ini dan harap anda mangisi terlebih dahulu'
+        ];
+
         $this->validate($request, [
             'title' => 'required',
             'tanggal' => 'required',
             'deskripsi' => 'required',
             'file' => 'mimes:pdf',
-        ]);
+        ], $message);
 
         if ($request->file('gambar')) {
             $file = $request->file('gambar')->store('publikasi', 'public');

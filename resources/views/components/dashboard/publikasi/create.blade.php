@@ -41,20 +41,38 @@ Publikasi
                             <div class="row">
                                 <div class="col-12">
                                     <div class="input-style-1">
-                                        <label>Judul</label>
-                                        <input type="text" name="title" placeholder="Masukkan Judul" />
+                                        <label>Judul<i class="text-danger" style="font-size: 14px;">*</i></label>
+                                        <input type="text" class="@error('title') is-invalid @enderror" name="title"
+                                            placeholder="Masukkan Judul" />
+                                        @error('title')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="input-style-1">
-                                        <label>Tanggal</label>
-                                        <input type="date" name="tanggal" placeholder="Masukkan Tanggal" />
+                                        <label>Tanggal<i class="text-danger" style="font-size: 14px;">*</i></label>
+                                        <input type="date" class="@error('tanggal') is-invalid @enderror" name="tanggal"
+                                            placeholder="Masukkan Tanggal" />
+                                        @error('tanggal')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="input-style-1">
-                                        <label>Deskripsi</label>
-                                        <textarea name="deskripsi"></textarea>
+                                        <label>Deskripsi<i class="text-danger" style="font-size: 14px;">*</i></label>
+                                        <textarea class="@error('deskripsi') is-invalid @enderror"
+                                            name="deskripsi"></textarea>
+                                        @error('deskripsi')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="col-12">
@@ -65,8 +83,13 @@ Publikasi
                                 </div>
                                 <div class="col-12">
                                     <div class="input-style-1">
-                                        <label>Dokumen</label>
-                                        <input name="file" type="file" />
+                                        <label>Dokumen<i class="text-danger" style="font-size: 14px;">*</i></label>
+                                        <input name="file" class="@error('file') is-invalid @enderror" type="file" />
+                                        @error('file')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="col-12">

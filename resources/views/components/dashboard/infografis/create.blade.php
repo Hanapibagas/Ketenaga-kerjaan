@@ -41,26 +41,51 @@ Infografis
                             <div class="row">
                                 <div class="col-12">
                                     <div class="input-style-1">
-                                        <label>Judul</label>
-                                        <input type="text" name="title" placeholder="Masukkan Judul" />
+                                        <label>Judul<i class="text-danger" style="font-size: 14px;">*</i></label>
+                                        <input type="text" class="@error('title') is-invalid @enderror" name="title"
+                                            placeholder="Masukkan Judul" />
+                                        @error('title')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="input-style-1">
-                                        <label>Tipe Informasi</label>
-                                        <input type="text" name="type_infografis" placeholder="Masukkan Type" />
+                                        <label>Tipe Informasi<i class="text-danger"
+                                                style="font-size: 14px;">*</i></label>
+                                        <input type="text" class="@error('type_infografis') is-invalid @enderror"
+                                            name="type_infografis" placeholder="Masukkan Type" />
+                                        @error('type_infografis')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="input-style-1">
-                                        <label>Tanggal</label>
-                                        <input type="date" name="tanggal" placeholder="Masukkan Tanggal" />
+                                        <label>Tanggal<i class="text-danger" style="font-size: 14px;">*</i></label>
+                                        <input type="date" class="@error('tanggal') is-invalid @enderror" name="tanggal"
+                                            placeholder="Masukkan Tanggal" />
+                                        @error('tanggal')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="input-style-1">
-                                        <label>Deskripsi</label>
-                                        <textarea name="deskripsi"></textarea>
+                                        <label>Deskripsi<i class="text-danger" style="font-size: 14px;">*</i></label>
+                                        <textarea class="@error('deskripsi') is-invalid @enderror"
+                                            name="deskripsi"></textarea>
+                                        @error('deskripsi')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="col-12">

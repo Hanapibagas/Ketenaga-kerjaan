@@ -23,12 +23,16 @@ class InfografisController extends Controller
 
     public function store(Request $request)
     {
+        $message = [
+            'required' => 'Mohon maaf anda lupa untuk mengisi ini dan harap anda mangisi terlebih dahulu'
+        ];
+
         $this->validate($request, [
             'title' => 'required',
             'type_infografis' => 'required',
             'tanggal' => 'required',
             'deskripsi' => 'required',
-        ]);
+        ], $message);
 
         if ($request->file('gambar')) {
             $file = $request->file('gambar')->store('infografis', 'public');
