@@ -2,7 +2,7 @@
     <div class="navbar-logo">
         <a href="{{ route('index_home') }}">
             <img src="{{ asset('assets/frontend/img/logo.png') }}" style="width: 30px" alt="logo" />
-            <h3 style="font-size: 18px; margin-top: 10px">Dashboard Ketenagakerjaan</h3>
+            <h3 style="font-size: 18px; margin-top: 10px">Dashboard Ketenagakerjaan {{ Auth::user()->roles }}</h3>
         </a>
     </div>
     <nav class="sidebar-nav">
@@ -113,7 +113,7 @@
                 </a>
             </li>
             <li
-                class="nav-item {{ request()->is('staf-oprator') || request()->is('staf-oprator/create') || request()->is('berita/staf-oprator/*') ? 'active' : '' }}">
+                class="nav-item {{ request()->is('staf-oprator') || request()->is('staf-oprator/create') || request()->is('staf-oprator/details/*') || request()->is('staf-oprator/update/*') ? 'active' : '' }}">
                 <a href="{{ route('index_staf') }}">
                     <span class="icon">
                         <svg width="18" height="20" viewBox="0 0 18 20" fill="none" xmlns="http://www.w3.org/2000/svg">

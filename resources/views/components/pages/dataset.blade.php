@@ -36,10 +36,20 @@ Dataset
                 .gambar {
                     width: 60%
                 }
+
+                .sumber {
+                    margin-left: 16%
+                }
+
+                @media screen and (max-width: 992px) {
+                    .sumber {
+                        margin-left: -1%
+                    }
+                }
             </style>
             @guest
-            <div class="swiper-slide border-end-lg px-2">
-                <div class="text-center">
+            <div class="swiper-slide border-end-lg px-3 sumber">
+                <div class=" text-center">
                     <a href="{{ route('permintaan_data_guest') }}">
                         <img class="gambar" src="{{ asset('assets/frontend/img/data/permintaan-data.b84e96b3.png') }}"
                             width="48" alt="Team icon" class="d-block mb-4 mx-auto">
@@ -49,7 +59,7 @@ Dataset
             </div>
             @endguest
             @auth
-            <div class="swiper-slide border-end-lg px-2">
+            <div class="swiper-slide border-end-lg px-3">
                 <div class="text-center">
                     <a href="{{ route('permintaan_data_auth') }}">
                         <img class="gambar" src="{{ asset('assets/frontend/img/data/permintaan-data.b84e96b3.png') }}"
@@ -59,22 +69,13 @@ Dataset
                 </div>
             </div>
             @endauth
-            <div class="swiper-slide border-end-lg px-2">
+            <div class="swiper-slide border-end-lg px-3">
                 <div class="text-center">
                     <a href="{{ route('unduh_data') }}">
                         <img class="gambar" src="{{ asset('assets/frontend/img/data/download (1).png') }}" width="48"
                             alt="Award icon" class="d-block mb-4 mx-auto">
                     </a>
                     <h4 class="mb-2 pb-1">Unduh Data</h4>
-                </div>
-            </div>
-            <div class="swiper-slide border-end-lg px-2">
-                <div class="text-center">
-                    <a href="{{ route('data_integrasi') }}">
-                        <img class="gambar" src="{{ asset('assets/frontend/img/data/data-integration.c1a9fc98.png') }}"
-                            width="48" alt="Bulb icon" class="d-block mb-4 mx-auto">
-                    </a>
-                    <h4 class="mb-2 pb-1">Data Integrasi</h4>
                 </div>
             </div>
         </div>

@@ -14,6 +14,7 @@ use App\Models\Pengumuman;
 use App\Models\PermohonanInformasiPublik;
 use App\Models\Publikasi;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -32,6 +33,18 @@ class HomeController extends Controller
     public function ppid()
     {
         return view('components.pages.ppid');
+    }
+
+    public function rekapitulasi_home()
+    {
+        $permohonan = PermohonanInformasiPublik::select(PermohonanInformasiPublik::raw("COUNT(*) as count"), PermohonanInformasiPublik::raw("MONTHNAME(created_at) as month_name"))
+            ->whereYear('created_at', date('Y'))
+            ->groupBy(PermohonanInformasiPublik::raw("created_at"))
+            ->pluck('count', 'month_name');
+
+        $labels = $permohonan->keys();
+        $data = $permohonan->values();
+        return view('components.pages.rekapitulasi_permohonan_informasi_publik', compact('labels', 'data'));
     }
 
     public function index_dataset()

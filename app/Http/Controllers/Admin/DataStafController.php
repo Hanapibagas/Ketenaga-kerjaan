@@ -23,22 +23,42 @@ class DataStafController extends Controller
 
     public function store(Request $request)
     {
+        $message = [
+            'required' => 'Mohon maaf anda lupa untuk mengisi ini dan harap anda mangisi terlebih dahulu'
+        ];
+
         $this->validate($request, [
             'nama' => 'required',
-            'jabatan' => 'required',
-        ]);
-
-        if ($request->file('gambar')) {
-            $file = $request->file('gambar')->store('data-staf', 'public');
-        }
+            'nip' => 'required',
+            'tempat_lahir' => 'required',
+            'tempat_melaksanakan_tugas' => 'required',
+            'pangkat' => 'required',
+            'golongan_ruang' => 'required',
+            'pendidikan' => 'required',
+            'tahun_lulus' => 'required',
+            'jenis_kelamin' => 'required',
+            'agama' => 'required',
+            'etmis' => 'required',
+            'asal_daerah' => 'required',
+        ], $message);
 
         DataStaf::create([
             'nama' => $request->input('nama'),
+            'nip' => $request->input('nip'),
+            'tempat_lahir' => $request->input('tempat_lahir'),
+            'tempat_melaksanakan_tugas' => $request->input('tempat_melaksanakan_tugas'),
+            'pangkat' => $request->input('pangkat'),
+            'golongan_ruang' => $request->input('golongan_ruang'),
+            'pendidikan' => $request->input('pendidikan'),
+            'tahun_lulus' => $request->input('tahun_lulus'),
+            'jenis_kelamin' => $request->input('jenis_kelamin'),
+            'agama' => $request->input('agama'),
+            'etmis' => $request->input('etmis'),
+            'asal_daerah' => $request->input('asal_daerah'),
             'jabatan' => $request->input('jabatan'),
             'twitter' => $request->input('twitter'),
             'facebook' => $request->input('facebook'),
             'instagram' => $request->input('instagram'),
-            'gambar' => $file
         ]);
 
         return redirect()->route('index_staf')->with('status', 'Selamat data staf berhasil ditambahkan');
@@ -52,31 +72,55 @@ class DataStafController extends Controller
 
     public function update_staf(Request $request, $id)
     {
-        $staf = DataStaf::where('id', $id)->first();
-        if ($request->file('gambar')) {
-            $file = $request->file('gambar')->store('data-staf', 'public');
-            if ($staf->gambar && file_exists(storage_path('app/public/' . $staf->gambar))) {
-                Storage::delete('public/' . $staf->gambar);
-                $file = $request->file('gambar')->store('data-staf', 'public');
-            }
-        }
+        // dd($request->all());
+        $message = [
+            'required' => 'Mohon maaf anda lupa untuk mengisi ini dan harap anda mangisi terlebih dahulu'
+        ];
 
-        if ($request->file('gambar') === null) {
-            $file = $staf->gambar;
-        }
+        $this->validate($request, [
+            'nama' => 'required',
+            'nip' => 'required',
+            'tempat_lahir' => 'required',
+            'tempat_melaksanakan_tugas' => 'required',
+            'pangkat' => 'required',
+            'golongan_ruang' => 'required',
+            'pendidikan' => 'required',
+            'tahun_lulus' => 'required',
+            'agama' => 'required',
+            'etmis' => 'required',
+            'asal_daerah' => 'required',
+        ], $message);
+
+        $staf = DataStaf::where('id', $id)->first();
 
         $staf->update([
             'nama' => $request->input('nama'),
+            'nip' => $request->input('nip'),
+            'tempat_lahir' => $request->input('tempat_lahir'),
+            'tempat_melaksanakan_tugas' => $request->input('tempat_melaksanakan_tugas'),
+            'pangkat' => $request->input('pangkat'),
+            'golongan_ruang' => $request->input('golongan_ruang'),
+            'pendidikan' => $request->input('pendidikan'),
+            'tahun_lulus' => $request->input('tahun_lulus'),
+            'jenis_kelamin' => $request->input('jenis_kelamin'),
+            'agama' => $request->input('agama'),
+            'etmis' => $request->input('etmis'),
+            'asal_daerah' => $request->input('asal_daerah'),
+            'keterangan' => $request->input('keterangan'),
             'jabatan' => $request->input('jabatan'),
             'twitter' => $request->input('twitter'),
             'facebook' => $request->input('facebook'),
             'instagram' => $request->input('instagram'),
-            'gambar' => $file
         ]);
 
         return redirect()->route('index_staf')->with('status', 'Selamat data staf berhasil diperbarui');
     }
 
+    public function details_data_staf(Request $request, $id)
+    {
+        $staf = DataStaf::where('id', $id)->first();
+        return view('components.dashboard.data-staf.details_staf', compact('staf'));
+    }
     public function destroy_staf($id)
     {
         $delete = DataStaf::find($id);

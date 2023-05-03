@@ -15,7 +15,7 @@ Beranda
                 <div class="mb-md-5 pb-xl-5 mb-4">
                     <h3 class="display-2 mb-md-5 mb-3 pb-3">
                         Welcome To Data <span class="text-gradient-primary">Ketenagakerjaan</span>
-                        Provinsi Sulsel
+                        Disnakertrans Prov. SulSel
                     </h3>
                     <style>
                         form {

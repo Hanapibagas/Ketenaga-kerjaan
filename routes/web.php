@@ -21,13 +21,16 @@ use App\Http\Controllers\Kab\LaporanAdminKabController;
 use App\Http\Controllers\Kab\PermintaanController;
 use App\Http\Controllers\Masyarakat\DasboardMasyrakatController;
 use App\Http\Controllers\Masyarakat\PermintaanDataMasyarakatController;
+use App\Http\Controllers\Upt\DashboardAdminUptController;
+use App\Http\Controllers\Upt\LaporanAdminUptController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', [HomeController::class, 'index'])->name('index_home');
 Route::get('/profile', [HomeController::class, 'profile'])->name('profile_home');
-Route::get('/ppid', [HomeController::class, 'ppid'])->name('ppid_home');
+Route::get('/ppid/profile-ppid', [HomeController::class, 'ppid'])->name('ppid_home');
+Route::get('/ppid/rekapitulasi-permohonan-informasi-publik', [HomeController::class, 'rekapitulasi_home'])->name('rekapitulasi_home');
 
 //route data
 Route::get('/data', [HomeController::class, 'index_dataset'])->name('index_dataset');
@@ -111,6 +114,7 @@ Route::middleware('auth', 'checkroll:admin web')->group(function () {
     Route::get('/staf-oprator/create', [DataStafController::class, 'create_staf'])->name('create_staf');
     Route::post('/staf-oprator/create/post', [DataStafController::class, 'store'])->name('store_staf');
     Route::get('/staf-oprator/update/{id}', [DataStafController::class, 'edit_staf'])->name('edit_staf');
+    Route::get('/staf-oprator/details/{id}', [DataStafController::class, 'details_data_staf'])->name('details_data_staf');
     Route::put('/staf-oprator/create/update/{id}', [DataStafController::class, 'update_staf'])->name('update_staf');
     Route::delete('/staf-oprator/delete/{id}', [DataStafController::class, 'destroy_staf'])->name('destroy_staf');
     //
@@ -171,6 +175,14 @@ Route::middleware('auth', 'checkroll:kab/kota')->group(function () {
     //
     Route::get('/laporan-admin-kab-kota', [LaporanAdminKabController::class, 'index_laporan_kab'])->name('index_laporan_kab');
     Route::get('/export-laporan-admin-kab-kota', [LaporanAdminKabController::class, 'export_excel_laporan_kab'])->name('export_excel_laporan_kab');
+});
+
+// admin upt
+Route::middleware('auth', 'checkroll:upt')->group(function () {
+    Route::get('/admin-upt', [DashboardAdminUptController::class, 'dashboard_upt'])->name('dashboard_upt');
+    //
+    Route::get('/laporan-admin-upt', [LaporanAdminUptController::class, 'index_laporan_upt'])->name('index_laporan_upt');
+    Route::get('/export-laporan-admin-upt', [LaporanAdminUptController::class, 'export_excel_laporan_upt'])->name('export_excel_laporan_upt');
 });
 
 //admin masyarakat

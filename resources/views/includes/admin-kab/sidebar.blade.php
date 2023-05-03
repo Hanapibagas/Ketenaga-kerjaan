@@ -2,7 +2,7 @@
     <div class="navbar-logo">
         <a href="{{ route('index_home') }}">
             <img src="{{ asset('assets/frontend/img/logo.png') }}" style="width: 30px" alt="logo" />
-            <h3 style="font-size: 18px; margin-top: 10px">Dashboard Ketenagakerjaan</h3>
+            <h3 style="font-size: 18px; margin-top: 10px">Dashboard Ketenagakerjaan {{ Auth::user()->roles }}</h3>
         </a>
     </div>
     <nav class="sidebar-nav">

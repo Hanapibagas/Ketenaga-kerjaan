@@ -1,7 +1,7 @@
-@extends('layouts.dashboard')
+@extends('layouts.dashboardadminupt')
 
 @section('title')
-Data Staf
+Laporan
 @endsection
 
 @section('content')
@@ -21,7 +21,7 @@ Data Staf
             <div class="row align-items-center">
                 <div class="col-md-6">
                     <div class="title mb-30">
-                        <h2>Data Staf</h2>
+                        <h2>Daftar Laporan Masyarakat</h2>
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -29,8 +29,11 @@ Data Staf
                         <nav aria-label="breadcrumb">
                             <ul class="buttons-group">
                                 <li class="breadcrumb-item">
-                                    <a href="{{ route('create_staf') }}"
-                                        class="main-btn primary-btn rounded-md btn-hover">+ Tambah Data Staf</a>
+                                    <a href="{{ route('export_excel_laporan_kab') }}"
+                                        class="main-btn success-btn rounded-md btn-hover">
+                                        <i class="lni lni-download" style="margin-right: 20px; margin-left: -10px"></i>
+                                        Download
+                                    </a>
                                 </li>
                             </ul>
                         </nav>
@@ -42,41 +45,34 @@ Data Staf
             <div class="row">
                 <div class="col-lg-12">
                     <div class="card-style mb-30">
-                        <h6 class="mb-10">Staf Data Table</h6>
+                        <h6 class="mb-10">Metadata Data Table</h6>
                         <div class="table-responsive">
                             <table id="table" class="table">
                                 <thead>
                                     <tr>
-                                        <th>Nama</th>
-                                        <th>Tempat MelaksanakanTugas</th>
-                                        <th>Pangkat/Golongan</th>
-                                        <th>Aksi</th>
+                                        <th>No</th>
+                                        <th>Pemohonan</th>
+                                        <th>Rincian</th>
+                                        <th>Tujuan</th>
+                                        <th>Status</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ( $staf as $data )
+                                    @foreach ( $laporan as $key => $data )
                                     <tr>
-                                        <td>{{ $data->nama }}</td>
-                                        <td>{{ Str::limit($data->tempat_melaksanakan_tugas, 30) }}</td>
-                                        <td>{{ $data->pangkat }}</td>
+                                        <th>{{ $key+1 }}</th>
                                         <td>
-                                            <a href="{{ route('details_data_staf', $data->id) }}"
-                                                class="btn btn-secondary">
-                                                <i class="lni lni-eye" style="color: whitesmoke"></i>
-                                            </a>
-                                            <a href="{{ route('edit_staf', $data->id) }}" class="btn btn-primary">
-                                                <i class="lni lni-pencil" style="color: whitesmoke"></i>
-                                            </a>
-                                            <input type="hidden" class="delete_id" value="{{ $data->id }}">
-                                            <form action="{{ route('destroy_staf', $data->id) }}" method="POST"
-                                                class="d-inline">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button class="btn btn-danger btndelete">
-                                                    <i class="lni lni-trash-can"></i>
-                                                </button>
-                                            </form>
-                                            </p>
+                                            {{ $data->nama }}
+                                            {{ $data->email }}
+                                        </td>
+                                        <td>
+                                            {!! Str::limit($data->rincian, 100) !!}
+                                        </td>
+                                        <td>
+                                            {!! Str::limit($data->tujuan, 100) !!}
+                                        </td>
+                                        <td>
+                                            {{ $data->status }}
                                         </td>
                                     </tr>
                                     @endforeach
@@ -123,7 +119,7 @@ Data Staf
                         };
                         $.ajax({
                             type: "DELETE",
-                            url: 'staf-oprator/delete/' + deleteid,
+                            url: 'berita/delete/' + deleteid,
                             data: data,
                             success: function (response) {
                                 swal(response.status, {

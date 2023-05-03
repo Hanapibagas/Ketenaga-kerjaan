@@ -4,6 +4,10 @@
 PPID
 @endsection
 
+@push('css')
+
+@endpush
+
 @section('content')
 <nav class="container py-4 mb-lg-2 mt-lg-3 tes" aria-label="breadcrumb">
     <ol class="breadcrumb mb-0">
@@ -11,24 +15,19 @@ PPID
             <a href="{{ route('index_home') }}"><i class="bx bx-home-alt fs-lg me-1"></i>Beranda</a>
         </li>
         <li class="breadcrumb-item">
-            PPID
+            <a href="{{ route('index_home') }}"><i class="bx bx-home-alt fs-lg me-1"></i>PPID</a>
         </li>
-        <li class="breadcrumb-item active" aria-current="page">Profile PPID</li>
+        <li class="breadcrumb-item active" aria-current="page">Rekapitulasi Permohonan Informasi Publik</li>
     </ol>
 </nav>
 
 <section class="container pb-4 mb-2 mb-lg-3">
-    <h1>Profil PPID.</h1>
+    <h1>Rekapitulasi Permohonan Informasi Publik.</h1>
 </section>
 
-<section class="jarallax" data-jarallax data-speed="0.4">
-    <div class="jarallax-img" style="background-image: url({{ asset('assets/frontend/img/profile/1666316353.png') }});">
-    </div>
-    <div class="d-none d-xxl-block" style="height: 800px;"></div>
-    <div class="d-none d-lg-block d-xxl-none" style="height: 600px;"></div>
-    <div class="d-none d-md-block d-lg-none" style="height: 450px;"></div>
-    <div class="d-md-none" style="height: 400px;"></div>
-</section>
+<div class="container">
+    <canvas id="myChart" height="100px"></canvas>
+</div>
 
 <section class="container py-5 my-1 my-md-4 my-lg-5">
     <div class="row">
@@ -71,3 +70,35 @@ PPID
     </div>
 </section>
 @endsection
+
+@push('js')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script type="text/javascript">
+    var labels =  {{ Js::from($labels) }};
+      var users =  {{ Js::from($data) }};
+
+      const data = {
+        labels: labels,
+        datasets: [{
+          label: 'Diagram Data Permohonan Informasi',
+          backgroundColor: 'rgb(255, 99, 132)',
+          borderColor: 'rgb(255, 99, 132)',
+          data: users,
+        }]
+      };
+
+      const config = {
+        type: 'line',
+        data: data,
+        options: {}
+      };
+
+      const myChart = new Chart(
+        document.getElementById('myChart'),
+        config
+      );
+
+</script>
+@endpush

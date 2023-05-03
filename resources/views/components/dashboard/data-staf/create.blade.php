@@ -41,14 +41,164 @@ Data Staf
                             <div class="row">
                                 <div class="col-12">
                                     <div class="input-style-1">
-                                        <label>Nama Staf</label>
-                                        <input type="text" name="nama" placeholder="Masukkan Nama Staf" />
+                                        <label>Nama Staf <i class="text-danger" style="font-size: 14px;">*</i></label>
+                                        <input type="text" class="@error('nama') is-invalid @enderror" name="nama"
+                                            placeholder="Masukkan Nama Staf" />
+                                        @error('nama')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="input-style-1">
-                                        <label>Jabatan</label>
-                                        <input type="text" name="jabatan" placeholder="Masukkan Jabatan" />
+                                        <label>NIP <i class="text-danger" style="font-size: 14px;">*</i></label>
+                                        <input type="number" class="@error('nip') is-invalid @enderror" name="nip"
+                                            placeholder="Masukkan NIP" />
+                                        @error('nip')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="input-style-1">
+                                        <label>Tempat Lahir <i class="text-danger"
+                                                style="font-size: 14px;">*</i></label>
+                                        <input type="text" class="@error('tempat_lahir') is-invalid @enderror"
+                                            name="tempat_lahir" placeholder="Masukkan Tempat Lahir" />
+                                        @error('tempat_lahir')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="input-style-1">
+                                        <label>Tempat Melaksanakan Tugas <i class="text-danger"
+                                                style="font-size: 14px;">*</i></label>
+                                        <input type="text"
+                                            class="@error('tempat_melaksanakan_tugas') is-invalid @enderror"
+                                            name="tempat_melaksanakan_tugas"
+                                            placeholder="Masukkan Tempat melaksanakan Tugas" />
+                                        @error('tempat_melaksanakan_tugas')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="input-style-1">
+                                        <label>Pangkat <i class="text-danger" style="font-size: 14px;">*</i></label>
+                                        <input type="text" class="@error('pangkat') is-invalid @enderror" name="pangkat"
+                                            placeholder="Masukkan Pangkat" />
+                                        @error('pangkat')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="input-style-1">
+                                        <label>Golongan Ruang <i class="text-danger"
+                                                style="font-size: 14px;">*</i></label>
+                                        <input type="date" class="@error('golongan_ruang') is-invalid @enderror"
+                                            name="golongan_ruang" placeholder="Masukkan Golongan Ruang" />
+                                        @error('golongan_ruang')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="input-style-1">
+                                        <label>Pendidikan Trakhir / Jurusan <i class="text-danger"
+                                                style="font-size: 14px;">*</i></label>
+                                        <input type="text" class="@error('pendidikan') is-invalid @enderror"
+                                            name="pendidikan" placeholder="Masukkan Pendidikan" />
+                                        @error('pendidikan')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="input-style-1">
+                                        <label>Tahun Lulus <i class="text-danger" style="font-size: 14px;">*</i></label>
+                                        <input type="date" class="@error('tahun_lulus') is-invalid @enderror"
+                                            name="tahun_lulus" placeholder="Masukkan Tahun Lulus" />
+                                        @error('tahun_lulus')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="input-style-1">
+                                        <label>Jenis Kelamin <i class="text-danger"
+                                                style="font-size: 14px;">*</i></label>
+                                        <select name="jenis_kelamin"
+                                            class="form-select @error('jenis_kelamin') is-invalid @enderror">
+                                            <option value="">-- Silahkan Pilih --</option>
+                                            <option value="Laki-Laki">Laki-Laki</option>
+                                            <option value="Perempuan">Perempuan</option>
+                                            @error('jenis_kelamin')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="input-style-1">
+                                        <label>Agama <i class="text-danger" style="font-size: 14px;">*</i></label>
+                                        <input type="text" class="@error('agama') is-invalid @enderror" name="agama"
+                                            placeholder="Masukkan Agama" />
+                                        @error('agama')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="input-style-1">
+                                        <label>Etmis <i class="text-danger" style="font-size: 14px;">*</i></label>
+                                        <input type="text" class="@error('etmis') is-invalid @enderror" name="etmis"
+                                            placeholder="Masukkan Etmis" />
+                                        @error('etmis')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="input-style-1">
+                                        <label>Asal Daerah <i class="text-danger" style="font-size: 14px;">*</i></label>
+                                        <input type="text" class="@error('asal_daerah') is-invalid @enderror"
+                                            name="asal_daerah" placeholder="Masukkan Asal Daerah" />
+                                        @error('asal_daerah')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="input-style-1">
+                                        <label>Keterangan </label>
+                                        <input type="text" name="keterangan"
+                                            placeholder="Masukkan keterangan (jika tidak mengetahuinya bisa dikosongkan)" />
                                     </div>
                                 </div>
                                 <div class="col-12">
@@ -65,15 +215,9 @@ Data Staf
                                     </div>
                                 </div>
                                 <div class="col-12">
-                                    <div class="input-style-1">
-                                        <label>Gambar</label>
-                                        <input name="gambar" type="file" />
-                                    </div>
-                                </div>
-                                <div class="col-12">
                                     <div class="button-group d-flex justify-content-center flex-wrap">
                                         <button class="main-btn primary-btn btn-hover m-2">
-                                            Simpan Data
+                                            Simpan Data Staf
                                         </button>
                                     </div>
                                 </div>

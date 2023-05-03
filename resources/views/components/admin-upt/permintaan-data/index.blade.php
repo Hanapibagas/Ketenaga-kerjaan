@@ -1,7 +1,7 @@
-@extends('layouts.dashboard')
+@extends('layouts.dashboardadminupt')
 
 @section('title')
-Data Staf
+Dashboard
 @endsection
 
 @section('content')
@@ -21,19 +21,7 @@ Data Staf
             <div class="row align-items-center">
                 <div class="col-md-6">
                     <div class="title mb-30">
-                        <h2>Data Staf</h2>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="breadcrumb-wrapper mb-30">
-                        <nav aria-label="breadcrumb">
-                            <ul class="buttons-group">
-                                <li class="breadcrumb-item">
-                                    <a href="{{ route('create_staf') }}"
-                                        class="main-btn primary-btn rounded-md btn-hover">+ Tambah Data Staf</a>
-                                </li>
-                            </ul>
-                        </nav>
+                        <h2>Data Pemintaan</h2>
                     </div>
                 </div>
             </div>
@@ -42,33 +30,35 @@ Data Staf
             <div class="row">
                 <div class="col-lg-12">
                     <div class="card-style mb-30">
-                        <h6 class="mb-10">Staf Data Table</h6>
+                        <h6 class="mb-10">Pemintaan Data Table</h6>
                         <div class="table-responsive">
                             <table id="table" class="table">
                                 <thead>
                                     <tr>
-                                        <th>Nama</th>
-                                        <th>Tempat MelaksanakanTugas</th>
-                                        <th>Pangkat/Golongan</th>
+                                        <th>Pemohonan</th>
+                                        <th>Judul Dataset</th>
+                                        <th>Deskripsi</th>
+                                        <th>OPD Produsen data</th>
+                                        <th>Tujuan</th>
+                                        <th>Status</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ( $staf as $data )
+                                    @foreach ( $permintaan as $data )
                                     <tr>
-                                        <td>{{ $data->nama }}</td>
-                                        <td>{{ Str::limit($data->tempat_melaksanakan_tugas, 30) }}</td>
-                                        <td>{{ $data->pangkat }}</td>
+                                        <td>{{ $data->title }}</td>
+                                        <td>{{ $data->tanggal }}</td>
                                         <td>
-                                            <a href="{{ route('details_data_staf', $data->id) }}"
-                                                class="btn btn-secondary">
-                                                <i class="lni lni-eye" style="color: whitesmoke"></i>
-                                            </a>
-                                            <a href="{{ route('edit_staf', $data->id) }}" class="btn btn-primary">
+                                            <img src="{{ Storage::url($data->gambar) }}" alt="" style="width: 150px"
+                                                class="img-thumbnail">
+                                        </td>
+                                        <td>
+                                            <a href="{{ route('edit_berita', $data->id) }}" class="btn btn-primary">
                                                 <i class="lni lni-pencil" style="color: whitesmoke"></i>
                                             </a>
                                             <input type="hidden" class="delete_id" value="{{ $data->id }}">
-                                            <form action="{{ route('destroy_staf', $data->id) }}" method="POST"
+                                            <form action="{{ route('destroy_berita', $data->id) }}" method="POST"
                                                 class="d-inline">
                                                 @csrf
                                                 @method('DELETE')
@@ -123,7 +113,7 @@ Data Staf
                         };
                         $.ajax({
                             type: "DELETE",
-                            url: 'staf-oprator/delete/' + deleteid,
+                            url: 'berita/delete/' + deleteid,
                             data: data,
                             success: function (response) {
                                 swal(response.status, {

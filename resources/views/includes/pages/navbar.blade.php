@@ -1,6 +1,6 @@
 <header class="header navbar navbar-expand-lg bg-light navbar-sticky">
     <div class="container px-3">
-        <a href="index.html" class="navbar-brand pe-3">
+        <a href="{{ route('index_home') }}" class="navbar-brand pe-3">
             <img src="{{ asset('assets/frontend/img/logo.png') }}" width="47" alt="Silicon">
             KETENAGAKERJAAN
         </a>
@@ -28,8 +28,21 @@
                     <li class="nav-item {{ request()->is('profile') ? 'active' : '' }}">
                         <a href="{{ route('profile_home') }}" class="nav-link">Profile</a>
                     </li>
-                    <li class="nav-item {{ request()->is('ppid') ? 'active' : '' }}">
-                        <a href="{{ route('ppid_home') }}" class="nav-link">PPID</a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle {{ request()->is('ppid/profile-ppid') || request()->is('ppid/rekapitulasi-permohonan-informasi-publik') ? 'active' : '' }}"
+                            data-bs-toggle="dropdown">PPID</a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="{{ route('ppid_home') }}"
+                                    class="dropdown-item {{ request()->is('ppid/profile-ppid') ? 'active' : '' }}">Profile
+                                    PPID</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('rekapitulasi_home') }}"
+                                    class="dropdown-item {{ request()->is('ppid/rekapitulasi-permohonan-informasi-publik') ? 'active' : '' }}">Rekapitulasi
+                                    Permohonan Informasi Publik</a>
+                            </li>
+                        </ul>
                     </li>
                     <li
                         class="nav-item {{ request()->is('data') || request()->is('data/guest') || request()->is('data/unduh-data') || request()->is('data/unduh-data/*') || request()->is('data/data-integrasi') ? 'active' : '' }}">

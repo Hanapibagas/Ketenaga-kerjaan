@@ -70,7 +70,8 @@ Profile
             <div class="col-md-4">
                 <div class="position-relative d-flex h-100">
                     <div class="position-absolute top-0 start-0 w-100 h-100 rounded-3 bg-size-cover bg-repeat-0 bg-position-center"
-                        style="background-image: url({{ asset('assets/frontend/img/profile/kepala-dinas.jpg') }});"></div>
+                        style="background-image: url({{ asset('assets/frontend/img/profile/kepala-dinas.jpg') }});">
+                    </div>
                 </div>
             </div>
             <div class="col-md-8">
@@ -110,7 +111,8 @@ Profile
         <div class="col">
             <div class="card card-hover border-0 bg-transparent">
                 <div class="position-relative">
-                    <img src="{{ Storage::url($data->gambar) }}" class="rounded-3" alt="Jenny Wilson">
+                    <img src="https://ui-avatars.com/api/?name={{ $data->nama }}" class="rounded" style="width: 400px"
+                        alt="Jenny Wilson">
                     <div
                         class="card-img-overlay d-flex flex-column align-items-center justify-content-center rounded-3">
                         <span class="position-absolute top-0 start-0 w-100 h-100 bg-dark opacity-25 rounded-3"></span>
@@ -132,7 +134,7 @@ Profile
                 </div>
                 <div class="card-body text-center p-3">
                     <h3 class="fs-lg fw-semibold pt-1 mb-2">{{ $data->nama }}</h3>
-                    <p class="fs-sm mb-0">{{ $data->jabatan }}</p>
+                    <p class="fs-sm mb-0">{{ $data->tempat_melaksanakan_tugas }}</p>
                 </div>
             </div>
         </div>

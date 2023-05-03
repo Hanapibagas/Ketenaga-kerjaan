@@ -31,6 +31,10 @@ class LoginController extends Controller
                 $this->redirectTo = '/admin-masyarakat';
                 return $this->redirectTo;
                 break;
+            case "upt";
+                $this->redirectTo = '/admin-upt';
+                return $this->redirectTo;
+                break;
         }
     }
     public function __construct()
