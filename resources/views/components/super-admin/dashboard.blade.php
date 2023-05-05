@@ -1,7 +1,7 @@
 @extends('layouts.dashboardadminsuper')
 
 @section('title')
-Dashboard
+Dashboard {{ Auth::user()->roles }}
 @endsection
 
 @section('content')
@@ -10,7 +10,7 @@ Dashboard
         <div class="row align-items-center">
             <div class="col-md-6">
                 <div class="title mb-30">
-                    <h2>Dashboard</h2>
+                    <h2>Dashboard {{ Auth::user()->roles }}</h2>
                 </div>
             </div>
         </div>

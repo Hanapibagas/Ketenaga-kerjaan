@@ -21,5 +21,6 @@ class DataStaf extends Model
         'agama',
         'etmis',
         'asal_daerah',
+        'keterangan',
     ];
 }

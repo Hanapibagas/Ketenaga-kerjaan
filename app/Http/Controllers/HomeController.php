@@ -43,8 +43,8 @@ class HomeController extends Controller
             ->pluck('count', 'month_name');
 
         $labels = $permohonan->keys();
-        $data = $permohonan->values();
-        return view('components.pages.rekapitulasi_permohonan_informasi_publik', compact('labels', 'data'));
+        $jumlah = $permohonan->values();
+        return view('components.pages.rekapitulasi_permohonan_informasi_publik', compact('labels', 'jumlah'));
     }
 
     public function index_dataset()

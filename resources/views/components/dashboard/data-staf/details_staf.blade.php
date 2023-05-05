@@ -119,13 +119,6 @@ Data Staf
                                         <i>{{ $staf->instagram }}</i><br>
                                     </div>
                                 </div>
-                                <div class="col-12">
-                                    <div class="button-group d-flex justify-content-center flex-wrap">
-                                        <button class="main-btn primary-btn btn-hover m-2">
-                                            Simpan Data Staf
-                                        </button>
-                                    </div>
-                                </div>
                             </div>
                         </form>
                     </div>

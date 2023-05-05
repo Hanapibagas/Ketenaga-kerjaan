@@ -94,7 +94,7 @@ Publikasi
                                 </div>
                                 <div class="col-12">
                                     <div class="button-group d-flex justify-content-center flex-wrap">
-                                        <button class="main-btn primary-btn btn-hover m-2">
+                                        <button class="main-btn success-btn btn-hover m-2">
                                             Simpan Data
                                         </button>
                                     </div>

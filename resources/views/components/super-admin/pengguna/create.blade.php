@@ -85,6 +85,7 @@ Akun Pengguna
                                             <option value="admin web">Oprator</option>
                                             <option value="masyakat">Masyakat</option>
                                             <option value="kab/kota">Kab/kota</option>
+                                            <option value="upt">Bidang/Upt</option>
                                         </select>
                                         @error('roles')
                                         <span class="invalid-feedback" role="alert">

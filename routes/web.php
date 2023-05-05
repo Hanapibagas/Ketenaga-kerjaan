@@ -19,10 +19,12 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Kab\DashboardKabKotaController;
 use App\Http\Controllers\Kab\LaporanAdminKabController;
 use App\Http\Controllers\Kab\PermintaanController;
+use App\Http\Controllers\kab\UpdatePasswordAdminKabController;
 use App\Http\Controllers\Masyarakat\DasboardMasyrakatController;
 use App\Http\Controllers\Masyarakat\PermintaanDataMasyarakatController;
 use App\Http\Controllers\Upt\DashboardAdminUptController;
 use App\Http\Controllers\Upt\LaporanAdminUptController;
+use App\Http\Controllers\Upt\UpdatePasswordAdminUptController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -173,6 +175,9 @@ Route::middleware('auth', 'checkroll:admin super')->group(function () {
 Route::middleware('auth', 'checkroll:kab/kota')->group(function () {
     Route::get('/admin-kab-kota', [DashboardKabKotaController::class, 'dashboard_kab'])->name('dashboard_kab');
     //
+    Route::get('pengguna-admin-kab-kota', [UpdatePasswordAdminKabController::class, 'index_password'])->name('index_password');
+    Route::put('pengguna-admin-kab-kota/post', [UpdatePasswordAdminKabController::class, 'update_password'])->name('update_password');
+    //
     Route::get('/laporan-admin-kab-kota', [LaporanAdminKabController::class, 'index_laporan_kab'])->name('index_laporan_kab');
     Route::get('/export-laporan-admin-kab-kota', [LaporanAdminKabController::class, 'export_excel_laporan_kab'])->name('export_excel_laporan_kab');
 });
@@ -180,6 +185,9 @@ Route::middleware('auth', 'checkroll:kab/kota')->group(function () {
 // admin upt
 Route::middleware('auth', 'checkroll:upt')->group(function () {
     Route::get('/admin-upt', [DashboardAdminUptController::class, 'dashboard_upt'])->name('dashboard_upt');
+    //
+    Route::get('pengguna-admin-upt', [UpdatePasswordAdminUptController::class, 'index_password'])->name('index_password_upt');
+    Route::put('pengguna-admin-upt/post', [UpdatePasswordAdminUptController::class, 'update_password'])->name('update_password_upt');
     //
     Route::get('/laporan-admin-upt', [LaporanAdminUptController::class, 'index_laporan_upt'])->name('index_laporan_upt');
     Route::get('/export-laporan-admin-upt', [LaporanAdminUptController::class, 'export_excel_laporan_upt'])->name('export_excel_laporan_upt');

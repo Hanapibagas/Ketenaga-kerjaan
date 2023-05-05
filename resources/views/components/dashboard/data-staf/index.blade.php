@@ -30,7 +30,7 @@ Data Staf
                             <ul class="buttons-group">
                                 <li class="breadcrumb-item">
                                     <a href="{{ route('create_staf') }}"
-                                        class="main-btn primary-btn rounded-md btn-hover">+ Tambah Data Staf</a>
+                                        class="main-btn success-btn rounded-md btn-hover">+ Tambah Data Staf</a>
                                 </li>
                             </ul>
                         </nav>

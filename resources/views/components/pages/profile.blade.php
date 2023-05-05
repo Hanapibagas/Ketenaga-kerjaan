@@ -111,7 +111,7 @@ Profile
         <div class="col">
             <div class="card card-hover border-0 bg-transparent">
                 <div class="position-relative">
-                    <img src="https://ui-avatars.com/api/?name={{ $data->nama }}" class="rounded" style="width: 400px"
+                    <img src="https://ui-avatars.com/api/?name={{ $data->nama }} " class="rounded" style="width: 400px"
                         alt="Jenny Wilson">
                     <div
                         class="card-img-overlay d-flex flex-column align-items-center justify-content-center rounded-3">

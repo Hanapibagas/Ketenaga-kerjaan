@@ -72,7 +72,6 @@ class DataStafController extends Controller
 
     public function update_staf(Request $request, $id)
     {
-        // dd($request->all());
         $message = [
             'required' => 'Mohon maaf anda lupa untuk mengisi ini dan harap anda mangisi terlebih dahulu'
         ];
@@ -121,6 +120,7 @@ class DataStafController extends Controller
         $staf = DataStaf::where('id', $id)->first();
         return view('components.dashboard.data-staf.details_staf', compact('staf'));
     }
+
     public function destroy_staf($id)
     {
         $delete = DataStaf::find($id);
