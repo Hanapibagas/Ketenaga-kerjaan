@@ -113,6 +113,12 @@ Data Staf
                                 </div>
                                 <div class="col-12">
                                     <div class="input-style-1">
+                                        <label style="font-size: 20px;">Keterangan</label>
+                                        <i>{{ $staf->keterangan }}</i>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="input-style-1">
                                         <label style="font-size: 20px;">Akun Sosial Media</label>
                                         <i>{{ $staf->twitter }}</i><br>
                                         <i>{{ $staf->facebook }}</i><br>

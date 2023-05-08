@@ -42,26 +42,15 @@ Infografis
             <div class="row">
                 <div class="col-lg-12">
                     <div class="card-style mb-30">
-                        <h6 class="mb-10">Infografis Data Table</h6>
                         <div class="table-responsive">
                             <table id="table" class="table">
                                 <thead>
                                     <tr>
-                                        <th>
-                                            Judul
-                                        </th>
-                                        <th>
-                                            Type Infografis
-                                        </th>
-                                        <th>
-                                            Tanggal
-                                        </th>
-                                        <th>
-                                            Gambar
-                                        </th>
-                                        <th>
-                                            Aksi
-                                        </th>
+                                        <th>Judul</th>
+                                        <th>Type Infografis</th>
+                                        <th>Tanggal</th>
+                                        <th>Gambar</th>
+                                        <th>Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
