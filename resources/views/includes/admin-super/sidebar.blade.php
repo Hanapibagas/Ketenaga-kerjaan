@@ -86,7 +86,7 @@
                         </svg>
                     </span>
                     <span class="text">
-                        Kab/Kota
+                        Kab/Kota Dan Bidang
                     </span>
                 </a>
             </li>

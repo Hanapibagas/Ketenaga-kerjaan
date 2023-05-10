@@ -69,6 +69,20 @@ Akun Pengguna
                                             <option value="gowa@gmail.com">gowa@gmail.com</option>
                                             <option value="luwu@gmail.com">luwu@gmail.com</option>
                                             <option value="bantaeng@gmail.com">bantaeng@gmail.com</option>
+                                            <option value="uptbalaipelatihankerja@gmail.com">UPT Balai Pelatihan
+                                                Kerja</option>
+                                            <option value="uptbalaipelatihankerjawilayahI@gmail.com">UPT Pengawasan
+                                                Ketenagakerjaan Wilayah I
+                                            </option>
+                                            <option value="uptbalaipelatihankerjawilayahII@gmail.com">UPT Pengawasan
+                                                Ketenagakerjaan Wilayah II
+                                            </option>
+                                            <option value="uptbalaipelatihankerjawilayahIII@gmail.com">UPT Pengawasan
+                                                Ketenagakerjaan Wilayah
+                                                III</option>
+                                            <option value="uptbalaipelatihankerjawilayahIV@gmail.com">UPT Pengawasan
+                                                Ketenagakerjaan Wilayah IV
+                                            </option>
                                         </select>
                                         @error('email')
                                         <span class="invalid-feedback" role="alert">
