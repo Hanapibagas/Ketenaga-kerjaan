@@ -157,7 +157,7 @@ Route::middleware('auth', 'checkroll:admin super')->group(function () {
     Route::get('/export-laporan-admin-super', [LaporanAdminSuperController::class, 'export_excel_laporan'])->name('export_excel_laporan');
     //
     Route::get('/metadata-admin-super', [MetadataVariableAdminSuperController::class, 'index_metadata'])->name('index_metadata');
-    Route::get('/metadata-admin-super/create', [MetadataVariableAdminSuperController::class, 'create_pengguna'])->name('create_pengguna');
+    Route::get('/metadata-admin-super/create', [MetadataVariableAdminSuperController::class, 'create_metadata'])->name('create_metadata');
     Route::post('/metadata-admin-super/post', [MetadataVariableAdminSuperController::class, 'store_pengguna'])->name('store_pengguna');
     Route::delete('/metadata-admin-super/delete/{id}', [MetadataVariableAdminSuperController::class, 'destroy_pengguna'])->name('destroy_pengguna');
     //

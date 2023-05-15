@@ -18,14 +18,22 @@ Profile
     <h1>Profil Dinas Tenaga Kerja dan Transmigrasi.</h1>
 </section>
 
-<section class="jarallax" data-jarallax data-speed="0.4">
-    <div class="jarallax-img" style="background-image: url({{ asset('assets/frontend/img/profile/1659512336.jpg') }});">
-    </div>
-    <div class="d-none d-xxl-block" style="height: 800px;"></div>
-    <div class="d-none d-lg-block d-xxl-none" style="height: 600px;"></div>
-    <div class="d-none d-md-block d-lg-none" style="height: 450px;"></div>
-    <div class="d-md-none" style="height: 400px;"></div>
-</section>
+<div class="container">
+    <style>
+        .gambar {
+            width: 1000px;
+            height: 350px;
+            margin-left: 150px
+        }
+
+        @media screen and (max-width: 992px) {
+            .gambar {
+                height: 200px
+            }
+        }
+    </style>
+    <img class="gambar" src="{{ asset('assets/frontend/img/profile/1659512336.jpg') }}" alt="" srcset="">
+</div>
 
 <section class="container py-5 my-1 my-md-4 my-lg-5">
     <div class="row">

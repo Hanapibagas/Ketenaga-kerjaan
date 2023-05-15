@@ -5,14 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class DataSet extends Model
+class MetaData extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'title',
-        'slug',
-        'tanggal',
+        'nama_master_data',
         'deskripsi',
-        'file',
+        'file_data'
     ];
 }

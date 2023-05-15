@@ -13,13 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('metadata_variabels', function (Blueprint $table) {
+        Schema::create('meta_data', function (Blueprint $table) {
             $table->id();
             $table->string('nama_master_data');
-            $table->string('klasifikasi');
-            $table->string('tipe_data');
-            $table->string('instansi');
-            $table->string('status');
+            $table->longText('deskripsi');
+            $table->string('file_data');
             $table->timestamps();
         });
     }
@@ -31,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('metadata_variabels');
+        Schema::dropIfExists('meta_data');
     }
 };
