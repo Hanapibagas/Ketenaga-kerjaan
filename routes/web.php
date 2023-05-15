@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\PengumumanController;
 use App\Http\Controllers\Admin\PublikasiController;
 use App\Http\Controllers\Admin\UnduhdataController;
 use App\Http\Controllers\AdminSuper\DashboarAdminSuperdController;
+use App\Http\Controllers\AdminSuper\DataSeAdminSupertController;
 use App\Http\Controllers\AdminSuper\LaporanAdminSuperController;
 use App\Http\Controllers\AdminSuper\MetadataVariableAdminSuperController;
 use App\Http\Controllers\AdminSuper\PermintaanDataAdminSuperController;
@@ -152,6 +153,14 @@ Route::middleware('auth', 'checkroll:admin web')->group(function () {
 // super admin
 Route::middleware('auth', 'checkroll:admin super')->group(function () {
     Route::get('/admin-super', [DashboarAdminSuperdController::class, 'index_admin_super'])->name('index_admin_super');
+    //
+    Route::get('/dataset-admin-super', [DataSeAdminSupertController::class, 'index_dataset'])->name('index_dataset');
+    Route::get('/dataset-admin-super/create', [DataSeAdminSupertController::class, 'create_dataset'])->name('create_dataset');
+    Route::get('/dataset-admin-super/edit/{id}', [DataSeAdminSupertController::class, 'edit_metadata'])->name('edit_metadata');
+    Route::post('/dataset-admin-super/post', [DataSeAdminSupertController::class, 'store_metadata'])->name('store_metadata');
+    Route::put('/dataset-admin-super/update/{id}', [DataSeAdminSupertController::class, 'update_metadata'])->name('update_metadata');
+    Route::delete('/dataset-admin-super/delete/{id}', [DataSeAdminSupertController::class, 'destroy_metadata'])->name('destroy_metadata');
+    //
     //
     Route::get('/laporan-admin-super', [LaporanAdminSuperController::class, 'index_laporan_admin_super'])->name('index_laporan_admin_super');
     Route::get('/export-laporan-admin-super', [LaporanAdminSuperController::class, 'export_excel_laporan'])->name('export_excel_laporan');
