@@ -158,8 +158,10 @@ Route::middleware('auth', 'checkroll:admin super')->group(function () {
     //
     Route::get('/metadata-admin-super', [MetadataVariableAdminSuperController::class, 'index_metadata'])->name('index_metadata');
     Route::get('/metadata-admin-super/create', [MetadataVariableAdminSuperController::class, 'create_metadata'])->name('create_metadata');
-    Route::post('/metadata-admin-super/post', [MetadataVariableAdminSuperController::class, 'store_pengguna'])->name('store_pengguna');
-    Route::delete('/metadata-admin-super/delete/{id}', [MetadataVariableAdminSuperController::class, 'destroy_pengguna'])->name('destroy_pengguna');
+    Route::get('/metadata-admin-super/edit/{id}', [MetadataVariableAdminSuperController::class, 'edit_metadata'])->name('edit_metadata');
+    Route::post('/metadata-admin-super/post', [MetadataVariableAdminSuperController::class, 'store_metadata'])->name('store_metadata');
+    Route::put('/metadata-admin-super/update/{id}', [MetadataVariableAdminSuperController::class, 'update_metadata'])->name('update_metadata');
+    Route::delete('/metadata-admin-super/delete/{id}', [MetadataVariableAdminSuperController::class, 'destroy_metadata'])->name('destroy_metadata');
     //
     Route::get('/permintaan-admin-super', [PermintaanDataAdminSuperController::class, 'index_permintaan'])->name('index_permintaan');
     Route::get('/permintaan-admin-super/details/{id}', [PermintaanDataAdminSuperController::class, 'edit_permintaan'])->name('edit_permintaan');

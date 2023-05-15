@@ -59,13 +59,13 @@ Metadata variable
                                     @foreach ( $metadata as $data )
                                     <tr>
                                         <td>{{ $data->nama_master_data }}</td>
-                                        <td>{{ Str::limit($data->deskripsi,50) }}</td>
+                                        <td>{!! Str::limit($data->deskripsi,50) !!}</td>
                                         <td>
-                                            <a href="{{ route('edit_berita', $data->id) }}" class="btn btn-primary">
+                                            <a href="{{ route('edit_metadata', $data->id) }}" class="btn btn-primary">
                                                 <i class="lni lni-pencil" style="color: whitesmoke"></i>
                                             </a>
                                             <input type="hidden" class="delete_id" value="{{ $data->id }}">
-                                            <form action="{{ route('destroy_berita', $data->id) }}" method="POST"
+                                            <form action="{{ route('destroy_metadata', $data->id) }}" method="POST"
                                                 class="d-inline">
                                                 @csrf
                                                 @method('DELETE')
@@ -120,7 +120,7 @@ Metadata variable
                         };
                         $.ajax({
                             type: "DELETE",
-                            url: 'berita/delete/' + deleteid,
+                            url: 'metadata-admin-super/delete/' + deleteid,
                             data: data,
                             success: function (response) {
                                 swal(response.status, {

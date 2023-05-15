@@ -36,42 +36,41 @@ Berita
                 <div class="col-lg-12">
                     <div class="card-style mb-30">
                         <h6 class="mb-25">Infografis</h6>
-                        <form action="{{ route('update_berita', $berita->id) }}" method="POST"
+                        <form action="{{ route('update_metadata', $metadata->id) }}" method="POST"
                             enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
                             <div class="row">
                                 <div class="col-12">
                                     <div class="input-style-1">
-                                        <label>Judul</label>
-                                        <input type="text" value="{{ $berita->title }}" name="title"
+                                        <label>Nama Master Data</label>
+                                        <input type="text" class="@error('nama_master_data') is-invalid @enderror"
+                                            value="{{ $metadata->nama_master_data }}" name="nama_master_data"
                                             placeholder="Masukkan Judul" />
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <div class="input-style-1">
-                                        <label>Tanggal</label>
-                                        <input type="date" name="tanggal" value="{{ $berita->tanggal }}"
-                                            placeholder="Masukkan Tanggal" />
+                                        @error('nama_master_data')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="input-style-1">
                                         <label>Deskripsi</label>
-                                        <textarea name="deskripsi">{!! $berita->deskripsi !!}</textarea>
+                                        <textarea class="@error('deskripsi') is-invalid @enderror"
+                                            name="deskripsi">{!! $metadata->deskripsi !!}</textarea>
+                                        @error('deskripsi')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="input-style-1">
-                                        <label>Gambar</label>
-                                        <small>Pilih gambar jika ingin mengubah</small>
-                                        <input name="gambar" type="file" value="{{ $berita->gambar }}">
-                                        @if ( $berita->gambar )
-                                        <img src="{{ Storage::url($berita->gambar) }}" alt=""
-                                            style="width: 150px; margin-top: 10px" class="img-thumbnail">
-                                        @else
-                                        <p>Gambar Tidak Sedia</p>
-                                        @endif
+                                        <label>File Data</label>
+                                        <small>Pilih file jika ingin mengubah</small>
+                                        <input name="file_data" type="file" value="{{ $metadata->file_data }}">
                                     </div>
                                 </div>
                                 <div class="col-12">

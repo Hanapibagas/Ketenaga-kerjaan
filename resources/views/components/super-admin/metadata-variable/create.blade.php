@@ -35,16 +35,16 @@ Metadata variable
             <div class="row">
                 <div class="col-lg-12">
                     <div class="card-style mb-30">
-                        <h6 class="mb-25">Berita</h6>
-                        <form action="{{ route('store_berita') }}" method="POST" enctype="multipart/form-data">
+                        <h6 class="mb-25">Metadata</h6>
+                        <form action="{{ route('store_metadata') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="row">
                                 <div class="col-12">
                                     <div class="input-style-1">
                                         <label>Nama Master Data</label>
-                                        <input type="text" class="@error('title') is-invalid @enderror" name="title"
-                                            placeholder="Masukkan Nama Master Data" />
-                                        @error('title')
+                                        <input type="text" class="@error('nama_master_data') is-invalid @enderror"
+                                            name="nama_master_data" placeholder="Masukkan Nama Master Data" />
+                                        @error('nama_master_data')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
@@ -66,7 +66,7 @@ Metadata variable
                                 <div class="col-12">
                                     <div class="input-style-1">
                                         <label>File Data</label>
-                                        <input name="gambar" type="file" />
+                                        <input name="file_data" type="file" />
                                     </div>
                                 </div>
                                 <div class="col-12">
