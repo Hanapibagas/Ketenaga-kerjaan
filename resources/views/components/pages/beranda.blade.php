@@ -4,6 +4,17 @@
 Beranda
 @endsection
 
+@push('css')
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<script>
+    $(document).ready(function(){
+		$("#myModal").modal('show');
+	});
+</script>
+@endpush
+
 @section('content')
 <style>
     .test {
@@ -232,8 +243,19 @@ Beranda
             </div>
 
             <div class="col-sm-6 col-sm-6 col-9 order-md-2 order-1">
-                <img src="{{ asset('assets/frontend/img/logo.png') }}"
-                    style="width: 60%; margin-left: 26%; margin-top: " alt="" srcset="">
+                <style>
+                    .makassar {
+                        width: 60%;
+                        margin-left: 90px;
+                    }
+
+                    @media screen and (max-width: 992px) {
+                        .makassar {
+                            margin-left: 50px;
+                        }
+                    }
+                </style>
+                <img class="makassar" src="{{ asset('assets/frontend/img/logo.png') }}" alt="" srcset="">
             </div>
         </div>
     </div>
@@ -382,5 +404,28 @@ Beranda
             </div>
         </div>
     </section>
+</div>
+
+<div id="myModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Pengumuman !</h5>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="card-img">
+                    <img src="{{ Storage::url($pengumuman->gambar) }}" alt="Image">
+                </div>
+                <div class="card-body">
+                    <h2 class="h4 mb-2">
+                        <a href="storage/{{ $pengumuman->file }}" target="_blank" class="stretched-link">{{
+                            $pengumuman->title
+                            }}</a>
+                    </h2>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 @endsection

@@ -70,8 +70,6 @@ Route::post('/permohonan-keberatan-publik/form-keberatan-publik/store', [HomeCon
 
 Route::get('/keran-sulsel', [HomeController::class, 'keran_sulsel'])->name('keran_sulsel');
 Route::get('/lapor', [HomeController::class, 'lapor'])->name('lapor');
-//
-Route::get('/pengumuman', [HomeController::class, 'pengumuman'])->name('pengumuman');
 
 Auth::routes();
 

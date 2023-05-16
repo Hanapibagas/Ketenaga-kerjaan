@@ -24,30 +24,18 @@
 
     @include('includes.pages.style')
 
-
 </head>
 
 <body id="body">
-    {{-- <style>
-        .biru {
-            background-position: top right;
-            background-repeat: no-repeat;
-            background-image: url('assets/frontend/img/data/bg-header-data.14a37054.png');
-        }
-    </style> --}}
     <main class="page-wrapper">
 
         @include('includes.pages.navbar')
 
         @yield('content')
 
-        {{-- <img class="aos-animate" src="{{ asset('assets/frontend/img/data/bg-side-data.24d7ba5a.png') }}" alt="">
-        --}}
-
     </main>
 
     @include('includes.pages.footer')
-
     <a href="#top" class="btn-scroll-top" data-scroll>
         <span class="btn-scroll-top-tooltip text-muted fs-sm me-2">Top</span>
         <i class="btn-scroll-top-icon bx bx-chevron-up"></i>
@@ -55,7 +43,6 @@
 
     @stack('js')
     @include('includes.pages.script')
-
 
 </body>
 

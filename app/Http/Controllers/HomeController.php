@@ -20,8 +20,9 @@ class HomeController extends Controller
 {
     public function index()
     {
+        $pengumuman = Pengumuman::first();
         $berita = Berita::paginate(10);
-        return view('components.pages.beranda', compact('berita'));
+        return view('components.pages.beranda', compact('berita', 'pengumuman'));
     }
 
     public function profile()
@@ -137,12 +138,6 @@ class HomeController extends Controller
     {
         $publlikasi = Publikasi::where('slug', $slug)->firstOrFail();
         return view('components.pages.publikasi.details-publikasi', compact('publlikasi'));
-    }
-
-    public function pengumuman()
-    {
-        $pengumuman = Pengumuman::all();
-        return view('components.pages.pengumuman', compact('pengumuman'));
     }
 
     // permohonan publik

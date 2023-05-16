@@ -103,10 +103,6 @@
                                     || request()->is('berita/*') ? 'active' : '' }}">Berita</a>
                             </li>
                             <li>
-                                <a href=" {{ route('pengumuman') }}"
-                                    class="dropdown-item {{ request()->is('pengumuman') ? 'active' : '' }}">Pengumuman</a>
-                            </li>
-                            <li>
                                 <a href="{{ route('login') }}"
                                     class="dropdown-item {{ request()->is('login') ? 'active' : '' }}">Login</a>
                             </li>

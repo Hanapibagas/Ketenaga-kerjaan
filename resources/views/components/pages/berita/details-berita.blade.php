@@ -22,13 +22,9 @@ Berita
         <h1>{{ $berita->title }}</h1>
     </section>
 
-    <section class="jarallax" data-jarallax data-speed="0.4">
-        <div class="jarallax-img" style="background-image: url({{ Storage::url($berita->gambar) }});"></div>
-        <div class="d-none d-xxl-block" style="height: 800px;"></div>
-        <div class="d-none d-lg-block d-xxl-none" style="height: 600px;"></div>
-        <div class="d-none d-md-block d-lg-none" style="height: 450px;"></div>
-        <div class="d-md-none" style="height: 400px;"></div>
-    </section>
+    <div class="container">
+        <img src="{{ Storage::url($berita->gambar) }}" alt="" srcset="">
+    </div>
 
     <section class="container py-5 my-1 my-md-4 my-lg-5">
         <div class="row">
