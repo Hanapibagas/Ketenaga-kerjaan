@@ -36,12 +36,7 @@ Route::get('/ppid/profile-ppid', [HomeController::class, 'ppid'])->name('ppid_ho
 Route::get('/ppid/rekapitulasi-permohonan-informasi-publik', [HomeController::class, 'rekapitulasi_home'])->name('rekapitulasi_home');
 
 //route data
-Route::get('/data', [HomeController::class, 'index_dataset'])->name('index_dataset');
-Route::get('/data/guest', [HomeController::class, 'permintaan_data_guest'])->name('permintaan_data_guest');
-Route::get('/data/auth', [HomeController::class, 'permintaan_data_auth'])->name('permintaan_data_auth');
-Route::get('/data/unduh-data', [HomeController::class, 'unduh_data'])->name('unduh_data');
-Route::get('/data/unduh-data/{slug}', [HomeController::class, 'details_dataset'])->name('details_dataset');
-Route::get('/data/data-integrasi', [HomeController::class, 'data_integrasi'])->name('data_integrasi');
+Route::get('/dataset', [HomeController::class, 'dataset'])->name('index_dataset_home');
 
 //route infografis
 Route::get('/infografis', [HomeController::class, 'index_infografis'])->name('index_infografis');
@@ -65,7 +60,6 @@ Route::get('/publikasi/pencarian-publikasi', [HomeController::class, 'pencarian_
 Route::get('/publikasi/{slug}', [HomeController::class, 'details_pulikasi'])->name('details_pulikasi');
 
 // route layanan
-Route::get('/simpas', [HomeController::class, 'simpas'])->name('simpas');
 Route::get('/permohonan-informasi-publik', [HomeController::class, 'permohonan_publik'])->name('permohonan_publik');
 Route::get('/permohonan-informasi-publik/form-pengaduan-publik', [HomeController::class, 'form_permohonan_publik'])->name('form_permohonan_publik');
 Route::post('/permohonan-informasi-publik/form-pengaduan-publik/store', [HomeController::class, 'store_permohonan_publik'])->name('store_permohonan_publik');

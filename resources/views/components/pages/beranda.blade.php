@@ -5,9 +5,28 @@ Beranda
 @endsection
 
 @section('content')
-<section class="jarallax position-relative d-flex align-items-center min-vh-100 bg-light mb-5 py-lg-5 pt-5"
-    style="background-image: url(assets/img/landing/digital-agency/hero-bg.svg);" data-jarallax
-    data-img-position="0% 100%" data-speed="0.5">
+<style>
+    .test {
+        background-repeat: no-repeat;
+        background-position: top left;
+        background-size: contain;
+        background-image: url('assets/frontend/img/data/bg-side-data.24d7ba5a.png');
+    }
+
+    .biru {
+        background-position: top right;
+        background-repeat: no-repeat;
+        background-image: url('assets/frontend/img/data/bg-header-data.14a37054.png');
+    }
+
+    .helo {
+        background-position: top right;
+        background-repeat: no-repeat;
+        background-image: url('assets/frontend/img/data/bg-side-info.1c2950dc.png');
+    }
+</style>
+
+<section class="jarallax position-relative d-flex align-items-center min-vh-100 mb-5 py-lg-5 pt-5 trans biru">
     <div class="container position-relative zindex-5 py-5">
         <div class="row justify-content-md-start justify-content-center">
             <div
@@ -220,20 +239,21 @@ Beranda
     </div>
 </section>
 
-<section class="container pb-4 pb-lg-5 mb-3" id="benefits">
-    <div class="d-flex align-items-center justify-content-md-between justify-content-center mb-md-4 mb-3">
-        <h2 class="mb-0">Slide foto</h2>
+<div class="test">
+    <section class="container pb-4 pb-lg-5 mb-3" id="benefits">
+        <div class="d-flex align-items-center justify-content-md-between justify-content-center mb-md-4 mb-3">
+            <h2 class="mb-0">Slide foto</h2>
 
-        <div class="d-md-flex d-none ms-4">
-            <button type="button" id="prev-brand" class="btn btn-prev btn-icon btn-sm me-2">
-                <i class="bx bx-chevron-left"></i>
-            </button>
-            <button type="button" id="next-brand" class="btn btn-next btn-icon btn-sm ms-2">
-                <i class="bx bx-chevron-right"></i>
-            </button>
+            <div class="d-md-flex d-none ms-4">
+                <button type="button" id="prev-brand" class="btn btn-prev btn-icon btn-sm me-2">
+                    <i class="bx bx-chevron-left"></i>
+                </button>
+                <button type="button" id="next-brand" class="btn btn-next btn-icon btn-sm ms-2">
+                    <i class="bx bx-chevron-right"></i>
+                </button>
+            </div>
         </div>
-    </div>
-    <div class="swiper mx-n2" data-swiper-options='{
+        <div class="swiper mx-n2" data-swiper-options='{
                     "slidesPerView": 2,
                     "navigation": {
                         "prevEl": "#prev-brand",
@@ -263,94 +283,104 @@ Beranda
                         }
                     }
                     }'>
-        <div class="swiper-wrapper">
-            @foreach ( $berita as $data )
-            <div class="swiper-slide py-3">
-                <a class="card card-body card-hover px-2 mx-2">
-                    <img src="{{ Storage::url($data->gambar) }}" class="d-block mx-auto my-2" width="154" alt="Brand">
-                </a>
+            <div class="swiper-wrapper">
+                @foreach ( $berita as $data )
+                <div class="swiper-slide py-3">
+                    <a class="card card-body card-hover px-2 mx-2">
+                        <img src="{{ Storage::url($data->gambar) }}" class="d-block mx-auto my-2" width="154"
+                            alt="Brand">
+                    </a>
+                </div>
+                @endforeach
             </div>
-            @endforeach
+            <div class="swiper-pagination position-relative pt-3 mt-4 d-md-none d-flex"></div>
         </div>
-        <div class="swiper-pagination position-relative pt-3 mt-4 d-md-none d-flex"></div>
-    </div>
-</section>
+    </section>
+</div>
 
-<section class="container mb-5 pt-2 pb-3 py-md-4 py-lg-5">
-    <h2 class="h1 pb-2 pb-lg-0 mb-4 mb-lg-5 text-center">Prakata dari Kepala Dinas</h2>
-    <div class="row">
-        <div class="col-md-8">
-            <div class="card border-0 shadow-sm p-4 p-xxl-5 mb-4 me-xxl-4">
-                <div class="pb-4 mb-2">
-                    <span class="btn btn-icon btn-primary btn-lg shadow-primary pe-none">
-                        <i class="bx bxs-quote-left"></i>
-                    </span>
-                </div>
-                <div class="swiper mx-0 mb-md-n2 mb-xxl-n3" data-swiper-options='{
-                            "spaceBetween": 24,
-                            "pager": true,
-                            "tabs": true,
-                            "navigation": {
-                            "prevEl": ".page-prev",
-                            "nextEl": ".page-next"
-                            }
-                        }'>
-                    <div class="swiper-wrapper">
-                        <div class="swiper-slide h-auto" data-swiper-tab="#author-1">
-                            <figure class="card h-100 position-relative border-0 bg-transparent">
-                                <blockquote class="card-body p-0 mb-0">
-                                    <p class="fs-lg mb-0" style="text-indent: 20px">Website ini dibuat sebagai salah
-                                        satu media informasi, agar
-                                        masyarakat mendapatkan informasi yang cukup mengenai pelayanan perizinan,
-                                        potensi daerah, peluang investasi, promosi, dan realisasi investasi sesuai tugas
-                                        yang diamanahkan (Peraturan Gubernur No.50 Tahun 2021) tentang kedudukan,
-                                        susunan organisasi, tugas, fungsi serta tata kerja perangkat daerah. Bahwa hak
-                                        memperoleh informasi merupakan hak asasi manusia dan keterbukaan informasi
-                                        publik merupakan salah satu ciri negara demokratis yang berorientasi pada
-                                        peningkatan kualitas kinerja organisasi yang berkualitas, profesional, dan tata
-                                        kelola pemerintahan yang berbasis elektronik. Dinas Tenaga Kerja dan
-                                        Transmigrasi Provinsi Sulawesi Selatan, menyajikan data dan informasi serta
-                                        pelayanan yang berkualitas, sehingga mendorong iklim investasi yang kondusif
-                                        untuk pertumbuhan ekonomi dan kesejahteraan masyarakat. Dengan adanya website
-                                        ini, kami menyampaikan terima kasih kepada seluruh Perangkat Daerah Pemerintah
-                                        Provinsi Sulawesi Selatan, Pemerintah Kabupaten/Kota serta kepada seluruh
-                                        stakeholder yang telah memberikan dukungan penuh terhadap keberadaan website
-                                        www.disnaker.sulselprov.go.id. Terima kasih
-                                    </p>
-                                </blockquote>
-                                <figcaption class="card-footer border-0 d-sm-flex d-md-none w-100 pb-2">
-                                    <div class="d-flex align-items-center border-end-sm pe-sm-4 me-sm-2">
-                                        <img src="{{ asset('assets/frontend/img/profile/kepala-dinas.jpg') }}"
-                                            width="48" class="rounded-circle" alt="Ralph Edwards">
-                                        <div class="ps-3">
-                                            <h5 class="fw-semibold lh-base mb-0">Ardiles Saggaf, S.STP, M.Si</h5>
-                                            <span class="fs-sm text-muted">Kepala Dinas Tenaga Kerja dan Transmigrasi
-                                                Pemerintah Provinsi Sulawesi Selatan</span>
+<div class="helo">
+    <section class="container mb-5 pt-2 pb-3 py-md-4 py-lg-5">
+        <h2 class="h1 pb-2 pb-lg-0 mb-4 mb-lg-5 text-center">Prakata dari Kepala Dinas</h2>
+        <div class="row">
+            <div class="col-md-8">
+                <div class="card border-0 shadow-sm p-4 p-xxl-5 mb-4 me-xxl-4">
+                    <div class="pb-4 mb-2">
+                        <span class="btn btn-icon btn-primary btn-lg shadow-primary pe-none">
+                            <i class="bx bxs-quote-left"></i>
+                        </span>
+                    </div>
+                    <div class="swiper mx-0 mb-md-n2 mb-xxl-n3" data-swiper-options='{
+                                "spaceBetween": 24,
+                                "pager": true,
+                                "tabs": true,
+                                "navigation": {
+                                "prevEl": ".page-prev",
+                                "nextEl": ".page-next"
+                                }
+                            }'>
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide h-auto" data-swiper-tab="#author-1">
+                                <figure class="card h-100 position-relative border-0 bg-transparent">
+                                    <blockquote class="card-body p-0 mb-0">
+                                        <p class="fs-lg mb-0" style="text-indent: 20px">Website ini dibuat sebagai salah
+                                            satu media informasi, agar
+                                            masyarakat mendapatkan informasi yang cukup mengenai pelayanan perizinan,
+                                            potensi daerah, peluang investasi, promosi, dan realisasi investasi sesuai
+                                            tugas
+                                            yang diamanahkan (Peraturan Gubernur No.50 Tahun 2021) tentang kedudukan,
+                                            susunan organisasi, tugas, fungsi serta tata kerja perangkat daerah. Bahwa
+                                            hak
+                                            memperoleh informasi merupakan hak asasi manusia dan keterbukaan informasi
+                                            publik merupakan salah satu ciri negara demokratis yang berorientasi pada
+                                            peningkatan kualitas kinerja organisasi yang berkualitas, profesional, dan
+                                            tata
+                                            kelola pemerintahan yang berbasis elektronik. Dinas Tenaga Kerja dan
+                                            Transmigrasi Provinsi Sulawesi Selatan, menyajikan data dan informasi serta
+                                            pelayanan yang berkualitas, sehingga mendorong iklim investasi yang kondusif
+                                            untuk pertumbuhan ekonomi dan kesejahteraan masyarakat. Dengan adanya
+                                            website
+                                            ini, kami menyampaikan terima kasih kepada seluruh Perangkat Daerah
+                                            Pemerintah
+                                            Provinsi Sulawesi Selatan, Pemerintah Kabupaten/Kota serta kepada seluruh
+                                            stakeholder yang telah memberikan dukungan penuh terhadap keberadaan website
+                                            www.disnaker.sulselprov.go.id. Terima kasih
+                                        </p>
+                                    </blockquote>
+                                    <figcaption class="card-footer border-0 d-sm-flex d-md-none w-100 pb-2">
+                                        <div class="d-flex align-items-center border-end-sm pe-sm-4 me-sm-2">
+                                            <img src="{{ asset('assets/frontend/img/profile/kepala-dinas.jpg') }}"
+                                                width="48" class="rounded-circle" alt="Ralph Edwards">
+                                            <div class="ps-3">
+                                                <h5 class="fw-semibold lh-base mb-0">Ardiles Saggaf, S.STP, M.Si</h5>
+                                                <span class="fs-sm text-muted">Kepala Dinas Tenaga Kerja dan
+                                                    Transmigrasi
+                                                    Pemerintah Provinsi Sulawesi Selatan</span>
+                                            </div>
                                         </div>
-                                    </div>
-                                </figcaption>
-                            </figure>
+                                    </figcaption>
+                                </figure>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 d-none d-md-block">
+                <div class="swiper-tabs">
+                    <div id="author-1" class="card bg-transparent border-0 swiper-tab active">
+                        <div class="card-body p-0 rounded-3 bg-size-cover bg-repeat-0 bg-position-top-center"
+                            style="background-image: url({{ asset('assets/frontend/img/profile/kepala-dinas.jpg') }});">
+                        </div>
+                        <div class="card-footer d-flex w-100 border-0 pb-0">
+                            <div class="border-start-xl ps-xl-4 ms-xl-2">
+                                <h5 class="fw-semibold lh-base mb-0">Ardiles Saggaf, S.STP, M.Si</h5>
+                                <span class="fs-sm text-muted">Kepala Dinas Tenaga Kerja dan Transmigrasi Pemerintah
+                                    Provinsi Sulawesi Selatan</span>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="col-md-4 d-none d-md-block">
-            <div class="swiper-tabs">
-                <div id="author-1" class="card bg-transparent border-0 swiper-tab active">
-                    <div class="card-body p-0 rounded-3 bg-size-cover bg-repeat-0 bg-position-top-center"
-                        style="background-image: url({{ asset('assets/frontend/img/profile/kepala-dinas.jpg') }});">
-                    </div>
-                    <div class="card-footer d-flex w-100 border-0 pb-0">
-                        <div class="border-start-xl ps-xl-4 ms-xl-2">
-                            <h5 class="fw-semibold lh-base mb-0">Ardiles Saggaf, S.STP, M.Si</h5>
-                            <span class="fs-sm text-muted">Kepala Dinas Tenaga Kerja dan Transmigrasi Pemerintah
-                                Provinsi Sulawesi Selatan</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+    </section>
+</div>
 @endsection

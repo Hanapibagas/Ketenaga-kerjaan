@@ -47,37 +47,9 @@ class HomeController extends Controller
         return view('components.pages.rekapitulasi_permohonan_informasi_publik', compact('labels', 'jumlah'));
     }
 
-    public function index_dataset()
+    public function dataset()
     {
-        return view('components.pages.dataset');
-    }
-
-    //
-    public function permintaan_data_guest()
-    {
-        return view('components.pages.dataset.permintaan-data-guest');
-    }
-    public function permintaan_data_auth()
-    {
-        return view('components.pages.dataset.permintaan-data-auth');
-    }
-
-    public function unduh_data()
-    {
-        $datset = DataSet::all();
-        return view('components.pages.dataset.unduh-data', compact('datset'));
-    }
-
-    public function details_dataset($slug)
-    {
-        $datset = DataSet::paginate(3);
-        $details = DataSet::where('slug', $slug)->firstOrFail();
-        return view('components.pages.dataset.details-undu-data', compact('datset', 'details'));
-    }
-
-    public function data_integrasi()
-    {
-        return view('components.pages.dataset.data-integrasi');
+        return view('components.pages.dataset.dataset');
     }
 
     //infografis
@@ -171,11 +143,6 @@ class HomeController extends Controller
     {
         $pengumuman = Pengumuman::all();
         return view('components.pages.pengumuman', compact('pengumuman'));
-    }
-
-    public function simpas()
-    {
-        return view('components.pages.layanan.simpas');
     }
 
     // permohonan publik

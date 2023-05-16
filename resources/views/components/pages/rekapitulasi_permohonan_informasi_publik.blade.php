@@ -11,7 +11,7 @@ PPID
             <a href="{{ route('index_home') }}"><i class="bx bx-home-alt fs-lg me-1"></i>Beranda</a>
         </li>
         <li class="breadcrumb-item">
-            <a >PPID</a>
+            <a>PPID</a>
         </li>
         <li class="breadcrumb-item active" aria-current="page">Rekapitulasi Permohonan Informasi Publik</li>
     </ol>
@@ -25,30 +25,41 @@ PPID
     <canvas id="myChart" height="100px"></canvas>
 </div>
 
-<section class="container py-5 my-1 my-md-4 my-lg-5">
-    <div class="row">
-        <div class="col-lg-12 mb-4 mb-lg-0">
-            <div class="pe-lg-4 me-lg-3 pe-xl-0 me-xl-0">
-                <h2 class="h1 mb-4">About</h2>
-                <table id="table" class="table">
-                    <thead>
-                        <tr>
-                            <th>Bulan</th>
-                            <th>Jumlah</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ( $labels as $key => $label )
-                        <tr>
-                            <td>{{ $label }}</td>
-                            <td>{{ $jumlah[$key] }}</td>
-                        </tr>
-                        @endforeach
-                </table>
+<style>
+    .helo {
+        background-position: top right;
+        background-repeat: no-repeat;
+        /* background-size: contain; */
+        background-image: url('assets/frontend/img/data/bg-side-info.1c2950dc.png');
+    }
+</style>
+
+<div class="helo">
+    <section class="container py-5 my-1 my-md-4 my-lg-5">
+        <div class="row">
+            <div class="col-lg-12 mb-4 mb-lg-0">
+                <div class="pe-lg-4 me-lg-3 pe-xl-0 me-xl-0">
+                    <h2 class="h1 mb-4">About</h2>
+                    <table id="table" class="table">
+                        <thead>
+                            <tr>
+                                <th>Bulan</th>
+                                <th>Jumlah</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ( $labels as $key => $label )
+                            <tr>
+                                <td>{{ $label }}</td>
+                                <td>{{ $jumlah[$key] }}</td>
+                            </tr>
+                            @endforeach
+                    </table>
+                </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
+</div>
 @endsection
 
 @push('js')

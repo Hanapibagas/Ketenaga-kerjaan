@@ -13,5 +13,6 @@ class DataSet extends Model
         'kategori',
         'opd',
         'satuan',
+        'slug',
     ];
 }

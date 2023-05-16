@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('nama_dataset');
             $table->string('kategori');
+            $table->string('slug');
             $table->string('opd');
             $table->string('satuan');
             $table->timestamps();

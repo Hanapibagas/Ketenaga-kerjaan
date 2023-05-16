@@ -21,32 +21,59 @@ PPID
     <h1>Profil PPID.</h1>
 </section>
 
-<section class="container py-5 my-1 my-md-4 my-lg-5">
-    <div class="row">
-        <div class="col-lg-12 mb-4 mb-lg-0">
-            <div class="pe-lg-4 me-lg-3 pe-xl-0 me-xl-0">
-                <style>
-                    .about {
-                        margin-top: -110px
-                    }
+<style>
+    .test {
+        background-repeat: no-repeat;
+        background-position: top left;
+        background-size: contain;
+        background-image: url('assets/frontend/img/data/bg-side-data.24d7ba5a.png');
+    }
 
-                    @media screen and (max-width: 992px) {
+    .biru {
+        background-position: top right;
+        background-repeat: no-repeat;
+        background-image: url('assets/frontend/img/data/bg-header-data.14a37054.png');
+    }
+
+    .helo {
+        background-position: top right;
+        background-repeat: no-repeat;
+        background-image: url('assets/frontend/img/data/bg-side-info.1c2950dc.png');
+    }
+</style>
+
+<div class="helo">
+    <section class="container py-5 my-1 my-md-4 my-lg-5">
+        <div class="row">
+            <div class="col-lg-12 mb-4 mb-lg-0">
+                <div class="pe-lg-4 me-lg-3 pe-xl-0 me-xl-0">
+                    <style>
                         .about {
-                            margin-top: -70px
+                            margin-top: -110px
                         }
-                    }
-                </style>
-                <h2 class="h1 mb-4 about">About</h2>
-                <p class="fs-lg mb-0" style="text-indent: 20px">PPID adalah kepanjangan dari Pejabat Pengelola Informasi
-                    dan Dokumentasi, dimana PPID berfungsi sebagai pengelola dan penyampai dokumen yang dimiliki oleh
-                    badan publik sesuai dengan amanat UU 14/2008 tentang Keterbukaan Informasi Publik. Dengan keberadaan
-                    PPID maka masyarakat yang akan menyampaikan permohonan informasi lebih mudah dan tidak berbelit
-                    karena dilayani lewat satu pintu. Pejabat Pengelola Informasi dan Dokumentasi (PPID) adalah pejabat
-                    yang bertanggung jawab di bidang penyimpanan, pendokumentasian, penyediaan, dan/atau pelayanan
-                    informasi di badan publik.
-                </p>
+
+                        @media screen and (max-width: 992px) {
+                            .about {
+                                margin-top: -70px
+                            }
+                        }
+                    </style>
+                    <h2 class="h1 mb-4 about">About</h2>
+                    <p class="fs-lg mb-0" style="text-indent: 20px">PPID adalah kepanjangan dari Pejabat Pengelola
+                        Informasi
+                        dan Dokumentasi, dimana PPID berfungsi sebagai pengelola dan penyampai dokumen yang dimiliki
+                        oleh
+                        badan publik sesuai dengan amanat UU 14/2008 tentang Keterbukaan Informasi Publik. Dengan
+                        keberadaan
+                        PPID maka masyarakat yang akan menyampaikan permohonan informasi lebih mudah dan tidak berbelit
+                        karena dilayani lewat satu pintu. Pejabat Pengelola Informasi dan Dokumentasi (PPID) adalah
+                        pejabat
+                        yang bertanggung jawab di bidang penyimpanan, pendokumentasian, penyediaan, dan/atau pelayanan
+                        informasi di badan publik.
+                    </p>
+                </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
+</div>
 @endsection

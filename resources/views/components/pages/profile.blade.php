@@ -5,6 +5,22 @@ Profile
 @endsection
 
 @section('content')
+<style>
+    .test {
+        background-repeat: no-repeat;
+        background-position: top left;
+        background-size: contain;
+        background-image: url('assets/frontend/img/data/bg-side-data.24d7ba5a.png');
+    }
+
+    .helo {
+        background-position: top right;
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-image: url('assets/frontend/img/data/bg-side-info.1c2950dc.png');
+    }
+</style>
+
 <nav class="container py-4 mb-lg-2 mt-lg-3 tes" aria-label="breadcrumb">
     <ol class="breadcrumb mb-0">
         <li class="breadcrumb-item">
@@ -35,44 +51,53 @@ Profile
     <img class="gambar" src="{{ asset('assets/frontend/img/profile/1659512336.jpg') }}" alt="" srcset="">
 </div>
 
-<section class="container py-5 my-1 my-md-4 my-lg-5">
-    <div class="row">
-        <div class="col-lg-12 mb-4 mb-lg-0">
-            <div class="pe-lg-4 me-lg-3 pe-xl-0 me-xl-0">
-                <h2 class="h1 mb-4">About</h2>
-                <p class="fs-lg mb-0" style="text-indent: 20px">Dinas Tenaga Kerja dan Transmigrasi Provinsi Sulawesi
-                    Selatan adalah salah satu
-                    unit kerja yang melaksanakan urusan pemerintahan bidang tenaga kerja dan urusan pemerintahan bidang
-                    transmigrasi sesuai dengan Peraturan Daerah Provinsi Sulawesi Selatan Nomor 11 Tahun 2019 tentang
-                    Perubahan atas Peraturan Daerah Provinsi Sulawesi Selatan Nomor 10 Tahun 2016 tentang Pembentukan
-                    dan Susunan Perangkat Daerah yang kemudian ditindaklanjuti dengan : <br> <br>
+<div class="helo">
+    <section class="container py-5 my-1 my-md-4 my-lg-5">
+        <div class="row">
+            <div class="col-lg-12 mb-4 mb-lg-0">
+                <div class="pe-lg-4 me-lg-3 pe-xl-0 me-xl-0">
+                    <h2 class="h1 mb-4">About</h2>
+                    <p class="fs-lg mb-0" style="text-indent: 20px">Dinas Tenaga Kerja dan Transmigrasi Provinsi
+                        Sulawesi
+                        Selatan adalah salah satu
+                        unit kerja yang melaksanakan urusan pemerintahan bidang tenaga kerja dan urusan pemerintahan
+                        bidang
+                        transmigrasi sesuai dengan Peraturan Daerah Provinsi Sulawesi Selatan Nomor 11 Tahun 2019
+                        tentang
+                        Perubahan atas Peraturan Daerah Provinsi Sulawesi Selatan Nomor 10 Tahun 2016 tentang
+                        Pembentukan
+                        dan Susunan Perangkat Daerah yang kemudian ditindaklanjuti dengan : <br> <br>
 
-                    <b>Peraturan Gubernur Sulawesi Selatan Nomor 17 Tahun 2018</b> tentang Organisasi dan Tata Kerja
-                    Unit
-                    Pelaksana Teknis Balai Pelatihan Kerja pada Dinas Tenaga Kerja dan Transmigrasi Provinsi Sulawesi
-                    Selatan ; <br>
-                    <b>Peraturan Gubernur Sulawesi Selatan Nomor 18 Tahun 2018</b> tentang Organisasi dan Tata Kerja
-                    Unit
-                    Pelaksana Teknis Pengawasan Ketenagakerjaan dan Keselamatan Kerja Wilayah pada Dinas Tenaga Kerja
-                    dan Transmigrasi Provinsi Sulawesi Selatan ;<br>
-                    <b>Peraturan Gubernur Sulawesi Selatan Nomor 68 Tahun 2020</b> tentang Organisasi dan Tata Kerja
-                    Unit
-                    Layanan Terpadu Satu Atap Pekerja Migran Indonesia pada Dinas Tenaga Kerja dan Transmigrasi Provinsi
-                    Sulawesi Selatan ; dan <br>
-                    <b>Peraturan Gubernur Sulawesi Selatan Nomor 50 Tahun 2021</b> tentang Kedudukan, Susunan
-                    Organisasi, Tugas
-                    dan Fungsi serta Tata Kerja Perangkat Daerah Provinsi Sulawesi Selatan.
-                </p>
+                        <b>Peraturan Gubernur Sulawesi Selatan Nomor 17 Tahun 2018</b> tentang Organisasi dan Tata Kerja
+                        Unit
+                        Pelaksana Teknis Balai Pelatihan Kerja pada Dinas Tenaga Kerja dan Transmigrasi Provinsi
+                        Sulawesi
+                        Selatan ; <br>
+                        <b>Peraturan Gubernur Sulawesi Selatan Nomor 18 Tahun 2018</b> tentang Organisasi dan Tata Kerja
+                        Unit
+                        Pelaksana Teknis Pengawasan Ketenagakerjaan dan Keselamatan Kerja Wilayah pada Dinas Tenaga
+                        Kerja
+                        dan Transmigrasi Provinsi Sulawesi Selatan ;<br>
+                        <b>Peraturan Gubernur Sulawesi Selatan Nomor 68 Tahun 2020</b> tentang Organisasi dan Tata Kerja
+                        Unit
+                        Layanan Terpadu Satu Atap Pekerja Migran Indonesia pada Dinas Tenaga Kerja dan Transmigrasi
+                        Provinsi
+                        Sulawesi Selatan ; dan <br>
+                        <b>Peraturan Gubernur Sulawesi Selatan Nomor 50 Tahun 2021</b> tentang Kedudukan, Susunan
+                        Organisasi, Tugas
+                        dan Fungsi serta Tata Kerja Perangkat Daerah Provinsi Sulawesi Selatan.
+                    </p>
+                </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
+</div>
 
 <section class="container d-sm-flex align-items-center justify-content-between pb-4 mb-2 mb-lg-3">
     <h1 class="mb-sm-0 me-sm-3">Profile Kepala Dinas</h1>
 </section>
 
-<section class="bg-secondary py-5">
+<section class="bg-secondary py-5 test">
     <div class="container py-2 py-md-4 py-lg-5">
         <div class="row">
             <div class="col-md-4">
@@ -110,7 +135,6 @@ Profile
         </div>
     </div>
 </section>
-
 
 <section class="container py-5 my-md-3 my-lg-5">
     <h2 class="h1 text-center pt-1 pb-3 mb-3 mb-lg-4">Profile Pegawai</h2>

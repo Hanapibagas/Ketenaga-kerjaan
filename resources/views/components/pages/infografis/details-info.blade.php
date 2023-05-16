@@ -36,22 +36,6 @@ Infografis
                         {!! $infografis->deskripsi !!}
                     </p>
                     <hr class="my-4">
-                    {{-- <div class="d-flex align-items-center justify-content-between">
-                        <div class="d-flex align-items-center text-muted">
-                            <div class="d-flex align-items-center me-3">
-                                <i class="bx bx-like fs-lg me-1"></i>
-                                <span class="fs-sm">8</span>
-                            </div>
-                            <div class="d-flex align-items-center me-3">
-                                <i class="bx bx-comment fs-lg me-1"></i>
-                                <span class="fs-sm">7</span>
-                            </div>
-                            <div class="d-flex align-items-center">
-                                <i class="bx bx-share-alt fs-lg me-1"></i>
-                                <span class="fs-sm">4</span>
-                            </div>
-                        </div>
-                    </div> --}}
                 </div>
             </div>
         </div>

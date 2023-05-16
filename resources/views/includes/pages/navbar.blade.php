@@ -46,7 +46,7 @@
                     </li>
                     <li
                         class="nav-item {{ request()->is('data') || request()->is('data/guest') || request()->is('data/unduh-data') || request()->is('data/unduh-data/*') || request()->is('data/data-integrasi') ? 'active' : '' }}">
-                        <a href="{{ route('index_dataset') }}" class="nav-link">Dataset</a>
+                        <a href="{{ route('index_dataset_home') }}" class="nav-link">Dataset</a>
                     </li>
                     <li
                         class="nav-item {{ request()->is('infografis') || request()->is('infografis/*') ? 'active' : '' }}">
@@ -57,7 +57,7 @@
                             data-bs-toggle="dropdown">Layanan</a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a href="{{ route('simpas') }}"
+                                <a href="https://disnakertrans.sulselprov.go.id/simpas"
                                     class="dropdown-item {{ request()->is('simpas') ? 'active' : '' }}">SIMPAS</a>
                             </li>
                             <li>

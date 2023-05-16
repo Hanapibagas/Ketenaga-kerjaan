@@ -28,20 +28,21 @@
 </head>
 
 <body id="body">
+    {{-- <style>
+        .biru {
+            background-position: top right;
+            background-repeat: no-repeat;
+            background-image: url('assets/frontend/img/data/bg-header-data.14a37054.png');
+        }
+    </style> --}}
     <main class="page-wrapper">
 
         @include('includes.pages.navbar')
-            {{-- <style>
-                .aos-animate {
-                    margin-top: -100% opacity: 1;
-                    transform: translateZ(0);
-                    -webkit-transform: translateZ(0);
-                    tra
-                }
-            </style>
-            <img class="aos-animate" src="{{ asset('assets/frontend/img/data/bg-header-data.14a37054.png') }}" alt=""> --}}
 
         @yield('content')
+
+        {{-- <img class="aos-animate" src="{{ asset('assets/frontend/img/data/bg-side-data.24d7ba5a.png') }}" alt="">
+        --}}
 
     </main>
 
