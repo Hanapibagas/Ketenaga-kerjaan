@@ -5,6 +5,22 @@ Layanan
 @endsection
 
 @section('content')
+<style>
+    .test {
+        background-repeat: no-repeat;
+        background-position: top left;
+        background-size: contain;
+        background-image: url('assets/frontend/img/data/bg-side-data.24d7ba5a.png');
+    }
+
+    .helo {
+        background-position: top right;
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-image: url('assets/frontend/img/data/bg-side-info.1c2950dc.png');
+    }
+</style>
+
 <nav class="container py-4 mb-lg-2 mt-lg-3 tes" aria-label="breadcrumb">
     <ol class="breadcrumb mb-0">
         <li class="breadcrumb-item">
@@ -19,14 +35,24 @@ Layanan
     <h1>Pengajuan Keberatan Informasi Publik.</h1>
 </section>
 
-<section class="jarallax" data-jarallax data-speed="0.4">
-    <div class="jarallax-img" style="background-image: url({{ asset('assets/frontend/img/profile/pengajuan.jpg') }});">
+<div class="test">
+    <div class="container">
+        <style>
+            .gambar {
+                width: 1000px;
+                height: 350px;
+                margin-left: 150px
+            }
+
+            @media screen and (max-width: 992px) {
+                .gambar {
+                    height: 200px
+                }
+            }
+        </style>
+        <img class="gambar" src="{{ asset('assets/frontend/img/data/1660197534.jpg') }}" alt="" srcset="">
     </div>
-    <div class="d-none d-xxl-block" style="height: 800px;"></div>
-    <div class="d-none d-lg-block d-xxl-none" style="height: 600px;"></div>
-    <div class="d-none d-md-block d-lg-none" style="height: 450px;"></div>
-    <div class="d-md-none" style="height: 400px;"></div>
-</section>
+</div>
 
 <section class="container py-5 my-1 my-md-4 my-lg-5">
     <div class="row">

@@ -57,7 +57,7 @@
                             data-bs-toggle="dropdown">Layanan</a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a href="https://disnakertrans.sulselprov.go.id/simpas"
+                                <a target="_blank" href="https://disnakertrans.sulselprov.go.id/simpas"
                                     class="dropdown-item {{ request()->is('simpas') ? 'active' : '' }}">SIMPAS</a>
                             </li>
                             <li>
@@ -71,12 +71,12 @@
                                     Keberatan Informasi Publik</a>
                             </li>
                             <li>
-                                <a href="{{ route('keran_sulsel') }}"
+                                <a target="_blank" href="https://open.spotify.com/show/0B02I0NT07Rq8p4HwAZhEX"
                                     class="dropdown-item {{ request()->is('keran-sulsel') ? 'active' : '' }}">KERAN
                                     SULSEL</a>
                             </li>
                             <li>
-                                <a href="{{ route('lapor') }}"
+                                <a target="_blank" href="https://www.lapor.go.id/"
                                     class="dropdown-item {{ request()->is('lapor') ? 'active' : '' }}">LAPOR!</a>
                             </li>
                         </ul>
@@ -92,6 +92,11 @@
                             <li>
                                 <a href="{{ route('index_publikasi') }}"
                                     class="dropdown-item {{ request()->is('publikasi') ? 'active' : '' }}">Publikasi</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('index_publikasi') }}"
+                                    class="dropdown-item {{ request()->is('publikasi') ? 'active' : '' }}">Permintaan
+                                    Data</a>
                             </li>
                             <li>
                                 <a href="{{ route('index_berita') }}" class="dropdown-item {{ request()->is('berita')
