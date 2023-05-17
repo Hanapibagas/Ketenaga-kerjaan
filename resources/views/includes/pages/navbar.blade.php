@@ -93,11 +93,20 @@
                                 <a href="{{ route('index_publikasi') }}"
                                     class="dropdown-item {{ request()->is('publikasi') ? 'active' : '' }}">Publikasi</a>
                             </li>
+                            @guest
                             <li>
-                                <a href="{{ route('index_publikasi') }}"
-                                    class="dropdown-item {{ request()->is('publikasi') ? 'active' : '' }}">Permintaan
+                                <a href="{{ route('permintaan_home_guest') }}"
+                                    class="dropdown-item {{ request()->is('permintaan-data') ? 'active' : '' }}">Permintaan
                                     Data</a>
                             </li>
+                            @endguest
+                            @auth
+                            <li>
+                                <a href="{{ route('permintaan_data_home') }}"
+                                    class="dropdown-item {{ request()->is('permintaan-data') ? 'active' : '' }}">Permintaan
+                                    Data</a>
+                            </li>
+                            @endauth
                             <li>
                                 <a href="{{ route('index_berita') }}" class="dropdown-item {{ request()->is('berita')
                                     || request()->is('berita/*') ? 'active' : '' }}">Berita</a>

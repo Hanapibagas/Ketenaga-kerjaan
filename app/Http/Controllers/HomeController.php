@@ -230,4 +230,14 @@ class HomeController extends Controller
     {
         return view('components.pages.layanan.lapor');
     }
+
+    public function permintaan_home_guest()
+    {
+        return view('components.pages.permintaan-data.guest_permintaan_data');
+    }
+
+    public function permintaan_data_home()
+    {
+        return view('components.pages.permintaan-data.permintaan_data');
+    }
 }

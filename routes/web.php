@@ -19,7 +19,6 @@ use App\Http\Controllers\AdminSuper\TambahPenggunaAdminSuperController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Kab\DashboardKabKotaController;
 use App\Http\Controllers\Kab\LaporanAdminKabController;
-use App\Http\Controllers\Kab\PermintaanController;
 use App\Http\Controllers\kab\UpdatePasswordAdminKabController;
 use App\Http\Controllers\Masyarakat\DasboardMasyrakatController;
 use App\Http\Controllers\Masyarakat\PermintaanDataMasyarakatController;
@@ -70,6 +69,9 @@ Route::post('/permohonan-keberatan-publik/form-keberatan-publik/store', [HomeCon
 
 Route::get('/keran-sulsel', [HomeController::class, 'keran_sulsel'])->name('keran_sulsel');
 Route::get('/lapor', [HomeController::class, 'lapor'])->name('lapor');
+
+Route::get('/permintaan-data', [HomeController::class, 'permintaan_data_home'])->name('permintaan_data_home');
+Route::get('/permintaan-data/guest', [HomeController::class, 'permintaan_home_guest'])->name('permintaan_home_guest');
 
 Auth::routes();
 
