@@ -36,15 +36,15 @@ Metadata variable
                 <div class="col-lg-12">
                     <div class="card-style mb-30">
                         <h6 class="mb-25">Metadata</h6>
-                        <form action="{{ route('store_metadata') }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('store_dataset') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="row">
                                 <div class="col-12">
                                     <div class="input-style-1">
-                                        <label>Nama Master Data</label>
-                                        <input type="text" class="@error('nama_master_data') is-invalid @enderror"
-                                            name="nama_master_data" placeholder="Masukkan Nama Master Data" />
-                                        @error('nama_master_data')
+                                        <label>Nama Dataset</label>
+                                        <input type="text" class="@error('nama_dataset') is-invalid @enderror"
+                                            name="nama_dataset" placeholder="Masukkan Nama Dataset" />
+                                        @error('nama_dataset')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
@@ -53,10 +53,10 @@ Metadata variable
                                 </div>
                                 <div class="col-12">
                                     <div class="input-style-1">
-                                        <label>Nama Master Data</label>
-                                        <input type="text" class="@error('nama_master_data') is-invalid @enderror"
-                                            name="nama_master_data" placeholder="Masukkan Nama Master Data" />
-                                        @error('nama_master_data')
+                                        <label>Kategori</label>
+                                        <input type="text" class="@error('kategori') is-invalid @enderror"
+                                            name="kategori" placeholder="Masukkan Kategori" />
+                                        @error('kategori')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
@@ -65,10 +65,10 @@ Metadata variable
                                 </div>
                                 <div class="col-12">
                                     <div class="input-style-1">
-                                        <label>Nama Master Data</label>
-                                        <input type="text" class="@error('nama_master_data') is-invalid @enderror"
-                                            name="nama_master_data" placeholder="Masukkan Nama Master Data" />
-                                        @error('nama_master_data')
+                                        <label>OPD</label>
+                                        <input type="text" class="@error('opd') is-invalid @enderror" name="opd"
+                                            placeholder="Masukkan OPD" />
+                                        @error('opd')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
@@ -77,10 +77,10 @@ Metadata variable
                                 </div>
                                 <div class="col-12">
                                     <div class="input-style-1">
-                                        <label>Nama Master Data</label>
-                                        <input type="text" class="@error('nama_master_data') is-invalid @enderror"
-                                            name="nama_master_data" placeholder="Masukkan Nama Master Data" />
-                                        @error('nama_master_data')
+                                        <label>Satuan</label>
+                                        <input type="text" class="@error('satuan') is-invalid @enderror" name="satuan"
+                                            placeholder="Masukkan Satuan" />
+                                        @error('satuan')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>

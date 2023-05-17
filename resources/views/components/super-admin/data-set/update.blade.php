@@ -36,18 +36,18 @@ Berita
                 <div class="col-lg-12">
                     <div class="card-style mb-30">
                         <h6 class="mb-25">Infografis</h6>
-                        <form action="{{ route('update_metadata', $metadata->id) }}" method="POST"
+                        <form action="{{ route('update_dataset', $dataset->id) }}" method="POST"
                             enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
                             <div class="row">
                                 <div class="col-12">
                                     <div class="input-style-1">
-                                        <label>Nama Master Data</label>
-                                        <input type="text" class="@error('nama_master_data') is-invalid @enderror"
-                                            value="{{ $metadata->nama_master_data }}" name="nama_master_data"
-                                            placeholder="Masukkan Judul" />
-                                        @error('nama_master_data')
+                                        <label>Nama Dataset</label>
+                                        <input type="text" value="{{ $dataset->nama_dataset }}"
+                                            class="@error('nama_dataset') is-invalid @enderror" name="nama_dataset"
+                                            placeholder="Masukkan Nama Dataset" />
+                                        @error('nama_dataset')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
@@ -56,10 +56,11 @@ Berita
                                 </div>
                                 <div class="col-12">
                                     <div class="input-style-1">
-                                        <label>Deskripsi</label>
-                                        <textarea class="@error('deskripsi') is-invalid @enderror"
-                                            name="deskripsi">{!! $metadata->deskripsi !!}</textarea>
-                                        @error('deskripsi')
+                                        <label>Kategori</label>
+                                        <input type="text" value="{{ $dataset->kategori }}"
+                                            class="@error('kategori') is-invalid @enderror" name="kategori"
+                                            placeholder="Masukkan Kategori" />
+                                        @error('kategori')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
@@ -68,14 +69,33 @@ Berita
                                 </div>
                                 <div class="col-12">
                                     <div class="input-style-1">
-                                        <label>File Data</label>
-                                        <small>Pilih file jika ingin mengubah</small>
-                                        <input name="file_data" type="file" value="{{ $metadata->file_data }}">
+                                        <label>OPD</label>
+                                        <input type="text" value="{{ $dataset->opd }}"
+                                            class="@error('opd') is-invalid @enderror" name="opd"
+                                            placeholder="Masukkan OPD" />
+                                        @error('opd')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="input-style-1">
+                                        <label>Satuan</label>
+                                        <input type="text" value="{{ $dataset->satuan }}"
+                                            class="@error('satuan') is-invalid @enderror" name="satuan"
+                                            placeholder="Masukkan Satuan" />
+                                        @error('satuan')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="button-group d-flex justify-content-center flex-wrap">
-                                        <button class="main-btn primary-btn btn-hover m-2">
+                                        <button class="main-btn success-btn btn-hover m-2">
                                             Simpan Data
                                         </button>
                                     </div>

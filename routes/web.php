@@ -150,10 +150,10 @@ Route::middleware('auth', 'checkroll:admin super')->group(function () {
     //
     Route::get('/dataset-admin-super', [DataSeAdminSupertController::class, 'index_dataset'])->name('index_dataset');
     Route::get('/dataset-admin-super/create', [DataSeAdminSupertController::class, 'create_dataset'])->name('create_dataset');
-    Route::get('/dataset-admin-super/edit/{id}', [DataSeAdminSupertController::class, 'edit_metadata'])->name('edit_metadata');
-    Route::post('/dataset-admin-super/post', [DataSeAdminSupertController::class, 'store_metadata'])->name('store_metadata');
-    Route::put('/dataset-admin-super/update/{id}', [DataSeAdminSupertController::class, 'update_metadata'])->name('update_metadata');
-    Route::delete('/dataset-admin-super/delete/{id}', [DataSeAdminSupertController::class, 'destroy_metadata'])->name('destroy_metadata');
+    Route::get('/dataset-admin-super/edit/{id}', [DataSeAdminSupertController::class, 'edit_dataset'])->name('edit_dataset');
+    Route::post('/dataset-admin-super/post', [DataSeAdminSupertController::class, 'store_dataset'])->name('store_dataset');
+    Route::put('/dataset-admin-super/update/{id}', [DataSeAdminSupertController::class, 'update_dataset'])->name('update_dataset');
+    Route::delete('/dataset-admin-super/delete/{id}', [DataSeAdminSupertController::class, 'destroy_dataset'])->name('destroy_dataset');
     //
     //
     Route::get('/laporan-admin-super', [LaporanAdminSuperController::class, 'index_laporan_admin_super'])->name('index_laporan_admin_super');
