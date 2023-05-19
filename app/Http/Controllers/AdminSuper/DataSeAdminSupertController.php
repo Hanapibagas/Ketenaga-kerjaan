@@ -74,4 +74,9 @@ class DataSeAdminSupertController extends Controller
 
         return response()->json(['status' => 'Selamat data infografis berhasil dihapus']);
     }
+
+    public function details(Request $request, $id)
+    {
+        
+    }
 }

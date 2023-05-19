@@ -38,14 +38,21 @@ class HomeController extends Controller
 
     public function rekapitulasi_home()
     {
+        $labels = ['January', 'February', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
+        $mounth = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'];
+
+        $ditolak = PermohonanInformasiPublik::where('status', 'Mohon Maaf Permintaan Anda Di Tolak')->count();
+        $totalditerima = PermohonanInformasiPublik::where('status', 'Telah DiTerima')->count();
+        $totaldiproses = PermohonanInformasiPublik::where('status', 'Menunggu Verifikasi')->count();
         $permohonan = PermohonanInformasiPublik::select(PermohonanInformasiPublik::raw("COUNT(*) as count"), PermohonanInformasiPublik::raw("MONTHNAME(created_at) as month_name"))
             ->whereYear('created_at', date('Y'))
             ->groupBy(PermohonanInformasiPublik::raw("created_at"))
             ->pluck('count', 'month_name');
 
-        $labels = $permohonan->keys();
         $jumlah = $permohonan->values();
-        return view('components.pages.rekapitulasi_permohonan_informasi_publik', compact('labels', 'jumlah'));
+        $tolak = $ditolak;
+
+        return view('components.pages.rekapitulasi_permohonan_informasi_publik', compact('labels', 'jumlah', 'tolak'));
     }
 
     public function dataset()

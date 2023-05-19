@@ -24,7 +24,7 @@
                 <hr />
             </span>
             <li
-                class="nav-item {{ request()->is('dataset-admin-super') || request()->is('dataset-admin-super/create') || request()->is('dataset-admin-super/details/*') ? 'active' : '' }}">
+                class="nav-item {{ request()->is('dataset-admin-super') || request()->is('dataset-admin-super/create') || request()->is('dataset-admin-super/details/*') || request()->is('dataset-admin-super/edit/*') ? 'active' : '' }}">
                 <a href="{{ route('index_dataset') }}">
                     <span class="icon">
                         <svg width="18" height="20" viewBox="0 0 18 20" fill="none" xmlns="http://www.w3.org/2000/svg">

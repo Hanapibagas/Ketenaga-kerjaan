@@ -51,7 +51,7 @@ PPID
                             @foreach ( $labels as $key => $label )
                             <tr>
                                 <td>{{ $label }}</td>
-                                <td>{{ $jumlah[$key] }}</td>
+                                <td>{{ $jumlah }}</td>
                             </tr>
                             @endforeach
                     </table>
@@ -66,22 +66,74 @@ PPID
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
+{{-- <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> --}}
+
+{{-- <script>
+    const ctx = document.getElementById('myChart');
+
+    new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ['January', 'February', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober','November', 'Desember'],
+        datasets: [{
+          label: 'Diterima',
+          data: [12, 19, 3, 5, 2, 3],
+          borderWidth: 1
+        },{
+            label: 'Ditolak',
+          data: [12, 19, 3, 5, 2, 3],
+          borderWidth: 1
+        },
+        {
+        label: 'Pemohonan',
+          data: [12, 19, 3, 5, 2, 3],
+          borderWidth: 1
+        },{
+            label: 'Pemohonan',
+          data: [12, 19, 3, 5, 2, 3],
+          borderWidth: 1
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+</script> --}}
 <script type="text/javascript">
     var labels =  {{ Js::from($labels) }};
       var users =  {{ Js::from($jumlah) }};
+      var tolaks =  {{ Js::from($tolak) }};
 
       const data = {
         labels: labels,
         datasets: [{
-          label: 'Diagram Data Permohonan Informasi',
-          backgroundColor: 'rgb(255, 99, 132)',
-          borderColor: 'rgb(255, 99, 132)',
+          label: 'Pemohoan',
+          backgroundColor: 'rgb(0	, 255, 255)',
+          borderColor: 'rgb(0	, 255, 255)',
+          data: users,
+        },{
+            label: 'Diterima',
+          backgroundColor: 'rgb(0, 0, 255)',
+          borderColor: 'rgb(0, 0, 255)',
+          data: users,
+        },{
+            label: 'Ditolak',
+          backgroundColor: 'rgb(255, 255, 132)',
+          borderColor: 'rgb(255, 255, 132)',
+          data: tolaks,
+        },{
+            label: 'Proses',
+          backgroundColor: 'rgb(255, 0, 0)',
+          borderColor: 'rgb(255, 0, 0)',
           data: users,
         }]
       };
-
       const config = {
-        type: 'line',
+        type: 'bar',
         data: data,
         options: {}
       };

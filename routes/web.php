@@ -18,6 +18,7 @@ use App\Http\Controllers\AdminSuper\PermintaanDataAdminSuperController;
 use App\Http\Controllers\AdminSuper\TambahPenggunaAdminSuperController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Kab\DashboardKabKotaController;
+use App\Http\Controllers\Kab\DatasetAdminKabController;
 use App\Http\Controllers\Kab\LaporanAdminKabController;
 use App\Http\Controllers\kab\UpdatePasswordAdminKabController;
 use App\Http\Controllers\Masyarakat\DasboardMasyrakatController;
@@ -179,6 +180,10 @@ Route::middleware('auth', 'checkroll:admin super')->group(function () {
 // admin kab/kota
 Route::middleware('auth', 'checkroll:kab/kota')->group(function () {
     Route::get('/admin-kab-kota', [DashboardKabKotaController::class, 'dashboard_kab'])->name('dashboard_kab');
+    //
+    Route::get('/dataset-admin-kab-kota', [DatasetAdminKabController::class, 'index_kab'])->name('index_kab');
+    Route::post('/dataset-admin-kab-kota/cari-tahun/{id}', [DatasetAdminKabController::class, 'filter_dataset_kab'])->name('filter_dataset_kab');
+    Route::get('/dataset-admin-kab-kota/{id}', [DatasetAdminKabController::class, 'details_dataset_kab'])->name('details_dataset_kab');
     //
     Route::get('pengguna-admin-kab-kota', [UpdatePasswordAdminKabController::class, 'index_password'])->name('index_password');
     Route::put('pengguna-admin-kab-kota/post', [UpdatePasswordAdminKabController::class, 'update_password'])->name('update_password');
