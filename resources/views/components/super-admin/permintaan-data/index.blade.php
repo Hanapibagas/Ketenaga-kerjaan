@@ -60,7 +60,7 @@ Permintaan Data
                                             {{ $data->status }}
                                         </td>
                                         <td>
-                                            <a href="{{ route('edit_permintaan', $data->id) }}" class="btn btn-primary">
+                                            <a href="{{ route('edit_permintaan', $data->id) }}" class="btn btn-info">
                                                 <i class="lni lni-eye" style="color: whitesmoke"></i>
                                             </a>
                                         </td>

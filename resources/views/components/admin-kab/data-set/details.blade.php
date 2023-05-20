@@ -105,7 +105,7 @@ Dataset
                                 margin-bottom: 12px;
                             }
                         </style>
-                        <a href="{{ route('create_berita') }}"
+                        <a href="{{ route('tambah_dataset_kab_admin', $dataset->id) }}"
                             class="main-btn success-btn rounded-md btn-hover tambah">+
                             Tambah Data</a>
                         <div class="row">
@@ -113,7 +113,6 @@ Dataset
                                 <table id="table" class="table">
                                     <thead>
                                         <tr>
-                                            <th>Nama Dataset</th>
                                             <th>Variabel</th>
                                             <th>Tahun</th>
                                             <th>Laki-Laki</th>
@@ -123,7 +122,6 @@ Dataset
                                     <tbody>
                                         @foreach ( $detailsdataset as $data )
                                         <tr>
-                                            <td>{{ Str::limit($data->Dataset->nama_dataset, 25) }}</td>
                                             <td>{{ $data->variable }}</td>
                                             <td>{{ $data->tahun }}</td>
                                             <td>{{ $data->laki_laki }}</td>

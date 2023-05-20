@@ -4,6 +4,7 @@ namespace App\Http\Controllers\AdminSuper;
 
 use App\Http\Controllers\Controller;
 use App\Models\DataSet;
+use App\Models\DetailsDataset;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -75,8 +76,21 @@ class DataSeAdminSupertController extends Controller
         return response()->json(['status' => 'Selamat data infografis berhasil dihapus']);
     }
 
-    public function details(Request $request, $id)
+    public function details_dataset_admin_super(Request $request, $id)
     {
-        
+        $dataset = DataSet::where('id', $id)->first();
+        $detailsdataset = DetailsDataset::all();
+
+        return view('components.super-admin.data-set.details', compact('dataset', 'detailsdataset'));
+    }
+
+    public function filter_dataset_admin_super(Request $request, $id)
+    {
+        $tahun = $request->tahun;
+
+        $dataset = DataSet::where('id', $id)->first();
+        $detailsdataset = DetailsDataset::whereYear('tahun', $tahun)->where('dataset_id', $id)->get();
+
+        return view('components.super-admin.data-set.details', compact('dataset', 'detailsdataset'));
     }
 }

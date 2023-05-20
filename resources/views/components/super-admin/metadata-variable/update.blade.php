@@ -1,7 +1,7 @@
 @extends('layouts.dashboardadminsuper')
 
 @section('title')
-Berita
+Metadata
 @endsection
 
 @section('content')
@@ -11,7 +11,7 @@ Berita
             <div class="row align-items-center">
                 <div class="col-md-6">
                     <div class="title mb-30">
-                        <h2>Tambah Berita</h2>
+                        <h2>Tambah Metadata</h2>
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -19,7 +19,7 @@ Berita
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item">
-                                    <a href="{{ route('dashboard_berita') }}">
+                                    <a href="{{ route('index_metadata') }}">
                                         <i>
                                             <- Kembali </i>
                                     </a>
@@ -35,7 +35,7 @@ Berita
             <div class="row">
                 <div class="col-lg-12">
                     <div class="card-style mb-30">
-                        <h6 class="mb-25">Infografis</h6>
+                        <h6 class="mb-25">Metadata</h6>
                         <form action="{{ route('update_metadata', $metadata->id) }}" method="POST"
                             enctype="multipart/form-data">
                             @csrf
@@ -75,8 +75,8 @@ Berita
                                 </div>
                                 <div class="col-12">
                                     <div class="button-group d-flex justify-content-center flex-wrap">
-                                        <button class="main-btn primary-btn btn-hover m-2">
-                                            Simpan Data
+                                        <button class="main-btn success-btn btn-hover m-2">
+                                            Simpan Data Baru
                                         </button>
                                     </div>
                                 </div>

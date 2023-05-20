@@ -51,7 +51,7 @@ Dataset
                                         <td>{{ $data->satuan }}</td>
                                         <td>
                                             <a href="{{ route('details_dataset_kab', $data->id) }}"
-                                                class="btn btn-primary">
+                                                class="btn btn-info">
                                                 <i class="lni lni-eye" style="color: whitesmoke"></i>
                                             </a>
                                         </td>

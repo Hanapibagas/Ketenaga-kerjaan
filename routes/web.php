@@ -155,6 +155,8 @@ Route::middleware('auth', 'checkroll:admin super')->group(function () {
     Route::post('/dataset-admin-super/post', [DataSeAdminSupertController::class, 'store_dataset'])->name('store_dataset');
     Route::put('/dataset-admin-super/update/{id}', [DataSeAdminSupertController::class, 'update_dataset'])->name('update_dataset');
     Route::delete('/dataset-admin-super/delete/{id}', [DataSeAdminSupertController::class, 'destroy_dataset'])->name('destroy_dataset');
+    Route::get('/dataset-admin-super/details/{id}', [DataSeAdminSupertController::class, 'details_dataset_admin_super'])->name('details_dataset_admin_super');
+    Route::post('/dataset-admin-super/cari-tahun/{id}', [DataSeAdminSupertController::class, 'filter_dataset_admin_super'])->name('filter_dataset_admin_super');
     //
     //
     Route::get('/laporan-admin-super', [LaporanAdminSuperController::class, 'index_laporan_admin_super'])->name('index_laporan_admin_super');
@@ -184,6 +186,8 @@ Route::middleware('auth', 'checkroll:kab/kota')->group(function () {
     Route::get('/dataset-admin-kab-kota', [DatasetAdminKabController::class, 'index_kab'])->name('index_kab');
     Route::post('/dataset-admin-kab-kota/cari-tahun/{id}', [DatasetAdminKabController::class, 'filter_dataset_kab'])->name('filter_dataset_kab');
     Route::get('/dataset-admin-kab-kota/{id}', [DatasetAdminKabController::class, 'details_dataset_kab'])->name('details_dataset_kab');
+    Route::get('/dataset-admin-kab-kota/{id}/create', [DatasetAdminKabController::class, 'tambah_dataset_kab_admin'])->name('tambah_dataset_kab_admin');
+    Route::post('/dataset-admin-kan-kota/store', [DatasetAdminKabController::class, 'store_dataset_kab_admin'])->name('store_dataset_kab_admin');
     //
     Route::get('pengguna-admin-kab-kota', [UpdatePasswordAdminKabController::class, 'index_password'])->name('index_password');
     Route::put('pengguna-admin-kab-kota/post', [UpdatePasswordAdminKabController::class, 'update_password'])->name('update_password');

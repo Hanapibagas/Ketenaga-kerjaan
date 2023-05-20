@@ -1,17 +1,17 @@
 @extends('layouts.dashboardadminsuper')
 
 @section('title')
-Metadata variable
+Dataset
 @endsection
 
 @section('content')
 <section class="tab-components">
     <div class="container-fluid">
         <div class="title-wrapper pt-30">
-            <div class="row align-items-center">    
+            <div class="row align-items-center">
                 <div class="col-md-6">
                     <div class="title mb-30">
-                        <h2>Tambah Metadata</h2>
+                        <h2>Details Dataset</h2>
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -35,72 +35,99 @@ Metadata variable
             <div class="row">
                 <div class="col-lg-12">
                     <div class="card-style mb-30">
-                        <h6 class="mb-25">Metadata</h6>
-                        <form action="{{ route('store_dataset') }}" method="POST" enctype="multipart/form-data">
-                            @csrf
-                            <div class="row">
-                                <div class="col-12">
-                                    <div class="input-style-1">
-                                        <label>Nama Dataset</label>
-                                        <input type="text" class="@error('nama_dataset') is-invalid @enderror"
-                                            name="nama_dataset" placeholder="Masukkan Nama Dataset" />
-                                        @error('nama_dataset')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                        @enderror
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <div class="input-style-1">
-                                        <label>Kategori</label>
-                                        <input type="text" class="@error('kategori') is-invalid @enderror"
-                                            name="kategori" placeholder="Masukkan Kategori" />
-                                        @error('kategori')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                        @enderror
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <div class="input-style-1">
-                                        <label>OPD</label>
-                                        <input type="text" class="@error('opd') is-invalid @enderror" name="opd"
-                                            placeholder="Masukkan OPD" />
-                                        @error('opd')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                        @enderror
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <div class="input-style-1">
-                                        <label>Satuan</label>
-                                        <input type="text" class="@error('satuan') is-invalid @enderror" name="satuan"
-                                            placeholder="Masukkan Satuan" />
-                                        @error('satuan')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                        @enderror
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <div class="button-group d-flex justify-content-center flex-wrap">
-                                        <button class="main-btn success-btn btn-hover m-2">
-                                            Simpan Data
-                                        </button>
-                                    </div>
+                        <h6 class="mb-25">Dataset</h6>
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="input-style-1">
+                                    <label>Nama Dataset</label>
+                                    {{ $dataset->nama_dataset }}
                                 </div>
                             </div>
-                        </form>
+                            <div class="col-12">
+                                <div class="input-style-1">
+                                    <label>Kategori</label>
+                                    {{ $dataset->kategori }}
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="input-style-1">
+                                    <label>OPD</label>
+                                    {{ $dataset->opd }}
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="input-style-1">
+                                    <label>Satuan</label>
+                                    {{ $dataset->satuan }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card-style mb-30">
+                        <h6 class="mb-25">Tahun</h6>
+                        <div class="row">
+                            <form action="{{ route('filter_dataset_admin_super', $dataset->id) }}" method="POST">
+                                @csrf
+                                <div class="col-12">
+                                    <div class="input-style-1">
+                                        <label>Tahun</label>
+                                        @php
+                                        $year = date('Y');
+                                        @endphp
+                                        <select name="tahun" class="form-control">
+                                            <option value="-- Pilih tahun --">-- Pilih tahun --</option>
+                                            @for ($i=2018; $i <= $year; $i++) <option value="{{ $i }}"> {{ $i }}
+                                                </option>
+                                                @endfor
+                                        </select>
+                                    </div>
+                                    <style>
+                                        .tombol {
+                                            margin-left: 392px
+                                        }
+                                    </style>
+                                    <div class="col-12 tombol">
+                                        <div class="button-group d-flex justify-content-center flex-wrap">
+                                            <button class="main-btn success-btn btn-hover m-2">
+                                                Cari tahun
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="card-style mb-30">
+                        <div class="row">
+                            <div class="table-responsive">
+                                <table id="table" class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Variabel</th>
+                                            <th>Tahun</th>
+                                            <th>Laki-Laki</th>
+                                            <th>Perempuan</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ( $detailsdataset as $data )
+                                        <tr>
+                                            <td>{{ $data->variable }}</td>
+                                            <td>{{ $data->tahun }}</td>
+                                            <td>{{ $data->laki_laki }}</td>
+                                            <td>{{ $data->perempuan }}</td>
+                                        </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 </section>
 @endsection
 
@@ -108,5 +135,10 @@ Metadata variable
 <script src="https://cdn.ckeditor.com/4.19.1/standard/ckeditor.js"></script>
 <script>
     CKEDITOR.replace('deskripsi');
+</script>
+<script>
+    const dataTable = new simpleDatatables.DataTable("#table", {
+      searchable: true,
+    });
 </script>
 @endpush

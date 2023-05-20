@@ -30,7 +30,7 @@ Akun Pengguna
                             <ul class="buttons-group">
                                 <li class="breadcrumb-item">
                                     <a href="{{ route('create_pengguna') }}"
-                                        class="main-btn primary-btn rounded-md btn-hover">+ Tambah Data</a>
+                                        class="main-btn success-btn rounded-md btn-hover">+ Tambah Data</a>
                                 </li>
                             </ul>
                         </nav>

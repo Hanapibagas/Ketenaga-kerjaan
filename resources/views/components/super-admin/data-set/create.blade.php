@@ -1,7 +1,7 @@
 @extends('layouts.dashboardadminsuper')
 
 @section('title')
-Metadata variable
+Dataset
 @endsection
 
 @section('content')
@@ -11,7 +11,7 @@ Metadata variable
             <div class="row align-items-center">
                 <div class="col-md-6">
                     <div class="title mb-30">
-                        <h2>Tambah Metadata</h2>
+                        <h2>Tambah Dataset</h2>
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -35,7 +35,7 @@ Metadata variable
             <div class="row">
                 <div class="col-lg-12">
                     <div class="card-style mb-30">
-                        <h6 class="mb-25">Metadata</h6>
+                        <h6 class="mb-25">Dataset</h6>
                         <form action="{{ route('store_dataset') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="row">

@@ -68,7 +68,8 @@ Dataset
                                             <a href="{{ route('edit_dataset', $data->id) }}" class="btn btn-primary">
                                                 <i class="lni lni-pencil" style="color: whitesmoke"></i>
                                             </a>
-                                            <a href="{{ route('edit_metadata', $data->id) }}" class="btn btn-primary">
+                                            <a href="{{ route('details_dataset_admin_super', $data->id) }}"
+                                                class="btn btn-info">
                                                 <i class="lni lni-eye" style="color: whitesmoke"></i>
                                             </a>
                                             <input type="hidden" class="delete_id" value="{{ $data->id }}">
