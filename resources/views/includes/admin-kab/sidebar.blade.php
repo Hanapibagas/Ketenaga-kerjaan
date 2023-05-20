@@ -23,7 +23,8 @@
             <span class="divider">
                 <hr />
             </span>
-            <li class="nav-item {{ request()->is('dataset-admin-kab-kota') || request()->is('dataset-admin-kab-kota/*') ? 'active' : '' }}">
+            <li
+                class="nav-item {{ request()->is('dataset-admin-kab-kota') || request()->is('dataset-admin-kab-kota/*') || request()->is('dataset-admin-kab-kota/edit/*') ? 'active' : '' }}">
                 <a href="{{ route('index_kab') }}">
                     <span class="icon">
                         <svg width="18" height="20" viewBox="0 0 18 20" fill="none" xmlns="http://www.w3.org/2000/svg">

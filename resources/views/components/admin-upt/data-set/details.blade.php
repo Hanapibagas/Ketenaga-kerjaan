@@ -117,7 +117,6 @@ Dataset
                                             <th>Tahun</th>
                                             <th>Laki-Laki</th>
                                             <th>Perempuan</th>
-                                            <th>Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -127,12 +126,6 @@ Dataset
                                             <td>{{ $data->tahun }}</td>
                                             <td>{{ $data->laki_laki }}</td>
                                             <td>{{ $data->perempuan }}</td>
-                                            <td>
-                                                <a href="{{ route('edit_dataset_admin_kab', $data->id) }}"
-                                                    class="btn btn-primary">
-                                                    <i class="lni lni-pencil" style="color: whitesmoke"></i>
-                                                </a>
-                                            </td>
                                         </tr>
                                         @endforeach
                                     </tbody>

@@ -187,7 +187,9 @@ Route::middleware('auth', 'checkroll:kab/kota')->group(function () {
     Route::post('/dataset-admin-kab-kota/cari-tahun/{id}', [DatasetAdminKabController::class, 'filter_dataset_kab'])->name('filter_dataset_kab');
     Route::get('/dataset-admin-kab-kota/{id}', [DatasetAdminKabController::class, 'details_dataset_kab'])->name('details_dataset_kab');
     Route::get('/dataset-admin-kab-kota/{id}/create', [DatasetAdminKabController::class, 'tambah_dataset_kab_admin'])->name('tambah_dataset_kab_admin');
-    Route::post('/dataset-admin-kan-kota/store', [DatasetAdminKabController::class, 'store_dataset_kab_admin'])->name('store_dataset_kab_admin');
+    Route::post('/dataset-admin-kab-kota/store', [DatasetAdminKabController::class, 'store_dataset_kab_admin'])->name('store_dataset_kab_admin');
+    Route::get('/dataset-admin-kab-kota/edit/{id}', [DatasetAdminKabController::class, 'edit_dataset_admin_kab'])->name('edit_dataset_admin_kab');
+    Route::put('dataset-admin-kab-kota/update/{id}', [DatasetAdminKabController::class, 'update_dataset_admin_kab'])->name('update_dataset_admin_kab');
     //
     Route::get('pengguna-admin-kab-kota', [UpdatePasswordAdminKabController::class, 'index_password'])->name('index_password');
     Route::put('pengguna-admin-kab-kota/post', [UpdatePasswordAdminKabController::class, 'update_password'])->name('update_password');

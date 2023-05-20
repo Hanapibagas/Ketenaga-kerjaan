@@ -61,6 +61,30 @@ class DatasetAdminKabController extends Controller
             'perempuan' => $request->input('perempuan'),
         ]);
 
-        return redirect()->route('index_kab')->with('status', 'Selamat data berita berhasil ditambahkan');
+        return redirect()->route('index_kab')->with('status', 'Selamat data details dataset berita berhasil ditambahkan');
+    }
+
+    public function edit_dataset_admin_kab(Request $request, $id)
+    {
+        $dataset = DataSet::where('id', $id)->first();
+        $datasetall = DataSet::all();
+        $detailsdataset = DetailsDataset::where('id', $id)->first();
+
+        return view('components.admin-kab.data-set.update', compact('dataset', 'datasetall', 'detailsdataset'));
+    }
+
+    public function update_dataset_admin_kab(Request $request, $id)
+    {
+        $detailsdataset = DetailsDataset::where('id', $id)->first();
+
+        $detailsdataset->update([
+            'dataset_id' => $request->input('dataset_id'),
+            'variable' => $request->input('variable'),
+            'tahun' => $request->input('tahun'),
+            'laki_laki' => $request->input('laki_laki'),
+            'perempuan' => $request->input('perempuan'),
+        ]);
+
+        return redirect()->route('index_kab')->with('status', 'Selamat data details dataset berita berhasil diperbarui');
     }
 }
