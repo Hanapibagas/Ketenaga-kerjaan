@@ -25,6 +25,16 @@ Infografis
         background-size: contain;
         background-image: url('assets/frontend/img/data/bg-side-info.1c2950dc.png');
     }
+
+    .download {
+        margin-left: 132px
+    }
+
+    @media screen and (max-width: 992px) {
+        .download {
+            margin-left: 110px
+        }
+    }
 </style>
 
 
@@ -50,17 +60,6 @@ Infografis
         </div>
 
         <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 gx-3 gx-md-4 mt-n2 mt-sm-0">
-            <style>
-                .download {
-                    margin-left: 122px
-                }
-
-                @media screen and (max-width: 992px) {
-                    .download {
-                        margin-left: 110px
-                    }
-                }
-            </style>
             @foreach ( $infografis as $files )
             <div class="col pb-1 pb-lg-3 mb-4">
                 <article class="card h-100 border-0 shadow-sm">

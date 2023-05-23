@@ -1,4 +1,4 @@
-@extends('layouts.dashboardadminsuper')
+@extends('layouts.dashboardadminupt')
 
 @section('title')
 Dataset
@@ -36,7 +36,7 @@ Dataset
                 <div class="col-lg-12">
                     <div class="card-style mb-30">
                         <h6 class="mb-25">Dataset</h6>
-                        <form action="{{ route('update_dataset', $dataset->id) }}" method="POST"
+                        <form action="{{ route('update_dataset_admin_upt', $detailsdataset->id) }}" method="POST"
                             enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
@@ -44,10 +44,26 @@ Dataset
                                 <div class="col-12">
                                     <div class="input-style-1">
                                         <label>Nama Dataset</label>
-                                        <input type="text" value="{{ $dataset->nama_dataset }}"
-                                            class="@error('nama_dataset') is-invalid @enderror" name="nama_dataset"
-                                            placeholder="Masukkan Nama Dataset" />
-                                        @error('nama_dataset')
+                                        <select name="dataset_id" required class="form-control">
+                                            <option value="{{ $detailsdataset->Dataset->nama_dataset }}">{{
+                                                $detailsdataset->Dataset->nama_dataset }}
+                                            <option value="">-- Pilih Dataset --</option>
+                                            </option>
+                                            @foreach ( $datasetall as $datas )
+                                            <option value="{{ $datas->id }}">
+                                                {{ $datas->nama_dataset }}
+                                            </option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="input-style-1">
+                                        <label>Variabel</label>
+                                        <input type="text" class="@error('variable') is-invalid @enderror"
+                                            name="variable" value="{{ $detailsdataset->variable }}"
+                                            placeholder="Masukkan Data kategori" />
+                                        @error('variable')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
@@ -56,11 +72,11 @@ Dataset
                                 </div>
                                 <div class="col-12">
                                     <div class="input-style-1">
-                                        <label>Kategori</label>
-                                        <input type="text" value="{{ $dataset->kategori }}"
-                                            class="@error('kategori') is-invalid @enderror" name="kategori"
-                                            placeholder="Masukkan Kategori" />
-                                        @error('kategori')
+                                        <label>Tahun</label>
+                                        <input type="date" value="{{ $detailsdataset->tahun }}"
+                                            class="@error('tahun') is-invalid @enderror" name="tahun"
+                                            placeholder="Masukkan Data Tahun" />
+                                        @error('tahun')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
@@ -69,11 +85,11 @@ Dataset
                                 </div>
                                 <div class="col-12">
                                     <div class="input-style-1">
-                                        <label>OPD</label>
-                                        <input type="text" value="{{ $dataset->opd }}"
-                                            class="@error('opd') is-invalid @enderror" name="opd"
-                                            placeholder="Masukkan OPD" />
-                                        @error('opd')
+                                        <label>Laki-Laki</label>
+                                        <input type="number" value="{{ $detailsdataset->laki_laki }}"
+                                            class="@error('laki_laki') is-invalid @enderror" name="laki_laki"
+                                            placeholder="Masukkan Data Perempuan" />
+                                        @error('laki_laki')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
@@ -82,11 +98,11 @@ Dataset
                                 </div>
                                 <div class="col-12">
                                     <div class="input-style-1">
-                                        <label>Satuan</label>
-                                        <input type="text" value="{{ $dataset->satuan }}"
-                                            class="@error('satuan') is-invalid @enderror" name="satuan"
-                                            placeholder="Masukkan Satuan" />
-                                        @error('satuan')
+                                        <label>Parempuan</label>
+                                        <input type="number" value="{{ $detailsdataset->perempuan }}"
+                                            class="@error('perempuan') is-invalid @enderror" name="perempuan"
+                                            placeholder="Masukkan Data Perempuan" />
+                                        @error('perempuan')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
@@ -96,7 +112,7 @@ Dataset
                                 <div class="col-12">
                                     <div class="button-group d-flex justify-content-center flex-wrap">
                                         <button class="main-btn success-btn btn-hover m-2">
-                                            Simpan Data
+                                            Simpan Data Baru
                                         </button>
                                     </div>
                                 </div>

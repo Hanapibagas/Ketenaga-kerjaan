@@ -23,8 +23,9 @@
             <span class="divider">
                 <hr />
             </span>
-            <li class="nav-item">
-                <a href="">
+            <li
+                class="nav-item {{ request()->is('dataset-admin-upt') || request()->is('dataset-admin-upt/*') || request()->is('dataset-admin-upt/edit/*') ? 'active' : '' }}">
+                <a href="{{ route('index_dataset_upt') }}">
                     <span class="icon">
                         <svg width="18" height="20" viewBox="0 0 18 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path

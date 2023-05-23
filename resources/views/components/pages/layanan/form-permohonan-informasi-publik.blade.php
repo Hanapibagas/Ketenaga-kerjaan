@@ -128,10 +128,20 @@ Layanan
                             @enderror
                         </div>
                         <div class="col-sm-12 mb-4">
+                            <label for="fn" class="form-label">Tanggal<i class="text-danger"
+                                    style="font-size: 14px;">*</i></label>
+                            <input type="date" class="form-control @error('tahun') is-invalid @enderror" name="tahun">
+                            @error('tahun')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
+                        </div>
+                        <div class="col-sm-12 mb-4">
                             <label for="fn" class="form-label ">Rincian Informasi Yang Dibutuhkan<i class="text-danger"
                                     style="font-size: 14px;">*</i></label>
-                            <input type="text" class="form-control @error('rincian') is-invalid @enderror"
-                                name="rincian">
+                            <textarea type="text" class="form-control @error('rincian') is-invalid @enderror"
+                                name="rincian"></textarea>
                             @error('rincian')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -141,7 +151,8 @@ Layanan
                         <div class="col-sm-12 mb-4">
                             <label for="fn" class="form-label">Tujuan Permohonan Informasi<i class="text-danger"
                                     style="font-size: 14px;">*</i></label>
-                            <input type="text" class="form-control @error('tujuan') is-invalid @enderror" name="tujuan">
+                            <textarea type="text" class="form-control @error('tujuan') is-invalid @enderror"
+                                name="tujuan"></textarea>
                             @error('tujuan')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>

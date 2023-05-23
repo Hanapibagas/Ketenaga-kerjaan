@@ -10,7 +10,7 @@
 <script>
     (function(){var s = document.createElement("script");s.setAttribute("data-account","yQQhYPb1nl");s.setAttribute("src","https://cdn.userway.org/widget.js");document.body.appendChild(s);})();
 </script><noscript>Enable JavaScript to ensure <a href="https://userway.org">website accessibility</a></noscript>
-<script src="https://code.responsivevoice.org/responsivevoice.js?key=gFfVeFCZ"></script>
+{{-- <script src="https://code.responsivevoice.org/responsivevoice.js?key=gFfVeFCZ"></script> --}}
 
 {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.26.0/feather.min.js?v=1"></script>
 <script src="https://code.responsivevoice.org/responsivevoice.js?key=yGDCVrqM"></script>

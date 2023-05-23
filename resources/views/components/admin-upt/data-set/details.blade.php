@@ -1,4 +1,4 @@
-@extends('layouts.dashboardadminkab')
+@extends('layouts.dashboardadminupt')
 
 @section('title')
 Dataset
@@ -19,7 +19,7 @@ Dataset
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item">
-                                    <a href="{{ route('index_kab') }}">
+                                    <a href="{{ route('index_dataset_upt') }}">
                                         <i>
                                             <- Kembali </i>
                                     </a>
@@ -67,7 +67,7 @@ Dataset
                     <div class="card-style mb-30">
                         <h6 class="mb-25">Tahun</h6>
                         <div class="row">
-                            <form action="{{ route('filter_dataset_kab', $dataset->id) }}" method="POST">
+                            <form action="{{ route('filter_dataset_upt', $dataset->id) }}" method="POST">
                                 @csrf
                                 <div class="col-12">
                                     <div class="input-style-1">
@@ -105,7 +105,7 @@ Dataset
                                 margin-bottom: 12px;
                             }
                         </style>
-                        <a href="{{ route('tambah_dataset_kab_admin', $dataset->id) }}"
+                        <a href="{{ route('tambah_dataset_upt_admin', $dataset->id) }}"
                             class="main-btn success-btn rounded-md btn-hover tambah">+
                             Tambah Data</a>
                         <div class="row">
@@ -126,6 +126,12 @@ Dataset
                                             <td>{{ $data->tahun }}</td>
                                             <td>{{ $data->laki_laki }}</td>
                                             <td>{{ $data->perempuan }}</td>
+                                            <td>
+                                                <a href="{{ route('edit_dataset_admin_upt', $data->id) }}"
+                                                    class="btn btn-primary">
+                                                    <i class="lni lni-pencil" style="color: whitesmoke"></i>
+                                                </a>
+                                            </td>
                                         </tr>
                                         @endforeach
                                     </tbody>

@@ -1,4 +1,4 @@
-@extends('layouts.dashboardadminkab')
+@extends('layouts.dashboardadminupt')
 
 @section('title')
 Dataset
@@ -50,7 +50,7 @@ Dataset
                                         <td>{{ Str::limit($data->opd, 25) }}</td>
                                         <td>{{ $data->satuan }}</td>
                                         <td>
-                                            <a href="{{ route('details_dataset_kab', $data->id) }}"
+                                            <a href="{{ route('details_dataset_upt', $data->id) }}"
                                                 class="btn btn-info">
                                                 <i class="lni lni-eye" style="color: whitesmoke"></i>
                                             </a>

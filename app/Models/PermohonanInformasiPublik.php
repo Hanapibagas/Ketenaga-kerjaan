@@ -14,6 +14,7 @@ class PermohonanInformasiPublik extends Model
         'no_hp',
         'no_ktp',
         'foto_ktp',
+        'tahun',
         'nomor_pengesahaan',
         'alamat',
         'rincian',

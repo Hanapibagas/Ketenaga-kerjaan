@@ -24,6 +24,20 @@ Dataset
         background-repeat: no-repeat;
         background-image: url('assets/frontend/img/data/bg-side-info.1c2950dc.png');
     }
+
+    .cari {
+        margin-left: 75%
+    }
+
+    .kategori {
+        margin-left: -30px;
+    }
+
+    @media screen and (max-width: 992px) {
+        .cari {
+            margin-left: -3px
+        }
+    }
 </style>
 
 <nav class="container py-4 mb-lg-2 mt-lg-3 tes" aria-label="breadcrumb">
@@ -44,45 +58,37 @@ Dataset
             <div class="col-lg-7 col-md-8">
                 <div class="row gy-2">
                     <div class="col-lg-7 col-sm-6">
-                        <style>
-                            .cari {
-                                margin-left: 75%
-                            }
-
-                            @media screen and (max-width: 992px) {
-                                .cari {
-                                    margin-left: -3px
-                                }
-                            }
-                        </style>
-                        <div class="input-group cari">
-                            <input type="text" class="form-control pe-5 rounded" placeholder="Search the blog...">
-                            <i
-                                class="bx bx-search position-absolute top-50 end-0 translate-middle-y me-3 zindex-5 fs-lg"></i>
-                        </div>
+                        <form action="{{ route('cari_dataset') }}">
+                            <div class="input-group cari">
+                                <input type="text" name="search" class="form-control pe-5 rounded"
+                                    placeholder="Search the blog...">
+                                <i
+                                    class="bx bx-search position-absolute top-50 end-0 translate-middle-y me-3 zindex-5 fs-lg"></i>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
 
+        @foreach ( $dataset as $datas )
         <article class="card border-0 shadow-sm overflow-hidden mb-4">
             <div class="row g-0">
                 <div class="col-sm-12">
                     <div class="card-body">
-                        <div class="d-flex align-items-center mb-3">
-                            <span class="fs-sm text-muted ps-3 ms-3">Sep 3, 2021</span>
+                        <div class="d-flex align-items-center mb-3 kategori">
+                            <span class="fs-sm text-muted ps-3 ms-3 ">{{ $datas->kategori }}</span>
                         </div>
                         <h3 class="h4">
-                            <a href="blog-single.html">5 Bad Landing Page Examples &amp; How We Would Fix Them</a>
+                            <a href="{{ route('details_dataset', $datas->id) }}">{{ $datas->nama_dataset }}</a>
                         </h3>
-                        <p>Tellus sagittis dolor pellentesque vel porttitor magna aliquet arcu. Interdum risus mauris
-                            pulvinar et vel. Morbi tellus, scelerisque vel metus. Scelerisque arcu egestas ac commodo,
-                            ac nibh. Pretium ac elit sed nulla nec.</p>
+                        <p>{{ $datas->opd }}</p>
                         <hr class="my-4">
                     </div>
                 </div>
             </div>
         </article>
+        @endforeach
     </section>
 
 </div>

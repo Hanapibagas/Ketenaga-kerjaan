@@ -110,9 +110,9 @@ Permintaan Data
                                         <option value="Status Saat Ini">Status Saat Ini {{ $permintaan->status }}
                                         </option>
                                         <option value="">-- Silahkan Pilih --</option>
-                                        <option value="Telah DiTerima">Telah DiTerima</option>
-                                        <option value="Mohon Maaf Permintaan Anda Di Tolak">Mohon Maaf Permintaan Anda
-                                            Di Tolak</option>
+                                        <option value="Dipenuhui">Terima permimntaan</option>
+                                        <option value="Ditolak">Tolak permintaan</option>
+                                        <option value="Proses">Sedang diperoses</option>
                                     </select>
                                 </div>
                                 <div class="col-12">

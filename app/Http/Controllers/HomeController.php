@@ -5,13 +5,16 @@ namespace App\Http\Controllers;
 use App\Models\Berita;
 use App\Models\DataSet;
 use App\Models\DataStaf;
+use App\Models\DetailsDataset;
 use App\Models\Infografis;
 use App\Models\InformasiBerkala;
 use App\Models\InformasiSertaMerta;
 use App\Models\InformasiSetiapSaat;
+use App\Models\MetaData;
 use App\Models\PengajuanKeberatan;
 use App\Models\Pengumuman;
 use App\Models\PermohonanInformasiPublik;
+use App\Models\PermohonanPublik;
 use App\Models\Publikasi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -36,28 +39,125 @@ class HomeController extends Controller
         return view('components.pages.ppid');
     }
 
-    public function rekapitulasi_home()
+    public function rekapitulasi_home(Request $request)
     {
+        $tahun = $request->tahun;
+
         $labels = ['January', 'February', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
         $mounth = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'];
 
-        $ditolak = PermohonanInformasiPublik::where('status', 'Mohon Maaf Permintaan Anda Di Tolak')->count();
-        $totalditerima = PermohonanInformasiPublik::where('status', 'Telah DiTerima')->count();
-        $totaldiproses = PermohonanInformasiPublik::where('status', 'Menunggu Verifikasi')->count();
-        $permohonan = PermohonanInformasiPublik::select(PermohonanInformasiPublik::raw("COUNT(*) as count"), PermohonanInformasiPublik::raw("MONTHNAME(created_at) as month_name"))
-            ->whereYear('created_at', date('Y'))
-            ->groupBy(PermohonanInformasiPublik::raw("created_at"))
-            ->pluck('count', 'month_name');
+        $pemohon = [];
+        $dipenuhi = [];
+        $ditolak = [];
+        $diproses = [];
+        foreach ($mounth as $key => $value) {
+            $pemohon[] = PermohonanInformasiPublik::whereYear('tahun', $tahun)
+                ->whereMonth('tahun', $value)
+                ->count();
+            $dipenuhi[] = PermohonanInformasiPublik::whereYear('tahun', $tahun)
+                ->whereMonth('tahun', $value)
+                ->where('status', 'Dipenuhui')
+                ->count();
+            $ditolak[] = PermohonanInformasiPublik::whereYear('tahun', $tahun)
+                ->whereMonth('tahun', $value)
+                ->where('status', 'Ditolak')
+                ->count();
+            $diproses[] = PermohonanInformasiPublik::whereYear('tahun', $tahun)
+                ->whereMonth('tahun', $value)
+                ->where('status', 'Proses')
+                ->count();
+        }
 
-        $jumlah = $permohonan->values();
-        $tolak = $ditolak;
-
-        return view('components.pages.rekapitulasi_permohonan_informasi_publik', compact('labels', 'jumlah', 'tolak'));
+        return view('components.pages.rekapitulasi_permohonan_informasi_publik', compact('labels', 'pemohon', 'ditolak', 'dipenuhi', 'diproses'));
     }
 
+    public function filter_tahun_rekapitulasi(Request $request)
+    {
+        $tahun = $request->tahun;
+
+        $filtertahunrekap = PermohonanInformasiPublik::whereYear('tahun', $tahun);
+
+        $labels = ['January', 'February', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
+        $mounth = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'];
+
+        $pemohon = [];
+        $dipenuhi = [];
+        $ditolak = [];
+        $diproses = [];
+        foreach ($mounth as $key => $value) {
+            $pemohon[] = PermohonanInformasiPublik::whereYear('tahun', $tahun)
+                ->whereMonth('tahun', $value)
+                ->count();
+            $dipenuhi[] = PermohonanInformasiPublik::whereYear('tahun', $tahun)
+                ->whereMonth('tahun', $value)
+                ->where('status', 'Dipenuhui')
+                ->count();
+            $ditolak[] = PermohonanInformasiPublik::whereYear('tahun', $tahun)
+                ->whereMonth('tahun', $value)
+                ->where('status', 'Ditolak')
+                ->count();
+            $diproses[] = PermohonanInformasiPublik::whereYear('tahun', $tahun)
+                ->whereMonth('tahun', $value)
+                ->where('status', 'Proses')
+                ->count();
+        }
+
+        return view('components.pages.rekapitulasi_permohonan_informasi_publik', compact('labels', 'pemohon', 'ditolak', 'dipenuhi', 'diproses', 'filtertahunrekap'));
+    }
+
+    // dataset
     public function dataset()
     {
-        return view('components.pages.dataset.dataset');
+        $dataset = DataSet::all();
+        return view('components.pages.dataset.dataset', compact('dataset'));
+    }
+
+    public function cari_dataset(Request $request)
+    {
+        $keywords = $request->search;
+        $dataset = DataSet::where('nama_dataset', 'like', "%" . $keywords . "%")->paginate(10);
+        return view('components.pages.dataset.dataset', compact('dataset'));
+    }
+
+    public function details_dataset(Request $request, $id)
+    {
+        $tahun = $request->tahun;
+
+        $dataset = DataSet::where('id', $id)->first();
+        $filtertahun = DetailsDataset::paginate(20);
+        $labels = ['January', 'February', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
+        $mounth = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'];
+
+        $grafik = [];
+        foreach ($mounth as $key => $value) {
+            $grafik[] = DetailsDataset::whereYear('tahun', $tahun)
+                ->where('dataset_id', $id)
+                ->whereMonth('tahun', $value)
+                ->count();
+        }
+        return view('components.pages.dataset.details-dataset', compact('dataset', 'filtertahun', 'labels', 'grafik'));
+    }
+
+    public function filter_dataset_home(Request $request, $id)
+    {
+        $tahun = $request->tahun;
+
+        $dataset = DataSet::where('id', $id)->first();
+
+        $filtertahun = DetailsDataset::whereYear('tahun', $tahun)->where('dataset_id', $id)->get();
+
+        $labels = ['January', 'February', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
+        $mounth = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'];
+
+        $grafik = [];
+        foreach ($mounth as $key => $value) {
+            $grafik[] = DetailsDataset::whereYear('tahun', $tahun)
+                ->where('dataset_id', $id)
+                ->whereMonth('tahun', $value)
+                ->count();
+        }
+
+        return view('components.pages.dataset.details-dataset', compact('dataset', 'filtertahun', 'labels', 'grafik'));
     }
 
     //infografis
@@ -175,6 +275,7 @@ class HomeController extends Controller
             'rincian' => 'required',
             'tujuan' => 'required',
             'foto_ktp' => 'required',
+            'tahun' => 'required',
         ], $message);
 
         if ($request->file('foto_ktp')) {
@@ -186,12 +287,12 @@ class HomeController extends Controller
             'nama' => $request->input('nama'),
             'no_hp' => $request->input('no_hp'),
             'no_ktp' => $request->input('no_ktp'),
-            'nomor_pengesahaan' => $request->input('nomor_pengesahaan'),
             'alamat' => $request->input('alamat'),
             'pekerjaan' => $request->input('pekerjaan'),
             'rincian' => $request->input('rincian'),
             'tujuan' => $request->input('tujuan'),
-            'foto_ktp' => $file
+            'foto_ktp' => $file,
+            'tahun' => $request->input('tahun')
         ]);
 
         return redirect()->route('form_permohonan_publik')->with('status', 'Selamat data permohonan publik berhasil ditambahkan');

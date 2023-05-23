@@ -1,4 +1,4 @@
-@extends('layouts.dashboardadminkab')
+@extends('layouts.dashboardadminupt')
 
 @section('title')
 Dataset
@@ -19,7 +19,7 @@ Dataset
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item">
-                                    <a href="{{ route('details_dataset_kab', $dataset->id) }}">
+                                    <a href="{{ route('details_dataset_upt', $dataset->id) }}">
                                         <i>
                                             <- Kembali </i>
                                     </a>
@@ -36,7 +36,7 @@ Dataset
                 <div class="col-lg-12">
                     <div class="card-style mb-30">
                         <h6 class="mb-25">Dataset</h6>
-                        <form action="{{ route('store_dataset_kab_admin') }}" method="POST"
+                        <form action="{{ route('store_dataset_upt_admin') }}" method="POST"
                             enctype="multipart/form-data">
                             @csrf
                             <div class="row">

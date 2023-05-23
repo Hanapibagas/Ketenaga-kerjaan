@@ -24,6 +24,7 @@ use App\Http\Controllers\kab\UpdatePasswordAdminKabController;
 use App\Http\Controllers\Masyarakat\DasboardMasyrakatController;
 use App\Http\Controllers\Masyarakat\PermintaanDataMasyarakatController;
 use App\Http\Controllers\Upt\DashboardAdminUptController;
+use App\Http\Controllers\Upt\DatasetAdminUptController;
 use App\Http\Controllers\Upt\LaporanAdminUptController;
 use App\Http\Controllers\Upt\UpdatePasswordAdminUptController;
 use Illuminate\Support\Facades\Auth;
@@ -34,9 +35,13 @@ Route::get('/', [HomeController::class, 'index'])->name('index_home');
 Route::get('/profile', [HomeController::class, 'profile'])->name('profile_home');
 Route::get('/ppid/profile-ppid', [HomeController::class, 'ppid'])->name('ppid_home');
 Route::get('/ppid/rekapitulasi-permohonan-informasi-publik', [HomeController::class, 'rekapitulasi_home'])->name('rekapitulasi_home');
+Route::post('/ppid/rekapitulasi-permohonan-informasi-publik/filter-tahun', [HomeController::class, 'filter_tahun_rekapitulasi'])->name('filter_tahun_rekapitulasi');
 
 //route data
 Route::get('/dataset', [HomeController::class, 'dataset'])->name('index_dataset_home');
+Route::get('/dataset/pencacrian-data', [HomeController::class, 'cari_dataset'])->name('cari_dataset');
+Route::get('/dataset/details/{id}', [HomeController::class, 'details_dataset'])->name('details_dataset');
+Route::post('/dataset/filter-tahun-dataset/{id}', [HomeController::class, 'filter_dataset_home'])->name('filter_dataset_home');
 
 //route infografis
 Route::get('/infografis', [HomeController::class, 'index_infografis'])->name('index_infografis');
@@ -201,6 +206,15 @@ Route::middleware('auth', 'checkroll:kab/kota')->group(function () {
 // admin upt
 Route::middleware('auth', 'checkroll:upt')->group(function () {
     Route::get('/admin-upt', [DashboardAdminUptController::class, 'dashboard_upt'])->name('dashboard_upt');
+    //
+    //
+    Route::get('/dataset-admin-upt', [DatasetAdminUptController::class, 'index_dataset_upt'])->name('index_dataset_upt');
+    Route::post('/dataset-admin-upt/cari-tahun/{id}', [DatasetAdminUptController::class, 'filter_dataset_upt'])->name('filter_dataset_upt');
+    Route::get('/dataset-admin-upt/{id}', [DatasetAdminUptController::class, 'details_dataset_upt'])->name('details_dataset_upt');
+    Route::get('/dataset-admin-upt/{id}/create', [DatasetAdminUptController::class, 'tambah_dataset_upt_admin'])->name('tambah_dataset_upt_admin');
+    Route::post('/dataset-admin-upt/store', [DatasetAdminUptController::class, 'store_dataset_upt_admin'])->name('store_dataset_upt_admin');
+    Route::get('/dataset-admin-upt/edit/{id}', [DatasetAdminUptController::class, 'edit_dataset_admin_upt'])->name('edit_dataset_admin_upt');
+    Route::put('dataset-admin-upt/update/{id}', [DatasetAdminUptController::class, 'update_dataset_admin_upt'])->name('update_dataset_admin_upt');
     //
     Route::get('pengguna-admin-upt', [UpdatePasswordAdminUptController::class, 'index_password'])->name('index_password_upt');
     Route::put('pengguna-admin-upt/post', [UpdatePasswordAdminUptController::class, 'update_password'])->name('update_password_upt');

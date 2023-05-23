@@ -22,43 +22,22 @@ PPID
 </section>
 
 <div class="container">
-    <canvas id="myChart" height="100px"></canvas>
-</div>
-
-<style>
-    .helo {
-        background-position: top right;
-        background-repeat: no-repeat;
-        /* background-size: contain; */
-        background-image: url('assets/frontend/img/data/bg-side-info.1c2950dc.png');
-    }
-</style>
-
-<div class="helo">
-    <section class="container py-5 my-1 my-md-4 my-lg-5">
-        <div class="row">
-            <div class="col-lg-12 mb-4 mb-lg-0">
-                <div class="pe-lg-4 me-lg-3 pe-xl-0 me-xl-0">
-                    <h2 class="h1 mb-4">About</h2>
-                    <table id="table" class="table">
-                        <thead>
-                            <tr>
-                                <th>Bulan</th>
-                                <th>Jumlah</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ( $labels as $key => $label )
-                            <tr>
-                                <td>{{ $label }}</td>
-                                <td>{{ $jumlah }}</td>
-                            </tr>
-                            @endforeach
-                    </table>
-                </div>
-            </div>
+    <form action="{{ route('filter_tahun_rekapitulasi') }}" method="POST">
+        @csrf
+        <div class="d-md-flex mb-3">
+            @php
+            $year = date('Y');
+            @endphp
+            <select name="tahun" class="form-select me-md-4 mb-2 mb-md-0" style="min-width: 240px;">
+                <option value="-- Pilih tahun --">- - Pilih tahun - -</option>
+                @for ($i=2018; $i <= $year; $i++) <option value="{{ $i }}"> {{ $i }}
+                    </option>
+                    @endfor
+            </select>
+            <button class="btn btn-primary btn-lg shadow-primary">Filter Tahun</button>
         </div>
-    </section>
+    </form>
+    <canvas id="myChart" height="100px"></canvas>
 </div>
 @endsection
 
@@ -66,72 +45,38 @@ PPID
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-{{-- <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> --}}
-
-{{-- <script>
-    const ctx = document.getElementById('myChart');
-
-    new Chart(ctx, {
-      type: 'bar',
-      data: {
-        labels: ['January', 'February', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober','November', 'Desember'],
-        datasets: [{
-          label: 'Diterima',
-          data: [12, 19, 3, 5, 2, 3],
-          borderWidth: 1
-        },{
-            label: 'Ditolak',
-          data: [12, 19, 3, 5, 2, 3],
-          borderWidth: 1
-        },
-        {
-        label: 'Pemohonan',
-          data: [12, 19, 3, 5, 2, 3],
-          borderWidth: 1
-        },{
-            label: 'Pemohonan',
-          data: [12, 19, 3, 5, 2, 3],
-          borderWidth: 1
-        }]
-      },
-      options: {
-        scales: {
-          y: {
-            beginAtZero: true
-          }
-        }
-      }
-    });
-</script> --}}
 <script type="text/javascript">
     var labels =  {{ Js::from($labels) }};
-      var users =  {{ Js::from($jumlah) }};
-      var tolaks =  {{ Js::from($tolak) }};
+      var users =  {{ Js::from($pemohon) }};
+      var dipenuhi =  {{ Js::from($dipenuhi) }};
+      var ditolak =  {{ Js::from($ditolak) }};
+      var diproses =  {{ Js::from($diproses) }};
 
       const data = {
         labels: labels,
         datasets: [{
-          label: 'Pemohoan',
-          backgroundColor: 'rgb(0	, 255, 255)',
-          borderColor: 'rgb(0	, 255, 255)',
+          label: 'Pemohon',
+          backgroundColor: 'rgb(108, 52, 131)',
+          borderColor: 'rgb(108, 52, 131)',
           data: users,
         },{
-            label: 'Diterima',
-          backgroundColor: 'rgb(0, 0, 255)',
-          borderColor: 'rgb(0, 0, 255)',
-          data: users,
+            label: 'Dipenuhi',
+          backgroundColor: 'rgb(52, 152, 219)',
+          borderColor: 'rgb(52, 152, 219)',
+          data: dipenuhi,
         },{
             label: 'Ditolak',
-          backgroundColor: 'rgb(255, 255, 132)',
-          borderColor: 'rgb(255, 255, 132)',
-          data: tolaks,
+          backgroundColor: 'rgb(244, 208, 63)',
+          borderColor: 'rgb(244, 208, 63)',
+          data: ditolak,
         },{
-            label: 'Proses',
-          backgroundColor: 'rgb(255, 0, 0)',
-          borderColor: 'rgb(255, 0, 0)',
-          data: users,
+            label: 'Diproses',
+          backgroundColor: 'rgb(40, 180, 99)',
+          borderColor: 'rgb(40, 180, 99)',
+          data: diproses,
         }]
       };
+
       const config = {
         type: 'bar',
         data: data,
