@@ -71,7 +71,26 @@ PPID
                         yang bertanggung jawab di bidang penyimpanan, pendokumentasian, penyediaan, dan/atau pelayanan
                         informasi di badan publik.
                     </p>
-                    <img class="struktur" src="{{ asset('assets/frontend/img/profile/1.png') }}" alt="">
+                    <div class="table-responsive mb-3" style="margin-top: 50px">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>No</th>
+                                    <th>Nama</th>
+                                    <th>Jabatan</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ( $organisasi as $key => $data )
+                                <tr>
+                                    <th scope="row">{{ $key+1 }}</th>
+                                    <td style="text-transform:uppercase;">{{ $data->nama }}</td>
+                                    <td style="text-transform:uppercase;">{{ $data->jabatan }}</td>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>

@@ -2,8 +2,13 @@
     <div class="container px-3">
         <a href="{{ route('index_home') }}" class="navbar-brand pe-3">
             <img src="{{ asset('assets/frontend/img/logo.png') }}" width="47" alt="Silicon">
-            KETENAGAKERJAAN
+            Disnakertrans Prov Sulsel
         </a>
+        <style>
+            .offcanvas {
+                margin-left: -100px;
+            }
+        </style>
         <div id="navbarNav" class="offcanvas offcanvas-end">
             <div class="offcanvas-header border-bottom">
                 <h5 class="offcanvas-title">Menu</h5>
@@ -29,7 +34,7 @@
                         <a href="{{ route('profile_home') }}" class="nav-link">Profile</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle {{ request()->is('ppid/profile-ppid') || request()->is('ppid/rekapitulasi-permohonan-informasi-publik') ? 'active' : '' }}"
+                        <a class="nav-link dropdown-toggle {{ request()->is('ppid/profile-ppid') || request()->is('ppid/rekapitulasi-permohonan-informasi-publik/filter-tahun') || request()->is('ppid/rekapitulasi-permohonan-informasi-publik') ? 'active' : '' }}"
                             data-bs-toggle="dropdown">PPID</a>
                         <ul class="dropdown-menu">
                             <li>
@@ -39,7 +44,7 @@
                             </li>
                             <li>
                                 <a href="{{ route('rekapitulasi_home') }}"
-                                    class="dropdown-item {{ request()->is('ppid/rekapitulasi-permohonan-informasi-publik') ? 'active' : '' }}">Rekapitulasi
+                                    class="dropdown-item {{ request()->is('ppid/rekapitulasi-permohonan-informasi-publik') || request()->is('ppid/rekapitulasi-permohonan-informasi-publik/filter-tahun') ? 'active' : '' }}">Rekapitulasi
                                     Permohonan Informasi Publik</a>
                             </li>
                         </ul>
@@ -70,6 +75,20 @@
                                     class="dropdown-item {{ request()->is('permohonan-keberatan-informasi-publik') ? 'active' : '' }}">Pengajuan
                                     Keberatan Informasi Publik</a>
                             </li>
+                            @guest
+                            <li>
+                                <a href="{{ route('permintaan_home_guest') }}"
+                                    class="dropdown-item {{ request()->is('permintaan-data') ? 'active' : '' }}">Permintaan
+                                    Data</a>
+                            </li>
+                            @endguest
+                            @auth
+                            <li>
+                                <a href="{{ route('permintaan_data_home') }}"
+                                    class="dropdown-item {{ request()->is('permintaan-data') ? 'active' : '' }}">Permintaan
+                                    Data</a>
+                            </li>
+                            @endauth
                             <li>
                                 <a target="_blank" href="https://open.spotify.com/show/0B02I0NT07Rq8p4HwAZhEX"
                                     class="dropdown-item {{ request()->is('keran-sulsel') ? 'active' : '' }}">KERAN
@@ -93,20 +112,6 @@
                                 <a href="{{ route('index_publikasi') }}"
                                     class="dropdown-item {{ request()->is('publikasi') ? 'active' : '' }}">Publikasi</a>
                             </li>
-                            @guest
-                            <li>
-                                <a href="{{ route('permintaan_home_guest') }}"
-                                    class="dropdown-item {{ request()->is('permintaan-data') ? 'active' : '' }}">Permintaan
-                                    Data</a>
-                            </li>
-                            @endguest
-                            @auth
-                            <li>
-                                <a href="{{ route('permintaan_data_home') }}"
-                                    class="dropdown-item {{ request()->is('permintaan-data') ? 'active' : '' }}">Permintaan
-                                    Data</a>
-                            </li>
-                            @endauth
                             <li>
                                 <a href="{{ route('index_berita') }}" class="dropdown-item {{ request()->is('berita')
                                     || request()->is('berita/*') ? 'active' : '' }}">Berita</a>

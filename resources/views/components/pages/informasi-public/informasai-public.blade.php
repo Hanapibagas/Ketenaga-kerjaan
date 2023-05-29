@@ -133,7 +133,7 @@ Informamsi Public
                         </style>
                         <div class="input-group pencarian">
                             <input type="text" name="search" class="form-control pe-5 rounded"
-                                placeholder="Search the informasi berkala...">
+                                placeholder="Search the informasi serta merta...">
                             <i
                                 class="bx bx-search position-absolute top-50 end-0 translate-middle-y me-3 zindex-5 fs-lg"></i>
                         </div>

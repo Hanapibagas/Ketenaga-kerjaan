@@ -19,6 +19,16 @@ Profile
         background-size: contain;
         background-image: url('assets/frontend/img/data/bg-side-info.1c2950dc.png');
     }
+
+    .about {
+        margin-top: -100px;
+    }
+
+    @media screen and (max-width: 992px) {
+        .about {
+            margin-top: -60px;
+        }
+    }
 </style>
 
 <nav class="container py-4 mb-lg-2 mt-lg-3 tes" aria-label="breadcrumb">
@@ -34,26 +44,9 @@ Profile
     <h1>Profil Dinas Tenaga Kerja dan Transmigrasi.</h1>
 </section>
 
-<div class="container">
-    <style>
-        .gambar {
-            width: 1000px;
-            height: 350px;
-            margin-left: 150px
-        }
-
-        @media screen and (max-width: 992px) {
-            .gambar {
-                height: 200px
-            }
-        }
-    </style>
-    <img class="gambar" src="{{ asset('assets/frontend/img/profile/1659512336.jpg') }}" alt="" srcset="">
-</div>
-
 <div class="helo">
     <section class="container py-5 my-1 my-md-4 my-lg-5">
-        <div class="row">
+        <div class="row about">
             <div class="col-lg-12 mb-4 mb-lg-0">
                 <div class="pe-lg-4 me-lg-3 pe-xl-0 me-xl-0">
                     <h2 class="h1 mb-4">About</h2>
@@ -137,7 +130,15 @@ Profile
 </section>
 
 <section class="container py-5 my-md-3 my-lg-5">
-    <h2 class="h1 text-center pt-1 pb-3 mb-3 mb-lg-4">Profile Pegawai</h2>
+    <div class="d-lg-flex align-items-center justify-content-between py-4 mt-lg-2">
+        <h1 class="me-3">Profile Pegawai</h1>
+        <div class="position-relative" style="min-width: 300px;">
+            <form action="{{ route('cari_data_pegarawai') }}">
+                <input type="text" name="search" class="form-control pe-5" placeholder="Search courses">
+                <i class="bx bx-search text-nav fs-lg position-absolute top-50 end-0 translate-middle-y me-3"></i>
+            </form>
+        </div>
+    </div>
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
         @foreach ( $profiles as $data )
         <div class="col">
@@ -165,7 +166,7 @@ Profile
                     </div>
                 </div>
                 <div class="card-body text-center p-3">
-                    <h3 class="fs-lg fw-semibold pt-1 mb-2">{{ $data->nama }}</h3>
+                    <h3 class="fs-lg fw-semibold pt-1 mb-2" style="text-transform:uppercase;">{{ $data->nama }}</h3>
                     <p class="fs-sm mb-0">{{ $data->tempat_melaksanakan_tugas }}</p>
                 </div>
             </div>

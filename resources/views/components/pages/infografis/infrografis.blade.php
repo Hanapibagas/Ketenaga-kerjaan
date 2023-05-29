@@ -53,7 +53,7 @@ Infografis
             <h1 class="me-3">Infografis</h1>
             <div class="position-relative" style="min-width: 300px;">
                 <form action="{{ route('pencarian_infografis') }}">
-                    <input type="text" name="search" class="form-control pe-5" placeholder="Search courses">
+                    <input type="text" name="search" class="form-control pe-5" placeholder="Search infografis ">
                     <i class="bx bx-search text-nav fs-lg position-absolute top-50 end-0 translate-middle-y me-3"></i>
                 </form>
             </div>

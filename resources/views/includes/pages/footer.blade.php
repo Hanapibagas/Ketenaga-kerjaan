@@ -70,7 +70,7 @@
         <p class="nav d-block fs-xs text-center text-md-start pb-2 pb-lg-0 mb-0">
             &copy; All rights reserved. Made by
             <a class="nav-link d-inline-block p-0" href="https://github.com/Hanapibagas" target="_blank" rel="noopener">
-                Next Up</a>
+                PT. LINY JAYA INFORMATIKA</a>
         </p>
     </div>
 </footer>

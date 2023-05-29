@@ -11,6 +11,7 @@ use App\Models\InformasiBerkala;
 use App\Models\InformasiSertaMerta;
 use App\Models\InformasiSetiapSaat;
 use App\Models\MetaData;
+use App\Models\Organisasi;
 use App\Models\PengajuanKeberatan;
 use App\Models\Pengumuman;
 use App\Models\PermohonanInformasiPublik;
@@ -34,9 +35,17 @@ class HomeController extends Controller
         return view('components.pages.profile', compact('profiles'));
     }
 
+    public function cari_data_pegarawai(Request $request)
+    {
+        $keywords = $request->search;
+        $profiles = DataStaf::where('nama', 'like', "%" . $keywords . "%")->paginate(4);
+        return view('components.pages.profile', compact('profiles'));
+    }
+
     public function ppid()
     {
-        return view('components.pages.ppid');
+        $organisasi = Organisasi::all();
+        return view('components.pages.ppid', compact('organisasi'));
     }
 
     public function rekapitulasi_home(Request $request)

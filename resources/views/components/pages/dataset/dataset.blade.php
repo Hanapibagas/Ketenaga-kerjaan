@@ -61,7 +61,7 @@ Dataset
                         <form action="{{ route('cari_dataset') }}">
                             <div class="input-group cari">
                                 <input type="text" name="search" class="form-control pe-5 rounded"
-                                    placeholder="Search the blog...">
+                                    placeholder="Search the dataset...">
                                 <i
                                     class="bx bx-search position-absolute top-50 end-0 translate-middle-y me-3 zindex-5 fs-lg"></i>
                             </div>

@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\InfografisController;
 use App\Http\Controllers\Admin\InformasiBerkalaController;
 use App\Http\Controllers\Admin\InformasiSertaMertaController;
 use App\Http\Controllers\Admin\InformasiSetiapSaatController;
+use App\Http\Controllers\Admin\OrganisasiAdminController;
 use App\Http\Controllers\Admin\PengumumanController;
 use App\Http\Controllers\Admin\PublikasiController;
 use App\Http\Controllers\Admin\UnduhdataController;
@@ -32,7 +33,12 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', [HomeController::class, 'index'])->name('index_home');
+
+// profile
 Route::get('/profile', [HomeController::class, 'profile'])->name('profile_home');
+Route::get('/profile/pencarian-data-pegawai', [HomeController::class, 'cari_data_pegarawai'])->name('cari_data_pegarawai');
+
+//
 Route::get('/ppid/profile-ppid', [HomeController::class, 'ppid'])->name('ppid_home');
 Route::get('/ppid/rekapitulasi-permohonan-informasi-publik', [HomeController::class, 'rekapitulasi_home'])->name('rekapitulasi_home');
 Route::post('/ppid/rekapitulasi-permohonan-informasi-publik/filter-tahun', [HomeController::class, 'filter_tahun_rekapitulasi'])->name('filter_tahun_rekapitulasi');
@@ -84,6 +90,13 @@ Auth::routes();
 // admin web
 Route::middleware('auth', 'checkroll:admin web')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index_dashboard'])->name('index_dashboard');
+    //
+    Route::get('/organisasi-oprator', [OrganisasiAdminController::class, 'index_organisasi_admin'])->name('index_organisasi_admin');
+    Route::get('/organisasi-oprator/create', [OrganisasiAdminController::class, 'create_organisasi_admin'])->name('create_organisasi_admin');
+    Route::post('/organisasi-oprator/create/post', [OrganisasiAdminController::class, 'store_organisasi_admin'])->name('store_organisasi_admin');
+    Route::get('/organisasi-oprator/edit/{id}', [OrganisasiAdminController::class, 'edit_organisasi_admin'])->name('edit_organisasi_admin');
+    Route::put('/organisasi-oprator/update/{id}', [OrganisasiAdminController::class, 'update_organisasi_admin'])->name('update_organisasi_admin');
+    Route::delete('/organisasi-oprator/delete/{id}', [OrganisasiAdminController::class, 'destroy_organisasi_admin'])->name('destroy_organisasi_admin');
     //
     Route::get('/pengumuman-oprator', [PengumumanController::class, 'index_pengumuman'])->name('index_pengumuman');
     Route::get('/pengumuman-oprator/create', [PengumumanController::class, 'create_pengumuman'])->name('create_pengumuman');
