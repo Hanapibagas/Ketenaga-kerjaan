@@ -6,12 +6,13 @@
                     <img src="{{ asset('assets/frontend/img/logo.png') }}" width="47" alt="Silicon">
                     KETENAGAKERJAAN
                 </div>
-                <p class="fs-sm pb-lg-3 mb-4" style="text-indent: 20px">Satu Data Ketenagakerjaan dan Data Transmigrasi
-                    dimaksudkan untuk mengatur
-                    penyelenggaraan
-                    tatakelola Data Ketenagakerjaan Data Transmigrasi yang dihasilkan oleh Instansi Pusat dan Instansi
-                    Daerah agar
-                    pengelolaan dan pengembangan data ketenagakerjaan memenuhi prinsip-prinsip Satu Data Indonesia.
+                <p class="fs-sm pb-lg-3 mb-4" style="text-indent: 20px">Disnakertrans Prov Sulsel
+                    Satu Data Ketenagakerjaan dan Ketransmigrasian dimaksud untuk mengatur penyelenggaraan tata kelola
+                    data yang dihasilkan oleh Dinas Tenaga Kerja dan Transmigrasi Provinsi Sulawesi Selatan dan Dinas
+                    yang diberikan wewenang dalam urusan ketenagakerjaan dan ketransmigrasian di Kabupaten/Kota agar
+                    pengelolaan dan pengembangan data memenuhi prinsip-prinsip Satu Data Indonesia.
+                    Sementara itu, penyerbarluasan informasi dan dokumentasi dimaksud untuk mengatur penyelenggaraan
+                    keterbukaan informasi publik sesuai amanat Undang-Undang No. 14 tahun 2008.
                 </p>
             </div>
             <div class="col-lg-2 col-md-6">
@@ -60,11 +61,19 @@
                         }
                     }
                 </style>
-                <p class="fs-sm pb-lg-3 mb-4 tanda" style="text-indent: 20px">
-                    Jl. Perintis Kemerdekaan No. 69 KM. 12, Tamalanrea, Kec. Tamalanrea, Kota Makassar, Sulawesi Selatan
-                    90245.
-                    <a href="mailto:disnakertrans@sulselprov.go.id">disnakertrans@sulselprov.go.id</a>
+                <p class="fs-sm pb-lg-3 mb-4 tanda" style="text-indent: 20px">Jalan Perintis Kemerdekaan Nomor 69 KM.
+                    12, Kecamatan Tamalanrea, Kota Makassar, Sulawesi Selatan 90245
                 </p>
+                <div class="sosmed-icon flex flex-row mt-7" style="margin-top: -20px;">
+                    <a class="mr-9" href="mailto: disnakertrans@sulselprov.go.id" target="_blank"
+                        rel="noopener noreferrer">
+                        <img style="width: 30px;" src="{{ asset('assets/frontend/img/mail.png') }}" alt="">
+                    </a>
+                    <a style="margin-left: 9px;" class="mr-9" href="https://www.instagram.com/sulselprov.disnakertrans/"
+                        target="_blank" rel="noopener noreferrer">
+                        <img style="width: 30px;" src="{{ asset('assets/frontend/img/instagram.png') }}" alt="">
+                    </a>
+                </div>
             </div>
         </div>
         <p class="nav d-block fs-xs text-center text-md-start pb-2 pb-lg-0 mb-0">

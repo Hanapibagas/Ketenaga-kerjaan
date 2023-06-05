@@ -47,8 +47,9 @@ Data Staf
                                 <thead>
                                     <tr>
                                         <th>Nama</th>
-                                        <th>Tempat MelaksanakanTugas</th>
-                                        <th>Pangkat/Golongan</th>
+                                        <th>Jabatan</th>
+                                        <th>Pangkat</th>
+                                        <th>Foto</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
@@ -56,7 +57,7 @@ Data Staf
                                     @foreach ( $staf as $data )
                                     <tr>
                                         <td>{{ $data->nama }}</td>
-                                        <td>{{ Str::limit($data->tempat_melaksanakan_tugas, 30) }}</td>
+                                        <td>{{ $data->jabatan }}</td>
                                         <td>{{ $data->pangkat }}</td>
                                         <td>
                                             <a href="{{ route('details_data_staf', $data->id) }}"

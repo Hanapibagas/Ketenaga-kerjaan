@@ -35,6 +35,12 @@ class HomeController extends Controller
         return view('components.pages.profile', compact('profiles'));
     }
 
+    public function tampilan_data_pegawai(Request $request, $id)
+    {
+        $lihatdatapegawasi = DataStaf::wherer('id', $id)->first();
+        return view('components.pages.profile', compact('lihatdatapegawasi'));
+    }
+
     public function cari_data_pegarawai(Request $request)
     {
         $keywords = $request->search;

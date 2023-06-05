@@ -36,6 +36,7 @@ Route::get('/', [HomeController::class, 'index'])->name('index_home');
 
 // profile
 Route::get('/profile', [HomeController::class, 'profile'])->name('profile_home');
+Route::get('/profile/{id}', [HomeController::class, 'tampilan_data_pegawai'])->name('tampilan_data_pegawai');
 Route::get('/profile/pencarian-data-pegawai', [HomeController::class, 'cari_data_pegarawai'])->name('cari_data_pegarawai');
 
 //

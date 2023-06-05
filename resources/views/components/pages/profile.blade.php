@@ -3,6 +3,11 @@
 @section('title')
 Profile
 @endsection
+{{--
+@push('css')
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+@endpush --}}
 
 @section('content')
 <style>
@@ -51,34 +56,23 @@ Profile
                 <div class="pe-lg-4 me-lg-3 pe-xl-0 me-xl-0">
                     <h2 class="h1 mb-4">About</h2>
                     <p class="fs-lg mb-0" style="text-indent: 20px">Dinas Tenaga Kerja dan Transmigrasi Provinsi
-                        Sulawesi
-                        Selatan adalah salah satu
-                        unit kerja yang melaksanakan urusan pemerintahan bidang tenaga kerja dan urusan pemerintahan
-                        bidang
-                        transmigrasi sesuai dengan Peraturan Daerah Provinsi Sulawesi Selatan Nomor 11 Tahun 2019
-                        tentang
-                        Perubahan atas Peraturan Daerah Provinsi Sulawesi Selatan Nomor 10 Tahun 2016 tentang
-                        Pembentukan
-                        dan Susunan Perangkat Daerah yang kemudian ditindaklanjuti dengan : <br> <br>
+                        Sulawesi Selatan adalah salah satu unit kerja yang melaksanakan urusan pemerintahan bidang
+                        tenaga kerja dan urusan pemerintahan bidang transmigrasi sesuai dengan Peraturan Daerah Provinsi
+                        Sulawesi Selatan Nomor 11 Tahun 2019 tentang Perubahan atas Peraturan Daerah Provinsi Sulawesi
+                        Selatan Nomor 10 Tahun 2016 tentang Pembentukan dan Susunan Perangkat Daerah yang kemudian
+                        ditindaklanjuti dengan : <br> <br>
 
                         <b>Peraturan Gubernur Sulawesi Selatan Nomor 17 Tahun 2018</b> tentang Organisasi dan Tata Kerja
-                        Unit
-                        Pelaksana Teknis Balai Pelatihan Kerja pada Dinas Tenaga Kerja dan Transmigrasi Provinsi
-                        Sulawesi
-                        Selatan ; <br>
+                        Unit Pelaksana Teknis Balai Pelatihan Kerja pada Dinas Tenaga Kerja dan Transmigrasi Provinsi
+                        Sulawesi Selatan ; <br>
                         <b>Peraturan Gubernur Sulawesi Selatan Nomor 18 Tahun 2018</b> tentang Organisasi dan Tata Kerja
-                        Unit
-                        Pelaksana Teknis Pengawasan Ketenagakerjaan dan Keselamatan Kerja Wilayah pada Dinas Tenaga
-                        Kerja
-                        dan Transmigrasi Provinsi Sulawesi Selatan ;<br>
+                        Unit Pelaksana Teknis Pengawasan Ketenagakerjaan dan Keselamatan Kerja Wilayah pada Dinas Tenaga
+                        Kerja dan Transmigrasi Provinsi Sulawesi Selatan ;<br>
                         <b>Peraturan Gubernur Sulawesi Selatan Nomor 68 Tahun 2020</b> tentang Organisasi dan Tata Kerja
-                        Unit
-                        Layanan Terpadu Satu Atap Pekerja Migran Indonesia pada Dinas Tenaga Kerja dan Transmigrasi
-                        Provinsi
-                        Sulawesi Selatan ; dan <br>
-                        <b>Peraturan Gubernur Sulawesi Selatan Nomor 50 Tahun 2021</b> tentang Kedudukan, Susunan
-                        Organisasi, Tugas
-                        dan Fungsi serta Tata Kerja Perangkat Daerah Provinsi Sulawesi Selatan.
+                        Unit Layanan Terpadu Satu Atap Pekerja Migran Indonesia pada Dinas Tenaga Kerja dan Transmigrasi
+                        Provinsi Sulawesi Selatan ; dan <br>
+                        <b>Peraturan Gubernur Sulawesi Selatan Nomor 07 Tahun 2023</b> tentang Kedudukan, Susunan
+                        Organisasi, Tugas dan Fungsi serta Tata Kerja Perangkat Daerah Provinsi Sulawesi Selatan.
                     </p>
                 </div>
             </div>
@@ -86,10 +80,9 @@ Profile
     </section>
 </div>
 
-<section class="container d-sm-flex align-items-center justify-content-between pb-4 mb-2 mb-lg-3">
+{{-- <section class="container d-sm-flex align-items-center justify-content-between pb-4 mb-2 mb-lg-3">
     <h1 class="mb-sm-0 me-sm-3">Profile Kepala Dinas</h1>
 </section>
-
 <section class="bg-secondary py-5 test">
     <div class="container py-2 py-md-4 py-lg-5">
         <div class="row">
@@ -127,7 +120,7 @@ Profile
             </div>
         </div>
     </div>
-</section>
+</section> --}}
 
 <section class="container py-5 my-md-3 my-lg-5">
     <div class="d-lg-flex align-items-center justify-content-between py-4 mt-lg-2">
@@ -143,35 +136,75 @@ Profile
         @foreach ( $profiles as $data )
         <div class="col">
             <div class="card card-hover border-0 bg-transparent">
-                <div class="position-relative">
-                    <img src="https://ui-avatars.com/api/?name={{ $data->nama }} " class="rounded" style="width: 400px"
-                        alt="Jenny Wilson">
-                    <div
-                        class="card-img-overlay d-flex flex-column align-items-center justify-content-center rounded-3">
-                        <span class="position-absolute top-0 start-0 w-100 h-100 bg-dark opacity-25 rounded-3"></span>
-                        <div class="position-relative d-flex zindex-2">
-                            <a href="{{ $data->facebook }}"
-                                class="btn btn-icon btn-secondary btn-facebook btn-sm bg-white me-2">
-                                <i class="bx bxl-facebook"></i>
-                            </a>
-                            <a href="{{ $data->instagram }}"
-                                class="btn btn-icon btn-secondary btn-linkedin btn-sm bg-white me-2">
-                                <i class="bx bxl-instagram"></i>
-                            </a>
-                            <a href="{{ $data->twitter }}"
-                                class="btn btn-icon btn-secondary btn-twitter btn-sm bg-white">
-                                <i class="bx bxl-twitter"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
                 <div class="card-body text-center p-3">
-                    <h3 class="fs-lg fw-semibold pt-1 mb-2" style="text-transform:uppercase;">{{ $data->nama }}</h3>
-                    <p class="fs-sm mb-0">{{ $data->tempat_melaksanakan_tugas }}</p>
+                    <a type="button" data-toggle="modal" data-target="#exampleModal-{{ $data->id }}"
+                        style="text-decoration: none">
+                        <h3 class="fs-lg fw-semibold pt-1 mb-2" style="text-transform:uppercase;">{{ $data->nama }}</h3>
+                        <p style="color: grey" class="fs-sm mb-0">{{ $data->tempat_melaksanakan_tugas }}</p>
+                    </a>
                 </div>
             </div>
         </div>
         @endforeach
+
+        <!-- Modal -->
+        @foreach ( $profiles as $data )
+        <div class="modal fade" id="exampleModal-{{ $data->id }}" tabindex="-1" raria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-body" style="text-align: center">
+                        <style>
+                            .cardheader {
+                                background: url('assets/frontend/img/card-bg.jpg');
+                                background-size: cover;
+                                height: 135px;
+                            }
+                        </style>
+                        <div class="cardheader"></div>
+                        <style>
+                            .avatar {
+                                position: relative;
+                                top: -50px;
+                                margin-bottom: -50px;
+                            }
+                        </style>
+                        <div class="avatar">
+                            <img style="width: 100px; height: 100px; max-width: 100px; max-height: 100px; border-radius: 50%; border: 5px solid rgba(255, 255, 255, .5)"
+                                src="{{ asset('assets/frontend/img/unnamed.jpg') }}" alt="">
+                        </div>
+                        <div class="info">
+                            <div class="title">Nama</div>
+                            <div class="desc">Jabatan : </div>
+                            <div class="desc">pangkat : </div>
+                            <div class="desc">Pendidikan : </div>
+                            <hr>
+                            <div class="desc">
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste aliquid blanditiis maxime
+                                eius consequuntur neque est iusto atque, obcaecati maiores inventore expedita nisi
+                                voluptas voluptates sint doloremque rem eveniet itaque?
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button style="margin-right: 183px; " type="button" class="btn btn-secondary"
+                            data-dismiss="modal">Tutup</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @endforeach
+
     </div>
 </section>
 @endsection
+
+@push('js')
+<script src="https://code.jquery.com/jquery-3.7.0.min.js"
+    integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+</script>
+{{-- <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
+</script> --}}
+@endpush

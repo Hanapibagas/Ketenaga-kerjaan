@@ -33,6 +33,7 @@ Beranda
     .helo {
         background-position: top right;
         background-repeat: no-repeat;
+        background-size: contain;
         background-image: url('assets/frontend/img/data/bg-side-info.1c2950dc.png');
     }
 </style>
@@ -43,9 +44,32 @@ Beranda
             <div
                 class="col-md-6 col-sm-8 order-md-1 order-2 d-flex flex-column justify-content-between mt-4 pt-2 text-md-start text-center">
                 <div class="mb-md-5 pb-xl-5 mb-4">
-                    <h3 class="display-2 mb-md-5 mb-3 pb-3">
-                        Welcome To Website <span class="text-gradient-primary">Disnakertrans</span>
-                        Prov. SulSel
+                    <style>
+                        .kalimat {
+                            font-size: 40px;
+                        }
+
+                        .text {
+                            font-size: 40px;
+                        }
+
+                        @media screen and (max-width: 992px) {
+                            .kalimat {
+                                font-size: 25px;
+                            }
+
+                            .text {
+                                font-size: 30px;
+                            }
+                        }
+                    </style>
+                    <p class="kalimat">
+                        Ingin mencari apa?
+                    </p>
+                    <h3 class="display-2 mb-md-5 mb-3 pb-3 text">
+                        Satu Data <span class="text-gradient-primary">Ketenagakerjaan</span> dan <span
+                            class="text-gradient-primary">Ketransmigrasian</span>
+                        Sulawesi Selatan
                     </h3>
                     <style>
                         form {
@@ -261,65 +285,6 @@ Beranda
     </div>
 </section>
 
-<div class="test">
-    <section class="container pb-4 pb-lg-5 mb-3" id="benefits">
-        <div class="d-flex align-items-center justify-content-md-between justify-content-center mb-md-4 mb-3">
-            <h2 class="mb-0">Slide foto</h2>
-
-            <div class="d-md-flex d-none ms-4">
-                <button type="button" id="prev-brand" class="btn btn-prev btn-icon btn-sm me-2">
-                    <i class="bx bx-chevron-left"></i>
-                </button>
-                <button type="button" id="next-brand" class="btn btn-next btn-icon btn-sm ms-2">
-                    <i class="bx bx-chevron-right"></i>
-                </button>
-            </div>
-        </div>
-        <div class="swiper mx-n2" data-swiper-options='{
-                    "slidesPerView": 2,
-                    "navigation": {
-                        "prevEl": "#prev-brand",
-                        "nextEl": "#next-brand"
-                    },
-                    "loop": true,
-                    "pagination": {
-                        "el": ".swiper-pagination",
-                        "clickable": true
-                    },
-                    "breakpoints": {
-                        "500": {
-                        "slidesPerView": 3,
-                        "spaceBetween": 8
-                        },
-                        "650": {
-                        "slidesPerView": 4,
-                        "spaceBetween": 8
-                        },
-                        "900": {
-                        "slidesPerView": 5,
-                        "spaceBetween": 8
-                        },
-                        "1100": {
-                        "slidesPerView": 6,
-                        "spaceBetween": 8
-                        }
-                    }
-                    }'>
-            <div class="swiper-wrapper">
-                @foreach ( $berita as $data )
-                <div class="swiper-slide py-3">
-                    <a class="card card-body card-hover px-2 mx-2">
-                        <img src="{{ Storage::url($data->gambar) }}" class="d-block mx-auto my-2" width="154"
-                            alt="Brand">
-                    </a>
-                </div>
-                @endforeach
-            </div>
-            <div class="swiper-pagination position-relative pt-3 mt-4 d-md-none d-flex"></div>
-        </div>
-    </section>
-</div>
-
 <div class="helo">
     <section class="container mb-5 pt-2 pb-3 py-md-4 py-lg-5">
         <h2 class="h1 pb-2 pb-lg-0 mb-4 mb-lg-5 text-center">Prakata dari Kepala Dinas</h2>
@@ -345,27 +310,16 @@ Beranda
                                 <figure class="card h-100 position-relative border-0 bg-transparent">
                                     <blockquote class="card-body p-0 mb-0">
                                         <p class="fs-lg mb-0" style="text-indent: 20px">Website ini dibuat sebagai salah
-                                            satu media informasi, agar
-                                            masyarakat mendapatkan informasi yang cukup mengenai pelayanan perizinan,
-                                            potensi daerah, peluang investasi, promosi, dan realisasi investasi sesuai
-                                            tugas
-                                            yang diamanahkan (Peraturan Gubernur No.50 Tahun 2021) tentang kedudukan,
-                                            susunan organisasi, tugas, fungsi serta tata kerja perangkat daerah. Bahwa
-                                            hak
-                                            memperoleh informasi merupakan hak asasi manusia dan keterbukaan informasi
-                                            publik merupakan salah satu ciri negara demokratis yang berorientasi pada
-                                            peningkatan kualitas kinerja organisasi yang berkualitas, profesional, dan
-                                            tata
-                                            kelola pemerintahan yang berbasis elektronik. Dinas Tenaga Kerja dan
-                                            Transmigrasi Provinsi Sulawesi Selatan, menyajikan data dan informasi serta
-                                            pelayanan yang berkualitas, sehingga mendorong iklim investasi yang kondusif
-                                            untuk pertumbuhan ekonomi dan kesejahteraan masyarakat. Dengan adanya
-                                            website
-                                            ini, kami menyampaikan terima kasih kepada seluruh Perangkat Daerah
-                                            Pemerintah
-                                            Provinsi Sulawesi Selatan, Pemerintah Kabupaten/Kota serta kepada seluruh
-                                            stakeholder yang telah memberikan dukungan penuh terhadap keberadaan website
-                                            www.disnaker.sulselprov.go.id. Terima kasih
+                                            satu sarana penyeberluasan informasi, publikasi dokumen, serta data
+                                            ketenagakerjaan dan ketransmigrasian di Sulawesi Selatan. Dengan adanya
+                                            website ini, masyarakat dapat mengakses informasi dan melakukan permintaan
+                                            data/dokumen yang berkaitan dengan ketenagakerjaan dan ketransmigrasian
+                                            sesuai tugas yang diamanahkan (Peraturan Gubernur Nomor 7 Tahun 2023)
+                                            tentang Kedudukan, Susunan Organisasi, Tugas dan Fungsi, serta Tata Kerja
+                                            Perangkat Daerah. Dinas Tenaga Kerja dan Transmigrasi Provinsi Sulawesi
+                                            Selatan menyajikan data dan informasi, serta pelayanan yang berkualitas,
+                                            sehingga mendorong pertumbuhan ketenagakerjaan dan ketransmigrasian yang
+                                            lebih baik.
                                         </p>
                                     </blockquote>
                                     <figcaption class="card-footer border-0 d-sm-flex d-md-none w-100 pb-2">
@@ -389,9 +343,8 @@ Beranda
             <div class="col-md-4 d-none d-md-block">
                 <div class="swiper-tabs">
                     <div id="author-1" class="card bg-transparent border-0 swiper-tab active">
-                        <div class="card-body p-0 rounded-3 bg-size-cover bg-repeat-0 bg-position-top-center"
-                            style="background-image: url({{ asset('assets/frontend/img/profile/kepala-dinas.jpg') }});">
-                        </div>
+                        <img class="card-body p-0 rounded-3 bg-size-cover bg-repeat-0 bg-position-top-center"
+                            src="{{ asset('assets/frontend/img/profile/kepala-dinas.jpg') }}" alt="Ralph Edwards">
                         <div class="card-footer d-flex w-100 border-0 pb-0">
                             <div class="border-start-xl ps-xl-4 ms-xl-2">
                                 <h5 class="fw-semibold lh-base mb-0">Ardiles Saggaf, S.STP, M.Si</h5>

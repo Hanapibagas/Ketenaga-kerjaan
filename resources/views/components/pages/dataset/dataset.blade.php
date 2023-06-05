@@ -5,7 +5,7 @@ Dataset
 @endsection
 
 @section('content')
-<style>
+{{-- <style>
     .test {
         background-repeat: no-repeat;
         background-position: top left;
@@ -38,7 +38,7 @@ Dataset
             margin-left: -3px
         }
     }
-</style>
+</style> --}}
 
 <nav class="container py-4 mb-lg-2 mt-lg-3 tes" aria-label="breadcrumb">
     <ol class="breadcrumb mb-0">
