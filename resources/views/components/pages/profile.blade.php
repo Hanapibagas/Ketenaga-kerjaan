@@ -54,7 +54,7 @@ Profile
         <div class="row about">
             <div class="col-lg-12 mb-4 mb-lg-0">
                 <div class="pe-lg-4 me-lg-3 pe-xl-0 me-xl-0">
-                    <h2 class="h1 mb-4">About</h2>
+                    <h2 class="h1 mb-4">Tentang</h2>
                     <p class="fs-lg mb-0" style="text-indent: 20px">Dinas Tenaga Kerja dan Transmigrasi Provinsi
                         Sulawesi Selatan adalah salah satu unit kerja yang melaksanakan urusan pemerintahan bidang
                         tenaga kerja dan urusan pemerintahan bidang transmigrasi sesuai dengan Peraturan Daerah Provinsi

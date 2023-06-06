@@ -30,7 +30,8 @@
                     <li class="nav-item {{ request()->is('/') ? 'active' : '' }}">
                         <a href="{{ route('index_home') }}" class="nav-link">Beranda</a>
                     </li>
-                    <li class="nav-item {{ request()->is('profile') ? 'active' : '' }}">
+                    <li
+                        class="nav-item {{ request()->is('profile') || request()->is('profil-pencarian-data-pegawai') ? 'active' : '' }}">
                         <a href="{{ route('profile_home') }}" class="nav-link">Profile</a>
                     </li>
                     <li class="nav-item dropdown">

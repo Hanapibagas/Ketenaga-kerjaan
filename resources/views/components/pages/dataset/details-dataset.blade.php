@@ -158,6 +158,11 @@ Dataset
                 <h6>Produsen Data : <span style="color: grey">{{ $dataset->opd }}</span></h6>
                 <h6>Satuan Dataset : <span style="color: grey">{{ $dataset->satuan }}</span></h6>
                 <h6>Deskripsi : <span style="color: grey">{{ $dataset->deskripsi }}</span></h6>
+                <h6>
+                    <i class="bx bx-download fs-xl me-1"></i>
+                    <a href="{{asset('storage/'. $dataset->file_data)}}" target="_blank"><span
+                            style="color: grey; text-decoration: none;">download file</span></a>
+                </h6>
             </div>
         </div>
     </div>

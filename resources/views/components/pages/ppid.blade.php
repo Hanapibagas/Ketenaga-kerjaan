@@ -58,7 +58,7 @@ PPID
         <div class="row">
             <div class="col-lg-12 mb-4 mb-lg-0">
                 <div class="pe-lg-4 me-lg-3 pe-xl-0 me-xl-0">
-                    <h2 class="h1 mb-4 about">About</h2>
+                    <h2 class="h1 mb-4 about">Tentang</h2>
                     <p class="fs-lg mb-0" style="text-indent: 20px">PPID adalah kepanjangan dari Pejabat Pengelola
                         Informasi
                         dan Dokumentasi, dimana PPID berfungsi sebagai pengelola dan penyampai dokumen yang dimiliki
