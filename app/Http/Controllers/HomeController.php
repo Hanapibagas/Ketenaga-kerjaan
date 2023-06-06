@@ -44,7 +44,8 @@ class HomeController extends Controller
     public function cari_data_pegarawai(Request $request)
     {
         $keywords = $request->search;
-        $profiles = DataStaf::where('nama', 'like', "%" . $keywords . "%")->paginate(4);
+        // dd($keywords);
+        $profiles = DataStaf::where('nama', 'like', "%" . $keywords . "%")->get();
         return view('components.pages.profile', compact('profiles'));
     }
 
@@ -139,7 +140,7 @@ class HomeController extends Controller
         $tahun = $request->tahun;
 
         $dataset = DataSet::where('id', $id)->first();
-        $filtertahun = DetailsDataset::paginate(20);
+        $filtertahun = DetailsDataset::paginate(24);
         $labels = ['January', 'February', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
         $mounth = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'];
 

@@ -49,7 +49,7 @@
                     </ul>
                 </div>
             </div>
-            <div class="col-lg-5 col-md-6">
+            {{-- <div class="col-lg-5 col-md-6">
                 <style>
                     .tanda {
                         margin-top: 75px
@@ -73,6 +73,73 @@
                         target="_blank" rel="noopener noreferrer">
                         <img style="width: 30px;" src="{{ asset('assets/frontend/img/instagram.png') }}" alt="">
                     </a>
+                </div>
+            </div> --}}
+            <div class="col-lg-5 col-md-6">
+                <style>
+                    .tanda {
+                        margin-top: 75px
+                    }
+
+                    .tanda img {
+                        max-width: 25px;
+                        margin-top: 10px;
+                    }
+
+                    .email {
+                        margin-top: 18px;
+                    }
+
+                    .email img {
+                        max-width: 30px;
+                    }
+
+                    .ig {
+                        margin-top: 14px;
+                    }
+
+                    .ig img {
+                        max-width: 30px;
+                        margin-top: 10px;
+                    }
+
+                    .tulisan {
+                        margin-top: 10px;
+                    }
+
+                    @media screen and (max-width: 992px) {
+                        .tanda {
+                            margin-top: 10px
+                        }
+                    }
+                </style>
+                <div class="row tanda">
+                    <div class="col-1">
+                        <img src="{{ asset('assets/frontend/img/lokasi.png') }}" alt="" srcset="">
+                    </div>
+                    <div class="col-11">
+                        Jalan Perintis Kemerdekaan Nomor 69 KM. 12, Kecamatan Tamalanrea, Kota Makassar, Sulawesi
+                        Selatan 90245
+                    </div>
+                </div>
+                <div class="row email">
+                    <div class="col-1">
+                        <img src="{{ asset('assets/frontend/img/email.png') }}" alt="" srcset="">
+                    </div>
+                    <div class="col-11">
+                        <a style="text-decoration: none; color: grey" href="mailto: disnakertrans@sulselprov.go.id"
+                            target="_blank">disnakertrans@sulselprov.go.id</a>
+                    </div>
+                </div>
+                <div class="row ig">
+                    <div class="col-1">
+                        <img src="{{ asset('assets/frontend/img/ig.png') }}" alt="" srcset="">
+                    </div>
+                    <div class="col-11 tulisan">
+                        <a style="text-decoration: none; color: grey"
+                            href="https://www.instagram.com/sulselprov.disnakertrans/"
+                            target="_blank">Sulselprov.disnakertrans</a>
+                    </div>
                 </div>
             </div>
         </div>

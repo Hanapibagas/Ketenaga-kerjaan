@@ -5,8 +5,8 @@ Dataset
 @endsection
 
 @section('content')
-{{-- <style>
-    .test {
+<style>
+    /* .test {
         background-repeat: no-repeat;
         background-position: top left;
         background-size: contain;
@@ -23,7 +23,7 @@ Dataset
         background-position: top right;
         background-repeat: no-repeat;
         background-image: url('assets/frontend/img/data/bg-side-info.1c2950dc.png');
-    }
+    } */
 
     .cari {
         margin-left: 75%
@@ -38,7 +38,7 @@ Dataset
             margin-left: -3px
         }
     }
-</style> --}}
+</style>
 
 <nav class="container py-4 mb-lg-2 mt-lg-3 tes" aria-label="breadcrumb">
     <ol class="breadcrumb mb-0">

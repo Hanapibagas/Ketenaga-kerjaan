@@ -26,7 +26,7 @@ return new class extends Migration
             $table->longText('rincian');
             $table->longText('tujuan');
             $table->date('tahun');
-            $table->string('status')->default('Proses');
+            $table->string('status')->default('Permohonan');
             $table->timestamps();
         });
     }

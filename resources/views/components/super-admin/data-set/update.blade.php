@@ -94,6 +94,30 @@ Dataset
                                     </div>
                                 </div>
                                 <div class="col-12">
+                                    <div class="input-style-1">
+                                        <label>Deskripsi</label>
+                                        <textarea type="text" class="@error('deskripsi') is-invalid @enderror"
+                                            name="deskripsi" />{!! $dataset->deskripsi !!}</textarea>
+                                        @error('deskripsi')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="input-style-1">
+                                        <label>File Data</label>
+                                        <input type="file" class="@error('file_data') is-invalid @enderror"
+                                            name="file_data" />
+                                        @error('file_data')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="col-12">
                                     <div class="button-group d-flex justify-content-center flex-wrap">
                                         <button class="main-btn success-btn btn-hover m-2">
                                             Simpan Data
@@ -109,3 +133,10 @@ Dataset
     </div>
 </section>
 @endsection
+
+@push('add-script')
+<script src="https://cdn.ckeditor.com/4.19.1/standard/ckeditor.js"></script>
+<script>
+    CKEDITOR.replace('deskripsi');
+</script>
+@endpush

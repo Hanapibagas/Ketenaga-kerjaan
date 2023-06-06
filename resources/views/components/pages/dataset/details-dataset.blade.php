@@ -152,7 +152,12 @@ Dataset
                         @endforeach
                     </tbody>
                 </table> --}}
-                <p>This is the content of tab 3.</p>
+                <h6>Dataset Diperbarui : <span style="color: grey">{{ $dataset->updated_at }}</span>
+                </h6>
+                <h6>Dataset Dibuat : <span style="color: grey">{{ $dataset->created_at }}</span></h6>
+                <h6>Produsen Data : <span style="color: grey">{{ $dataset->opd }}</span></h6>
+                <h6>Satuan Dataset : <span style="color: grey">{{ $dataset->satuan }}</span></h6>
+                <h6>Deskripsi : <span style="color: grey">{{ $dataset->deskripsi }}</span></h6>
             </div>
         </div>
     </div>

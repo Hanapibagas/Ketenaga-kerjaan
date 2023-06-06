@@ -236,7 +236,7 @@ Beranda
                         }
                     </style>
                     <div class="d-md-flex align-items-md-start">
-                        <form>
+                        <form action="{{ route('cari_dataset') }}">
                             <div class="inner-form">
                                 <div class="input-field first-wrap">
                                     <div class="svg-wrapper">
@@ -247,10 +247,11 @@ Beranda
                                             </path>
                                         </svg>
                                     </div>
-                                    <input id="search" type="text" placeholder="Kata kunci pencari data ..." />
+                                    <input name="search" id="search" type="text"
+                                        placeholder="Kata kunci pencari data ..." />
                                 </div>
                                 <div class="input-field second-wrap">
-                                    <button class="btn-search" type="button">SEARCH</button>
+                                    <button class="btn-search" type="submit">SEARCH</button>
                                 </div>
                             </div>
                         </form>

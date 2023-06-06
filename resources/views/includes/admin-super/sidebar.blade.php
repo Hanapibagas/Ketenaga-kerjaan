@@ -51,7 +51,7 @@
                     </span>
                 </a>
             </li>
-            <li
+            {{-- <li
                 class="nav-item {{ request()->is('metadata-admin-super') || request()->is('metadata-admin-super/create') || request()->is('metadata-admin-super/edit/*') ? 'active' : '' }}">
                 <a href="{{ route('index_metadata') }}">
                     <span class="icon">
@@ -64,7 +64,7 @@
                         Metadata Variabel
                     </span>
                 </a>
-            </li>
+            </li> --}}
             <li class="nav-item {{ request()->is('laporan-admin-super') ? 'active' : '' }}">
                 <a href="{{ route('index_laporan_admin_super') }}">
                     <span class="icon">

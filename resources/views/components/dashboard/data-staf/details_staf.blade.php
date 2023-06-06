@@ -47,32 +47,14 @@ Data Staf
                                 </div>
                                 <div class="col-12">
                                     <div class="input-style-1">
-                                        <label style="font-size: 20px;">NIP</label>
-                                        <i>{{ $staf->nip }}</i>
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <div class="input-style-1">
-                                        <label style="font-size: 20px;">Tempat Lahir</label>
-                                        <i>{{ $staf->tempat_lahir }}</i>
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <div class="input-style-1">
-                                        <label style="font-size: 20px;">Tempat Melaksanakan Tugas</label>
-                                        <i>{{ $staf->tempat_melaksanakan_tugas }}</i>
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <div class="input-style-1">
                                         <label style="font-size: 20px;">Pangkat</label>
                                         <i>{{ $staf->pangkat }}</i>
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="input-style-1">
-                                        <label style="font-size: 20px;">Golongan Ruang</label>
-                                        <i>{{ $staf->golongan_ruang }}</i>
+                                        <label style="font-size: 20px;">Jabatan</label>
+                                        <i>{{ $staf->jabatan }}</i>
                                     </div>
                                 </div>
                                 <div class="col-12">
@@ -83,46 +65,16 @@ Data Staf
                                 </div>
                                 <div class="col-12">
                                     <div class="input-style-1">
-                                        <label style="font-size: 20px;">Tahun Lulus</label>
-                                        <i>{{ $staf->tahun_lulus }}</i>
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <div class="input-style-1">
-                                        <label style="font-size: 20px;">Jenis Kelamin</label>
-                                        <i>{{ $staf->jenis_kelamin }}</i>
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <div class="input-style-1">
-                                        <label style="font-size: 20px;">Agama</label>
-                                        <i>{{ $staf->agama }}</i>
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <div class="input-style-1">
-                                        <label style="font-size: 20px;">Etmis</label>
-                                        <i>{{ $staf->etmis }}</i>
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <div class="input-style-1">
-                                        <label style="font-size: 20px;">Asal Daerah</label>
-                                        <i>{{ $staf->asal_daerah }}</i>
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <div class="input-style-1">
-                                        <label style="font-size: 20px;">Keterangan</label>
-                                        <i>{{ $staf->keterangan }}</i>
+                                        <label style="font-size: 20px;">Biodata</label>
+                                        <i>{{ $staf->biodata }}</i>
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="input-style-1">
                                         <label style="font-size: 20px;">Akun Sosial Media</label>
-                                        <i>{{ $staf->twitter }}</i><br>
-                                        <i>{{ $staf->facebook }}</i><br>
-                                        <i>{{ $staf->instagram }}</i><br>
+                                        <i>
+                                            <img src="{{ Storage::url($staf->foto) }}" alt="">
+                                        </i>
                                     </div>
                                 </div>
                             </div>

@@ -50,7 +50,7 @@
                         </ul>
                     </li>
                     <li
-                        class="nav-item {{ request()->is('dataset') || request()->is('dataset/details/*') || request()->is('dataset/filter-tahun-dataset/*') ? 'active' : '' }}">
+                        class="nav-item {{ request()->is('dataset') || request()->is('dataset/details/*') || request()->is('dataset/pencacrian-data') || request()->is('dataset/filter-tahun-dataset/*') ? 'active' : '' }}">
                         <a href="{{ route('index_dataset_home') }}" class="nav-link">Dataset</a>
                     </li>
                     <li

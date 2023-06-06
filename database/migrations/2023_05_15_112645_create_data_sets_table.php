@@ -20,6 +20,9 @@ return new class extends Migration
             $table->string('slug');
             $table->string('opd');
             $table->string('satuan');
+            $table->string('nama_master_data');
+            $table->longText('deskripsi');
+            $table->string('file_data');
             $table->timestamps();
         });
     }

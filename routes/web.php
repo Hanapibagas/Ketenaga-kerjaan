@@ -37,7 +37,7 @@ Route::get('/', [HomeController::class, 'index'])->name('index_home');
 // profile
 Route::get('/profile', [HomeController::class, 'profile'])->name('profile_home');
 Route::get('/profile/{id}', [HomeController::class, 'tampilan_data_pegawai'])->name('tampilan_data_pegawai');
-Route::get('/profile/pencarian-data-pegawai', [HomeController::class, 'cari_data_pegarawai'])->name('cari_data_pegarawai');
+Route::get('/profil-pencarian-data-pegawai', [HomeController::class, 'cari_data_pegarawai'])->name('cari_data_pegarawai');
 
 //
 Route::get('/ppid/profile-ppid', [HomeController::class, 'ppid'])->name('ppid_home');
@@ -181,12 +181,12 @@ Route::middleware('auth', 'checkroll:admin super')->group(function () {
     Route::get('/laporan-admin-super', [LaporanAdminSuperController::class, 'index_laporan_admin_super'])->name('index_laporan_admin_super');
     Route::get('/export-laporan-admin-super', [LaporanAdminSuperController::class, 'export_excel_laporan'])->name('export_excel_laporan');
     //
-    Route::get('/metadata-admin-super', [MetadataVariableAdminSuperController::class, 'index_metadata'])->name('index_metadata');
-    Route::get('/metadata-admin-super/create', [MetadataVariableAdminSuperController::class, 'create_metadata'])->name('create_metadata');
-    Route::get('/metadata-admin-super/edit/{id}', [MetadataVariableAdminSuperController::class, 'edit_metadata'])->name('edit_metadata');
-    Route::post('/metadata-admin-super/post', [MetadataVariableAdminSuperController::class, 'store_metadata'])->name('store_metadata');
-    Route::put('/metadata-admin-super/update/{id}', [MetadataVariableAdminSuperController::class, 'update_metadata'])->name('update_metadata');
-    Route::delete('/metadata-admin-super/delete/{id}', [MetadataVariableAdminSuperController::class, 'destroy_metadata'])->name('destroy_metadata');
+    // Route::get('/metadata-admin-super', [MetadataVariableAdminSuperController::class, 'index_metadata'])->name('index_metadata');
+    // Route::get('/metadata-admin-super/create', [MetadataVariableAdminSuperController::class, 'create_metadata'])->name('create_metadata');
+    // Route::get('/metadata-admin-super/edit/{id}', [MetadataVariableAdminSuperController::class, 'edit_metadata'])->name('edit_metadata');
+    // Route::post('/metadata-admin-super/post', [MetadataVariableAdminSuperController::class, 'store_metadata'])->name('store_metadata');
+    // Route::put('/metadata-admin-super/update/{id}', [MetadataVariableAdminSuperController::class, 'update_metadata'])->name('update_metadata');
+    // Route::delete('/metadata-admin-super/delete/{id}', [MetadataVariableAdminSuperController::class, 'destroy_metadata'])->name('destroy_metadata');
     //
     Route::get('/permintaan-admin-super', [PermintaanDataAdminSuperController::class, 'index_permintaan'])->name('index_permintaan');
     Route::get('/permintaan-admin-super/details/{id}', [PermintaanDataAdminSuperController::class, 'edit_permintaan'])->name('edit_permintaan');

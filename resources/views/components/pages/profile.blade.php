@@ -140,14 +140,13 @@ Profile
                     <a type="button" data-toggle="modal" data-target="#exampleModal-{{ $data->id }}"
                         style="text-decoration: none">
                         <h3 class="fs-lg fw-semibold pt-1 mb-2" style="text-transform:uppercase;">{{ $data->nama }}</h3>
-                        <p style="color: grey" class="fs-sm mb-0">{{ $data->tempat_melaksanakan_tugas }}</p>
+                        <p style="color: grey" class="fs-sm mb-0">{{ $data->jabatan }}</p>
                     </a>
                 </div>
             </div>
         </div>
         @endforeach
 
-        <!-- Modal -->
         @foreach ( $profiles as $data )
         <div class="modal fade" id="exampleModal-{{ $data->id }}" tabindex="-1" raria-hidden="true">
             <div class="modal-dialog" role="document">
@@ -170,18 +169,25 @@ Profile
                         </style>
                         <div class="avatar">
                             <img style="width: 100px; height: 100px; max-width: 100px; max-height: 100px; border-radius: 50%; border: 5px solid rgba(255, 255, 255, .5)"
-                                src="{{ asset('assets/frontend/img/unnamed.jpg') }}" alt="">
+                                src="{{ Storage::url($data->foto) }}" alt="">
                         </div>
                         <div class="info">
-                            <div class="title">Nama</div>
-                            <div class="desc">Jabatan : </div>
-                            <div class="desc">pangkat : </div>
-                            <div class="desc">Pendidikan : </div>
+                            <style>
+                                .desc {
+                                    font-size: 13px;
+                                }
+
+                                .title {
+                                    font-size: 28px;
+                                }
+                            </style>
+                            <div class="title">{{ $data->nama }}</div>
+                            <div class="desc">Jabatan : {{ $data->jabatan }}</div>
+                            <div class="desc">Pangkat : {{ $data->pangkat }}</div>
+                            <div class="desc" style="margin-bottom: 10px;">Pendidikan : {{ $data->pendidikan }}</div>
                             <hr>
-                            <div class="desc">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste aliquid blanditiis maxime
-                                eius consequuntur neque est iusto atque, obcaecati maiores inventore expedita nisi
-                                voluptas voluptates sint doloremque rem eveniet itaque?
+                            <div class="desc" style="margin-top: 20px;">
+                                {{ $data->biodata }}
                             </div>
                         </div>
                     </div>

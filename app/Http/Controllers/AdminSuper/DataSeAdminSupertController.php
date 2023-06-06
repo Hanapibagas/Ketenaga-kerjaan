@@ -7,6 +7,7 @@ use App\Models\DataSet;
 use App\Models\DetailsDataset;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
 
 class DataSeAdminSupertController extends Controller
 {
@@ -33,12 +34,18 @@ class DataSeAdminSupertController extends Controller
             'opd' => 'required',
         ], $message);
 
+        if ($request->file('file_data')) {
+            $file = $request->file('file_data')->store('data-set', 'public');
+        }
+
         $slug = Str::slug($request->nama_dataset);
         DataSet::create([
             'nama_dataset' => $request->input('nama_dataset'),
             'kategori' => $request->input('kategori'),
             'opd' => $request->input('opd'),
             'satuan' => $request->input('satuan'),
+            'deskripsi' => $request->input('deskripsi'),
+            'file_data' => $file,
             'slug' => $slug,
         ]);
 
@@ -54,6 +61,17 @@ class DataSeAdminSupertController extends Controller
     public function update_dataset(Request $request, $id)
     {
         $dataset = DataSet::where('id', $id)->first();
+        if ($request->file('file_data')) {
+            $file = $request->file('file_data')->store('data-set', 'public');
+            if ($dataset->file_data && file_exists(storage_path('app/public/' . $dataset->file_data))) {
+                Storage::delete('public/' . $dataset->file_data);
+                $file = $request->file('file_data')->store('data-set', 'public');
+            }
+        }
+
+        if ($request->file('file_data') === null) {
+            $file = $dataset->file_data;
+        }
 
         $slug = Str::slug($request->nama_dataset);
         $dataset->update([
@@ -61,6 +79,8 @@ class DataSeAdminSupertController extends Controller
             'kategori' => $request->input('kategori'),
             'opd' => $request->input('opd'),
             'satuan' => $request->input('satuan'),
+            'deskripsi' => $request->input('deskripsi'),
+            'file_data' => $file,
             'slug' => $slug,
         ]);
 

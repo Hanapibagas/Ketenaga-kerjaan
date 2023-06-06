@@ -61,6 +61,12 @@ Dataset
                                     {{ $dataset->satuan }}
                                 </div>
                             </div>
+                            <div class="col-12">
+                                <div class="input-style-1">
+                                    <label>Deskripsi</label>
+                                    {!! $dataset->deskripsi !!}
+                                </div>
+                            </div>
                         </div>
                     </div>
 

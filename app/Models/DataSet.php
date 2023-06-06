@@ -14,5 +14,6 @@ class DataSet extends Model
         'opd',
         'satuan',
         'slug',
+        'nama_master_data', 'deskripsi', 'file_data'
     ];
 }

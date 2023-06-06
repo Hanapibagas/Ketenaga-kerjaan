@@ -43,7 +43,7 @@ Dataset
                                     <div class="input-style-1">
                                         <label>Nama Dataset</label>
                                         <input type="text" class="@error('nama_dataset') is-invalid @enderror"
-                                            name="nama_dataset" placeholder="Masukkan Nama Dataset" />
+                                            name="nama_dataset" />
                                         @error('nama_dataset')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -55,7 +55,7 @@ Dataset
                                     <div class="input-style-1">
                                         <label>Kategori</label>
                                         <input type="text" class="@error('kategori') is-invalid @enderror"
-                                            name="kategori" placeholder="Masukkan Kategori" />
+                                            name="kategori" />
                                         @error('kategori')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -66,8 +66,7 @@ Dataset
                                 <div class="col-12">
                                     <div class="input-style-1">
                                         <label>OPD</label>
-                                        <input type="text" class="@error('opd') is-invalid @enderror" name="opd"
-                                            placeholder="Masukkan OPD" />
+                                        <input type="text" class="@error('opd') is-invalid @enderror" name="opd" />
                                         @error('opd')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -78,9 +77,33 @@ Dataset
                                 <div class="col-12">
                                     <div class="input-style-1">
                                         <label>Satuan</label>
-                                        <input type="text" class="@error('satuan') is-invalid @enderror" name="satuan"
-                                            placeholder="Masukkan Satuan" />
+                                        <input type="text" class="@error('satuan') is-invalid @enderror"
+                                            name="satuan" />
                                         @error('satuan')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="input-style-1">
+                                        <label>Deskripsi</label>
+                                        <textarea type="text" class="@error('deskripsi') is-invalid @enderror"
+                                            name="deskripsi" /></textarea>
+                                        @error('deskripsi')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="input-style-1">
+                                        <label>File Data</label>
+                                        <input type="file" class="@error('file_data') is-invalid @enderror"
+                                            name="file_data" />
+                                        @error('file_data')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>

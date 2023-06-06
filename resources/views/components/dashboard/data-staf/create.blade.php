@@ -90,9 +90,8 @@ Data Staf
                                 <div class="col-12">
                                     <div class="input-style-1">
                                         <label>Biodata <i class="text-danger" style="font-size: 14px;">*</i></label>
-                                        <textarea type="text" class="@error('pendidikan') is-invalid @enderror"
-                                            name="pendidikan" /></textarea>
-                                        @error('pendidikan') <span class="invalid-feedback" role="alert">
+                                        <textarea name="biodata"></textarea>
+                                        @error('biodata') <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
                                         @enderror
@@ -101,9 +100,8 @@ Data Staf
                                 <div class="col-12">
                                     <div class="input-style-1">
                                         <label>Foto <i class="text-danger" style="font-size: 14px;">*</i></label>
-                                        <input type="file" class="@error('pendidikan') is-invalid @enderror"
-                                            name="pendidikan" />
-                                        @error('pendidikan')
+                                        <input type="file" class="@error('foto') is-invalid @enderror" name="foto" />
+                                        @error('foto')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
