@@ -59,7 +59,7 @@
                         <a href="{{ route('index_infografis') }}" class="nav-link">Infografis</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle {{ request()->is('simpas') || request()->is('permohonan-informasi-publik/form-pengaduan-publik') || request()->is('lapor') || request()->is('keran-sulsel') || request()->is('permohonan-keberatan-informasi-publik') || request()->is('permohonan-informasi-publik') ? 'active' : '' }}"
+                        <a class="nav-link dropdown-toggle {{ request()->is('simpas') || request()->is('permintaan-data') || request()->is('permintaan-data/guest') || request()->is('permohonan-informasi-publik/form-pengaduan-publik') || request()->is('lapor') || request()->is('keran-sulsel') || request()->is('permohonan-keberatan-informasi-publik') || request()->is('permohonan-informasi-publik') ? 'active' : '' }}"
                             data-bs-toggle="dropdown">Layanan</a>
                         <ul class="dropdown-menu">
                             <li>
@@ -79,10 +79,11 @@
                             @guest
                             <li>
                                 <a href="{{ route('permintaan_home_guest') }}"
-                                    class="dropdown-item {{ request()->is('permintaan-data') ? 'active' : '' }}">Permintaan
+                                    class="dropdown-item {{ request()->is('permintaan-data/guest') ? 'active' : '' }}">Permintaan
                                     Data</a>
                             </li>
                             @endguest
+
                             @auth
                             <li>
                                 <a href="{{ route('permintaan_data_home') }}"

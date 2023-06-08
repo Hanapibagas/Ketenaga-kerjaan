@@ -47,7 +47,7 @@
                         </svg>
                     </span>
                     <span class="text">
-                        Permintaan Data
+                        Permintaan Data Informasi Publik
                     </span>
                 </a>
             </li>

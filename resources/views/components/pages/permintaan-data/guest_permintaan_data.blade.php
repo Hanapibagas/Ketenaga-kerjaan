@@ -32,7 +32,7 @@ Dataset
         background-image: url('assets/frontend/img/data/ornamen-form.13c7b047.png');
     }
 
-    .tulisan {
+    .permintaan {
         font-size: 40px
     }
 
@@ -44,7 +44,7 @@ Dataset
 
 <div class="one">
     <section class="container mb-5 pt-lg-5">
-        <h3 class="h1 text-center pt-1 pb-3 mb-3 mb-lg-4 tulisan">Permintaan Data</h3>
+        <h3 class="h1 text-center pt-1 pb-3 mb-3 mb-lg-4 permintaan">Permintaan Data</h3>
         <div class="swiper pt-3">
             <div class="swiper-wrapper">
                 <div class="swiper-slide px-2">
