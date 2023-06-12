@@ -87,6 +87,7 @@ Route::get('/permintaan-data', [HomeController::class, 'permintaan_data_home'])-
 Route::get('/permintaan-data/guest', [HomeController::class, 'permintaan_home_guest'])->name('permintaan_home_guest');
 
 Auth::routes();
+Route::get('/reload-captcha', [App\Http\Controllers\Auth\RegisterController::class, 'reloadCaptcha']);
 
 // admin web
 Route::middleware('auth', 'checkroll:admin web')->group(function () {
