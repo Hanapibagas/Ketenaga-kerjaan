@@ -72,6 +72,7 @@ Route::get('/publikasi/pencarian-publikasi', [HomeController::class, 'pencarian_
 Route::get('/publikasi/{slug}', [HomeController::class, 'details_pulikasi'])->name('details_pulikasi');
 
 // route layanan
+Route::get('/reload-captcha-keberatan', [App\Http\Controllers\HomeController::class, 'getRelodKeberatan']);
 Route::get('/permohonan-informasi-publik', [HomeController::class, 'permohonan_publik'])->name('permohonan_publik');
 Route::get('/permohonan-informasi-publik/form-pengaduan-publik', [HomeController::class, 'form_permohonan_publik'])->name('form_permohonan_publik');
 Route::post('/permohonan-informasi-publik/form-pengaduan-publik/store', [HomeController::class, 'store_permohonan_publik'])->name('store_permohonan_publik');
@@ -88,6 +89,7 @@ Route::get('/permintaan-data/guest', [HomeController::class, 'permintaan_home_gu
 
 Auth::routes();
 Route::get('/reload-captcha', [App\Http\Controllers\Auth\RegisterController::class, 'reloadCaptcha']);
+Route::get('/reload-captcha', [App\Http\Controllers\Auth\LoginController::class, 'reloadCaptcha']);
 
 // admin web
 Route::middleware('auth', 'checkroll:admin web')->group(function () {
@@ -221,7 +223,6 @@ Route::middleware('auth', 'checkroll:kab/kota')->group(function () {
 // admin upt
 Route::middleware('auth', 'checkroll:upt')->group(function () {
     Route::get('/admin-upt', [DashboardAdminUptController::class, 'dashboard_upt'])->name('dashboard_upt');
-    //
     //
     Route::get('/dataset-admin-upt', [DatasetAdminUptController::class, 'index_dataset_upt'])->name('index_dataset_upt');
     Route::post('/dataset-admin-upt/cari-tahun/{id}', [DatasetAdminUptController::class, 'filter_dataset_upt'])->name('filter_dataset_upt');

@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('title')
+Register
+@endsection
+
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -47,9 +51,8 @@
                                 }}</label>
 
                             <div class="col-md-6">
-                                <input id="password" type="password"
-                                    class="form-control @error('password') is-invalid @enderror" name="password"
-                                    required autocomplete="new-password">
+                                <input id="password" type="password" class="form-control" name="password" required
+                                    autocomplete="new-password">
 
                                 @error('password')
                                 <span class="invalid-feedback" role="alert">
@@ -69,8 +72,8 @@
                             </div>
                         </div>
 
-                        <div class="form-group row">
-                            <label for="captcha" class="col-md-4 col-form-label text-md-right">Captcha</label>
+                        <div class="row mb-3">
+                            <label for="captcha" class="col-md-4 col-form-label text-md-end">Captcha</label>
                             <div class="col-md-6 captcha">
                                 <span>{!! captcha_img() !!}</span>
                                 <button type="button" class="btn btn-danger" class="reload" id="reload">
@@ -78,8 +81,8 @@
                                 </button>
                             </div>
                         </div>
-                        <div class="form-group row">
-                            <label for="captcha" class="col-md-4 col-form-label text-md-right">Enter Captcha</label>
+                        <div class="row mb-3">
+                            <label for="captcha" class="col-md-4 col-form-label text-md-end">Enter Captcha</label>
                             <div class="col-md-6">
                                 <input id="captcha" type="text"
                                     class="form-control @error('captcha') is-invalid @enderror"

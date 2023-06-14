@@ -170,6 +170,30 @@ Layanan
                             </span>
                             @enderror
                         </div>
+                        <div class="col-sm-12 mb-4">
+                            <label for="fn" class="form-label">Enter Captcha</label>
+                            <input id="captcha" type="text" class="form-control @error('captcha') is-invalid @enderror"
+                                placeholder="Enter Captcha" name="captcha">
+                            @error('captcha')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
+                        </div>
+                        <div class="col-sm-12 mb-4">
+                            <label for="fn" class="form-label">Captcha</label>
+                            <div class="col-md-6 captcha">
+                                <span style="width: 100px;">{!! captcha_img() !!}</span>
+                                {{-- <button type="button" class="btn btn-danger" class="reload" id="reload">
+                                    &#x21bb;
+                                </button> --}}
+                            </div>
+                            @error('tujuan_pengguna')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
+                        </div>
                         <div class="col-12 text-center pt-2 pt-md-3 pt-lg-4">
                             <button class="btn btn-primary shadow-primary btn-lg">Kirim Permohonan Publik</button>
                         </div>

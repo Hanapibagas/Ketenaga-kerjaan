@@ -292,6 +292,7 @@ class HomeController extends Controller
             'tujuan' => 'required',
             'foto_ktp' => 'required',
             'tahun' => 'required',
+            'captcha' => ['required', 'captcha'],
         ], $message);
 
         if ($request->file('foto_ktp')) {
@@ -334,7 +335,8 @@ class HomeController extends Controller
 
         $this->validate($request, [
             'no_pendaftaran' => 'required',
-            'tujuan_pengguna' => 'required'
+            'tujuan_pengguna' => 'required',
+            'captcha' => ['required', 'captcha'],
         ], $message);
 
         PengajuanKeberatan::create([
@@ -343,6 +345,11 @@ class HomeController extends Controller
         ]);
 
         return redirect()->route('form_keberatan_publik')->with('status', 'Selamat data keberatan publik berhasil ditambahkan');
+    }
+
+    public function getRelodKeberatan()
+    {
+        return response()->json(['captcha' => captcha_img()]);
     }
 
     public function keran_sulsel()

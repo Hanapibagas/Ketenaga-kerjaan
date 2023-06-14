@@ -37,6 +37,12 @@ class LoginController extends Controller
                 break;
         }
     }
+
+    public function reloadCaptcha()
+    {
+        return response()->json(['captcha' => captcha_img()]);
+    }
+
     public function __construct()
     {
         // $this->middleware('guest')->except('logout');
