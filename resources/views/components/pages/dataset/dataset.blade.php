@@ -80,7 +80,8 @@ Dataset
                             <span class="fs-sm text-muted ps-3 ms-3 ">{{ $datas->kategori }}</span>
                         </div>
                         <h3 class="h4">
-                            <a href="{{ route('details_dataset', $datas->id) }}">{{ $datas->nama_dataset }}</a>
+                            <a href="{{ route('details_dataset', $datas->nama_dataset) }}">{{ $datas->nama_dataset
+                                }}</a>
                         </h3>
                         <p>{{ $datas->opd }}</p>
                         <hr class="my-4">

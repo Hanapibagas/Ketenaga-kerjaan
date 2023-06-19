@@ -135,11 +135,11 @@ class HomeController extends Controller
         return view('components.pages.dataset.dataset', compact('dataset'));
     }
 
-    public function details_dataset(Request $request, $id)
+    public function details_dataset(Request $request, $nama_dataset)
     {
         $tahun = $request->tahun;
 
-        $dataset = DataSet::where('id', $id)->first();
+        $dataset = DataSet::where('nama_dataset', $nama_dataset)->first();
         $filtertahun = DetailsDataset::paginate(24);
         $labels = ['January', 'February', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
         $mounth = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'];
@@ -147,7 +147,7 @@ class HomeController extends Controller
         $grafik = [];
         foreach ($mounth as $key => $value) {
             $grafik[] = DetailsDataset::whereYear('tahun', $tahun)
-                ->where('dataset_id', $id)
+                ->where('dataset_id', $nama_dataset)
                 ->whereMonth('tahun', $value)
                 ->count();
         }
@@ -278,7 +278,8 @@ class HomeController extends Controller
     public function store_permohonan_publik(Request $request)
     {
         $message = [
-            'required' => 'Mohon maaf anda lupa untuk mengisi ini dan harap anda mangisi terlebih dahulu'
+            'required' => 'Mohon maaf anda lupa untuk mengisi ini dan harap anda mangisi terlebih dahulu',
+            'image' => 'Mohon maaf type file anda bukan foto'
         ];
 
         $this->validate($request, [
@@ -290,7 +291,7 @@ class HomeController extends Controller
             'pekerjaan' => 'required',
             'rincian' => 'required',
             'tujuan' => 'required',
-            'foto_ktp' => 'required',
+            'foto_ktp' => 'required|image|mimes:jpg,png',
             'tahun' => 'required',
             'captcha' => ['required', 'captcha'],
         ], $message);

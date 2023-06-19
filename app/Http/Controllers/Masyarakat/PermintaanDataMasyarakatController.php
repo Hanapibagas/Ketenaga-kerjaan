@@ -22,7 +22,8 @@ class PermintaanDataMasyarakatController extends Controller
     public function store_permintaan_data(Request $request)
     {
         $message = [
-            'required' => 'Mohon maaf anda lupa untuk mengisi ini dan harap anda mangisi terlebih dahulu'
+            'required' => 'Mohon maaf anda lupa untuk mengisi ini dan harap anda mangisi terlebih dahulu',
+            'image' => 'Mohon maaf type file anda bukan foto'
         ];
 
         $this->validate($request, [
@@ -34,7 +35,7 @@ class PermintaanDataMasyarakatController extends Controller
             'pekerjaan' => 'required',
             'rincian' => 'required',
             'tujuan' => 'required',
-            'foto_ktp' => 'required',
+            'foto_ktp' => 'required|image|mimes:jpg,png',
         ], $message);
 
         if ($request->file('foto_ktp')) {
