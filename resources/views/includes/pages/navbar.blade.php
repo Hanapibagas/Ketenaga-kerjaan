@@ -16,7 +16,7 @@
             </div>
             <style>
                 .perubahan {
-                    margin-left: 32%
+                    margin-left: 42%
                 }
 
                 @media screen and (max-width: 992px) {
@@ -34,22 +34,6 @@
                         class="nav-item {{ request()->is('profile') || request()->is('profil-pencarian-data-pegawai') ? 'active' : '' }}">
                         <a href="{{ route('profile_home') }}" class="nav-link">Profile</a>
                     </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle {{ request()->is('ppid/profile-ppid') || request()->is('ppid/rekapitulasi-permohonan-informasi-publik/filter-tahun') || request()->is('ppid/rekapitulasi-permohonan-informasi-publik') ? 'active' : '' }}"
-                            data-bs-toggle="dropdown">PPID</a>
-                        <ul class="dropdown-menu">
-                            <li>
-                                <a href="{{ route('ppid_home') }}"
-                                    class="dropdown-item {{ request()->is('ppid/profile-ppid') ? 'active' : '' }}">Profile
-                                    PPID</a>
-                            </li>
-                            <li>
-                                <a href="{{ route('rekapitulasi_home') }}"
-                                    class="dropdown-item {{ request()->is('ppid/rekapitulasi-permohonan-informasi-publik') || request()->is('ppid/rekapitulasi-permohonan-informasi-publik/filter-tahun') ? 'active' : '' }}">Rekapitulasi
-                                    Permohonan Informasi Publik</a>
-                            </li>
-                        </ul>
-                    </li>
                     <li
                         class="nav-item {{ request()->is('dataset') || request()->is('dataset/details/*') || request()->is('dataset/pencacrian-data') || request()->is('dataset/filter-tahun-dataset/*') ? 'active' : '' }}">
                         <a href="{{ route('index_dataset_home') }}" class="nav-link">Dataset</a>
@@ -62,15 +46,7 @@
                         <a class="nav-link dropdown-toggle {{ request()->is('simpas') || request()->is('permintaan-data') || request()->is('permintaan-data/guest') || request()->is('permohonan-informasi-publik/form-pengaduan-publik') || request()->is('lapor') || request()->is('keran-sulsel') || request()->is('permohonan-keberatan-informasi-publik') || request()->is('permohonan-informasi-publik') ? 'active' : '' }}"
                             data-bs-toggle="dropdown">Layanan</a>
                         <ul class="dropdown-menu">
-                            <li>
-                                <a target="_blank" href="https://disnakertrans.sulselprov.go.id/simpas"
-                                    class="dropdown-item {{ request()->is('simpas') ? 'active' : '' }}">SIMPAS</a>
-                            </li>
-                            <li>
-                                <a href="{{ route('permohonan_publik') }}"
-                                    class="dropdown-item {{ request()->is('permohonan-informasi-publik') || request()->is('permohonan-informasi-publik/form-pengaduan-publik') ? 'active' : '' }}">Permohonan
-                                    Informasi Publik</a>
-                            </li>
+
                             <li>
                                 <a href="{{ route('keberatan_publik') }}"
                                     class="dropdown-item {{ request()->is('permohonan-keberatan-informasi-publik') ? 'active' : '' }}">Pengajuan
@@ -91,15 +67,6 @@
                                     Data</a>
                             </li>
                             @endauth
-                            <li>
-                                <a target="_blank" href="https://open.spotify.com/show/0B02I0NT07Rq8p4HwAZhEX"
-                                    class="dropdown-item {{ request()->is('keran-sulsel') ? 'active' : '' }}">KERAN
-                                    SULSEL</a>
-                            </li>
-                            <li>
-                                <a target="_blank" href="https://www.lapor.go.id/"
-                                    class="dropdown-item {{ request()->is('lapor') ? 'active' : '' }}">LAPOR!</a>
-                            </li>
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
@@ -111,12 +78,14 @@
                                     class="dropdown-item {{ request()->is('informasi-public') ? 'active' : '' }}">Informasi</a>
                             </li>
                             <li>
-                                <a href="{{ route('index_publikasi') }}"
-                                    class="dropdown-item {{ request()->is('publikasi') ? 'active' : '' }}">Publikasi</a>
+                                <a href="{{ route('permohonan_publik') }}"
+                                    class="dropdown-item {{ request()->is('permohonan-informasi-publik') || request()->is('permohonan-informasi-publik/form-pengaduan-publik') ? 'active' : '' }}">Permohonan
+                                    Informasi Publik</a>
                             </li>
                             <li>
-                                <a href="{{ route('index_berita') }}" class="dropdown-item {{ request()->is('berita')
-                                    || request()->is('berita/*') ? 'active' : '' }}">Berita</a>
+                                <a href="{{ route('rekapitulasi_home') }}"
+                                    class="dropdown-item {{ request()->is('ppid/rekapitulasi-permohonan-informasi-publik') || request()->is('ppid/rekapitulasi-permohonan-informasi-publik/filter-tahun') ? 'active' : '' }}">Rekapitulasi
+                                    Permohonan Informasi Publik</a>
                             </li>
                             <li>
                                 <a href="{{ route('login') }}"
