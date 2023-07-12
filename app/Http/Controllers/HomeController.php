@@ -154,13 +154,13 @@ class HomeController extends Controller
         return view('components.pages.dataset.details-dataset', compact('dataset', 'filtertahun', 'labels', 'grafik'));
     }
 
-    public function filter_dataset_home(Request $request, $id)
+    public function filter_dataset_home(Request $request, $nama_dataset, $dataset)
     {
         $tahun = $request->tahun;
 
-        $dataset = DataSet::where('id', $id)->first();
+        $dataset = DataSet::where('nama_dataset', $nama_dataset)->first();
 
-        $filtertahun = DetailsDataset::whereYear('tahun', $tahun)->where('dataset_id', $id)->get();
+        $filtertahun = DetailsDataset::whereYear('tahun', $tahun)->where('dataset_id', $dataset)->get();
 
         $labels = ['January', 'February', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
         $mounth = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'];
@@ -168,7 +168,7 @@ class HomeController extends Controller
         $grafik = [];
         foreach ($mounth as $key => $value) {
             $grafik[] = DetailsDataset::whereYear('tahun', $tahun)
-                ->where('dataset_id', $id)
+                ->where('dataset_id', $dataset)
                 ->whereMonth('tahun', $value)
                 ->count();
         }

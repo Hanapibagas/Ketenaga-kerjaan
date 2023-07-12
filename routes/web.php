@@ -48,7 +48,7 @@ Route::post('/ppid/rekapitulasi-permohonan-informasi-publik/filter-tahun', [Home
 Route::get('/dataset', [HomeController::class, 'dataset'])->name('index_dataset_home');
 Route::get('/dataset/pencacrian-data', [HomeController::class, 'cari_dataset'])->name('cari_dataset');
 Route::get('/dataset/details/{nama_dataset}', [HomeController::class, 'details_dataset'])->name('details_dataset');
-Route::post('/dataset/filter-tahun-dataset/{id}', [HomeController::class, 'filter_dataset_home'])->name('filter_dataset_home');
+Route::post('/dataset/filter-tahun-dataset/{nama_dataset}', [HomeController::class, 'filter_dataset_home'])->name('filter_dataset_home');
 
 //route infografis
 Route::get('/infografis', [HomeController::class, 'index_infografis'])->name('index_infografis');

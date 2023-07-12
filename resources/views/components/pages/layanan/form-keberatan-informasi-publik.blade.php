@@ -51,7 +51,7 @@ Layanan
                     </div>
                     <div class="col-sm-12 mb-4">
                         <label for="fn" class="form-label">Tujuan Penggunaan Informasi</label>
-                        <input type="text" class="form-control @error('tujuan_pengguna') is-invalid @enderror"
+                        <input type="text" class="form-control  "
                             name="tujuan_pengguna">
                         @error('tujuan_pengguna')
                         <span class="invalid-feedback" role="alert">

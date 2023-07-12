@@ -63,7 +63,7 @@ Dataset
                 <button class="tab-link" onclick="openTab(event, 'tab3')">METADATA</button>
             </div>
             <div class="tab-content" id="tab1">
-                <form action="{{ route('filter_dataset_home', $dataset->id) }}" method="POST">
+                <form action="{{ route('filter_dataset_home', $dataset->nama_dataset) }}" method="POST">
                     @csrf
                     <div class="d-md-flex mb-3">
                         @php
@@ -102,7 +102,7 @@ Dataset
                 </table>
             </div>
             <div class="tab-content" id="tab2">
-                <form action="{{ route('filter_dataset_home', $dataset->id) }}" method="POST">
+                <form action="{{ route('filter_dataset_home', $dataset->nama_dataset) }}" method="POST">
                     @csrf
                     <div class="d-md-flex mb-3">
                         @php
