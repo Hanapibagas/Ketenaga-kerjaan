@@ -51,7 +51,7 @@ Login
                         <div class="row mb-3">
                             <label for="captcha" class="col-md-4 col-form-label text-md-end">Captcha</label>
                             <div class="col-md-6 captcha">
-                                <span>{!! captcha_img() !!}</span>
+                                <span>{!! captcha_img('default') !!}</span>
                                 <button type="button" class="btn btn-danger" class="reload" id="reload">
                                     &#x21bb;
                                 </button>
@@ -61,7 +61,7 @@ Login
                             <label for="captcha" class="col-md-4 col-form-label text-md-end">Enter Captcha</label>
                             <div class="col-md-6">
                                 <input id="captcha" type="text"
-                                    class="form-control @error('captcha') is-invalid @enderror"
+                                    class="form-control @error('inverse') is-invalid @enderror"
                                     placeholder="Enter Captcha" name="captcha">
                                 @error('captcha')
                                 <span class="invalid-feedback" role="alert">

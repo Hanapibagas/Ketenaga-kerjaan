@@ -75,16 +75,13 @@ class DatasetAdminUptController extends Controller
 
     public function update_dataset_admin_upt(Request $request, $id)
     {
-        $detailsdataset = DetailsDataset::where('id', $id)->first();
+        $detailsdataset = DetailsDataset::findOrFail($id);
 
-        $detailsdataset->update([
-            'dataset_id' => $request->input('dataset_id'),
-            'variable' => $request->input('variable'),
-            'tahun' => $request->input('tahun'),
-            'laki_laki' => $request->input('laki_laki'),
-            'perempuan' => $request->input('perempuan'),
-        ]);
+        $detailsdataset->laki_laki = $request->input('laki_laki');
+        $detailsdataset->perempuan = $request->input('perempuan');
 
-        return redirect()->route('index_dataset_upt')->with('status', 'Selamat data details dataset berita berhasil diperbarui');
+        $detailsdataset->save();
+
+        return redirect()->back()->with('status', 'Selamat data details dataset berhasil diperbaui');
     }
 }

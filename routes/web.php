@@ -206,7 +206,7 @@ Route::middleware('auth', 'checkroll:kab/kota')->group(function () {
     Route::get('/admin-kab-kota', [DashboardKabKotaController::class, 'dashboard_kab'])->name('dashboard_kab');
     //
     Route::get('/dataset-admin-kab-kota', [DatasetAdminKabController::class, 'index_kab'])->name('index_kab');
-    Route::post('/dataset-admin-kab-kota/cari-tahun/{id}', [DatasetAdminKabController::class, 'filter_dataset_kab'])->name('filter_dataset_kab');
+    Route::post('/dataset-admin-kab-kota/{id}', [DatasetAdminKabController::class, 'filter_dataset_kab'])->name('filter_dataset_kab');
     Route::get('/dataset-admin-kab-kota/{id}', [DatasetAdminKabController::class, 'details_dataset_kab'])->name('details_dataset_kab');
     Route::get('/dataset-admin-kab-kota/{id}/create', [DatasetAdminKabController::class, 'tambah_dataset_kab_admin'])->name('tambah_dataset_kab_admin');
     Route::post('/dataset-admin-kab-kota/store', [DatasetAdminKabController::class, 'store_dataset_kab_admin'])->name('store_dataset_kab_admin');
@@ -225,7 +225,7 @@ Route::middleware('auth', 'checkroll:upt')->group(function () {
     Route::get('/admin-upt', [DashboardAdminUptController::class, 'dashboard_upt'])->name('dashboard_upt');
     //
     Route::get('/dataset-admin-upt', [DatasetAdminUptController::class, 'index_dataset_upt'])->name('index_dataset_upt');
-    Route::post('/dataset-admin-upt/cari-tahun/{id}', [DatasetAdminUptController::class, 'filter_dataset_upt'])->name('filter_dataset_upt');
+    Route::post('/dataset-admin-upt/{id}', [DatasetAdminUptController::class, 'filter_dataset_upt'])->name('filter_dataset_upt');
     Route::get('/dataset-admin-upt/{id}', [DatasetAdminUptController::class, 'details_dataset_upt'])->name('details_dataset_upt');
     Route::get('/dataset-admin-upt/{id}/create', [DatasetAdminUptController::class, 'tambah_dataset_upt_admin'])->name('tambah_dataset_upt_admin');
     Route::post('/dataset-admin-upt/store', [DatasetAdminUptController::class, 'store_dataset_upt_admin'])->name('store_dataset_upt_admin');

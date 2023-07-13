@@ -5,6 +5,17 @@ Dataset
 @endsection
 
 @section('content')
+@if (session('status'))
+<script>
+    Swal.fire({
+        icon: 'success',
+        title: 'Sukses!',
+        text : "{{ session('status') }}",
+    });
+</script>
+@endif
+
+
 <section class="tab-components">
     <div class="container-fluid">
         <div class="title-wrapper pt-30">
@@ -117,20 +128,36 @@ Dataset
                                             <th>Tahun</th>
                                             <th>Laki-Laki</th>
                                             <th>Perempuan</th>
+                                            <th>Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ( $detailsdataset as $data )
+                                        @foreach ($detailsdataset as $data)
                                         <tr>
                                             <td>{{ $data->variable }}</td>
                                             <td>{{ $data->tahun }}</td>
-                                            <td>{{ $data->laki_laki }}</td>
-                                            <td>{{ $data->perempuan }}</td>
                                             <td>
-                                                <a href="{{ route('edit_dataset_admin_upt', $data->id) }}"
-                                                    class="btn btn-primary">
-                                                    <i class="lni lni-pencil" style="color: whitesmoke"></i>
-                                                </a>
+                                                <input class="form-control w-50 laki-laki-input" type="number"
+                                                    value="{{ $data->laki_laki }}" name="laki_laki"
+                                                    data-id="{{ $data->id }}" onchange="updateHiddenLakiLaki(this)">
+                                            </td>
+                                            <td>
+                                                <input class="form-control w-50 perempuan-input" type="number"
+                                                    value="{{ $data->perempuan }}" name="perempuan"
+                                                    data-id="{{ $data->id }}" onchange="updateHiddenPerempuan(this)">
+                                            </td>
+                                            <td>
+                                                <form action="{{ route('update_dataset_admin_upt', $data->id) }}"
+                                                    method="POST">
+                                                    @csrf
+                                                    @method('PUT')
+                                                    <input type="hidden" name="laki_laki" value="{{ $data->laki_laki }}"
+                                                        class="hidden-laki-laki">
+                                                    <input type="hidden" name="perempuan" value="{{ $data->perempuan }}"
+                                                        class="hidden-perempuan">
+                                                    <button class="btn btn-primary update-button"
+                                                        type="submit">Update</button>
+                                                </form>
                                             </td>
                                         </tr>
                                         @endforeach
@@ -146,9 +173,16 @@ Dataset
 @endsection
 
 @push('add-script')
-<script src="https://cdn.ckeditor.com/4.19.1/standard/ckeditor.js"></script>
 <script>
-    CKEDITOR.replace('deskripsi');
+    function updateHiddenLakiLaki(input) {
+        const hiddenLakiLakiInput = input.parentNode.nextElementSibling.nextElementSibling.querySelector('.hidden-laki-laki');
+        hiddenLakiLakiInput.value = input.value;
+    }
+
+    function updateHiddenPerempuan(input) {
+        const hiddenPerempuanInput = input.parentNode.nextElementSibling.querySelector('.hidden-perempuan');
+        hiddenPerempuanInput.value = input.value;
+    }
 </script>
 <script>
     const dataTable = new simpleDatatables.DataTable("#table", {
