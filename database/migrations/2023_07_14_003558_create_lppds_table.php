@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('lppds', function (Blueprint $table) {
             $table->id();
             $table->string('indikator');
+            $table->date('tahun');
             $table->integer('a');
             $table->integer('b');
             $table->longText('link_terkait');

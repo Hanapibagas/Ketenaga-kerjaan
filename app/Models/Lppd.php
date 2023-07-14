@@ -11,6 +11,7 @@ class Lppd extends Model
 
     protected $fillable = [
         'indikator',
+        'tahun',
         'a',
         'b',
         'link_terkait',

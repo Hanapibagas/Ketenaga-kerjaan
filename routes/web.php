@@ -13,8 +13,11 @@ use App\Http\Controllers\Admin\PublikasiController;
 use App\Http\Controllers\Admin\UnduhdataController;
 use App\Http\Controllers\AdminSuper\DashboarAdminSuperdController;
 use App\Http\Controllers\AdminSuper\DataSeAdminSupertController;
+use App\Http\Controllers\AdminSuper\IkuController;
 use App\Http\Controllers\AdminSuper\LaporanAdminSuperController;
+use App\Http\Controllers\AdminSuper\LppdController;
 use App\Http\Controllers\AdminSuper\MetadataVariableAdminSuperController;
+use App\Http\Controllers\AdminSuper\PengukuranKinerjaController;
 use App\Http\Controllers\AdminSuper\PermintaanDataAdminSuperController;
 use App\Http\Controllers\AdminSuper\TambahPenggunaAdminSuperController;
 use App\Http\Controllers\HomeController;
@@ -170,6 +173,24 @@ Route::middleware('auth', 'checkroll:admin web')->group(function () {
 // super admin
 Route::middleware('auth', 'checkroll:admin super')->group(function () {
     Route::get('/admin-super', [DashboarAdminSuperdController::class, 'index_admin_super'])->name('index_admin_super');
+    //
+    Route::get('/pengukuran-kinerja-admin-super', [PengukuranKinerjaController::class, 'getIndex'])->name('get.IndexPengukuranKinerja');
+    Route::post('/pengukuran-kinerja-admin-super', [PengukuranKinerjaController::class, 'getFilterTahun'])->name('get.TahunPengukuranKinerja');
+    Route::post('/pengukuran-kinerja-admin-super/post', [PengukuranKinerjaController::class, 'getStore'])->name('get.StorePengukuranKinerja');
+    Route::put('/pengukuran-kinerja-admin-super/update/{id}', [PengukuranKinerjaController::class, 'getUpdate'])->name('get.UpdatePengukuranKinerja');
+    Route::delete('/pengukuran-kinerja-admin-super/delete/{id}', [PengukuranKinerjaController::class, 'getDestroy'])->name('get.DeletePengukuranKinerja');
+    //
+    Route::get('/iku-admin-super', [IkuController::class, 'getIndex'])->name('get.IndexIku');
+    Route::post('/iku-admin-super', [IkuController::class, 'getFilterTahun'])->name('get.TahunIku');
+    Route::post('/iku-admin-super/post', [IkuController::class, 'getStore'])->name('get.StoreIku');
+    Route::put('/iku-admin-super/update/{id}', [IkuController::class, 'getUpdate'])->name('get.UpdateIku');
+    Route::delete('/iku-admin-super/delete/{id}', [IkuController::class, 'getDestroy'])->name('get.DeleteIku');
+    //
+    Route::get('/lppd-admin-super', [LppdController::class, 'getIndex'])->name('get.IndexLppd');
+    Route::post('/lppd-admin-super', [LppdController::class, 'getFilterTahun'])->name('get.TahunLppd');
+    Route::post('/lppd-admin-super/post', [LppdController::class, 'getStore'])->name('get.StoreLppd');
+    Route::put('/lppd-admin-super/update/{id}', [LppdController::class, 'getUpdate'])->name('get.UpdateLppd');
+    Route::delete('/lppd-admin-super/delete/{id}', [LppdController::class, 'getDestroy'])->name('get.DeleteLppd');
     //
     Route::get('/dataset-admin-super', [DataSeAdminSupertController::class, 'index_dataset'])->name('index_dataset');
     Route::get('/dataset-admin-super/create', [DataSeAdminSupertController::class, 'create_dataset'])->name('create_dataset');

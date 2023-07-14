@@ -11,6 +11,7 @@ class Iku extends Model
 
     protected $fillable = [
         'indikator',
+        'tahun',
         'a',
         'b',
         'hasil',

@@ -11,6 +11,7 @@ class PengukuranKinerja extends Model
 
     protected $fillable = [
         'indikator',
+        'tahun',
         'a',
         'b',
         'hasil',
