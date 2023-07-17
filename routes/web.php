@@ -248,6 +248,8 @@ Route::middleware('auth', 'checkroll:upt')->group(function () {
     Route::get('/admin-upt', [DashboardAdminUptController::class, 'dashboard_upt'])->name('dashboard_upt');
     //
     Route::get('/lppd-admin-upt', [LppdUptController::class, 'getIndex'])->name('get.IndexLppdUpt');
+    Route::put('/lppd-admin-upt/update/{id}', [LppdUptController::class, 'getUpdate'])->name('get.UpdateLppdUpt');
+    Route::post('/lppd-admin-upt', [LppdUptController::class, 'getFilterTahun'])->name('get.TahunLppd');
     //
     Route::get('/iku-admin-upt', [IkuUptController::class, 'getIndex'])->name('get.IndexIkuUpt');
     Route::put('/iku-admin-upt/update/{id}', [IkuUptController::class, 'getUpdate'])->name('get.UpdateIkuUpt');

@@ -46,9 +46,10 @@ class LppdUptController extends Controller
 
         $lppd->a = $request->input('a');
         $lppd->b = $request->input('b');
+        $lppd->link_terkait = $request->input('link_terkait');
 
         $lppd->save();
-        // dd($iku);
+        // dd($lppd);
         return redirect()->back()->with('status', 'Selamat data iku berhasil diperbaui');
     }
 }

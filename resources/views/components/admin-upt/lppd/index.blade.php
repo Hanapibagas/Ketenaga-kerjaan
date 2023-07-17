@@ -49,7 +49,7 @@ IKU
                     <div class="card-style mb-30">
                         <h6 class="mb-25">Tahun</h6>
                         <div class="row">
-                            <form action="{{ route('get.TahunIku') }}" method="POST">
+                            <form action="{{ route('get.TahunLppd') }}" method="POST">
                                 @csrf
                                 <div class="col-12">
                                     <div class="input-style-1">
@@ -110,13 +110,13 @@ IKU
                                                     onchange="updateHiddenPerempuan(this)">
                                             </td>
                                             <td>
-                                                <input class="form-control w-100 perempuan-input" type="text"
-                                                    value="{{ $data->b }}" name="b" data-id="{{ $data->id }}"
-                                                    onchange="updateHiddenPerempuan(this)">
+                                                <input class="form-control w-100 link-input" type="text"
+                                                    value="{{ $data->link_terkait }}" name="link_terkait"
+                                                    data-id="{{ $data->id }}" onchange="updateHiddenLink(this)">
                                             </td>
                                             <td>{{ number_format($results[$data->id]) }}%</td>
                                             <td>
-                                                <form action="{{ route('get.UpdateIkuUpt', $data->id) }}" method="POST"
+                                                <form action="{{ route('get.UpdateLppdUpt', $data->id) }}" method="POST"
                                                     data-id="{{ $data->id }}">
                                                     @csrf
                                                     @method('PUT')
@@ -124,8 +124,8 @@ IKU
                                                         class="hidden-laki-laki">
                                                     <input type="hidden" name="b" value="{{ $data->b }}"
                                                         class="hidden-perempuan">
-                                                    <input type="hidden" name="b" value="{{ $data->b }}"
-                                                        class="hidden-perempuan">
+                                                    <input type="hidden" name="link_terkait"
+                                                        value="{{ $data->link_terkait }}" class="hidden-link">
                                                     <button class="btn btn-primary update-button"
                                                         type="submit">Update</button>
                                                 </form>
@@ -146,38 +146,38 @@ IKU
 @push('add-script')
 <script>
     function updateHiddenLakiLaki(input) {
-      const inputValue = input.value;
-      const dataId = input.getAttribute('data-id');
+        const inputValue = input.value;
+        const dataId = input.getAttribute('data-id');
 
-      const hiddenInput = document.querySelector(`form[data-id="${dataId}"] .hidden-laki-laki`);
+        const hiddenInput = document.querySelector(`form[data-id="${dataId}"] .hidden-laki-laki`);
 
-      hiddenInput.value = inputValue;
+        hiddenInput.value = inputValue;
     }
 
     function updateHiddenPerempuan(input) {
-      const inputValue = input.value;
-      const dataId = input.getAttribute('data-id');
+        const inputValue = input.value;
+        const dataId = input.getAttribute('data-id');
 
-      const hiddenInput = document.querySelector(`form[data-id="${dataId}"] .hidden-perempuan`);
+        const hiddenInput = document.querySelector(`form[data-id="${dataId}"] .hidden-perempuan`);
 
-      hiddenInput.value = inputValue;
+        hiddenInput.value = inputValue;
     }
 
-    function updateHiddenPerempuan(input) {
-      const inputValue = input.value;
-      const dataId = input.getAttribute('data-id');
+    function updateHiddenLink(input) {
+        const inputValue = input.value;
+        const dataId = input.getAttribute('data-id');
 
-      const hiddenInput = document.querySelector(`form[data-id="${dataId}"] .hidden-perempuan`);
+        const hiddenInput = document.querySelector(`form[data-id="${dataId}"] .hidden-link`);
 
-      hiddenInput.value = inputValue;
+        hiddenInput.value = inputValue;
     }
 
-    const inputElements = document.querySelectorAll('#table input[type="number"]');
+    const inputElements = document.querySelectorAll('#table input[type="number"], #table input[type="text"]');
 </script>
 
 <script>
     const dataTable = new simpleDatatables.DataTable("#table", {
-      searchable: true,
+        searchable: true,
     });
 </script>
 @endpush
