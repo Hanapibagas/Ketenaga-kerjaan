@@ -34,7 +34,7 @@
                                     <button type="submit">
                                         <i class="lni lni-exit"></i>
                                         Logout
-                                        </button>
+                                    </button>
                                 </form>
                             </li>
                         </ul>

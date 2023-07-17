@@ -38,8 +38,8 @@
                 </a>
             </li>
             <li
-                class="nav-item {{ request()->is('dataset-admin-upt') || request()->is('dataset-admin-upt/*') || request()->is('dataset-admin-upt/edit/*') ? 'active' : '' }}">
-                <a href="{{ route('index_dataset_upt') }}">
+                class="nav-item {{ request()->is('iku-admin-upt') || request()->is('dataset-admin-upt/*') || request()->is('dataset-admin-upt/edit/*') ? 'active' : '' }}">
+                <a href="{{ route('get.IndexIkuUpt') }}">
                     <span class="icon">
                         <svg width="18" height="20" viewBox="0 0 18 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path
@@ -52,8 +52,8 @@
                 </a>
             </li>
             <li
-                class="nav-item {{ request()->is('dataset-admin-upt') || request()->is('dataset-admin-upt/*') || request()->is('dataset-admin-upt/edit/*') ? 'active' : '' }}">
-                <a href="{{ route('index_dataset_upt') }}">
+                class="nav-item {{ request()->is('lppd-admin-upt') || request()->is('dataset-admin-upt/*') || request()->is('dataset-admin-upt/edit/*') ? 'active' : '' }}">
+                <a href="{{ route('get.IndexLppdUpt') }}">
                     <span class="icon">
                         <svg width="18" height="20" viewBox="0 0 18 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path

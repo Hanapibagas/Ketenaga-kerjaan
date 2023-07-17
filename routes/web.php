@@ -29,7 +29,9 @@ use App\Http\Controllers\Masyarakat\DasboardMasyrakatController;
 use App\Http\Controllers\Masyarakat\PermintaanDataMasyarakatController;
 use App\Http\Controllers\Upt\DashboardAdminUptController;
 use App\Http\Controllers\Upt\DatasetAdminUptController;
+use App\Http\Controllers\Upt\IkuUptController;
 use App\Http\Controllers\Upt\LaporanAdminUptController;
+use App\Http\Controllers\Upt\LppdUptController;
 use App\Http\Controllers\Upt\UpdatePasswordAdminUptController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -244,6 +246,12 @@ Route::middleware('auth', 'checkroll:kab/kota')->group(function () {
 // admin upt
 Route::middleware('auth', 'checkroll:upt')->group(function () {
     Route::get('/admin-upt', [DashboardAdminUptController::class, 'dashboard_upt'])->name('dashboard_upt');
+    //
+    Route::get('/lppd-admin-upt', [LppdUptController::class, 'getIndex'])->name('get.IndexLppdUpt');
+    //
+    Route::get('/iku-admin-upt', [IkuUptController::class, 'getIndex'])->name('get.IndexIkuUpt');
+    Route::put('/iku-admin-upt/update/{id}', [IkuUptController::class, 'getUpdate'])->name('get.UpdateIkuUpt');
+    Route::post('/iku-admin-upt', [IkuUptController::class, 'getFilterTahun'])->name('get.TahunIku');
     //
     Route::get('/dataset-admin-upt', [DatasetAdminUptController::class, 'index_dataset_upt'])->name('index_dataset_upt');
     Route::post('/dataset-admin-upt/{id}', [DatasetAdminUptController::class, 'filter_dataset_upt'])->name('filter_dataset_upt');

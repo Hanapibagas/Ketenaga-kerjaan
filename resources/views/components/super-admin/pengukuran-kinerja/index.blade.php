@@ -77,7 +77,7 @@ Pengukuran Kinerja
             <div class="row">
                 <div class="col-lg-12">
                     <div class="card-style mb-30">
-                        <h6 class="mb-10">IKU Data Table</h6>
+                        <h6 class="mb-10">Pengkuruan Kinerja Data Table</h6>
                         <div class="table-responsive">
                             <table id="table" class="table">
                                 <thead>
