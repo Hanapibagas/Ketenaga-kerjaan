@@ -50,6 +50,6 @@ class LppdUptController extends Controller
 
         $lppd->save();
         // dd($lppd);
-        return redirect()->back()->with('status', 'Selamat data iku berhasil diperbaui');
+        return redirect()->back()->with('status', 'Selamat data LPPD berhasil diperbaui');
     }
 }

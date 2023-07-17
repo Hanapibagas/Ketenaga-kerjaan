@@ -32,6 +32,7 @@ use App\Http\Controllers\Upt\DatasetAdminUptController;
 use App\Http\Controllers\Upt\IkuUptController;
 use App\Http\Controllers\Upt\LaporanAdminUptController;
 use App\Http\Controllers\Upt\LppdUptController;
+use App\Http\Controllers\Upt\PengukuranKinerjaUptController;
 use App\Http\Controllers\Upt\UpdatePasswordAdminUptController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -177,19 +178,19 @@ Route::middleware('auth', 'checkroll:admin super')->group(function () {
     Route::get('/admin-super', [DashboarAdminSuperdController::class, 'index_admin_super'])->name('index_admin_super');
     //
     Route::get('/pengukuran-kinerja-admin-super', [PengukuranKinerjaController::class, 'getIndex'])->name('get.IndexPengukuranKinerja');
-    Route::post('/pengukuran-kinerja-admin-super', [PengukuranKinerjaController::class, 'getFilterTahun'])->name('get.TahunPengukuranKinerja');
+    Route::post('/pengukuran-kinerja-admin-super', [PengukuranKinerjaController::class, 'getFilterTahun'])->name('get.TahunPengukuranKinerjaSuper');
     Route::post('/pengukuran-kinerja-admin-super/post', [PengukuranKinerjaController::class, 'getStore'])->name('get.StorePengukuranKinerja');
     Route::put('/pengukuran-kinerja-admin-super/update/{id}', [PengukuranKinerjaController::class, 'getUpdate'])->name('get.UpdatePengukuranKinerja');
     Route::delete('/pengukuran-kinerja-admin-super/delete/{id}', [PengukuranKinerjaController::class, 'getDestroy'])->name('get.DeletePengukuranKinerja');
     //
     Route::get('/iku-admin-super', [IkuController::class, 'getIndex'])->name('get.IndexIku');
-    Route::post('/iku-admin-super', [IkuController::class, 'getFilterTahun'])->name('get.TahunIku');
+    Route::post('/iku-admin-super', [IkuController::class, 'getFilterTahun'])->name('get.TahunIkuSuper');
     Route::post('/iku-admin-super/post', [IkuController::class, 'getStore'])->name('get.StoreIku');
     Route::put('/iku-admin-super/update/{id}', [IkuController::class, 'getUpdate'])->name('get.UpdateIku');
     Route::delete('/iku-admin-super/delete/{id}', [IkuController::class, 'getDestroy'])->name('get.DeleteIku');
     //
     Route::get('/lppd-admin-super', [LppdController::class, 'getIndex'])->name('get.IndexLppd');
-    Route::post('/lppd-admin-super', [LppdController::class, 'getFilterTahun'])->name('get.TahunLppd');
+    Route::post('/lppd-admin-super', [LppdController::class, 'getFilterTahun'])->name('get.TahunLppdSuper');
     Route::post('/lppd-admin-super/post', [LppdController::class, 'getStore'])->name('get.StoreLppd');
     Route::put('/lppd-admin-super/update/{id}', [LppdController::class, 'getUpdate'])->name('get.UpdateLppd');
     Route::delete('/lppd-admin-super/delete/{id}', [LppdController::class, 'getDestroy'])->name('get.DeleteLppd');
@@ -246,6 +247,10 @@ Route::middleware('auth', 'checkroll:kab/kota')->group(function () {
 // admin upt
 Route::middleware('auth', 'checkroll:upt')->group(function () {
     Route::get('/admin-upt', [DashboardAdminUptController::class, 'dashboard_upt'])->name('dashboard_upt');
+    //
+    Route::get('/pengkuran-kinerja-admin-upt', [PengukuranKinerjaUptController::class, 'getIndex'])->name('get.IndexPengkuranUpt');
+    Route::put('/pengkuran-kinerja-admin-upt/update/{id}', [PengukuranKinerjaUptController::class, 'getUpdate'])->name('get.UpdatePengukuranUpt');
+    Route::post('/pengkuran-kinerja-admin-upt', [PengukuranKinerjaUptController::class, 'getFilterTahun'])->name('get.TahunPengukuran');
     //
     Route::get('/lppd-admin-upt', [LppdUptController::class, 'getIndex'])->name('get.IndexLppdUpt');
     Route::put('/lppd-admin-upt/update/{id}', [LppdUptController::class, 'getUpdate'])->name('get.UpdateLppdUpt');

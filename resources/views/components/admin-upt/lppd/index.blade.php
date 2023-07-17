@@ -1,7 +1,7 @@
 @extends('layouts.dashboardadminupt')
 
 @section('title')
-IKU
+LPPD
 @endsection
 
 @section('content')
@@ -22,21 +22,7 @@ IKU
             <div class="row align-items-center">
                 <div class="col-md-6">
                     <div class="title mb-30">
-                        <h2>Data IKU</h2>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="breadcrumb-wrapper mb-30">
-                        <nav aria-label="breadcrumb">
-                            <ol class="breadcrumb">
-                                <li class="breadcrumb-item">
-                                    <a href="{{ route('index_dataset_upt') }}">
-                                        <i>
-                                            <- Kembali </i>
-                                    </a>
-                                </li>
-                            </ol>
-                        </nav>
+                        <h2>Data LPPD</h2>
                     </div>
                 </div>
             </div>

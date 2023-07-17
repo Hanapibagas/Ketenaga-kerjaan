@@ -1,7 +1,7 @@
 @extends('layouts.dashboardadminupt')
 
 @section('title')
-IKU
+Pengukuran Kinerja
 @endsection
 
 @section('content')
@@ -22,7 +22,7 @@ IKU
             <div class="row align-items-center">
                 <div class="col-md-6">
                     <div class="title mb-30">
-                        <h2>Data IKU</h2>
+                        <h2>Data Pengukuran Kinerja</h2>
                     </div>
                 </div>
             </div>
@@ -33,21 +33,19 @@ IKU
                 <div class="col-lg-12">
 
                     <div class="card-style mb-30">
-                        <h6 class="mb-25">Tahun</h6>
+                        <h6 class="mb-25">Triwulan</h6>
                         <div class="row">
-                            <form action="{{ route('get.TahunIku') }}" method="POST">
+                            <form action="{{ route('get.TahunPengukuran') }}" method="POST">
                                 @csrf
                                 <div class="col-12">
                                     <div class="input-style-1">
-                                        <label>Tahun</label>
-                                        @php
-                                        $year = date('Y');
-                                        @endphp
+                                        <label>Triwulan</label>
                                         <select name="tahun" class="form-control">
-                                            <option value="-- Pilih tahun --">-- Pilih tahun --</option>
-                                            @for ($i=2018; $i <= $year; $i++) <option value="{{ $i }}"> {{ $i }}
-                                                </option>
-                                                @endfor
+                                            <option value="-- Pilih tahun --">-- Pilih Triwulan --</option>
+                                            <option value="Triwulan I">Triwulan I</option>
+                                            <option value="Triwulan II">Triwulan II</option>
+                                            <option value="Triwulan III">Triwulan III</option>
+                                            <option value="Triwulan IV">Triwulan IV</option>
                                         </select>
                                     </div>
                                     <style>
@@ -58,7 +56,7 @@ IKU
                                     <div class="col-12 tombol">
                                         <div class="button-group d-flex justify-content-center flex-wrap">
                                             <button class="main-btn success-btn btn-hover m-2">
-                                                Cari tahun
+                                                Cari triwulan
                                             </button>
                                         </div>
                                     </div>
@@ -81,7 +79,7 @@ IKU
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($iku as $data)
+                                        @foreach ($pengukuran as $data)
 
                                         <tr>
                                             <td>{{ $data->indikator }}</td>
@@ -97,8 +95,8 @@ IKU
                                             </td>
                                             <td>{{ number_format($results[$data->id]) }}%</td>
                                             <td>
-                                                <form action="{{ route('get.UpdateIkuUpt', $data->id) }}" method="POST"
-                                                    data-id="{{ $data->id }}">
+                                                <form action="{{ route('get.UpdatePengukuranUpt', $data->id) }}"
+                                                    method="POST" data-id="{{ $data->id }}">
                                                     @csrf
                                                     @method('PUT')
                                                     <input type="hidden" name="a" value="{{ $data->a }}"

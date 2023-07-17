@@ -12,7 +12,16 @@ class LppdController extends Controller
     {
         $lppd = Lppd::orderBy('created_at', 'desc')->get();
 
-        return view('components.super-admin.lppd.index', compact('lppd'));
+        $results = [];
+
+        foreach ($lppd as $data) {
+            $result = $data->a * $data->b;
+            $results[$data->id] = $result;
+        }
+
+        $total = array_sum($results) / 100;
+
+        return view('components.super-admin.lppd.index', compact('lppd', 'results'));
     }
 
     public function getStore(Request $request)
@@ -60,6 +69,15 @@ class LppdController extends Controller
 
         $lppd = Lppd::whereYear('tahun', $tahun)->get();
 
-        return view('components.super-admin.lppd.index', compact('lppd'));
+        $results = [];
+
+        foreach ($lppd as $data) {
+            $result = $data->a * $data->b;
+            $results[$data->id] = $result;
+        }
+
+        $total = array_sum($results) / 100;
+
+        return view('components.super-admin.lppd.index', compact('lppd', 'results'));
     }
 }

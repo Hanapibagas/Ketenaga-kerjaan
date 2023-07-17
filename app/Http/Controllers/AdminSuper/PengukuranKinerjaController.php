@@ -12,7 +12,16 @@ class PengukuranKinerjaController extends Controller
     {
         $pengukuran = PengukuranKinerja::orderBy('created_at', 'desc')->get();
 
-        return view('components.super-admin.pengukuran-kinerja.index', compact('pengukuran'));
+        $results = [];
+
+        foreach ($pengukuran as $data) {
+            $result = $data->a * $data->b;
+            $results[$data->id] = $result;
+        }
+
+        $total = array_sum($results) / 100;
+
+        return view('components.super-admin.pengukuran-kinerja.index', compact('pengukuran', 'results'));
     }
 
     public function getStore(Request $request)
@@ -61,6 +70,15 @@ class PengukuranKinerjaController extends Controller
 
         $pengukuran = PengukuranKinerja::where('tahun', $tahun)->get();
 
-        return view('components.super-admin.pengukuran-kinerja.index', compact('pengukuran'));
+        $results = [];
+
+        foreach ($pengukuran as $data) {
+            $result = $data->a * $data->b;
+            $results[$data->id] = $result;
+        }
+
+        $total = array_sum($results) / 100;
+
+        return view('components.super-admin.pengukuran-kinerja.index', compact('pengukuran', 'results'));
     }
 }

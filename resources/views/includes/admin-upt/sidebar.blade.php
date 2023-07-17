@@ -79,8 +79,8 @@
                 </a>
             </li>
             <li
-                class="nav-item {{ request()->is('dataset-admin-upt') || request()->is('dataset-admin-upt/*') || request()->is('dataset-admin-upt/edit/*') ? 'active' : '' }}">
-                <a href="{{ route('index_dataset_upt') }}">
+                class="nav-item {{ request()->is('pengkuran-kinerja-admin-upt') || request()->is('dataset-admin-upt/*') || request()->is('dataset-admin-upt/edit/*') ? 'active' : '' }}">
+                <a href="{{ route('get.IndexPengkuranUpt') }}">
                     <span class="icon">
                         <svg width="18" height="20" viewBox="0 0 18 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path

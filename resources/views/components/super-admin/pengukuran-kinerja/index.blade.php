@@ -43,7 +43,7 @@ Pengukuran Kinerja
             <div class="card-style mb-30">
                 <h6 class="mb-25">Triwulan</h6>
                 <div class="row">
-                    <form action="{{ route('get.TahunPengukuranKinerja') }}" method="POST">
+                    <form action="{{ route('get.TahunPengukuranKinerjaSuper') }}" method="POST">
                         @csrf
                         <div class="col-12">
                             <div class="input-style-1">
@@ -95,7 +95,7 @@ Pengukuran Kinerja
                                         <td>{{ $data->indikator }}</td>
                                         <td>{{ $data->a }}</td>
                                         <td>{{ $data->b }}</td>
-                                        <td>{{ $data->hasil }}</td>
+                                        <td>{{ number_format($results[$data->id]) }}%</td>
                                         <td>
                                             <a data-toggle="modal" data-target="#exampleModal-{{ $data->id }}"
                                                 class="btn btn-primary">

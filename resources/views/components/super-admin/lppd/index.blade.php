@@ -43,7 +43,7 @@ LPPD
             <div class="card-style mb-30">
                 <h6 class="mb-25">Tahun</h6>
                 <div class="row">
-                    <form action="{{ route('get.TahunLppd') }}" method="POST">
+                    <form action="{{ route('get.TahunLppdSuper') }}" method="POST">
                         @csrf
                         <div class="col-12">
                             <div class="input-style-1">
@@ -98,8 +98,8 @@ LPPD
                                         <td>{{ Str::limit($data->indikator, 25) }}</td>
                                         <td>{{ $data->a }}</td>
                                         <td>{{ $data->b }}</td>
-                                        <td>{{ $data->link_terkait }}</td>
-                                        <td>{{ $data->hasil }}</td>
+                                        <td><a href="{{ $data->link_terkait }}">{{ $data->link_terkait }}</a></td>
+                                        <td>{{ number_format($results[$data->id]) }}%</td>
                                         <td>
                                             <a data-toggle="modal" data-target="#exampleModal-{{ $data->id }}"
                                                 class="btn btn-primary">

@@ -11,8 +11,16 @@ class IkuController extends Controller
     public function getIndex()
     {
         $iku = Iku::orderBy('created_at', 'desc')->get();
+        $results = [];
 
-        return view('components.super-admin.iku.index', compact('iku'));
+        foreach ($iku as $data) {
+            $result = $data->a * $data->b;
+            $results[$data->id] = $result;
+        }
+
+        $total = array_sum($results) / 100;
+
+        return view('components.super-admin.iku.index', compact('iku', 'results'));
     }
 
     public function getStore(Request $request)
@@ -60,6 +68,15 @@ class IkuController extends Controller
 
         $iku = Iku::whereYear('tahun', $tahun)->get();
 
-        return view('components.super-admin.iku.index', compact('iku'));
+        $results = [];
+
+        foreach ($iku as $data) {
+            $result = $data->a * $data->b;
+            $results[$data->id] = $result;
+        }
+
+        $total = array_sum($results) / 100;
+
+        return view('components.super-admin.iku.index', compact('iku', 'results'));
     }
 }
