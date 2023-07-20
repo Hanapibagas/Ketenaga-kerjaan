@@ -16,4 +16,9 @@ class DataSet extends Model
         'slug',
         'nama_master_data', 'deskripsi', 'file_data'
     ];
+
+    public function detailsDataset()
+    {
+        return $this->hasMany(DetailsDataset::class, 'dataset_id');
+    }
 }
