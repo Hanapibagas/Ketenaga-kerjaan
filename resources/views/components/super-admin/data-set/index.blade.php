@@ -72,6 +72,9 @@ Dataset
                                                 class="btn btn-info">
                                                 <i class="lni lni-eye" style="color: whitesmoke"></i>
                                             </a>
+                                            <a href="{{ route('getCreateVariable', $data->id) }}" class="btn btn-info">
+                                                <i class="lni lni-archive" style="color: whitesmoke"></i>
+                                            </a>
                                             <input type="hidden" class="delete_id" value="{{ $data->id }}">
                                             <form action="{{ route('destroy_dataset', $data->id) }}" method="POST"
                                                 class="d-inline">

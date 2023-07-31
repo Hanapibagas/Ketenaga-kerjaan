@@ -111,14 +111,14 @@ Dataset
                     </div>
 
                     <div class="card-style mb-30">
-                        <style>
+                        {{-- <style>
                             .tambah {
                                 margin-bottom: 12px;
                             }
                         </style>
                         <a href="{{ route('tambah_dataset_upt_admin', $dataset->id) }}"
                             class="main-btn success-btn rounded-md btn-hover tambah">+
-                            Tambah Data</a>
+                            Tambah Data</a> --}}
                         <div class="row">
                             <div class="table-responsive">
                                 <table id="table" class="table">

@@ -28,9 +28,63 @@ class UserSeeder extends Seeder
             'password' => bcrypt('adminsuper')
         ]);
         User::create([
-            'name' => '',
-            'email' => 'soppeng@gmail.com',
-            'roles' => 'kab/kota',
+            'name' => 'UPT Balai Pelatihan Kerja',
+            'email' => 'uptbalaipelatihankerja@gmail.com',
+            'roles' => 'upt',
+            'password' => bcrypt('12345678')
+        ]);
+        User::create([
+            'name' => 'UPT Pengawasan Ketenagakerjaan Wilayah I',
+            'email' => 'uptbalaipelatihankerjawilayahI@gmail.com',
+            'roles' => 'upt',
+            'password' => bcrypt('12345678')
+        ]);
+        User::create([
+            'name' => 'UPT Pengawasan Ketenagakerjaan Wilayah II',
+            'email' => 'uptbalaipelatihankerjawilayahII@gmail.com',
+            'roles' => 'upt',
+            'password' => bcrypt('12345678')
+        ]);
+        User::create([
+            'name' => 'UPT Pengawasan Ketenagakerjaan Wilayah III',
+            'email' => 'uptbalaipelatihankerjawilayahIII@gmail.com',
+            'roles' => 'upt',
+            'password' => bcrypt('12345678')
+        ]);
+        User::create([
+            'name' => 'UPT Pengawasan Ketenagakerjaan Wilayah IV',
+            'email' => 'uptbalaipelatihankerjawilayahIV@gmail.com',
+            'roles' => 'upt',
+            'password' => bcrypt('12345678')
+        ]);
+        User::create([
+            'name' => 'Bidang Pengembangan Ketenagakerjaan',
+            'email' => 'bidangpengembanganketenagakerjaan@gmail.com',
+            'roles' => 'upt',
+            'password' => bcrypt('12345678')
+        ]);
+        User::create([
+            'name' => 'Bidang Pengawasan Ketenagakerjaan',
+            'email' => 'bidangpengawasanketenagakerjaan@gmail.com',
+            'roles' => 'upt',
+            'password' => bcrypt('12345678')
+        ]);
+        User::create([
+            'name' => 'Bidang Hubungan Industrial',
+            'email' => 'bidanghubunganindustrial@gmail.com',
+            'roles' => 'upt',
+            'password' => bcrypt('12345678')
+        ]);
+        User::create([
+            'name' => 'Bidang Ketransmigrasian',
+            'email' => 'bidangketransmigrasian@gmail.com',
+            'roles' => 'upt',
+            'password' => bcrypt('12345678')
+        ]);
+        User::create([
+            'name' => 'Sekretariat',
+            'email' => 'sekretariat@gmail.com',
+            'roles' => 'upt',
             'password' => bcrypt('12345678')
         ]);
         User::create([

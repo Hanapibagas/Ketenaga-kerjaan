@@ -4,12 +4,14 @@ namespace App\Http\Controllers\AdminSuper;
 
 use App\Http\Controllers\Controller;
 use App\Models\Lppd;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class LppdController extends Controller
 {
     public function getIndex()
     {
+        $user = User::where('id', '>', 2)->whereIn('roles', ['upt', 'kab/kota'])->get();
         $lppd = Lppd::orderBy('created_at', 'desc')->get();
 
         $results = [];
@@ -21,7 +23,7 @@ class LppdController extends Controller
 
         $total = array_sum($results) / 100;
 
-        return view('components.super-admin.lppd.index', compact('lppd', 'results'));
+        return view('components.super-admin.lppd.index', compact('lppd', 'results', 'user'));
     }
 
     public function getStore(Request $request)

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class DataSet extends Model
 {
@@ -14,11 +15,17 @@ class DataSet extends Model
         'opd',
         'satuan',
         'slug',
-        'nama_master_data', 'deskripsi', 'file_data'
+        'status',
+        'user_id'
     ];
 
     public function detailsDataset()
     {
         return $this->hasMany(DetailsDataset::class, 'dataset_id');
+    }
+
+    public function User()
+    {
+        return $this->BelongsTo(User::class, 'user_id');
     }
 }

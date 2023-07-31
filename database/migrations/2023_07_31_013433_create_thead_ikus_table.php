@@ -13,15 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('data_sets', function (Blueprint $table) {
+        Schema::create('thead_ikus', function (Blueprint $table) {
             $table->id();
-            $table->string('nama_dataset');
-            $table->string('kategori');
-            $table->string('slug');
-            $table->string('opd');
-            $table->string('satuan');
-            $table->enum('status', ['false', 'true']);
-            $table->foreignId('user_id')->constrained('users')->onDelete('cascade')->onUpdate('cascade');
+            $table->string('indikator');
+            $table->string('bidang');
+            $table->string('tahun');
+            $table->string('a');
+            $table->string('b');
+            $table->string('hasil');
             $table->timestamps();
         });
     }
@@ -33,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('data_sets');
+        Schema::dropIfExists('thead_ikus');
     }
 };

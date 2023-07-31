@@ -15,5 +15,11 @@ class PengukuranKinerja extends Model
         'a',
         'b',
         'hasil',
+        'user_id'
     ];
+
+    public function User()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
 }

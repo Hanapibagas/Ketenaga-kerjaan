@@ -6,12 +6,14 @@ use App\Http\Controllers\Controller;
 use App\Models\DataSet;
 use App\Models\DetailsDataset;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class DatasetAdminUptController extends Controller
 {
     public function index_dataset_upt()
     {
-        $dataset = DataSet::all();
+        $user = Auth::user();
+        $dataset = DataSet::where('user_id', $user->id)->get();
         return view('components.admin-upt.data-set.index', compact('dataset'));
     }
 

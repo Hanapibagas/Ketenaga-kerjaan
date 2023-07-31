@@ -186,6 +186,7 @@ Route::middleware('auth', 'checkroll:admin super')->group(function () {
     Route::get('/iku-admin-super', [IkuController::class, 'getIndex'])->name('get.IndexIku');
     Route::post('/iku-admin-super', [IkuController::class, 'getFilterTahun'])->name('get.TahunIkuSuper');
     Route::post('/iku-admin-super/post', [IkuController::class, 'getStore'])->name('get.StoreIku');
+    Route::put('iku-admin-super/update/thead/{id}', [IkuController::class, 'getUpdateThead'])->name('get.UpdateThead');
     Route::put('/iku-admin-super/update/{id}', [IkuController::class, 'getUpdate'])->name('get.UpdateIku');
     Route::delete('/iku-admin-super/delete/{id}', [IkuController::class, 'getDestroy'])->name('get.DeleteIku');
     //
@@ -197,13 +198,15 @@ Route::middleware('auth', 'checkroll:admin super')->group(function () {
     //
     Route::get('/dataset-admin-super', [DataSeAdminSupertController::class, 'index_dataset'])->name('index_dataset');
     Route::get('/dataset-admin-super/create', [DataSeAdminSupertController::class, 'create_dataset'])->name('create_dataset');
+    Route::put('/dataset-admin-super/update/thead/{id}', [DataSeAdminSupertController::class, 'getUpdateThead'])->name('get.UpdateTheadDataset');
     Route::get('/dataset-admin-super/edit/{id}', [DataSeAdminSupertController::class, 'edit_dataset'])->name('edit_dataset');
+    Route::get('dataset-admin-super/create/variabble/{id}', [DataSeAdminSupertController::class, 'getCreateVariable'])->name('getCreateVariable');
     Route::post('/dataset-admin-super/post', [DataSeAdminSupertController::class, 'store_dataset'])->name('store_dataset');
+    Route::post('/dataset-admin-super/details/post', [DataSeAdminSupertController::class, 'getPostDetails'])->name('getPostDetails');
     Route::put('/dataset-admin-super/update/{id}', [DataSeAdminSupertController::class, 'update_dataset'])->name('update_dataset');
     Route::delete('/dataset-admin-super/delete/{id}', [DataSeAdminSupertController::class, 'destroy_dataset'])->name('destroy_dataset');
     Route::get('/dataset-admin-super/details/{id}', [DataSeAdminSupertController::class, 'details_dataset_admin_super'])->name('details_dataset_admin_super');
-    Route::post('/dataset-admin-super/cari-tahun/{id}', [DataSeAdminSupertController::class, 'filter_dataset_admin_super'])->name('filter_dataset_admin_super');
-    //
+    Route::post('/dataset-admin-super/details/{id}', [DataSeAdminSupertController::class, 'filter_dataset_admin_super'])->name('filter_dataset_admin_super');
     //
     Route::get('/laporan-admin-super', [LaporanAdminSuperController::class, 'index_laporan_admin_super'])->name('index_laporan_admin_super');
     Route::get('/export-laporan-admin-super', [LaporanAdminSuperController::class, 'export_excel_laporan'])->name('export_excel_laporan');

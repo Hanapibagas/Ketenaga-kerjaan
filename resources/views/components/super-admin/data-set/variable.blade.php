@@ -36,18 +36,18 @@ Dataset
                 <div class="col-lg-12">
                     <div class="card-style mb-30">
                         <h6 class="mb-25">Dataset</h6>
-                        <form action="{{ route('update_dataset', $dataset->id) }}" method="POST"
-                            enctype="multipart/form-data">
+                        <form action="{{ route('getPostDetails') }}" method="POST" enctype="multipart/form-data">
                             @csrf
-                            @method('PUT')
                             <div class="row">
                                 <div class="col-12">
                                     <div class="input-style-1">
                                         <label>Nama Dataset</label>
+                                        <input type="hidden" value="{{ $dataset->id }}"
+                                            class="@error('dataset_id') is-invalid @enderror" name="dataset_id"
+                                            readonly />
                                         <input type="text" value="{{ $dataset->nama_dataset }}"
-                                            class="@error('nama_dataset') is-invalid @enderror" name="nama_dataset"
-                                            placeholder="Masukkan Nama Dataset" />
-                                        @error('nama_dataset')
+                                            class="@error('dataset_id') is-invalid @enderror" readonly />
+                                        @error('dataset_id')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
@@ -56,11 +56,10 @@ Dataset
                                 </div>
                                 <div class="col-12">
                                     <div class="input-style-1">
-                                        <label>Kategori</label>
-                                        <input type="text" value="{{ $dataset->kategori }}"
-                                            class="@error('kategori') is-invalid @enderror" name="kategori"
-                                            placeholder="Masukkan Kategori" />
-                                        @error('kategori')
+                                        <label>Tahun</label>
+                                        <input type="date" class="@error('tahun') is-invalid @enderror" name="tahun"
+                                            required />
+                                        @error('tahun')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
@@ -69,48 +68,20 @@ Dataset
                                 </div>
                                 <div class="col-12">
                                     <div class="input-style-1">
-                                        <label>OPD</label>
-                                        <input type="text" value="{{ $dataset->opd }}"
-                                            class="@error('opd') is-invalid @enderror" name="opd"
-                                            placeholder="Masukkan OPD" />
-                                        @error('opd')
+                                        <label>Variable</label>
+                                        <input type="text" class="@error('variable') is-invalid @enderror"
+                                            name="variable" required />
+                                        @error('variable')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
                                         @enderror
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <div class="input-style-1">
-                                        <label>Satuan</label>
-                                        <input type="text" value="{{ $dataset->satuan }}"
-                                            class="@error('satuan') is-invalid @enderror" name="satuan"
-                                            placeholder="Masukkan Satuan" />
-                                        @error('satuan')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                        @enderror
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <div class="input-style-1">
-                                        <label>Untuk pengguna</label>
-                                        <select name="user_id" class="form-control" required>
-                                            <option value="{{ $dataset->User->name  }}">Pengguna saat ini {{
-                                                $dataset->User->name }}
-                                            </option>
-                                            <option value="-- Pilih tahun --">-- Pilih pengguna --</option>
-                                            @foreach ( $user as $users )
-                                            <option value="{{ $users->id }}">{{ $users->name }}</option>
-                                            @endforeach
-                                        </select>
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="button-group d-flex justify-content-center flex-wrap">
                                         <button class="main-btn success-btn btn-hover m-2">
-                                            Simpan Data
+                                            Kirim Data
                                         </button>
                                     </div>
                                 </div>

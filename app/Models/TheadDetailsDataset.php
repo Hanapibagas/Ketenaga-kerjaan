@@ -5,21 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Iku extends Model
+class TheadDetailsDataset extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'indikator',
+        'variabale',
         'tahun',
-        'a',
-        'b',
-        'hasil',
-        'user_id'
+        'laki',
+        'perempuan',
     ];
-
-    public function User()
-    {
-        return $this->belongsTo(User::class, 'user_id');
-    }
 }

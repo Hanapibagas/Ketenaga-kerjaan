@@ -17,8 +17,9 @@ return new class extends Migration
             $table->id();
             $table->string('indikator');
             $table->date('tahun');
-            $table->integer('a');
-            $table->integer('b');
+            $table->integer('a')->nullable();
+            $table->integer('b')->nullable();
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade')->onUpdate('cascade');
             $table->longText('link_terkait');
             $table->integer('hasil')->nullable();
             $table->timestamps();

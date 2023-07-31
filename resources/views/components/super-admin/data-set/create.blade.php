@@ -88,36 +88,29 @@ Dataset
                                 </div>
                                 <div class="col-12">
                                     <div class="input-style-1">
-                                        <label>Deskripsi</label>
-                                        <textarea type="text" class="@error('deskripsi') is-invalid @enderror"
-                                            name="deskripsi" /></textarea>
-                                        @error('deskripsi')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                        @enderror
+                                        <label>Untuk pengguna</label>
+                                        <select name="user_id" class="form-control" required>
+                                            <option value="-- Pilih tahun --">-- Pilih pengguna --</option>
+                                            @foreach ( $user as $users )
+                                            @if($users->name)
+                                            <option value="{{ $users->id }}">{{ $users->name }}</option>
+                                            @else
+                                            @if($users->email)
+                                            <option value="{{ $users->id }}"">{{ $users->email }}</option>
+                                            @endif
+                                            @endif
+                                            @endforeach
+                                        </select>
                                     </div>
                                 </div>
-                                <div class="col-12">
-                                    <div class="input-style-1">
-                                        <label>File Data</label>
-                                        <input type="file" class="@error('file_data') is-invalid @enderror"
-                                            name="file_data" />
-                                        @error('file_data')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                        @enderror
+                                <div class=" col-12">
+                                                <div class="button-group d-flex justify-content-center flex-wrap">
+                                                    <button class="main-btn success-btn btn-hover m-2">
+                                                        Simpan Data
+                                                    </button>
+                                                </div>
                                     </div>
                                 </div>
-                                <div class="col-12">
-                                    <div class="button-group d-flex justify-content-center flex-wrap">
-                                        <button class="main-btn success-btn btn-hover m-2">
-                                            Simpan Data
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
                         </form>
                     </div>
                 </div>

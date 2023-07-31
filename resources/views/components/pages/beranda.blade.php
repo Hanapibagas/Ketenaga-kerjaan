@@ -318,7 +318,7 @@ Beranda
         </div>
     </section>
 </div>
-
+{{--
 <div id="myModal" class="modal fade">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -340,5 +340,5 @@ Beranda
             </div>
         </div>
     </div>
-</div>
+</div> --}}
 @endsection
