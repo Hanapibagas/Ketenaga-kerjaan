@@ -53,6 +53,7 @@ class IkuController extends Controller
 
         $iku->update([
             'indikator' => $request->input('indikator'),
+            'user_id' => $request->input('user_id'),
             'tahun' => $request->input('tahun'),
         ]);
 

@@ -4,13 +4,17 @@ namespace App\Http\Controllers\AdminSuper;
 
 use App\Http\Controllers\Controller;
 use App\Models\PengukuranKinerja;
+use App\Models\TheadPengukuranKinerja;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class PengukuranKinerjaController extends Controller
 {
     public function getIndex()
     {
+        $user = User::where('id', '>', 2)->whereIn('roles', ['upt', 'kab/kota'])->get();
         $pengukuran = PengukuranKinerja::orderBy('created_at', 'desc')->get();
+        $thead = TheadPengukuranKinerja::first();
 
         $results = [];
 
@@ -21,7 +25,7 @@ class PengukuranKinerjaController extends Controller
 
         $total = array_sum($results) / 100;
 
-        return view('components.super-admin.pengukuran-kinerja.index', compact('pengukuran', 'results'));
+        return view('components.super-admin.pengukuran-kinerja.index', compact('pengukuran', 'results', 'user', 'thead'));
     }
 
     public function getStore(Request $request)
@@ -37,6 +41,7 @@ class PengukuranKinerjaController extends Controller
 
         PengukuranKinerja::create([
             'indikator' => $request->input('indikator'),
+            'user_id' => $request->input('user_id'),
             'tahun' => $request->input('tahun'),
         ]);
 
@@ -49,6 +54,7 @@ class PengukuranKinerjaController extends Controller
 
         $pengukuran->update([
             'indikator' => $request->input('indikator'),
+            'user_id' => $request->input('user_id'),
             'tahun' => $request->input('tahun')
         ]);
 
@@ -68,7 +74,9 @@ class PengukuranKinerjaController extends Controller
     {
         $tahun = $request->tahun;
 
+        $user = User::where('id', '>', 2)->whereIn('roles', ['upt', 'kab/kota'])->get();
         $pengukuran = PengukuranKinerja::where('tahun', $tahun)->get();
+        $thead = TheadPengukuranKinerja::first();
 
         $results = [];
 
@@ -79,6 +87,22 @@ class PengukuranKinerjaController extends Controller
 
         $total = array_sum($results) / 100;
 
-        return view('components.super-admin.pengukuran-kinerja.index', compact('pengukuran', 'results'));
+        return view('components.super-admin.pengukuran-kinerja.index', compact('pengukuran', 'results', 'user', 'thead'));
+    }
+
+    public function getUpdateThead(Request $request, $id)
+    {
+        $thead = TheadPengukuranKinerja::where('id', $id)->first();
+
+        $thead->update([
+            'indikator' => $request->input('indikator'),
+            'bidang' => $request->input('bidang'),
+            'tahun' => $request->input('tahun'),
+            'a' => $request->input('a'),
+            'b' => $request->input('b'),
+            'hasil' => $request->input('hasil'),
+        ]);
+
+        return redirect()->back()->with('status', 'Selamat tabel iku berhasil diperbarui');
     }
 }

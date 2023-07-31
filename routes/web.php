@@ -179,6 +179,7 @@ Route::middleware('auth', 'checkroll:admin super')->group(function () {
     //
     Route::get('/pengukuran-kinerja-admin-super', [PengukuranKinerjaController::class, 'getIndex'])->name('get.IndexPengukuranKinerja');
     Route::post('/pengukuran-kinerja-admin-super', [PengukuranKinerjaController::class, 'getFilterTahun'])->name('get.TahunPengukuranKinerjaSuper');
+    Route::put('/pengukuran-kinerja-admin-super/update/thead/{id})', [PengukuranKinerjaController::class, 'getUpdateThead'])->name('get.UpdateTheadPengukuran');
     Route::post('/pengukuran-kinerja-admin-super/post', [PengukuranKinerjaController::class, 'getStore'])->name('get.StorePengukuranKinerja');
     Route::put('/pengukuran-kinerja-admin-super/update/{id}', [PengukuranKinerjaController::class, 'getUpdate'])->name('get.UpdatePengukuranKinerja');
     Route::delete('/pengukuran-kinerja-admin-super/delete/{id}', [PengukuranKinerjaController::class, 'getDestroy'])->name('get.DeletePengukuranKinerja');
@@ -193,11 +194,13 @@ Route::middleware('auth', 'checkroll:admin super')->group(function () {
     Route::get('/lppd-admin-super', [LppdController::class, 'getIndex'])->name('get.IndexLppd');
     Route::post('/lppd-admin-super', [LppdController::class, 'getFilterTahun'])->name('get.TahunLppdSuper');
     Route::post('/lppd-admin-super/post', [LppdController::class, 'getStore'])->name('get.StoreLppd');
+    Route::put('/lppd-admin-super/update/thead/{id}', [LppdController::class, 'getUpdateThead'])->name('get.UpdateTheadLppd');
     Route::put('/lppd-admin-super/update/{id}', [LppdController::class, 'getUpdate'])->name('get.UpdateLppd');
     Route::delete('/lppd-admin-super/delete/{id}', [LppdController::class, 'getDestroy'])->name('get.DeleteLppd');
     //
     Route::get('/dataset-admin-super', [DataSeAdminSupertController::class, 'index_dataset'])->name('index_dataset');
     Route::get('/dataset-admin-super/create', [DataSeAdminSupertController::class, 'create_dataset'])->name('create_dataset');
+    Route::put('/dataset-admin/update/status/{id}', [DataSeAdminSupertController::class, 'getUpdateStatus'])->name('get.UpdateStatusDataset');
     Route::put('/dataset-admin-super/update/thead/{id}', [DataSeAdminSupertController::class, 'getUpdateThead'])->name('get.UpdateTheadDataset');
     Route::get('/dataset-admin-super/edit/{id}', [DataSeAdminSupertController::class, 'edit_dataset'])->name('edit_dataset');
     Route::get('dataset-admin-super/create/variabble/{id}', [DataSeAdminSupertController::class, 'getCreateVariable'])->name('getCreateVariable');

@@ -5,12 +5,14 @@ namespace App\Http\Controllers\Upt;
 use App\Http\Controllers\Controller;
 use App\Models\Lppd;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class LppdUptController extends Controller
 {
     public function getIndex()
     {
-        $lppd = Lppd::all();
+        $user = Auth::user();
+        $lppd = Lppd::where('user_id', $user->id)->get();
         $results = [];
 
         foreach ($lppd as $data) {
@@ -27,7 +29,8 @@ class LppdUptController extends Controller
     {
         $tahun = $request->tahun;
 
-        $lppd = Lppd::whereYear('tahun', $tahun)->get();
+        $user = Auth::user();
+        $lppd = Lppd::where('user_id', $user->id)->whereYear('tahun', $tahun)->get();
 
         $results = [];
         foreach ($lppd as $data) {

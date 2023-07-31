@@ -4,6 +4,7 @@ namespace App\Http\Controllers\AdminSuper;
 
 use App\Http\Controllers\Controller;
 use App\Models\Lppd;
+use App\Models\TheadLppd;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -13,6 +14,7 @@ class LppdController extends Controller
     {
         $user = User::where('id', '>', 2)->whereIn('roles', ['upt', 'kab/kota'])->get();
         $lppd = Lppd::orderBy('created_at', 'desc')->get();
+        $thead = TheadLppd::first();
 
         $results = [];
 
@@ -23,7 +25,7 @@ class LppdController extends Controller
 
         $total = array_sum($results) / 100;
 
-        return view('components.super-admin.lppd.index', compact('lppd', 'results', 'user'));
+        return view('components.super-admin.lppd.index', compact('lppd', 'results', 'user', 'thead'));
     }
 
     public function getStore(Request $request)
@@ -39,6 +41,7 @@ class LppdController extends Controller
 
         Lppd::create([
             'indikator' => $request->input('indikator'),
+            'user_id' => $request->input('user_id'),
             'tahun' => $request->input('tahun'),
         ]);
 
@@ -50,7 +53,9 @@ class LppdController extends Controller
         $lppd = Lppd::where('id', $id)->first();
 
         $lppd->update([
-            'indikator' => $request->input('indikator')
+            'indikator' => $request->input('indikator'),
+            'user_id' => $request->input('user_id'),
+            'tahun' => $request->input('tahun'),
         ]);
 
         return redirect()->back()->with('status', 'Selamat lppd berhasil diperbarui');
@@ -70,6 +75,8 @@ class LppdController extends Controller
         $tahun = $request->tahun;
 
         $lppd = Lppd::whereYear('tahun', $tahun)->get();
+        $thead = TheadLppd::first();
+        $user = User::where('id', '>', 2)->whereIn('roles', ['upt', 'kab/kota'])->get();
 
         $results = [];
 
@@ -80,6 +87,22 @@ class LppdController extends Controller
 
         $total = array_sum($results) / 100;
 
-        return view('components.super-admin.lppd.index', compact('lppd', 'results'));
+        return view('components.super-admin.lppd.index', compact('lppd', 'results', 'thead', 'user'));
+    }
+
+    public function getUpdateThead(Request $request, $id)
+    {
+        $thead = TheadLppd::where('id', $id)->first();
+
+        $thead->update([
+            'indikator' => $request->input('indikator'),
+            'bidang' => $request->input('bidang'),
+            'tahun' => $request->input('tahun'),
+            'a' => $request->input('a'),
+            'b' => $request->input('b'),
+            'hasil' => $request->input('hasil'),
+        ]);
+
+        return redirect()->back()->with('status', 'Selamat tabel iku berhasil diperbarui');
     }
 }

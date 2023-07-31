@@ -13,15 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('lppds', function (Blueprint $table) {
+        Schema::create('thead_pengukuran_kinerjas', function (Blueprint $table) {
             $table->id();
             $table->string('indikator');
-            $table->date('tahun');
-            $table->integer('a')->nullable();
-            $table->integer('b')->nullable();
-            $table->foreignId('user_id')->constrained('users')->onDelete('cascade')->onUpdate('cascade');
-            $table->longText('link_terkait')->nullable();
-            $table->integer('hasil')->nullable();
+            $table->string('bidang');
+            $table->string('tahun');
+            $table->string('a');
+            $table->string('b');
+            $table->string('hasil');
             $table->timestamps();
         });
     }
@@ -33,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('lppds');
+        Schema::dropIfExists('thead_pengukuran_kinerjas');
     }
 };

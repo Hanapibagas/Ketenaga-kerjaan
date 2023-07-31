@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('slug');
             $table->string('opd');
             $table->string('satuan');
-            $table->enum('status', ['false', 'true']);
+            $table->enum('status', ['0', '1']);
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });

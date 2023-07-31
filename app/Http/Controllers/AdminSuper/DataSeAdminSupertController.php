@@ -133,4 +133,15 @@ class DataSeAdminSupertController extends Controller
 
         return redirect()->back()->with('status', 'Selamat tabel details dataset berhasil diperbarui');
     }
+
+    public function getUpdateStatus(Request $request, $id)
+    {
+        $dataset = DataSet::where('id', $id)->first();
+
+        $dataset->update([
+            'status' => $request->input('status')
+        ]);
+
+        return redirect()->back()->with('status', 'Selamat dataset berhasil dipublikasikan');
+    }
 }

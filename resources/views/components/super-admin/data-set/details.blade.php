@@ -163,6 +163,39 @@ Dataset
                             </div>
                         </div>
                     </div>
+
+                    <div class="card-style mb-30">
+                        <h6 class="mb-25">Publikasikan</h6>
+                        <div class="row">
+                            <form action="{{ route('get.UpdateStatusDataset', $dataset->id) }}" method="POST">
+                                @csrf
+                                @method('PUT')
+                                <div class="col-12">
+                                    <div class="input-style-1">
+                                        <label>Tahun</label>
+                                        <select name="status" class="form-control">
+                                            <option value="">{{ $dataset->status == 0 ? 'Private' : 'Publikasi' }}
+                                            </option>
+                                            <option value="1">Publikasikan</option>
+                                            <option value="0">Privasi</option>
+                                        </select>
+                                    </div>
+                                    <style>
+                                        .tombol {
+                                            margin-left: 392px
+                                        }
+                                    </style>
+                                    <div class="col-12 tombol">
+                                        <div class="button-group d-flex justify-content-center flex-wrap">
+                                            <button class="main-btn success-btn btn-hover m-2">
+                                                Publikasikan Data
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

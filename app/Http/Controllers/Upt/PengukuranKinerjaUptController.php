@@ -5,12 +5,14 @@ namespace App\Http\Controllers\Upt;
 use App\Http\Controllers\Controller;
 use App\Models\PengukuranKinerja;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PengukuranKinerjaUptController extends Controller
 {
     public function getIndex()
     {
-        $pengukuran = PengukuranKinerja::all();
+        $user = Auth::user();
+        $pengukuran = PengukuranKinerja::where('user_id', $user->id)->get();
         $results = [];
 
         foreach ($pengukuran as $data) {
@@ -27,7 +29,8 @@ class PengukuranKinerjaUptController extends Controller
     {
         $tahun = $request->tahun;
 
-        $pengukuran = PengukuranKinerja::where('tahun', $tahun)->get();
+        $user = Auth::user();
+        $pengukuran = PengukuranKinerja::where('user_id', $user->id)->where('tahun', $tahun)->get();
 
         $results = [];
         foreach ($pengukuran as $data) {

@@ -5,12 +5,14 @@ namespace App\Http\Controllers\Upt;
 use App\Http\Controllers\Controller;
 use App\Models\Iku;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class IkuUptController extends Controller
 {
     public function getIndex()
     {
-        $iku = Iku::all();
+        $user = Auth::user();
+        $iku = Iku::where('user_id', $user->id)->get();
         $results = [];
 
         foreach ($iku as $data) {
@@ -27,7 +29,8 @@ class IkuUptController extends Controller
     {
         $tahun = $request->tahun;
 
-        $iku = Iku::whereYear('tahun', $tahun)->get();
+        $user = Auth::user();
+        $iku = Iku::where('user_id', $user->id)->whereYear('tahun', $tahun)->get();
 
         $results = [];
         foreach ($iku as $data) {
