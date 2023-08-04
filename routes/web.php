@@ -48,8 +48,8 @@ Route::get('/profil-pencarian-data-pegawai', [HomeController::class, 'cari_data_
 
 //
 Route::get('/ppid/profile-ppid', [HomeController::class, 'ppid'])->name('ppid_home');
-Route::get('/ppid/rekapitulasi-permohonan-informasi-publik', [HomeController::class, 'rekapitulasi_home'])->name('rekapitulasi_home');
-Route::post('/ppid/rekapitulasi-permohonan-informasi-publik/filter-tahun', [HomeController::class, 'filter_tahun_rekapitulasi'])->name('filter_tahun_rekapitulasi');
+Route::get('/rekapitulasi-permohonan-informasi-publik', [HomeController::class, 'rekapitulasi_home'])->name('rekapitulasi_home');
+Route::post('/rekapitulasi-permohonan-informasi-publik/filter-tahun', [HomeController::class, 'filter_tahun_rekapitulasi'])->name('filter_tahun_rekapitulasi');
 
 //route data
 Route::get('/dataset', [HomeController::class, 'dataset'])->name('index_dataset_home');

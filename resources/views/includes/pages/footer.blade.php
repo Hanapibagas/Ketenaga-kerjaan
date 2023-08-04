@@ -2,17 +2,18 @@
     <div class="container pt-lg-4">
         <div class="row pb-5">
             <div class="col-lg-5 col-md-6">
+                @php
+                use App\Models\Logo;
+                use App\Models\Footer;
+                $logo = Logo::first();
+                $footer = Footer::first();
+                @endphp
                 <div class="navbar-brand text-dark p-0 me-0 mb-3 mb-lg-4">
-                    <img src="{{ asset('assets/frontend/img/logo.png') }}" width="47" alt="Silicon">
-                    KETENAGAKERJAAN
+                    <img src="{{ Storage::url($logo->logo) }}" width="47" alt="Silicon">
+                    {{ $logo->nama }}
                 </div>
-                <p class="fs-sm pb-lg-3 mb-4" style="text-indent: 20px">Disnakertrans Prov Sulsel
-                    Satu Data Ketenagakerjaan dan Ketransmigrasian dimaksud untuk mengatur penyelenggaraan tata kelola
-                    data yang dihasilkan oleh Dinas Tenaga Kerja dan Transmigrasi Provinsi Sulawesi Selatan dan Dinas
-                    yang diberikan wewenang dalam urusan ketenagakerjaan dan ketransmigrasian di Kabupaten/Kota agar
-                    pengelolaan dan pengembangan data memenuhi prinsip-prinsip Satu Data Indonesia.
-                    Sementara itu, penyerbarluasan informasi dan dokumentasi dimaksud untuk mengatur penyelenggaraan
-                    keterbukaan informasi publik sesuai amanat Undang-Undang No. 14 tahun 2008.
+                <p class="fs-sm pb-lg-3 mb-4" style="text-indent: 20px">
+                    {{ $footer->nama }}
                 </p>
             </div>
             <div class="col-lg-2 col-md-6">
@@ -118,8 +119,7 @@
                         <img src="{{ asset('assets/frontend/img/lokasi.png') }}" alt="" srcset="">
                     </div>
                     <div class="col-11">
-                        Jalan Perintis Kemerdekaan Nomor 69 KM. 12, Kecamatan Tamalanrea, Kota Makassar, Sulawesi
-                        Selatan 90245
+                        {{ $footer->alamat }}
                     </div>
                 </div>
                 <div class="row email">
@@ -127,8 +127,8 @@
                         <img src="{{ asset('assets/frontend/img/email.png') }}" alt="" srcset="">
                     </div>
                     <div class="col-11">
-                        <a style="text-decoration: none; color: grey" href="mailto: disnakertrans@sulselprov.go.id"
-                            target="_blank">disnakertrans@sulselprov.go.id</a>
+                        <a style="text-decoration: none; color: grey" href="mailto: {{ $footer->link_email }}"
+                            target="_blank">{{ $footer->email }}</a>
                     </div>
                 </div>
                 <div class="row ig">
@@ -136,9 +136,9 @@
                         <img src="{{ asset('assets/frontend/img/ig.png') }}" alt="" srcset="">
                     </div>
                     <div class="col-11 tulisan">
-                        <a style="text-decoration: none; color: grey"
-                            href="https://www.instagram.com/sulselprov.disnakertrans/"
-                            target="_blank">Sulselprov.disnakertrans</a>
+                        <a style="text-decoration: none; color: grey" href="{{ $footer->link_intagram }}"
+                            target="_blank">{{
+                            $footer->instagram }}</a>
                     </div>
                 </div>
             </div>

@@ -209,7 +209,14 @@ Beranda
     }
 </style>
 
-<img src="{{ asset('assets/frontend/img/Desain Banner Ketenagakerjaan (1).png') }}" alt="" srcset="">
+@php
+use App\Models\Banner;
+use App\Models\PrakataKepalaDinas;
+$banner = Banner::first();
+$prakata = PrakataKepalaDinas::first();
+@endphp
+
+<img src="{{ Storage::url($banner->gambar) }}" alt="" srcset="">
 <div class="container position-relative zindex-5 py-5 pencarian">
     <div class="row justify-content-md-start justify-content-center">
         <div
@@ -269,28 +276,16 @@ Beranda
                             <div class="swiper-slide h-auto" data-swiper-tab="#author-1">
                                 <figure class="card h-100 position-relative border-0 bg-transparent">
                                     <blockquote class="card-body p-0 mb-0">
-                                        <p class="fs-lg mb-0" style="text-indent: 20px">Website ini dibuat sebagai salah
-                                            satu sarana penyeberluasan informasi, publikasi dokumen, serta data
-                                            ketenagakerjaan dan ketransmigrasian di Sulawesi Selatan. Dengan adanya
-                                            website ini, masyarakat dapat mengakses informasi dan melakukan permintaan
-                                            data/dokumen yang berkaitan dengan ketenagakerjaan dan ketransmigrasian
-                                            sesuai tugas yang diamanahkan (Peraturan Gubernur Nomor 7 Tahun 2023)
-                                            tentang Kedudukan, Susunan Organisasi, Tugas dan Fungsi, serta Tata Kerja
-                                            Perangkat Daerah. Dinas Tenaga Kerja dan Transmigrasi Provinsi Sulawesi
-                                            Selatan menyajikan data dan informasi, serta pelayanan yang berkualitas,
-                                            sehingga mendorong pertumbuhan ketenagakerjaan dan ketransmigrasian yang
-                                            lebih baik.
+                                        <p class="fs-lg mb-0" style="text-indent: 20px">{{ $prakata->text }}
                                         </p>
                                     </blockquote>
                                     <figcaption class="card-footer border-0 d-sm-flex d-md-none w-100 pb-2">
                                         <div class="d-flex align-items-center border-end-sm pe-sm-4 me-sm-2">
-                                            <img src="{{ asset('assets/frontend/img/profile/kepala-dinas.jpg') }}"
-                                                width="48" class="rounded-circle" alt="Ralph Edwards">
+                                            <img src="{{ Storage::url($prakata->gambar) }}" width="48"
+                                                class="rounded-circle" alt="Ralph Edwards">
                                             <div class="ps-3">
-                                                <h5 class="fw-semibold lh-base mb-0">Ardiles Saggaf, S.STP, M.Si</h5>
-                                                <span class="fs-sm text-muted">Kepala Dinas Tenaga Kerja dan
-                                                    Transmigrasi
-                                                    Pemerintah Provinsi Sulawesi Selatan</span>
+                                                <h5 class="fw-semibold lh-base mb-0">{{ $prakata->nama }}</h5>
+                                                <span class="fs-sm text-muted">{{ $prakata->jabatan }}</span>
                                             </div>
                                         </div>
                                     </figcaption>
@@ -304,12 +299,11 @@ Beranda
                 <div class="swiper-tabs">
                     <div id="author-1" class="card bg-transparent border-0 swiper-tab active">
                         <img class="card-body p-0 rounded-3 bg-size-cover bg-repeat-0 bg-position-top-center"
-                            src="{{ asset('assets/frontend/img/profile/kepala-dinas.jpg') }}" alt="Ralph Edwards">
+                            src="{{ Storage::url($prakata->gambar) }}" alt="Ralph Edwards">
                         <div class="card-footer d-flex w-100 border-0 pb-0">
                             <div class="border-start-xl ps-xl-4 ms-xl-2">
-                                <h5 class="fw-semibold lh-base mb-0">Ardiles Saggaf, S.STP, M.Si</h5>
-                                <span class="fs-sm text-muted">Kepala Dinas Tenaga Kerja dan Transmigrasi Pemerintah
-                                    Provinsi Sulawesi Selatan</span>
+                                <h5 class="fw-semibold lh-base mb-0">{{ $prakata->nama }}</h5>
+                                <span class="fs-sm text-muted">{{ $prakata->jabatan }}</span>
                             </div>
                         </div>
                     </div>

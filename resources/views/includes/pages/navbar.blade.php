@@ -1,8 +1,12 @@
 <header class="header navbar navbar-expand-lg bg-light navbar-sticky">
     <div class="container px-3">
         <a href="{{ route('index_home') }}" class="navbar-brand pe-3">
-            <img src="{{ asset('assets/frontend/img/logo.png') }}" width="47" alt="Silicon">
-            Disnakertrans Prov Sulsel
+            @php
+            use App\Models\Logo;
+            $logo = Logo::first();
+            @endphp
+            <img src="{{ Storage::url($logo->logo) }}" width="47" alt="Silicon">
+            {{ $logo->nama }}
         </a>
         <style>
             .offcanvas {
@@ -16,7 +20,7 @@
             </div>
             <style>
                 .perubahan {
-                    margin-left: 42%
+                    margin-left: 550px;
                 }
 
                 @media screen and (max-width: 992px) {
@@ -47,9 +51,9 @@
                             data-bs-toggle="dropdown">Layanan</a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a href="{{ route('rekapitulasi_home') }}"
-                                    class="dropdown-item {{ request()->is('ppid/rekapitulasi-permohonan-informasi-publik') || request()->is('ppid/rekapitulasi-permohonan-informasi-publik/filter-tahun') ? 'active' : '' }}">Rekapitulasi
-                                    Permohonan Informasi Publik</a>
+                                <a href="{{ route('permohonan_publik') }}"
+                                    class="dropdown-item {{ request()->is('permohonan-informasi-publik') || request()->is('permohonan-informasi-publik/form-pengaduan-publik') ? 'active' : '' }}">Permohonan
+                                    Informasi Publik</a>
                             </li>
                             <li>
                                 <a href="{{ route('keberatan_publik') }}"
@@ -82,8 +86,8 @@
                                     class="dropdown-item {{ request()->is('informasi-public') ? 'active' : '' }}">Informasi</a>
                             </li>
                             <li>
-                                <a href="{{ route('permohonan_publik') }}"
-                                    class="dropdown-item {{ request()->is('permohonan-informasi-publik') || request()->is('permohonan-informasi-publik/form-pengaduan-publik') ? 'active' : '' }}">Permohonan
+                                <a href="{{ route('rekapitulasi_home') }}"
+                                    class="dropdown-item {{ request()->is('rekapitulasi-permohonan-informasi-publik') || request()->is('rekapitulasi-permohonan-informasi-publik/filter-tahun') ? 'active' : '' }}">Rekapitulasi
                                     Informasi Publik</a>
                             </li>
                             <li>

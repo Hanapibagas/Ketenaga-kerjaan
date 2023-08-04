@@ -153,7 +153,7 @@
                                 d="M3.66675 4.58325V16.4999H19.2501V4.58325H3.66675ZM5.50008 14.6666V6.41659H8.25008V14.6666H5.50008ZM10.0834 14.6666V11.4583H12.8334V14.6666H10.0834ZM17.4167 14.6666H14.6667V11.4583H17.4167V14.6666ZM10.0834 9.62492V6.41659H17.4167V9.62492H10.0834Z" />
                         </svg>
                     </span>
-                    <span class="text"> Setting </span>
+                    <span class="text"> Setting Web </span>
                 </a>
                 <ul id="ddmenu_5" class="collapse dropdown-nav">
                     <li>
