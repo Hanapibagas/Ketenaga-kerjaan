@@ -70,7 +70,7 @@
                     </span>
                 </a>
             </li>
-            <li
+            {{-- <li
                 class="nav-item {{ request()->is('berita-oprator') || request()->is('berita-oprator/create') || request()->is('berita-oprator/update/*') ? 'active' : '' }}">
                 <a href="{{ route('dashboard_berita') }}">
                     <span class="icon">
@@ -83,7 +83,7 @@
                         Berita
                     </span>
                 </a>
-            </li>
+            </li> --}}
             <li
                 class="nav-item {{ request()->is('publikasi-oprator') || request()->is('publikasi-oprator/create') || request()->is('publikasi-oprator/*') ? 'active' : '' }}">
                 <a href="{{ route('dashboard_publikasi') }}">
@@ -98,7 +98,7 @@
                     </span>
                 </a>
             </li>
-            <li
+            {{-- <li
                 class="nav-item {{ request()->is('pengumuman-oprator') || request()->is('pengumuman-oprator/create') || request()->is('pengumuman-oprator/*') ? 'active' : '' }}">
                 <a href="{{ route('index_pengumuman') }}">
                     <span class="icon">
@@ -111,8 +111,8 @@
                         Pengumuman
                     </span>
                 </a>
-            </li>
-            <li
+            </li> --}}
+            {{-- <li
                 class="nav-item {{ request()->is('organisasi-oprator') || request()->is('organisasi-oprator/create') || request()->is('organisasi-oprator/*') ? 'active' : '' }}">
                 <a href="{{ route('index_organisasi_admin') }}">
                     <span class="icon">
@@ -125,7 +125,7 @@
                         Struktur organisasi
                     </span>
                 </a>
-            </li>
+            </li> --}}
             <li
                 class="nav-item {{ request()->is('staf-oprator') || request()->is('staf-oprator/create') || request()->is('staf-oprator/details/*') || request()->is('staf-oprator/update/*') ? 'active' : '' }}">
                 <a href="{{ route('index_staf') }}">
@@ -139,6 +139,44 @@
                         Data Pegawai
                     </span>
                 </a>
+            </li>
+            <span class="divider">
+                <hr />
+            </span>
+            <li
+                class="nav-item nav-item-has-children {{ request()->is('setting-logo') || request()->is('setting-footer') || request()->is('setting-profile-dinas') || request()->is('setting-prakata-kepala-dinas') || request()->is('setting-banner') ? 'active' : '' }}">
+                <a href="#0" class="collapsed" data-bs-toggle="collapse" data-bs-target="#ddmenu_5"
+                    aria-controls="ddmenu_5" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="icon">
+                        <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M3.66675 4.58325V16.4999H19.2501V4.58325H3.66675ZM5.50008 14.6666V6.41659H8.25008V14.6666H5.50008ZM10.0834 14.6666V11.4583H12.8334V14.6666H10.0834ZM17.4167 14.6666H14.6667V11.4583H17.4167V14.6666ZM10.0834 9.62492V6.41659H17.4167V9.62492H10.0834Z" />
+                        </svg>
+                    </span>
+                    <span class="text"> Setting </span>
+                </a>
+                <ul id="ddmenu_5" class="collapse dropdown-nav">
+                    <li>
+                        <a class="{{ request()->is('setting-logo') ? 'active' : '' }}"
+                            href="{{ route('get.IndexLogo') }}"> Logo </a>
+                    </li>
+                    <li>
+                        <a class="{{ request()->is('setting-banner') ? 'active' : '' }}"
+                            href="{{ route('get.IndexBanner') }}">Banner</a>
+                    </li>
+                    <li>
+                        <a class="{{ request()->is('setting-prakata-kepala-dinas') ? 'active' : '' }}"
+                            href="{{ route('get.IndexPrakata') }}">Prakata kepala dinas</a>
+                    </li>
+                    <li>
+                        <a class="{{ request()->is('setting-profile-dinas') ? 'active' : '' }}"
+                            href="{{ route('get.IndexProfile') }}">Profile</a>
+                    </li>
+                    <li>
+                        <a class="{{ request()->is('setting-footer') ? 'active' : '' }}"
+                            href="{{ route('get.IndexFooter') }}">Footer</a>
+                    </li>
+                </ul>
             </li>
             <span class="divider">
                 <hr />

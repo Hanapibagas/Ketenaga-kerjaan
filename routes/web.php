@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\InformasiSetiapSaatController;
 use App\Http\Controllers\Admin\OrganisasiAdminController;
 use App\Http\Controllers\Admin\PengumumanController;
 use App\Http\Controllers\Admin\PublikasiController;
+use App\Http\Controllers\Admin\SettingWebController;
 use App\Http\Controllers\Admin\UnduhdataController;
 use App\Http\Controllers\AdminSuper\DashboarAdminSuperdController;
 use App\Http\Controllers\AdminSuper\DataSeAdminSupertController;
@@ -100,6 +101,17 @@ Route::get('/reload-captcha', [App\Http\Controllers\Auth\LoginController::class,
 // admin web
 Route::middleware('auth', 'checkroll:admin web')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index_dashboard'])->name('index_dashboard');
+    //
+    Route::get('/setting-logo', [SettingWebController::class, 'getIndexLogo'])->name('get.IndexLogo');
+    Route::get('/setting-banner', [SettingWebController::class, 'getIndexBanner'])->name('get.IndexBanner');
+    Route::get('/setting-footer', [SettingWebController::class, 'getIndexFooter'])->name('get.IndexFooter');
+    Route::get('/setting-prakata-kepala-dinas', [SettingWebController::class, 'getIndexPrakata'])->name('get.IndexPrakata');
+    Route::get('/setting-profile-dinas', [SettingWebController::class, 'getIndexProfile'])->name('get.IndexProfile');
+    Route::put('/setting-logo/update/{id}', [SettingWebController::class, 'getUpdate'])->name('get.UpdateLogo');
+    Route::put('/setting-footer/update/{id}', [SettingWebController::class, 'getUpdateFooter'])->name('get.UpdateFooter');
+    Route::put('/setting-banner/update/{id}', [SettingWebController::class, 'getUpdateBanner'])->name('get.UpdateBanner');
+    Route::put('/setting-profile/update/{id}', [SettingWebController::class, 'getUpdateBanner'])->name('get.UpdateBanner');
+    Route::put('/setting-prakata-kepala-dinas/update/{id}', [SettingWebController::class, 'getUpdateProfile'])->name('get.UpdateProfile');
     //
     Route::get('/organisasi-oprator', [OrganisasiAdminController::class, 'index_organisasi_admin'])->name('index_organisasi_admin');
     Route::get('/organisasi-oprator/create', [OrganisasiAdminController::class, 'create_organisasi_admin'])->name('create_organisasi_admin');
