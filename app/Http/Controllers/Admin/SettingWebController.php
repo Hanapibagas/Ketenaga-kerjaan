@@ -5,7 +5,9 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Banner;
 use App\Models\Footer;
+use App\Models\InformasiPublik;
 use App\Models\Logo;
+use App\Models\PengajuanKeberatanPublik;
 use App\Models\PrakataKepalaDinas;
 use App\Models\ProfieDinas;
 use Illuminate\Http\Request;
@@ -42,6 +44,66 @@ class SettingWebController extends Controller
     {
         $banner = Footer::all();
         return view('components.dashboard.setting.index-footer', compact('banner'));
+    }
+
+    public function getIndexPengajuanKeberatan()
+    {
+        $keberatan = PengajuanKeberatanPublik::all();
+        return view('components.dashboard.setting.index-pengajuan-keberatan', compact('keberatan'));
+    }
+
+    public function getIndexInformasiPublik()
+    {
+        $informasi = InformasiPublik::all();
+        return view('components.dashboard.setting.index-informasi-publik', compact('informasi'));
+    }
+
+    public function getUpdateInformasiPublik(Request $request, $id)
+    {
+        $keberatan = InformasiPublik::where('id', $id)->first();
+
+        if ($request->file('gambar')) {
+            $file = $request->file('gambar')->store('informasi-publik', 'public');
+            if ($keberatan->gambar && file_exists(storage_path('app/public/' . $keberatan->gambar))) {
+                Storage::delete('public/' . $keberatan->gambar);
+                $file = $request->file('gambar')->store('informasi-publik', 'public');
+            }
+        }
+
+        if ($request->file('gambar') === null) {
+            $file = $keberatan->gambar;
+        }
+
+        $keberatan->update([
+            'deskripsi' => $request->input('deskripsi'),
+            'gambar' => $file
+        ]);
+
+        return redirect()->back()->with('status', 'Selamat setting logo berhasil diperbarui');
+    }
+
+    public function getUpdatePengajuanKeberatan(Request $request, $id)
+    {
+        $keberatan = PengajuanKeberatanPublik::where('id', $id)->first();
+
+        if ($request->file('gambar')) {
+            $file = $request->file('gambar')->store('pengajuann-keberatan', 'public');
+            if ($keberatan->gambar && file_exists(storage_path('app/public/' . $keberatan->gambar))) {
+                Storage::delete('public/' . $keberatan->gambar);
+                $file = $request->file('gambar')->store('pengajuann-keberatan', 'public');
+            }
+        }
+
+        if ($request->file('gambar') === null) {
+            $file = $keberatan->gambar;
+        }
+
+        $keberatan->update([
+            'deskripsi' => $request->input('deskripsi'),
+            'gambar' => $file
+        ]);
+
+        return redirect()->back()->with('status', 'Selamat setting logo berhasil diperbarui');
     }
 
     public function getUpdateFooter(Request $request, $id)

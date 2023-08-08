@@ -105,9 +105,13 @@ Route::middleware('auth', 'checkroll:admin web')->group(function () {
     Route::get('/setting-logo', [SettingWebController::class, 'getIndexLogo'])->name('get.IndexLogo');
     Route::get('/setting-banner', [SettingWebController::class, 'getIndexBanner'])->name('get.IndexBanner');
     Route::get('/setting-footer', [SettingWebController::class, 'getIndexFooter'])->name('get.IndexFooter');
+    Route::get('/setting-pengajuan-keberatan', [SettingWebController::class, 'getIndexPengajuanKeberatan'])->name('get.IndexPengajuanKeberatan');
+    Route::get('/setting-informasi-publik', [SettingWebController::class, 'getIndexInformasiPublik'])->name('get.IndexInformasiPublik');
     Route::get('/setting-prakata-kepala-dinas', [SettingWebController::class, 'getIndexPrakata'])->name('get.IndexPrakata');
     Route::get('/setting-profile-dinas', [SettingWebController::class, 'getIndexProfile'])->name('get.IndexProfile');
     Route::put('/setting-logo/update/{id}', [SettingWebController::class, 'getUpdate'])->name('get.UpdateLogo');
+    Route::put('/setting-pengajuan-keberatan/update/{id}', [SettingWebController::class, 'getUpdatePengajuanKeberatan'])->name('get.UpdatePengajuanKeberatan');
+    Route::put('/setting-informasi-publik/update/{id}', [SettingWebController::class, 'getUpdateInformasiPublik'])->name('get.UpdateInformasiPublik');
     Route::put('/setting-footer/update/{id}', [SettingWebController::class, 'getUpdateFooter'])->name('get.UpdateFooter');
     Route::put('/setting-banner/update/{id}', [SettingWebController::class, 'getUpdateBanner'])->name('get.UpdateBanner');
     Route::put('/setting-profile/update/{id}', [SettingWebController::class, 'getUpdateBanner'])->name('get.UpdateBanner');

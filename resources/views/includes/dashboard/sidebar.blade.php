@@ -144,7 +144,7 @@
                 <hr />
             </span>
             <li
-                class="nav-item nav-item-has-children {{ request()->is('setting-logo') || request()->is('setting-footer') || request()->is('setting-profile-dinas') || request()->is('setting-prakata-kepala-dinas') || request()->is('setting-banner') ? 'active' : '' }}">
+                class="nav-item nav-item-has-children {{ request()->is('setting-logo') || request()->is('setting-informasi-publik') || request()->is('setting-pengajuan-keberatan') || request()->is('setting-footer') || request()->is('setting-profile-dinas') || request()->is('setting-prakata-kepala-dinas') || request()->is('setting-banner') ? 'active' : '' }}">
                 <a href="#0" class="collapsed" data-bs-toggle="collapse" data-bs-target="#ddmenu_5"
                     aria-controls="ddmenu_5" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="icon">
@@ -165,12 +165,20 @@
                             href="{{ route('get.IndexBanner') }}">Banner</a>
                     </li>
                     <li>
-                        <a class="{{ request()->is('setting-prakata-kepala-dinas') ? 'active' : '' }}"
-                            href="{{ route('get.IndexPrakata') }}">Prakata kepala dinas</a>
-                    </li>
-                    <li>
                         <a class="{{ request()->is('setting-profile-dinas') ? 'active' : '' }}"
                             href="{{ route('get.IndexProfile') }}">Profile</a>
+                    </li>
+                    <li>
+                        <a class="{{ request()->is('setting-pengajuan-keberatan') ? 'active' : '' }}"
+                            href="{{ route('get.IndexPengajuanKeberatan') }}">Pengajuan keberatan publik </a>
+                    </li>
+                    <li>
+                        <a class="{{ request()->is('setting-informasi-publik') ? 'active' : '' }}"
+                            href="{{ route('get.IndexInformasiPublik') }}">Pemohonan informasi publik</a>
+                    </li>
+                    <li>
+                        <a class="{{ request()->is('setting-prakata-kepala-dinas') ? 'active' : '' }}"
+                            href="{{ route('get.IndexPrakata') }}">Prakata kepala dinas</a>
                     </li>
                     <li>
                         <a class="{{ request()->is('setting-footer') ? 'active' : '' }}"
