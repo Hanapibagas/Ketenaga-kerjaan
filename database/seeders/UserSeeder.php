@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Jabatan;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -92,6 +93,9 @@ class UserSeeder extends Seeder
             'email' => 'hanafibagas4@gmail.com',
             'roles' => 'masyarakat',
             'password' => bcrypt('1234567890')
+        ]);
+        Jabatan::create([
+            'jabatan' => 'Kepala Dinas'
         ]);
     }
 }

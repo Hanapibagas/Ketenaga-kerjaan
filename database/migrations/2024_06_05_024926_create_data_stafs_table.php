@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('data_stafs', function (Blueprint $table) {
             $table->id();
             $table->string('nama');
-            $table->string('jabatan');
+            $table->foreignId('jabatan_id')->constrained('jabatans')->onDelete('cascade')->onUpdate('cascade');
             $table->string('pangkat');
             $table->string('pendidikan');
             $table->longText('biodata');

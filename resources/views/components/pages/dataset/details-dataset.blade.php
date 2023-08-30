@@ -71,7 +71,7 @@ Dataset
                         @endphp
                         <select name="tahun" class="form-select me-md-4 mb-2 mb-md-0" style="min-width: 240px;">
                             <option value="-- Pilih tahun --">- - Pilih tahun - -</option>
-                            @for ($i=2018; $i <= $year; $i++) <option value="{{ $i }}"> {{ $i }}
+                            @for ($i=2022; $i <= $year; $i++) <option value="{{ $i }}"> {{ $i }}
                                 </option>
                                 @endfor
                         </select>
@@ -110,7 +110,7 @@ Dataset
                         @endphp
                         <select name="tahun" class="form-select me-md-4 mb-2 mb-md-0" style="min-width: 240px;">
                             <option value="-- Pilih tahun --">- - Pilih tahun - -</option>
-                            @for ($i=2018; $i <= $year; $i++) <option value="{{ $i }}"> {{ $i }}
+                            @for ($i=2022; $i <= $year; $i++) <option value="{{ $i }}"> {{ $i }}
                                 </option>
                                 @endfor
                         </select>

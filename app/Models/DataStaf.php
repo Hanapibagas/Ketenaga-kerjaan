@@ -9,6 +9,11 @@ class DataStaf extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'nama', 'jabatan', 'pangkat', 'pendidikan', 'biodata', 'foto'
+        'nama', 'jabatan_id', 'pangkat', 'pendidikan', 'biodata', 'foto'
     ];
+
+    public function Jabatan()
+    {
+        return $this->belongsTo(Jabatan::class, 'jabatan_id');
+    }
 }

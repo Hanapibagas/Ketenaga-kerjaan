@@ -60,21 +60,11 @@
                                     class="dropdown-item {{ request()->is('permohonan-keberatan-informasi-publik') ? 'active' : '' }}">Pengajuan
                                     Keberatan Informasi Publik</a>
                             </li>
-                            @guest
-                            <li>
-                                <a href="{{ route('permintaan_home_guest') }}"
-                                    class="dropdown-item {{ request()->is('permintaan-data/guest') ? 'active' : '' }}">Permintaan
-                                    Data</a>
-                            </li>
-                            @endguest
-
-                            @auth
                             <li>
                                 <a href="{{ route('permintaan_data_home') }}"
                                     class="dropdown-item {{ request()->is('permintaan-data') ? 'active' : '' }}">Permintaan
                                     Data</a>
                             </li>
-                            @endauth
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
