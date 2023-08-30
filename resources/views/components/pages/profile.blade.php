@@ -1,75 +1,74 @@
 @extends('layouts.app')
 
 @section('title')
-Profile
+    Profile
 @endsection
-{{--
+
 @push('css')
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
-    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-@endpush --}}
+    <link rel="stylesheet" href="{{ asset('assets/frontend/css/profile.css') }}">
+@endpush
 
 @section('content')
-<style>
-    .test {
-        background-repeat: no-repeat;
-        background-position: top left;
-        background-size: contain;
-        background-image: url('assets/frontend/img/data/bg-side-data.24d7ba5a.png');
-    }
-
-    .helo {
-        background-position: top right;
-        background-repeat: no-repeat;
-        background-size: contain;
-        background-image: url('assets/frontend/img/data/bg-side-info.1c2950dc.png');
-    }
-
-    .about {
-        margin-top: -100px;
-    }
-
-    @media screen and (max-width: 992px) {
-        .about {
-            margin-top: -60px;
+    <style>
+        .test {
+            background-repeat: no-repeat;
+            background-position: top left;
+            background-size: contain;
+            background-image: url('assets/frontend/img/data/bg-side-data.24d7ba5a.png');
         }
-    }
-</style>
 
-<nav class="container py-4 mb-lg-2 mt-lg-3 tes" aria-label="breadcrumb">
-    <ol class="breadcrumb mb-0">
-        <li class="breadcrumb-item">
-            <a href="{{ route('index_home') }}"><i class="bx bx-home-alt fs-lg me-1"></i>Beranda</a>
-        </li>
-        <li class="breadcrumb-item active" aria-current="page">Profile</li>
-    </ol>
-</nav>
+        .helo {
+            background-position: top right;
+            background-repeat: no-repeat;
+            background-size: contain;
+            background-image: url('assets/frontend/img/data/bg-side-info.1c2950dc.png');
+        }
 
-@php
-use App\Models\ProfieDinas;
-$profile = ProfieDinas::first();
-@endphp
+        .about {
+            margin-top: -100px;
+        }
 
-<section class="container pb-4 mb-2 mb-lg-3">
-    <h1>Profil {{ $profile->nama }}</h1>
-</section>
+        @media screen and (max-width: 992px) {
+            .about {
+                margin-top: -60px;
+            }
+        }
+    </style>
 
-<div class="helo">
-    <section class="container py-5 my-1 my-md-4 my-lg-5">
-        <div class="row about">
-            <div class="col-lg-12 mb-4 mb-lg-0">
-                <div class="pe-lg-4 me-lg-3 pe-xl-0 me-xl-0">
-                    <h2 class="h1 mb-4">Tentang</h2>
-                    <p class="fs-lg mb-0" style="text-indent: 20px">
-                        {!! $profile->deskripsi !!}
-                    </p>
+    <nav class="container py-4 mb-lg-2 mt-lg-3 tes" aria-label="breadcrumb">
+        <ol class="breadcrumb mb-0">
+            <li class="breadcrumb-item">
+                <a href="{{ route('index_home') }}"><i class="bx bx-home-alt fs-lg me-1"></i>Beranda</a>
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">Profile</li>
+        </ol>
+    </nav>
+
+    @php
+        use App\Models\ProfieDinas;
+        $profile = ProfieDinas::first();
+    @endphp
+
+    <section class="container pb-4 mb-2 mb-lg-3">
+        <h1>Profil {{ $profile->nama }}</h1>
+    </section>
+
+    <div class="helo">
+        <section class="container py-5 my-1 my-md-4 my-lg-5">
+            <div class="row about">
+                <div class="col-lg-12 mb-4 mb-lg-0">
+                    <div class="pe-lg-4 me-lg-3 pe-xl-0 me-xl-0">
+                        <h2 class="h1 mb-4">Tentang</h2>
+                        <p class="fs-lg mb-0" style="text-indent: 20px">
+                            {!! $profile->deskripsi !!}
+                        </p>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
-</div>
+        </section>
+    </div>
 
-{{-- <section class="container d-sm-flex align-items-center justify-content-between pb-4 mb-2 mb-lg-3">
+    {{-- <section class="container d-sm-flex align-items-center justify-content-between pb-4 mb-2 mb-lg-3">
     <h1 class="mb-sm-0 me-sm-3">Profile Kepala Dinas</h1>
 </section>
 <section class="bg-secondary py-5 test">
@@ -111,31 +110,80 @@ $profile = ProfieDinas::first();
     </div>
 </section> --}}
 
-<section class="container py-5 my-md-3 my-lg-5">
-    <div class="d-lg-flex align-items-center justify-content-between py-4 mt-lg-2">
-        <h1 class="me-3">Profile Pegawai</h1>
-        <div class="position-relative" style="min-width: 300px;">
-            <form action="{{ route('cari_data_pegarawai') }}">
-                <input type="text" name="search" class="form-control pe-5" placeholder="Search courses">
-                <i class="bx bx-search text-nav fs-lg position-absolute top-50 end-0 translate-middle-y me-3"></i>
-            </form>
-        </div>
-    </div>
-    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
-        @foreach ( $profiles as $data )
-        <div class="col">
-            <div class="card card-hover border-0 bg-transparent">
-                <div class="card-body text-center p-3">
-                    <a type="button" data-toggle="modal" data-target="#exampleModal-{{ $data->id }}"
-                        style="text-decoration: none">
-                        <h3 class="fs-lg fw-semibold pt-1 mb-2" style="text-transform:uppercase;">{{ $data->nama }}</h3>
-                        <p style="color: grey" class="fs-sm mb-0">{{ $data->jabatan }}</p>
-                    </a>
-                </div>
+    <section class="container py-5 my-md-3 my-lg-5">
+        <div class="d-lg-flex align-items-center justify-content-between py-4 mt-lg-2">
+            <h1 class="me-3">Struktur Organisasi Disnakertrans Prov Sulsel</h1>
+            <div class="position-relative" style="min-width: 300px;">
+                <form action="{{ route('cari_data_pegarawai') }}">
+                    <input type="text" name="search" class="form-control pe-5" placeholder="Search courses">
+                    <i class="bx bx-search text-nav fs-lg position-absolute top-50 end-0 translate-middle-y me-3"></i>
+                </form>
             </div>
         </div>
-        @endforeach
-
+        <div class="row">
+            <div class="propill">
+                <ul class="hirarki1">
+                    <li class="iconp icon">
+                        <div>
+                            <span class="item" onclick="toggleHierarchy(this)">Kepala Dinas</span>
+                            <ul class="hirarki2" style="margin-left: 10px">
+                                <li class="iconp icon">
+                                    <div>
+                                        <span class="item" onclick="toggleHierarchy(this)">Sekretaris Dinas</span>
+                                        <ul class="hirarki3 pro2" style="margin-left: 10px">
+                                            <li class="iconp icon">
+                                                <span class="item" onclick="toggleHierarchy(this)">Kepala Subbagian
+                                                    Umum</span>
+                                                <ul class="hirarki4" style="margin-top: 5px; margin-left: 10px">
+                                                    <li class="pop">NUNNI, SE</li>
+                                                    <li class="pop">AMRA NURHATI ASLI, S.Sos</li>
+                                                    <li class="pop">NIRMA JAYA, SE</li>
+                                                    <li class="pop">M. RYAN KHALID SYAIFULLAH, S.H</li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li class="iconp icon">
+                                    <div>
+                                        <span class="item" onclick="toggleHierarchy(this)">Kepala Bidang Pengawasan Ketenagakerjaan</span>
+                                        <ul class="hirarki3 pro2" style="margin-left: 10px">
+                                            <li class="icon">
+                                                <span class="item" onclick="toggleHierarchy(this)">Kepala Subbagian
+                                                    Umum</span>
+                                                <ul class="hirarki4" style="margin-top: 5px; margin-left: 10px">
+                                                    <li class="pop">NUNNI, SE</li>
+                                                    <li class="pop">AMRA NURHATI ASLI, S.Sos</li>
+                                                    <li class="pop">NIRMA JAYA, SE</li>
+                                                    <li class="pop">M. RYAN KHALID SYAIFULLAH, S.H</li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li class="iconp icon">
+                                    <div>
+                                        <span class="item" onclick="toggleHierarchy(this)">Kepala Bidang Hubungan Industrial</span>
+                                        <ul class="hirarki3 pro2" style="margin-left: 10px">
+                                            <li class="icon">
+                                                <span class="item" onclick="toggleHierarchy(this)">Kepala Subbagian
+                                                    Umum</span>
+                                                <ul class="hirarki4" style="margin-top: 5px; margin-left: 10px">
+                                                    <li class="pop">NUNNI, SE</li>
+                                                    <li class="pop">AMRA NURHATI ASLI, S.Sos</li>
+                                                    <li class="pop">NIRMA JAYA, SE</li>
+                                                    <li class="pop">M. RYAN KHALID SYAIFULLAH, S.H</li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
         @foreach ( $profiles as $data )
         <div class="modal fade" id="exampleModal-{{ $data->id }}" tabindex="-1" raria-hidden="true">
             <div class="modal-dialog" role="document">
@@ -188,18 +236,25 @@ $profile = ProfieDinas::first();
             </div>
         </div>
         @endforeach
-
-    </div>
-</section>
+    </section>
 @endsection
 
 @push('js')
-<script src="https://code.jquery.com/jquery-3.7.0.min.js"
-    integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
-    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
-</script>
-{{-- <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
-    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
-</script> --}}
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"
+        integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+    </script>
+    <script>
+        function toggleHierarchy(element) {
+            const ulElement = element.nextElementSibling;
+            const items = element.closest('.item'); // Temukan elemen terdekat dengan kelas .item (elemen <li>)
+            if (ulElement && items) {
+                ulElement.classList.toggle("active");
+                items.classList.toggle('active'); // Menambahkan kelas .active pada elemen <li> dengan kelas .item
+            }
+        }
+    </script>
+    
+    
 @endpush
