@@ -13,14 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('data_stafs', function (Blueprint $table) {
+        Schema::create('sub_bagians', function (Blueprint $table) {
             $table->id();
-            $table->string('nama');
-            $table->foreignId('sub_bagian_id')->constrained('sub_bagians')->onDelete('cascade')->onUpdate('cascade');
-            $table->string('pangkat');
-            $table->string('pendidikan');
-            $table->longText('biodata');
-            $table->string('foto');
+            $table->string('sub_bagian');
+            $table->foreignId('jabatan_id')->constrained('jabatans')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }
@@ -32,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('data_stafs');
+        Schema::dropIfExists('sub_bagians');
     }
 };
