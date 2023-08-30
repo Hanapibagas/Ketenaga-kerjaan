@@ -8,11 +8,13 @@ use App\Models\DataStaf;
 use App\Models\DetailsDataset;
 use App\Models\Infografis;
 use App\Models\InformasiBerkala;
+use App\Models\InformasiPublik;
 use App\Models\InformasiSertaMerta;
 use App\Models\InformasiSetiapSaat;
 use App\Models\MetaData;
 use App\Models\Organisasi;
 use App\Models\PengajuanKeberatan;
+use App\Models\PengajuanKeberatanPublik;
 use App\Models\Pengumuman;
 use App\Models\PermohonanInformasiPublik;
 use App\Models\PermohonanPublik;
@@ -267,7 +269,8 @@ class HomeController extends Controller
     public function permohonan_publik()
     {
         $jumlahpemohon = PermohonanInformasiPublik::count();
-        return view('components.pages.layanan.permohonan-publik', compact('jumlahpemohon'));
+        $informasi = InformasiPublik::first();
+        return view('components.pages.layanan.permohonan-publik', compact('jumlahpemohon', 'informasi'));
     }
 
     public function form_permohonan_publik()
@@ -320,7 +323,8 @@ class HomeController extends Controller
     public function keberatan_publik()
     {
         $jumlahkeberatan = PengajuanKeberatan::count();
-        return view('components.pages.layanan.pengajuan-publik', compact('jumlahkeberatan'));
+        $keberatan = PengajuanKeberatanPublik::first();
+        return view('components.pages.layanan.pengajuan-publik', compact('jumlahkeberatan', 'keberatan'));
     }
 
     public function form_keberatan_publik()

@@ -50,7 +50,8 @@ Layanan
                 }
             }
         </style>
-        <img class="gambar" src="{{ asset('assets/frontend/img/data/1660197534.jpg') }}" alt="" srcset="">
+        {{-- <img src="{{ Storage::url($data->gambar) }}" alt="" style="width: 150px" class="img-thumbnail"> --}}
+        <img class="gambar" src="{{ Storage::url($keberatan->gambar) }}" alt="" srcset="">
     </div>
 </div>
 
@@ -62,14 +63,8 @@ Layanan
                 <p class="fs-lg mb-0">
                     Jumlah Pengajuan Keberatan Informasi Publik: {{ $jumlahkeberatan }}
                     <hr> <br>
-                    <b>Hak-hak Pemohon Informasi Berdasarkan Undang-Undang Nomor 14 Tahun 2008 tentang
-                        Keterbukaan Informasi Publik</b> <br><br>
-
-                    <b>Apabila Pemohon Informasi tidak puas dengan keputusan Atasan PPID</b>, maka pemohon informasi
-                    dapat
-                    mengajukan keberatan kepada Komisi Informasi dalam jangka waktu 14 (empat belas) hari kerja sejak
-                    diterimanya keputusan atasan PPID oleh Pemohon Informasi Publik. <br><br>
-                    Klik Link untuk mengajukan Keberatan Informasi Publik ( <a
+                    {!! $keberatan->deskripsi !!} <br><br>
+                    Klik Link untuk mengajukan Permohonan Informasi Publik( <a
                         href="{{ route('form_keberatan_publik') }}">Klik di sini</a> )
                 </p>
             </div>

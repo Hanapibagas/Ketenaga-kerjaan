@@ -39,9 +39,9 @@ Layanan
                     enctype="multipart/form-data">
                     @csrf
                     <div class="col-sm-12 mb-4">
-                        <label for="fn" class="form-label">No. Pendaftaran Permohonan Informasi
-                        </label>
-                        <input type="text" class="form-control @error('no_pendaftaran') is-invalid @enderror"
+                        <label for="fn" class="form-label">Email<i class="text-danger"
+                                style="font-size: 14px;">*</i></label>
+                        <input type="email" class="form-control @error('no_pendaftaran') is-invalid @enderror"
                             name="no_pendaftaran">
                         @error('no_pendaftaran')
                         <span class="invalid-feedback" role="alert">
@@ -50,7 +50,8 @@ Layanan
                         @enderror
                     </div>
                     <div class="col-sm-12 mb-4">
-                        <label for="fn" class="form-label">Tujuan Penggunaan Informasi</label>
+                        <label for="fn" class="form-label">Nama<i class="text-danger"
+                                style="font-size: 14px;">*</i></label>
                         <input type="text" class="form-control  " name="tujuan_pengguna">
                         @error('tujuan_pengguna')
                         <span class="invalid-feedback" role="alert">
@@ -59,7 +60,8 @@ Layanan
                         @enderror
                     </div>
                     <div class="col-sm-12 mb-4">
-                        <label for="fn" class="form-label">Tujuan Penggunaan Informasi</label>
+                        <label for="fn" class="form-label">Nomor Handphone<i class="text-danger"
+                                style="font-size: 14px;">*</i></label>
                         <input type="text" class="form-control  " name="tujuan_pengguna">
                         @error('tujuan_pengguna')
                         <span class="invalid-feedback" role="alert">
@@ -68,7 +70,8 @@ Layanan
                         @enderror
                     </div>
                     <div class="col-sm-12 mb-4">
-                        <label for="fn" class="form-label">Tujuan Penggunaan Informasi</label>
+                        <label for="fn" class="form-label">Nomor KTP<i class="text-danger"
+                                style="font-size: 14px;">*</i></label>
                         <input type="text" class="form-control  " name="tujuan_pengguna">
                         @error('tujuan_pengguna')
                         <span class="invalid-feedback" role="alert">
@@ -77,7 +80,8 @@ Layanan
                         @enderror
                     </div>
                     <div class="col-sm-12 mb-4">
-                        <label for="fn" class="form-label">Tujuan Penggunaan Informasi</label>
+                        <label for="fn" class="form-label">Alamat<i class="text-danger"
+                                style="font-size: 14px;">*</i></label>
                         <input type="text" class="form-control  " name="tujuan_pengguna">
                         @error('tujuan_pengguna')
                         <span class="invalid-feedback" role="alert">
@@ -86,7 +90,8 @@ Layanan
                         @enderror
                     </div>
                     <div class="col-sm-12 mb-4">
-                        <label for="fn" class="form-label">Tujuan Penggunaan Informasi</label>
+                        <label for="fn" class="form-label">Pekerjaan<i class="text-danger"
+                                style="font-size: 14px;">*</i></label>
                         <input type="text" class="form-control  " name="tujuan_pengguna">
                         @error('tujuan_pengguna')
                         <span class="invalid-feedback" role="alert">
@@ -95,43 +100,51 @@ Layanan
                         @enderror
                     </div>
                     <div class="col-sm-12 mb-4">
-                        <label for="fn" class="form-label">Tujuan Penggunaan Informasi</label>
-                        <input type="text" class="form-control  " name="tujuan_pengguna">
-                        @error('tujuan_pengguna')
+                        <label for="fn" class="form-label ">Rincian Informasi Yang Dibutuhkan<i class="text-danger"
+                                style="font-size: 14px;">*</i></label>
+                        <textarea type="text" class="form-control @error('rincian') is-invalid @enderror"
+                            name="rincian"></textarea>
+                        @error('rincian')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
                         @enderror
                     </div>
                     <div class="col-sm-12 mb-4">
-                        <label for="fn" class="form-label">Tujuan Penggunaan Informasi</label>
-                        <input type="text" class="form-control  " name="tujuan_pengguna">
-                        @error('tujuan_pengguna')
+                        <label for="fn" class="form-label">Tujuan Permohonan Informasi<i class="text-danger"
+                                style="font-size: 14px;">*</i></label>
+                        <textarea type="text" class="form-control @error('tujuan') is-invalid @enderror"
+                            name="tujuan"></textarea>
+                        @error('tujuan')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
                         @enderror
                     </div>
                     <div class="col-sm-12 mb-4">
-                        <label for="fn" class="form-label">Tujuan Penggunaan Informasi</label>
-                        <input type="text" class="form-control  " name="tujuan_pengguna">
-                        @error('tujuan_pengguna')
+                        <label for="fn" class="form-label">Upload Foto KTP<i class="text-danger"
+                                style="font-size: 14px;">*</i><i class="text-danger"
+                                style="font-size: 14px;">*</i></label>
+                        <input type="file" class="form-control @error('foto_ktp') is-invalid @enderror" name="foto_ktp">
+                        @error('foto_ktp')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
                         @enderror
                     </div>
                     <div class="col-sm-12 mb-4">
-                        <label for="fn" class="form-label">Tujuan Penggunaan Informasi</label>
-                        <input type="text" class="form-control  " name="tujuan_pengguna">
-                        @error('tujuan_pengguna')
+                        <label for="fn" class="form-label">Upload Surat Pengajuan Permintaan Data<i class="text-danger"
+                                style="font-size: 14px;">*</i></label>
+                        <input type="file" class="form-control @error('foto_ktp') is-invalid @enderror" name="foto_ktp">
+                        @error('foto_ktp')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
                         @enderror
                     </div>
                     <div class="col-sm-12 mb-4">
-                        <label for="fn" class="form-label">Enter Captcha</label>
+                        <label for="fn" class="form-label">Enter Captcha<i class="text-danger"
+                                style="font-size: 14px;">*</i></label>
                         <input id="captcha" type="text" class="form-control @error('captcha') is-invalid @enderror"
                             placeholder="Enter Captcha" name="captcha">
                         @error('captcha')
@@ -176,6 +189,11 @@ Layanan
 @endsection
 
 @push('js')
+<script src="https://cdn.ckeditor.com/4.19.1/standard/ckeditor.js"></script>
+<script>
+    CKEDITOR.replace('rincian');
+    CKEDITOR.replace('tujuan');
+</script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script type="text/javascript">
     $('#reload').click(function () {

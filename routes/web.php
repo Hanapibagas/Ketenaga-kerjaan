@@ -114,7 +114,7 @@ Route::middleware('auth', 'checkroll:admin web')->group(function () {
     Route::put('/setting-informasi-publik/update/{id}', [SettingWebController::class, 'getUpdateInformasiPublik'])->name('get.UpdateInformasiPublik');
     Route::put('/setting-footer/update/{id}', [SettingWebController::class, 'getUpdateFooter'])->name('get.UpdateFooter');
     Route::put('/setting-banner/update/{id}', [SettingWebController::class, 'getUpdateBanner'])->name('get.UpdateBanner');
-    Route::put('/setting-profile/update/{id}', [SettingWebController::class, 'getUpdateBanner'])->name('get.UpdateBanner');
+    Route::put('/setting-profile/update/{id}', [SettingWebController::class, 'getUpdatePrakata'])->name('get.UpdatePrakata');
     Route::put('/setting-prakata-kepala-dinas/update/{id}', [SettingWebController::class, 'getUpdateProfile'])->name('get.UpdateProfile');
     //
     Route::get('/organisasi-oprator', [OrganisasiAdminController::class, 'index_organisasi_admin'])->name('index_organisasi_admin');

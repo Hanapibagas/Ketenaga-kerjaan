@@ -91,22 +91,21 @@ Informamsi Public
             </div>
         </div>
 
-        <div class="row row-cols-lg-3 row-cols-sm-2 row-cols-1 gy-md-4 gy-2">
-            @foreach ( $berkala as $data )
-            <div class="col pb-3">
-                <article class="card border-0 shadow-sm h-100">
-                    <div class="card-body pb-4">
-                        <h3 class="h5 mb-0">
-                            <a>{{ $data->nama }}</a>
-                        </h3>
-                    </div>
-                    <div class="card-footer py-4">
-                        <i class="bx bx-download fs-xl me-1"></i>
-                        <a href="storage/{{ $data->file }}" target="_blank">download</a>
-                    </div>
-                </article>
+        <div class="row row-cols-lg-12 row-cols-sm-12 row-cols-1 gy-md-4 gy-2">
+            <div class="table-responsive">
+                <table class="table table-striped table-bordered">
+                    <thead>
+                        @foreach ( $berkala as $data )
+                        <tr>
+                            <th>{{ $data->nama }}</th>
+                            <th>
+                                <a href="storage/{{ $data->file }}" target="_blank">download</a>
+                            </th>
+                        </tr>
+                        @endforeach
+                    </thead>
+                </table>
             </div>
-            @endforeach
         </div>
     </div>
 </div>
@@ -142,7 +141,21 @@ Informamsi Public
             </div>
         </div>
 
-        <div class="row row-cols-lg-3 row-cols-sm-2 row-cols-1 gy-md-4 gy-2">
+        <div class="row row-cols-lg-12 row-cols-sm-12 row-cols-1 gy-md-4 gy-2">
+            <div class="table-responsive">
+                <table class="table table-striped table-bordered">
+                    <thead>
+                        @foreach ( $sertamerta as $data )
+                        <tr>
+                            <th>{{ $data->nama }}</th>
+                            <th><a target="_blank" href="{{ $data->link }}">{{ $data->link }}</a></th>
+                        </tr>
+                        @endforeach
+                    </thead>
+                </table>
+            </div>
+        </div>
+        {{-- <div class="row row-cols-lg-3 row-cols-sm-2 row-cols-1 gy-md-4 gy-2">
             @foreach ( $sertamerta as $data )
             <div class="col pb-3">
                 <article class="card border-0 shadow-sm h-100">
@@ -158,7 +171,7 @@ Informamsi Public
                 </article>
             </div>
             @endforeach
-        </div>
+        </div> --}}
     </div>
 </div>
 
@@ -193,7 +206,23 @@ Informamsi Public
             </div>
         </div>
 
-        <div class="row row-cols-lg-3 row-cols-sm-2 row-cols-1 gy-md-4 gy-2">
+        <div class="row row-cols-lg-12 row-cols-sm-12 row-cols-1 gy-md-4 gy-2">
+            <div class="table-responsive">
+                <table class="table table-striped table-bordered">
+                    <thead>
+                        @foreach ( $setiapsaat as $data )
+                        <tr>
+                            <th>{{ $data->nama }}</th>
+                            <th>
+                                <a href="storage/{{ $data->file }}" target="_blank">download</a>
+                            </th>
+                        </tr>
+                        @endforeach
+                    </thead>
+                </table>
+            </div>
+        </div>
+        {{-- <div class="row row-cols-lg-3 row-cols-sm-2 row-cols-1 gy-md-4 gy-2">
             @foreach ( $setiapsaat as $data )
             <div class="col pb-3">
                 <article class="card border-0 shadow-sm h-100">
@@ -209,7 +238,7 @@ Informamsi Public
                 </article>
             </div>
             @endforeach
-        </div>
+        </div> --}}
     </div>
 </div>
 @endsection
