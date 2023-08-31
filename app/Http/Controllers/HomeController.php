@@ -16,6 +16,7 @@ use App\Models\Organisasi;
 use App\Models\PengajuanKeberatan;
 use App\Models\PengajuanKeberatanPublik;
 use App\Models\Pengumuman;
+use App\Models\PermintaanData;
 use App\Models\PermohonanInformasiPublik;
 use App\Models\PermohonanPublik;
 use App\Models\Publikasi;
@@ -375,5 +376,49 @@ class HomeController extends Controller
     public function permintaan_data_home()
     {
         return view('components.pages.permintaan-data.permintaan_data');
+    }
+
+    public function postPermintaanData(Request $request)
+    {
+        $message = [
+            'required' => 'Mohon maaf anda lupa untuk mengisi ini dan harap anda mangisi terlebih dahulu',
+            'image' => 'Mohon maaf type file anda bukan foto'
+        ];
+
+        $this->validate($request, [
+            'email' => 'required',
+            'nama' => 'required',
+            'no_tlpn' => 'required',
+            'no_ktp' => 'required',
+            'alamat' => 'required',
+            'pekerjaan' => 'required',
+            'rincian' => 'required',
+            'tujuan' => 'required',
+            'foto_ktp' => 'required|image|mimes:jpg,png',
+            'foto_pengajuan' => 'required|image|mimes:jpg,png',
+            'captcha' => ['required', 'captcha'],
+        ], $message);
+
+        if ($request->file('foto_ktp')) {
+            $foto_ktp = $request->file('foto_ktp')->store('permintaan-data', 'public');
+        }
+        if ($request->file('foto_pengajuan')) {
+            $foto_pengajuan = $request->file('foto_pengajuan')->store('permintaan-data', 'public');
+        }
+
+        PermintaanData::create([
+            'email' => $request->input('email'),
+            'nama' => $request->input('nama'),
+            'no_tlpn' => $request->input('no_tlpn'),
+            'no_ktp' => $request->input('no_ktp'),
+            'alamat' => $request->input('alamat'),
+            'pekerjaan' => $request->input('pekerjaan'),
+            'rincian' => $request->input('rincian'),
+            'tujuan' => $request->input('tujuan'),
+            'foto_ktp' => $foto_ktp,
+            'foto_pengajuan' => $foto_pengajuan
+        ]);
+
+        return redirect()->back()->with('status', 'Selamat permintaan data anda berhasil dikirim');
     }
 }

@@ -19,31 +19,26 @@ Layanan
         <li class="breadcrumb-item">
             <a href="{{ route('index_home') }}"><i class="bx bx-home-alt fs-lg me-1"></i>Beranda</a>
         </li>
-        <li class="breadcrumb-item">
-            <a href="{{ route('keberatan_publik') }}"><i class="bx bx-home-alt fs-lg me-1"></i>Pengajuan
-                Keberatan Informasi Publik</a>
-        </li>
-        <li class="breadcrumb-item active" aria-current="page">Form Pengajuan Keberatan</li>
+        <li class="breadcrumb-item active" aria-current="page">Form permintaan data</li>
     </ol>
 </nav>
 
 <section class="container pb-4 mb-2 mb-lg-3">
-    <h1>Form Pengajuan Keberatan.</h1>
+    <h1>Form Permintaan Data.</h1>
 </section>
 
 <section class="position-relative pt-2 pt-lg-0 pb-5">
     <div class="container position-relative zindex-5 pb-2 pb-md-4 pb-lg-5">
         <div class="row justify-content-center">
             <div class="col-lg-8 col-md-10">
-                <form action="{{ route('store_keberatan_publik') }}" method="POST" class="row needs-validation"
+                <form action="{{ route('post.Permintaan.Data') }}" method="POST" class="row needs-validation"
                     enctype="multipart/form-data">
                     @csrf
                     <div class="col-sm-12 mb-4">
                         <label for="fn" class="form-label">Email<i class="text-danger"
                                 style="font-size: 14px;">*</i></label>
-                        <input type="email" class="form-control @error('no_pendaftaran') is-invalid @enderror"
-                            name="no_pendaftaran">
-                        @error('no_pendaftaran')
+                        <input type="email" class="form-control @error('email') is-invalid @enderror" name="email">
+                        @error('email')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
@@ -52,8 +47,8 @@ Layanan
                     <div class="col-sm-12 mb-4">
                         <label for="fn" class="form-label">Nama<i class="text-danger"
                                 style="font-size: 14px;">*</i></label>
-                        <input type="text" class="form-control  " name="tujuan_pengguna">
-                        @error('tujuan_pengguna')
+                        <input type="text" class="form-control  @error('nama') is-invalid @enderror" name="nama">
+                        @error('nama')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
@@ -62,8 +57,9 @@ Layanan
                     <div class="col-sm-12 mb-4">
                         <label for="fn" class="form-label">Nomor Handphone<i class="text-danger"
                                 style="font-size: 14px;">*</i></label>
-                        <input type="text" class="form-control  " name="tujuan_pengguna">
-                        @error('tujuan_pengguna')
+                        <input type="number" class="form-control  @error('no_tlpn') is-invalid @enderror"
+                            name="no_tlpn">
+                        @error('no_tlpn')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
@@ -72,8 +68,8 @@ Layanan
                     <div class="col-sm-12 mb-4">
                         <label for="fn" class="form-label">Nomor KTP<i class="text-danger"
                                 style="font-size: 14px;">*</i></label>
-                        <input type="text" class="form-control  " name="tujuan_pengguna">
-                        @error('tujuan_pengguna')
+                        <input type="number" class="form-control  @error('no_ktp') is-invalid @enderror" name="no_ktp">
+                        @error('no_ktp')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
@@ -82,8 +78,8 @@ Layanan
                     <div class="col-sm-12 mb-4">
                         <label for="fn" class="form-label">Alamat<i class="text-danger"
                                 style="font-size: 14px;">*</i></label>
-                        <input type="text" class="form-control  " name="tujuan_pengguna">
-                        @error('tujuan_pengguna')
+                        <input type="text" class="form-control  @error('alamat') is-invalid @enderror" name="alamat">
+                        @error('alamat')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
@@ -92,8 +88,9 @@ Layanan
                     <div class="col-sm-12 mb-4">
                         <label for="fn" class="form-label">Pekerjaan<i class="text-danger"
                                 style="font-size: 14px;">*</i></label>
-                        <input type="text" class="form-control  " name="tujuan_pengguna">
-                        @error('tujuan_pengguna')
+                        <input type="text" class="form-control @error('pekerjaan') is-invalid @enderror"
+                            name="pekerjaan">
+                        @error('pekerjaan')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
@@ -123,7 +120,6 @@ Layanan
                     </div>
                     <div class="col-sm-12 mb-4">
                         <label for="fn" class="form-label">Upload Foto KTP<i class="text-danger"
-                                style="font-size: 14px;">*</i><i class="text-danger"
                                 style="font-size: 14px;">*</i></label>
                         <input type="file" class="form-control @error('foto_ktp') is-invalid @enderror" name="foto_ktp">
                         @error('foto_ktp')
@@ -135,8 +131,9 @@ Layanan
                     <div class="col-sm-12 mb-4">
                         <label for="fn" class="form-label">Upload Surat Pengajuan Permintaan Data<i class="text-danger"
                                 style="font-size: 14px;">*</i></label>
-                        <input type="file" class="form-control @error('foto_ktp') is-invalid @enderror" name="foto_ktp">
-                        @error('foto_ktp')
+                        <input type="file" class="form-control @error('foto_pengajuan') is-invalid @enderror"
+                            name="foto_pengajuan">
+                        @error('foto_pengajuan')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
@@ -168,7 +165,7 @@ Layanan
                         @enderror
                     </div>
                     <div class="col-12 text-center pt-2 pt-md-3 pt-lg-4">
-                        <button class="btn btn-primary shadow-primary btn-lg">Kirim Keberatan Publik</button>
+                        <button class="btn btn-primary shadow-primary btn-lg">Kirim permintaan data</button>
                     </div>
                 </form>
             </div>

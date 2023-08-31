@@ -83,6 +83,7 @@ Route::get('/reload-captcha-keberatan', [App\Http\Controllers\HomeController::cl
 Route::get('/permohonan-informasi-publik', [HomeController::class, 'permohonan_publik'])->name('permohonan_publik');
 Route::get('/permohonan-informasi-publik/form-pengaduan-publik', [HomeController::class, 'form_permohonan_publik'])->name('form_permohonan_publik');
 Route::post('/permohonan-informasi-publik/form-pengaduan-publik/store', [HomeController::class, 'store_permohonan_publik'])->name('store_permohonan_publik');
+Route::post('/permintaan-data/kirim', [HomeController::class, 'postPermintaanData'])->name('post.Permintaan.Data');
 
 Route::get('/permohonan-keberatan-informasi-publik', [HomeController::class, 'keberatan_publik'])->name('keberatan_publik');
 Route::get('/permohonan-keberatan-publik/form-keberatan-publik', [HomeController::class, 'form_keberatan_publik'])->name('form_keberatan_publik');
