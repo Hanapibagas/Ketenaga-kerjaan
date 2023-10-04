@@ -272,15 +272,15 @@ Route::middleware('auth', 'checkroll:upt')->group(function () {
     Route::get('/admin-upt', [DashboardAdminUptController::class, 'dashboard_upt'])->name('dashboard_upt');
     //
     Route::get('/pengkuran-kinerja-admin-upt', [PengukuranKinerjaUptController::class, 'getIndex'])->name('get.IndexPengkuranUpt');
-    Route::put('/pengkuran-kinerja-admin-upt/update/{id}', [PengukuranKinerjaUptController::class, 'getUpdate'])->name('get.UpdatePengukuranUpt');
+    Route::put('/pengkuran-kinerja-admin-upt/update', [PengukuranKinerjaUptController::class, 'getUpdate'])->name('get.UpdatePengukuranUpt');
     Route::post('/pengkuran-kinerja-admin-upt', [PengukuranKinerjaUptController::class, 'getFilterTahun'])->name('get.TahunPengukuran');
     //
     Route::get('/lppd-admin-upt', [LppdUptController::class, 'getIndex'])->name('get.IndexLppdUpt');
-    Route::put('/lppd-admin-upt/update/{id}', [LppdUptController::class, 'getUpdate'])->name('get.UpdateLppdUpt');
+    Route::put('/lppd-admin-upt/update', [LppdUptController::class, 'getUpdate'])->name('get.UpdateLppdUpt');
     Route::post('/lppd-admin-upt', [LppdUptController::class, 'getFilterTahun'])->name('get.TahunLppd');
     //
     Route::get('/iku-admin-upt', [IkuUptController::class, 'getIndex'])->name('get.IndexIkuUpt');
-    Route::put('/iku-admin-upt/update/{id}', [IkuUptController::class, 'getUpdate'])->name('get.UpdateIkuUpt');
+    Route::put('/iku-admin-upt/update', [IkuUptController::class, 'getUpdate'])->name('get.UpdateIkuUpt');
     Route::post('/iku-admin-upt', [IkuUptController::class, 'getFilterTahun'])->name('get.TahunIku');
     //
     Route::get('/dataset-admin-upt', [DatasetAdminUptController::class, 'index_dataset_upt'])->name('index_dataset_upt');

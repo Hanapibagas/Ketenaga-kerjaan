@@ -43,15 +43,15 @@ class PengukuranKinerjaUptController extends Controller
         return view('components.admin-upt.pengukuran-kinerja.index', compact('pengukuran', 'results'));
     }
 
-    public function getUpdate(Request $request, $id)
+    public function getUpdate(Request $request)
     {
-        $pengukuran = PengukuranKinerja::findOrFail($id);
+        foreach($request->a as $key => $item) {
+            $pengukuran = PengukuranKinerja::findOrFail($request->id[$key]);
+            $pengukuran->a = $request->a[$key];
 
-        $pengukuran->a = $request->input('a');
-        $pengukuran->b = $request->input('b');
-
-        $pengukuran->save();
-        // dd($iku);
+            $pengukuran->b = $request->b[$key];
+            $pengukuran->save();
+        }
         return redirect()->back()->with('status', 'Selamat data triwulan berhasil diperbaui');
     }
 }

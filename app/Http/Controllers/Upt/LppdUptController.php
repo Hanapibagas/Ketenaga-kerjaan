@@ -43,16 +43,18 @@ class LppdUptController extends Controller
         return view('components.admin-upt.lppd.index', compact('lppd', 'results'));
     }
 
-    public function getUpdate(Request $request, $id)
+    public function getUpdate(Request $request)
     {
-        $lppd = Lppd::findOrFail($id);
+        foreach($request->a as $key => $item) {
+            $lppd = Lppd::findOrFail($request->id[$key]);
+            $lppd->a = $request->a[$key];
 
-        $lppd->a = $request->input('a');
-        $lppd->b = $request->input('b');
-        $lppd->link_terkait = $request->input('link_terkait');
+            $lppd->b = $request->b[$key];
 
-        $lppd->save();
-        // dd($lppd);
+            $lppd->link_terkait = $request->link_terkait[$key];
+            $lppd->save();
+        }
+
         return redirect()->back()->with('status', 'Selamat data LPPD berhasil diperbaui');
     }
 }

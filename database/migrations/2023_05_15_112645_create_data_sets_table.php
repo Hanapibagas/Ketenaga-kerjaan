@@ -16,12 +16,8 @@ return new class extends Migration
         Schema::create('data_sets', function (Blueprint $table) {
             $table->id();
             $table->string('nama_dataset');
-            $table->string('kategori');
-            $table->string('slug');
-            $table->string('opd');
-            $table->string('satuan');
-            $table->enum('status', ['0', '1']);
-            $table->foreignId('user_id')->constrained('users')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('role_id')->constrained('users')->onDelete('cascade')->onUpdate('cascade');
+            $table->string('thead_html');
             $table->timestamps();
         });
     }
