@@ -309,6 +309,7 @@ class HomeController extends Controller
             'nama' => $request->input('nama'),
             'no_hp' => $request->input('no_hp'),
             'no_ktp' => $request->input('no_ktp'),
+            'nomor_pengesahaan' => $request->input('nomor_pengesahaan'),
             'alamat' => $request->input('alamat'),
             'pekerjaan' => $request->input('pekerjaan'),
             'rincian' => $request->input('rincian'),
@@ -353,7 +354,7 @@ class HomeController extends Controller
         return redirect()->route('form_keberatan_publik')->with('status', 'Selamat data keberatan publik berhasil ditambahkan');
     }
 
-    public function getRelodKeberatan()
+    public function RelodKeberatan()
     {
         return response()->json(['captcha' => captcha_img()]);
     }
@@ -394,8 +395,8 @@ class HomeController extends Controller
             'pekerjaan' => 'required',
             'rincian' => 'required',
             'tujuan' => 'required',
-            'foto_ktp' => 'required|image|mimes:jpg,png',
-            'foto_pengajuan' => 'required|image|mimes:jpg,png',
+            'foto_ktp' => 'required|image|mimes:jpeg,png,jpg,gif',
+            'foto_pengajuan' => 'required|image|mimes:jpeg,png,jpg,gif',
             'captcha' => ['required', 'captcha'],
         ], $message);
 

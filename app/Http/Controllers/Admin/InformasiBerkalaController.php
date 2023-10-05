@@ -29,15 +29,18 @@ class InformasiBerkalaController extends Controller
 
         $this->validate($request, [
             'nama' => 'required',
+            'nama_link' => 'required',
+            'link' => 'required',
         ], $message);
 
-        if ($request->file('file')) {
-            $file = $request->file('file')->store('data-berkala', 'public');
-        }
+        // if ($request->file('file')) {
+        //     $file = $request->file('file')->store('data-berkala', 'public');
+        // }
 
         InformasiBerkala::create([
             'nama' => $request->input('nama'),
-            'file' => $file
+            'nama_link' => $request->input('nama_link'),
+            'link' => $request->input('link'),
         ]);
 
         return redirect()->route('index_berkala')->with('status', 'Selamat data berkala berhasil ditambahkan');
@@ -52,21 +55,22 @@ class InformasiBerkalaController extends Controller
     public function update_berkala(Request $request, $id)
     {
         $berkala = InformasiBerkala::where('id', $id)->first();
-        if ($request->file('file')) {
-            $file = $request->file('file')->store('data-berkala', 'public');
-            if ($berkala->file && file_exists(storage_path('app/public/' . $berkala->file))) {
-                Storage::delete('public/' . $berkala->file);
-                $file = $request->file('file')->store('data-berkala', 'public');
-            }
-        }
+        // if ($request->file('file')) {
+        //     $file = $request->file('file')->store('data-berkala', 'public');
+        //     if ($berkala->file && file_exists(storage_path('app/public/' . $berkala->file))) {
+        //         Storage::delete('public/' . $berkala->file);
+        //         $file = $request->file('file')->store('data-berkala', 'public');
+        //     }
+        // }
 
-        if ($request->file('file') === null) {
-            $file = $berkala->file;
-        }
+        // if ($request->file('file') === null) {
+        //     $file = $berkala->file;
+        // }
 
         $berkala->update([
             'nama' => $request->input('nama'),
-            'file' => $file
+            'nama_link' => $request->input('nama_link'),
+            'link' => $request->input('link'),
         ]);
 
         return redirect()->route('index_berkala')->with('status', 'Selamat data berkala berhasil diperbarui');

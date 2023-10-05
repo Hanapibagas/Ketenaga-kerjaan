@@ -10,6 +10,7 @@ class InformasiSetiapSaat extends Model
     use HasFactory;
     protected $fillable = [
         'nama',
-        'file'
+        'nama_link',
+        'link'
     ];
 }

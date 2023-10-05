@@ -19,5 +19,6 @@ class PermintaanData extends Model
         'tujuan',
         'foto_ktp',
         'foto_pengajuan',
+        'status',
     ];
 }

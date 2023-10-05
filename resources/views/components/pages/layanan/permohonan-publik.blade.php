@@ -61,11 +61,11 @@ Layanan
                 <div class="pe-lg-4 me-lg-3 pe-xl-0 me-xl-0">
                     <h2 class="h1 mb-4">About</h2>
                     <p class="fs-lg mb-0">
-                        Jumlah permohonan informasi publik yang diterima: {{ $jumlahpemohon }}
+                        {{-- Jumlah permohonan informasi publik yang diterima: {{ $jumlahpemohon }} --}}
                         <hr> <br>
                         {!! $informasi->deskripsi !!} <br><br>
-                        Klik Link untuk mengajukan Permohonan Informasi Publik (<a
-                            href="{{ route('form_permohonan_publik') }}">Klik di sini</a>)
+                        {{-- Klik Link untuk mengajukan Permohonan Informasi Publik (<a
+                            href="{{ route('form_permohonan_publik') }}">Klik di sini</a>) --}}
                     </p>
                 </div>
             </div>

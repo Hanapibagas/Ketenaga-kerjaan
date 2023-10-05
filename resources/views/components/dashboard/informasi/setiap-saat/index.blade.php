@@ -46,14 +46,18 @@ Setiap Saat
                             <table id="table" class="table">
                                 <thead>
                                     <tr>
-                                        <th>Nama</th>
+                                        <th>Informasi</th>
+                                        <th>Nama Link</th>
+                                        <th>Link</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach ( $setiapsaat as $data )
                                     <tr>
-                                        <td>{{ $data->nama }}</td>
+                                        <td>{{ Str::limit($data->nama, 60) }}</td>
+                                        <td>{{ Str::limit($data->nama_link, 60) }}</td>
+                                        <td>{{ Str::limit($data->link, 60) }}</td>
                                         <td>
                                             <a href="{{ route('edit_setiap_saat', $data->id) }}"
                                                 class="btn btn-primary">

@@ -50,6 +50,13 @@ Serta Merta
                                 </div>
                                 <div class="col-12">
                                     <div class="input-style-1">
+                                        <label>Nama Link</label>
+                                        <input type="text" value="{{ $sertamerta->nama_link }}" name="nama_link"
+                                            placeholder="Masukkan Judul" />
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="input-style-1">
                                         <label>Link</label>
                                         <input type="text" value="{{ $sertamerta->link }}" name="link"
                                             placeholder="Masukkan Judul" />

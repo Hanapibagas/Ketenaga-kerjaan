@@ -11,21 +11,12 @@ class DataSet extends Model
     use HasFactory;
     protected $fillable = [
         'nama_dataset',
-        'kategori',
-        'opd',
-        'satuan',
-        'slug',
-        'status',
-        'user_id'
+        'role',
+        'thead_html'
     ];
 
     public function detailsDataset()
     {
         return $this->hasMany(DetailsDataset::class, 'dataset_id');
-    }
-
-    public function User()
-    {
-        return $this->BelongsTo(User::class, 'user_id');
     }
 }

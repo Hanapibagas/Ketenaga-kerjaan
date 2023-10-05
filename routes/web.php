@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\InfografisController;
 use App\Http\Controllers\Admin\InformasiBerkalaController;
 use App\Http\Controllers\Admin\InformasiSertaMertaController;
 use App\Http\Controllers\Admin\InformasiSetiapSaatController;
+use App\Http\Controllers\Admin\KunjungiController;
 use App\Http\Controllers\Admin\OrganisasiAdminController;
 use App\Http\Controllers\Admin\PengumumanController;
 use App\Http\Controllers\Admin\PublikasiController;
@@ -79,7 +80,7 @@ Route::get('/publikasi/pencarian-publikasi', [HomeController::class, 'pencarian_
 Route::get('/publikasi/{slug}', [HomeController::class, 'details_pulikasi'])->name('details_pulikasi');
 
 // route layanan
-Route::get('/reload-captcha-keberatan', [App\Http\Controllers\HomeController::class, 'getRelodKeberatan']);
+Route::get('/reload-captcha-1', [HomeController::class, 'RelodKeberatan']);
 Route::get('/permohonan-informasi-publik', [HomeController::class, 'permohonan_publik'])->name('permohonan_publik');
 Route::get('/permohonan-informasi-publik/form-pengaduan-publik', [HomeController::class, 'form_permohonan_publik'])->name('form_permohonan_publik');
 Route::post('/permohonan-informasi-publik/form-pengaduan-publik/store', [HomeController::class, 'store_permohonan_publik'])->name('store_permohonan_publik');
@@ -103,16 +104,32 @@ Route::get('/reload-captcha', [App\Http\Controllers\Auth\LoginController::class,
 Route::middleware('auth', 'checkroll:admin web')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index_dashboard'])->name('index_dashboard');
     //
+    Route::get('/kunjungi', [KunjungiController::class, 'getIndexKunjungi'])->name('getIndexKunjungi');
+    Route::get('/kunjungi/create', [KunjungiController::class, 'getCreateKunjungi'])->name('getCreateKunjungi');
+    Route::post('/kunjungi/post', [KunjungiController::class, 'storeKunjungan'])->name('storeKunjungan');
+    Route::get('/kunjungi/edit/{id}', [KunjungiController::class, 'getEditKunjungan'])->name('getEditKunjungan');
+    Route::put('/kunjungi/update/{id}', [KunjungiController::class, 'putKunjungi'])->name('putKunjungi');
+    Route::delete('/kunjungi/delete/{id}', [KunjungiController::class, 'destroyKunjungan'])->name('destroyKunjungan');
+    //
     Route::get('/setting-logo', [SettingWebController::class, 'getIndexLogo'])->name('get.IndexLogo');
     Route::get('/setting-banner', [SettingWebController::class, 'getIndexBanner'])->name('get.IndexBanner');
     Route::get('/setting-footer', [SettingWebController::class, 'getIndexFooter'])->name('get.IndexFooter');
+
     Route::get('/setting-pengajuan-keberatan', [SettingWebController::class, 'getIndexPengajuanKeberatan'])->name('get.IndexPengajuanKeberatan');
+    Route::get('/setting-pengajuan-keberatan/edit/{id}', [SettingWebController::class, 'getCreatePengajuanKeberatan'])->name('get.CreatePengajuankeberatanId');
+    Route::put('/setting-pengajuan-keberatan/update/{id}', [SettingWebController::class, 'getUpdatePengajuanKeberatan'])->name('get.UpdatePengajuanKeberatan');
+
     Route::get('/setting-informasi-publik', [SettingWebController::class, 'getIndexInformasiPublik'])->name('get.IndexInformasiPublik');
+    Route::get('/setting-informasi-publik/{id}', [SettingWebController::class, 'getEditInformasiPublik'])->name('getEditInformasiPublik');
+    Route::put('/setting-informasi-publik/update/{id}', [SettingWebController::class, 'getUpdateInformasiPublik'])->name('get.UpdateInformasiPublik');
+
+    Route::get('/layanan-permintaan-data', [SettingWebController::class, 'getIndexPermintaanData'])->name('getIndexPermintaanData');
+    Route::get('/layanan-permintaan-data/details/{id}', [SettingWebController::class, 'getEditpermintaanData'])->name('getEditpermintaanData');
+    Route::put('//layanan-permintaan-data/update/{id}', [SettingWebController::class, 'putPermintaanData'])->name('putPermintaanData');
+
     Route::get('/setting-prakata-kepala-dinas', [SettingWebController::class, 'getIndexPrakata'])->name('get.IndexPrakata');
     Route::get('/setting-profile-dinas', [SettingWebController::class, 'getIndexProfile'])->name('get.IndexProfile');
     Route::put('/setting-logo/update/{id}', [SettingWebController::class, 'getUpdate'])->name('get.UpdateLogo');
-    Route::put('/setting-pengajuan-keberatan/update/{id}', [SettingWebController::class, 'getUpdatePengajuanKeberatan'])->name('get.UpdatePengajuanKeberatan');
-    Route::put('/setting-informasi-publik/update/{id}', [SettingWebController::class, 'getUpdateInformasiPublik'])->name('get.UpdateInformasiPublik');
     Route::put('/setting-footer/update/{id}', [SettingWebController::class, 'getUpdateFooter'])->name('get.UpdateFooter');
     Route::put('/setting-banner/update/{id}', [SettingWebController::class, 'getUpdateBanner'])->name('get.UpdateBanner');
     Route::put('/setting-profile/update/{id}', [SettingWebController::class, 'getUpdatePrakata'])->name('get.UpdatePrakata');

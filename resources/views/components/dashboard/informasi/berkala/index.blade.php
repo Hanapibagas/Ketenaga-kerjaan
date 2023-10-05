@@ -1,7 +1,7 @@
 @extends('layouts.dashboard')
 
 @section('title')
-Berkala
+Informasi Pulik-Berkala
 @endsection
 
 @section('content')
@@ -46,14 +46,18 @@ Berkala
                             <table id="table" class="table">
                                 <thead>
                                     <tr>
-                                        <th>Nama</th>
+                                        <th>Informasi</th>
+                                        <th>Nama Link</th>
+                                        <th>Link</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach ( $berkala as $data )
                                     <tr>
-                                        <td>{{ Str::limit($data->nama, 100) }}</td>
+                                        <td>{{ Str::limit($data->nama, 60) }}</td>
+                                        <td>{{ Str::limit($data->nama_link, 60) }}</td>
+                                        <td>{{ Str::limit($data->link, 60) }}</td>
                                         <td>
                                             <a href="{{ route('edit_berkala', $data->id) }}" class="btn btn-primary">
                                                 <i class="lni lni-pencil" style="color: whitesmoke"></i>

@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('nama');
             $table->string('link');
+            $table->string('nama_link');
             $table->timestamps();
         });
     }

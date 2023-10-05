@@ -8,6 +8,7 @@ use App\Models\DataSet;
 use App\Models\DataStaf;
 use App\Models\Infografis;
 use App\Models\Pengumuman;
+use App\Models\PermintaanData;
 use App\Models\Publikasi;
 use Illuminate\Http\Request;
 
@@ -16,11 +17,11 @@ class DashboardController extends Controller
     public function index_dashboard()
     {
         return view('components.dashboard.dashboard', [
-            'jumlahdataberita' => Berita::count(),
+            'jumlahdataberita' => PermintaanData::count(),
             'jumlahdatapublikasi' => Publikasi::count(),
             'jumlahdatapengumuman' => Pengumuman::count(),
             'jumlahdatapegawai' => DataStaf::count(),
-            'jumlahdatainfografis' => Infografis::count()
+            'jumlahdatainfografis' => DataSet::count()
         ]);
     }
 }

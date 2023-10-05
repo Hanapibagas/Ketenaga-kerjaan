@@ -8,6 +8,7 @@ use App\Models\Footer;
 use App\Models\InformasiPublik;
 use App\Models\Logo;
 use App\Models\PengajuanKeberatanPublik;
+use App\Models\PermintaanData;
 use App\Models\PrakataKepalaDinas;
 use App\Models\ProfieDinas;
 use Illuminate\Http\Request;
@@ -52,10 +53,44 @@ class SettingWebController extends Controller
         return view('components.dashboard.setting.index-pengajuan-keberatan', compact('keberatan'));
     }
 
+    public function getCreatePengajuanKeberatan($id)
+    {
+        $keberatan = PengajuanKeberatanPublik::where('id', $id)->first();
+        return view('components.dashboard.setting.create-pengajuan-keberatan', compact('keberatan'));
+    }
+
     public function getIndexInformasiPublik()
     {
         $informasi = InformasiPublik::all();
         return view('components.dashboard.setting.index-informasi-publik', compact('informasi'));
+    }
+
+    public function getEditInformasiPublik($id)
+    {
+        $informasi = InformasiPublik::where('id', $id)->first();
+        return view('components.dashboard.setting.create-informasi-publik', compact('informasi'));
+    }
+
+    public function getIndexPermintaanData()
+    {
+        $permintaan_data = PermintaanData::all();
+        return view('components.dashboard.setting.layanan-permintaan-data', compact('permintaan_data'));
+    }
+
+    public function getEditpermintaanData($id)
+    {
+        $permintaan_data = PermintaanData::where('id', $id)->first();
+        return view('components.dashboard.setting.edit-layanan-permintaan-data', compact('permintaan_data'));
+    }
+
+    public function putPermintaanData(Request $request, $id)
+    {
+        $permintaan_data = PermintaanData::where('id', $id)->first();
+        $permintaan_data->update([
+            'status' => $request->input('status')
+        ]);
+
+        return redirect()->back()->with('status', 'Selamat status berhasil diperbarui');
     }
 
     public function getUpdateInformasiPublik(Request $request, $id)
@@ -79,7 +114,7 @@ class SettingWebController extends Controller
             'gambar' => $file
         ]);
 
-        return redirect()->back()->with('status', 'Selamat setting logo berhasil diperbarui');
+        return redirect()->route('get.IndexInformasiPublik')->with('status', 'Selamat setting logo berhasil diperbarui');
     }
 
     public function getUpdatePengajuanKeberatan(Request $request, $id)
@@ -103,7 +138,7 @@ class SettingWebController extends Controller
             'gambar' => $file
         ]);
 
-        return redirect()->back()->with('status', 'Selamat setting logo berhasil diperbarui');
+        return redirect()->route('get.IndexPengajuanKeberatan')->with('status', 'Selamat setting logo berhasil diperbarui');
     }
 
     public function getUpdateFooter(Request $request, $id)

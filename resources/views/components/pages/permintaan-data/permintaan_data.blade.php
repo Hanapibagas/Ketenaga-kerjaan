@@ -17,7 +17,7 @@ Layanan
 <nav class="container py-4 mb-lg-2 mt-lg-3 tes" aria-label="breadcrumb">
     <ol class="breadcrumb mb-0">
         <li class="breadcrumb-item">
-            <a href="{{ route('index_home') }}"><i class="bx bx-home-alt fs-lg me-1"></i>Beranda</a>
+            <a href="{{ route('index_home') }}"><i class="bx bx-home-alt fs-lg me-1"></i>Bphperanda</a>
         </li>
         <li class="breadcrumb-item active" aria-current="page">Form permintaan data</li>
     </ol>
@@ -97,7 +97,7 @@ Layanan
                         @enderror
                     </div>
                     <div class="col-sm-12 mb-4">
-                        <label for="fn" class="form-label ">Rincian Informasi Yang Dibutuhkan<i class="text-danger"
+                        <label for="fn" class="form-label ">Rincian Data Yang Dibutuhkan<i class="text-danger"
                                 style="font-size: 14px;">*</i></label>
                         <textarea type="text" class="form-control @error('rincian') is-invalid @enderror"
                             name="rincian"></textarea>
@@ -108,7 +108,7 @@ Layanan
                         @enderror
                     </div>
                     <div class="col-sm-12 mb-4">
-                        <label for="fn" class="form-label">Tujuan Permohonan Informasi<i class="text-danger"
+                        <label for="fn" class="form-label">Tujuan Permintaan Data<i class="text-danger"
                                 style="font-size: 14px;">*</i></label>
                         <textarea type="text" class="form-control @error('tujuan') is-invalid @enderror"
                             name="tujuan"></textarea>
