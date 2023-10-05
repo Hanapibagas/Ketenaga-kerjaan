@@ -33,18 +33,14 @@ class DataSeAdminSupertController extends Controller
 
         $this->validate($request, [
             'nama_dataset' => 'required',
-            'kategori' => 'required',
-            'opd' => 'required',
+            'role' => 'required',
+            'deskripsi' => 'required',
         ], $message);
 
-        $slug = Str::slug($request->nama_dataset);
         DataSet::create([
             'nama_dataset' => $request->input('nama_dataset'),
-            'kategori' => $request->input('kategori'),
-            'opd' => $request->input('opd'),
-            'satuan' => $request->input('satuan'),
-            'user_id' => $request->input('user_id'),
-            'slug' => $slug,
+            'role_id' => $request->input('role'),
+            'thead_html' => $request->input('deskripsi'),
         ]);
 
         return redirect()->route('index_dataset')->with('status', 'Selamat dataset berhasil ditambahkan');

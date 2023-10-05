@@ -6,6 +6,7 @@ html {
   scroll-behavior: smooth;
 }
 
+
 body {
   font-family: "Inter", sans-serif !important;
   font-weight: normal;
@@ -1740,7 +1741,6 @@ h6,
 }
 .table tbody tr:last-child > * {
   border-bottom-color: transparent;
-  padding-bottom: 0px;
 }
 .table th h6 {
   font-weight: 500;
@@ -8093,4 +8093,13 @@ h6,
 
 .fw-900 {
   font-weight: 900;
+}
+
+.headers {
+  background-color: #2B2730;
+  color: white;
+}
+.headers:focus {
+  background-color: #2B2730;
+  color: white;
 }

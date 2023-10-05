@@ -43,15 +43,16 @@ class IkuUptController extends Controller
         return view('components.admin-upt.iku.index', compact('iku', 'results'));
     }
 
-    public function getUpdate(Request $request, $id)
+    public function getUpdate(Request $request)
     {
-        $iku = Iku::findOrFail($id);
+        foreach($request->a as $key => $item) {
+            $iku = Iku::findOrFail($request->id[$key]);
+            $iku->a = $request->a[$key];
 
-        $iku->a = $request->input('a');
-        $iku->b = $request->input('b');
+            $iku->b = $request->b[$key];
+            $iku->save();
+        }
 
-        $iku->save();
-        // dd($iku);
         return redirect()->back()->with('status', 'Selamat data iku berhasil diperbaui');
     }
 }

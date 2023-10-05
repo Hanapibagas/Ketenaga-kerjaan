@@ -51,9 +51,7 @@ Dataset
                                 <thead>
                                     <tr>
                                         <th>Nama Dataset</th>
-                                        <th>Topik</th>
-                                        <th>OPD</th>
-                                        <th>Satuan</th>
+                                        <th>Role Target</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
@@ -61,9 +59,7 @@ Dataset
                                     @foreach ( $dataset as $data )
                                     <tr>
                                         <td>{{ Str::limit($data->nama_dataset, 25) }}</td>
-                                        <td>{{ $data->kategori }}</td>
-                                        <td>{{ Str::limit($data->opd, 25) }}</td>
-                                        <td>{{ $data->satuan }}</td>
+                                        <td>{{ $data->role->name }}</td>
                                         <td>
                                             <a href="{{ route('edit_dataset', $data->id) }}" class="btn btn-primary">
                                                 <i class="lni lni-pencil" style="color: whitesmoke"></i>
