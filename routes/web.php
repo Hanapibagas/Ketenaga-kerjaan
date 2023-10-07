@@ -290,6 +290,7 @@ Route::middleware('auth', 'checkroll:upt')->group(function () {
     Route::post('/dataset-admin-upt/store', [DatasetAdminUptController::class, 'store_dataset_upt_admin'])->name('store_dataset_upt_admin');
     Route::get('/dataset-admin-upt/edit/{id}', [DatasetAdminUptController::class, 'edit_dataset_admin_upt'])->name('edit_dataset_admin_upt');
     Route::put('dataset-admin-upt/update/{id}', [DatasetAdminUptController::class, 'update_dataset_admin_upt'])->name('update_dataset_admin_upt');
+    Route::put('dataset-admin-upt/update-thead/{id}', [DatasetAdminUptController::class, 'updateData'])->name('updateData');
     //
     Route::get('pengguna-admin-upt', [UpdatePasswordAdminUptController::class, 'index_password'])->name('index_password_upt');
     Route::put('pengguna-admin-upt/post', [UpdatePasswordAdminUptController::class, 'update_password'])->name('update_password_upt');

@@ -36,9 +36,6 @@ Dataset
                                 <thead>
                                     <tr>
                                         <th>Nama Dataset</th>
-                                        <th>Topik</th>
-                                        <th>OPD</th>
-                                        <th>Satuan</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
@@ -46,9 +43,6 @@ Dataset
                                     @foreach ( $dataset as $data )
                                     <tr>
                                         <td>{{ Str::limit($data->nama_dataset, 25) }}</td>
-                                        <td>{{ $data->kategori }}</td>
-                                        <td>{{ Str::limit($data->opd, 25) }}</td>
-                                        <td>{{ $data->satuan }}</td>
                                         <td>
                                             <a href="{{ route('details_dataset_upt', $data->id) }}"
                                                 class="btn btn-info">

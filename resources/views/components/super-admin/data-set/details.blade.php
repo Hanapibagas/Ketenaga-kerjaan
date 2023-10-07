@@ -77,6 +77,7 @@
                                     </div>
                                 </div>
                             </div>
+                            <button id="exportButton">Export to Excel</button>
                         </div>
                     </div>
                 </div>
@@ -85,6 +86,7 @@
 @endsection
 
 @push('add-script')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.4/xlsx.full.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
     </script>
@@ -101,5 +103,15 @@
 
         // Menambahkan atribut 'class' dengan nilai 'table' ke elemen tabel
         table.classList.add('table', 'backhitam');
+    </script>
+
+    <script>
+        document.getElementById('exportButton').addEventListener('click', function() {
+            var table = document.querySelector('.backhitam');
+            var wb = XLSX.utils.table_to_book(table, {
+                sheet: 'Sheet1'
+            });
+            XLSX.writeFile(wb, 'data.xlsx');
+        });
     </script>
 @endpush
