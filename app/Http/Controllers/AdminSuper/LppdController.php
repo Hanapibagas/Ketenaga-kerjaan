@@ -28,6 +28,25 @@ class LppdController extends Controller
         return view('components.super-admin.lppd.index', compact('lppd', 'results', 'user', 'thead'));
     }
 
+    public function getCreateLppd()
+    {
+        $user = User::where('id', '>', 2)->whereIn('roles', ['upt', 'kab/kota'])->get();
+        return view('components.super-admin.lppd.create', compact('user'));
+    }
+
+    public function getDetailsLppd($id)
+    {
+        $lppd = Lppd::where('id', $id)->first();
+        return view('components.super-admin.lppd.details', compact('lppd'));
+    }
+
+    public function getEditLppd($id)
+    {
+        $lppd = Lppd::where('id', $id)->first();
+        $user = User::where('id', '>', 2)->whereIn('roles', ['upt', 'kab/kota'])->get();
+        return view('components.super-admin.lppd.update', compact('lppd', 'user'));
+    }
+
     public function getStore(Request $request)
     {
         $message = [
@@ -35,17 +54,18 @@ class LppdController extends Controller
         ];
 
         $this->validate($request, [
-            'indikator' => 'required',
-            'tahun' => 'required',
+            'nama_lppd' => 'required',
+            'role_id' => 'required',
         ], $message);
 
         Lppd::create([
-            'indikator' => $request->input('indikator'),
-            'user_id' => $request->input('user_id'),
+            'nama_lppd' => $request->input('nama_lppd'),
+            'role_id' => $request->input('role_id'),
+            'thead_html' => $request->input('thead_html'),
             'tahun' => $request->input('tahun'),
         ]);
 
-        return redirect()->back()->with('status', 'Selamat lppd berhasil ditambahkan');
+        return redirect()->route('get.IndexLppd')->with('status', 'Selamat lppd berhasil ditambahkan');
     }
 
     public function getUpdate(Request $request, $id)
@@ -53,12 +73,13 @@ class LppdController extends Controller
         $lppd = Lppd::where('id', $id)->first();
 
         $lppd->update([
-            'indikator' => $request->input('indikator'),
-            'user_id' => $request->input('user_id'),
+            'nama_lppd' => $request->input('nama_lppd'),
+            'role_id' => $request->input('role_id'),
+            'thead_html' => $request->input('thead_html'),
             'tahun' => $request->input('tahun'),
         ]);
 
-        return redirect()->back()->with('status', 'Selamat lppd berhasil diperbarui');
+        return redirect()->route('get.IndexLppd')->with('status', 'Selamat lppd berhasil diperbarui');
     }
 
     public function getDestroy($id)

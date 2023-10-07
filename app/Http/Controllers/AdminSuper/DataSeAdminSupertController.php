@@ -33,14 +33,15 @@ class DataSeAdminSupertController extends Controller
 
         $this->validate($request, [
             'nama_dataset' => 'required',
-            'role' => 'required',
-            'deskripsi' => 'required',
+            'role_id' => 'required',
+            'thead_html' => 'required',
         ], $message);
 
         DataSet::create([
             'nama_dataset' => $request->input('nama_dataset'),
-            'role_id' => $request->input('role'),
-            'thead_html' => $request->input('deskripsi'),
+            'role_id' => $request->input('role_id'),
+            'thead_html' => $request->input('thead_html'),
+            'tahun' => $request->input('tahun'),
         ]);
 
         return redirect()->route('index_dataset')->with('status', 'Selamat dataset berhasil ditambahkan');
@@ -57,15 +58,15 @@ class DataSeAdminSupertController extends Controller
     {
         $dataset = DataSet::where('id', $id)->first();
 
-        $slug = Str::slug($request->nama_dataset);
+        // $slug = Str::slug($request->nama_dataset);
         $dataset->update([
             'nama_dataset' => $request->input('nama_dataset'),
-            'kategori' => $request->input('kategori'),
-            'opd' => $request->input('opd'),
-            'satuan' => $request->input('satuan'),
-            'user_id' => $request->input('user_id'),
-            'slug' => $slug,
+            'role_id' => $request->input('role_id'),
+            'thead_html' => $request->input('thead_html'),
+            'tahun' => $request->input('tahun'),
         ]);
+
+        // dd($dataset);
 
         return redirect()->route('index_dataset')->with('status', 'Selamat dataset berhasil diperbarui');
     }

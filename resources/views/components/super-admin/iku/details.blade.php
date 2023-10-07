@@ -1,7 +1,7 @@
 @extends('layouts.dashboardadminsuper')
 
 @section('title')
-Dataset
+IKU
 @endsection
 
 @push('add-style')
@@ -30,7 +30,7 @@ Dataset
             <div class="row align-items-center">
                 <div class="col-md-6">
                     <div class="title mb-30">
-                        <h2>Details Dataset</h2>
+                        <h2>Details IKU</h2>
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -38,7 +38,7 @@ Dataset
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item">
-                                    <a href="{{ route('index_dataset') }}">
+                                    <a href="{{ route('get.IndexIku') }}">
                                         <i>
                                             <- Kembali </i>
                                     </a>
@@ -54,28 +54,29 @@ Dataset
             <div class="row">
                 <div class="col-lg-12">
                     <div class="card-style mb-30">
-                        <h6 class="mb-25">Dataset</h6>
+                        <h6 class="mb-25">IKU</h6>
                         <div class="row">
                             <div class="col-12">
                                 <div class="input-style-1">
-                                    <label>Nama Dataset</label>
-                                    {{ $dataset->nama_dataset }}
+                                    <label>Nama IKU</label>
+                                    {{ $iku->nama_dataset }}
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="input-style-1">
                                     <label>Target Role</label>
-                                    {{ $dataset->role->name }}
+                                    {{ $iku->role->name }}
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="input-style-1">
-                                    <label>Tahun Daset</label>
-                                    {{ $dataset->tahun }}
+                                    <label>Tahun IKU</label>
+                                    {{ $iku->tahun }}
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="input-style-1">
+                                    <label>Table</label>
                                     <style>
                                         table thead {
                                             background-color: #007bff;
@@ -100,9 +101,8 @@ Dataset
                                             padding: 10px;
                                         }
                                     </style>
-                                    <label>Table</label>
                                     <div>
-                                        {!! $dataset->thead_html !!}
+                                        {!! $iku->thead_html !!}
                                     </div>
                                 </div>
                             </div>

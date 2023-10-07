@@ -1,11 +1,34 @@
 @extends('layouts.dashboardadminsuper')
 
 @section('title')
-Dataset
+Laporan
 @endsection
 
 @push('add-style')
 <style>
+    table thead {
+        background-color: #007bff;
+        color: white;
+    }
+
+    table th {
+        padding: 10px;
+        border: 1px solid #ddd;
+    }
+
+    table tbody tr:nth-child(odd) {
+        background-color: #f2f2f2;
+    }
+
+    table tbody tr:hover {
+        background-color: #e0e0e0;
+    }
+
+    table td {
+        border: 1px solid #ddd;
+        padding: 10px;
+    }
+
     .backhitam {
         color: #fff !important;
         text-align: center;
@@ -18,19 +41,20 @@ Dataset
 @if (session('status'))
 <script>
     Swal.fire({
-                icon: 'success',
-                title: 'Sukses!',
-                text: "{{ session('status') }}",
-            });
+        icon: 'success',
+        title: 'Sukses!',
+        text : "{{ session('status') }}",
+    });
 </script>
 @endif
+
 <section class="tab-components">
     <div class="container-fluid">
         <div class="title-wrapper pt-30">
             <div class="row align-items-center">
                 <div class="col-md-6">
                     <div class="title mb-30">
-                        <h2>Details Dataset</h2>
+                        <h2>Details Laporan</h2>
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -38,7 +62,7 @@ Dataset
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item">
-                                    <a href="{{ route('index_dataset') }}">
+                                    <a href="{{ route('index_laporan_admin_super') }}">
                                         <i>
                                             <- Kembali </i>
                                     </a>
@@ -54,55 +78,65 @@ Dataset
             <div class="row">
                 <div class="col-lg-12">
                     <div class="card-style mb-30">
-                        <h6 class="mb-25">Dataset</h6>
+                        <h6 class="mb-25">Laporan</h6>
                         <div class="row">
                             <div class="col-12">
                                 <div class="input-style-1">
-                                    <label>Nama Dataset</label>
+                                    <label>Nama Laporan</label>
+                                    @if ($dataset)
                                     {{ $dataset->nama_dataset }}
+                                    @elseif ($iku)
+                                    {{ $iku->nama_iku }}
+                                    @elseif ($lppd)
+                                    {{ $lppd->nama_lppd }}
+                                    @elseif ($pengukur)
+                                    {{ $pengukur->nama_pengukuran }}
+                                    @endif
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="input-style-1">
-                                    <label>Target Role</label>
-                                    {{ $dataset->role->name }}
+                                    <label>Tabel Laporan</label>
+                                    @if ($dataset)
+                                    Laporan Dataset
+                                    @elseif ($iku)
+                                    Laporan IKU
+                                    @elseif ($lppd)
+                                    Laporan LPPD
+                                    @elseif ($pengukur)
+                                    Laporan Pengukuran Kinerja
+                                    @endif
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="input-style-1">
-                                    <label>Tahun Daset</label>
+                                    <label>Tahun Laporan</label>
+                                    @if ($dataset)
                                     {{ $dataset->tahun }}
+                                    @elseif ($iku)
+                                    {{ $iku->tahun }}
+                                    @elseif ($lppd)
+                                    {{ $lppd->tahun }}
+                                    @elseif ($pengukuran)
+                                    {{ $pengukuran->tahun }}
+                                    @endif
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="input-style-1">
-                                    <style>
-                                        table thead {
-                                            background-color: #007bff;
-                                            color: white;
-                                        }
-
-                                        table th {
-                                            padding: 10px;
-                                            border: 1px solid #ddd;
-                                        }
-
-                                        table tbody tr:nth-child(odd) {
-                                            background-color: #f2f2f2;
-                                        }
-
-                                        table tbody tr:hover {
-                                            background-color: #e0e0e0;
-                                        }
-
-                                        table td {
-                                            border: 1px solid #ddd;
-                                            padding: 10px;
-                                        }
-                                    </style>
                                     <label>Table</label>
+                                    <button id="exportExcelBtn" class="btn btn-success"
+                                        style="margin-left: 835px;">Export Excel</button>
                                     <div>
+                                        @if ($dataset)
                                         {!! $dataset->thead_html !!}
+                                        @elseif ($iku)
+                                        {!! $iku->thead_html !!}
+                                        @elseif ($lppd)
+                                        {!! $lppd->thead_html !!}
+                                        @elseif ($pengukuran)
+                                        {!! $pengukuran->thead_html !!}
+                                        @endif
                                     </div>
                                 </div>
                             </div>
@@ -120,10 +154,6 @@ Dataset
 </script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
     integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
-</script>
-<script src="https://cdn.ckeditor.com/4.19.1/standard/ckeditor.js"></script>
-<script>
-    CKEDITOR.replace('deskripsi');
 </script>
 <script>
     // Mengambil elemen tabel dengan tag 'table'

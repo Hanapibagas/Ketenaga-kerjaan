@@ -29,8 +29,8 @@ LPPD
                         <nav aria-label="breadcrumb">
                             <ul class="buttons-group">
                                 <li class="breadcrumb-item">
-                                    <a class="main-btn success-btn rounded-md btn-hover" data-toggle="modal"
-                                        data-target="#exampleModal">
+                                    <a href="{{ route('getCreateLppd') }}"
+                                        class="main-btn success-btn rounded-md btn-hover">
                                         <i class="lni lni-upload" style="margin-right: 20px; margin-left: -10px"></i>
                                         Tambah Data
                                     </a>
@@ -40,97 +40,50 @@ LPPD
                     </div>
                 </div>
             </div>
-            <div class="card-style mb-30">
-                <h6 class="mb-25">Tahun</h6>
-                <div class="row">
-                    <form action="{{ route('get.TahunLppdSuper') }}" method="POST">
-                        @csrf
-                        <div class="col-12">
-                            <div class="input-style-1">
-                                <label>Tahun</label>
-                                @php
-                                $year = date('Y');
-                                @endphp
-                                <select name="tahun" class="form-control">
-                                    <option value="-- Pilih tahun --">-- Pilih tahun --</option>
-                                    @for ($i=2018; $i <= $year; $i++) <option value="{{ $i }}"> {{ $i }}
-                                        </option>
-                                        @endfor
-                                </select>
-                            </div>
-                            <style>
-                                .tombol {
-                                    margin-left: 392px
-                                }
-                            </style>
-                            <div class="col-12 tombol">
-                                <div class="button-group d-flex justify-content-center flex-wrap">
-                                    <button class="main-btn success-btn btn-hover m-2">
-                                        Cari tahun
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
         </div>
         <div class="tables-wrapper">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="card-style mb-30">
-                        <div class="row align-items-center">
-                            <div class="col-md-6">
-                                <div class="title mb-30">
-                                    <h6 class="mb-10">LPPD Data Table</h6>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="breadcrumb-wrapper mb-30">
-                                    <nav aria-label="breadcrumb">
-                                        <ul class="buttons-group">
-                                            <li class="breadcrumb-item">
-                                                <a class="main-btn success-btn rounded-md btn-hover" data-toggle="modal"
-                                                    data-target="#exampleModalThead">
-                                                    <i class="lni lni-pencil-alt"
-                                                        style="margin-right: 20px; margin-left: -10px"></i>
-                                                    Edit nama tabel
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </nav>
-                                </div>
-                            </div>
+                        <h6 class="mb-10">LPPD Data Table</h6>
+                        <div class="input-style-1">
+                            <label>Tahun</label>
+                            @php
+                            $year = date('Y');
+                            @endphp
+                            <select name="tahun" class="form-control">
+                                <option value="-- Pilih tahun --">-- Pilih tahun --</option>
+                                @for ($i=2018; $i <= $year; $i++) <option value="{{ $i }}">{{ $i }}</option>
+                                    @endfor
+                            </select>
                         </div>
                         <div class="table-responsive">
                             <table id="table" class="table">
                                 <thead>
                                     <tr>
-                                        <th>{{ $thead->indikator }}</th>
-                                        <th>{{ $thead->bidang }}</th>
-                                        <th>{{ $thead->tahun }} </th>
-                                        <th>Link Terkait</th>
-                                        <th>{{ $thead->a }}</th>
-                                        <th>{{ $thead->b }}</th>
-                                        <th>{{ $thead->hasil }}</th>
+                                        <th>Nama LPPD</th>
+                                        <th>Bidang Terkait</th>
+                                        <th>Tahun LPPD</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach ( $lppd as $data )
                                     <tr>
-                                        <td>{{ Str::limit($data->indikator, 25) }}</td>
-                                        <td>{{ $data->User->name }}</td>
+                                        <td>{{ Str::limit($data->nama_lppd, 25) }}</td>
+                                        <td>{{ $data->role->name }}</td>
                                         <td>{{ $data->tahun }}</td>
-                                        <td><a href="{{ $data->link_terkait }}">{{ $data->link_terkait }}</a></td>
-                                        <td>{{ $data->a }}</td>
-                                        <td>{{ $data->b }}</td>
-                                        <td>{{ number_format($results[$data->id]) }}%</td>
                                         <td>
-                                            <a data-toggle="modal" data-target="#exampleModal-{{ $data->id }}"
-                                                class="btn btn-primary">
+                                            <a href="{{ route('getEditLppd', $data->id) }}" class="btn btn-primary">
                                                 <i class="lni lni-pencil" style="color: whitesmoke"></i>
                                             </a>
+                                            <a href="{{ route('getDetailsLppd', $data->id) }}" class="btn btn-info">
+                                                <i class="lni lni-eye" style="color: whitesmoke"></i>
+                                            </a>
+                                            {{-- <a href="{{ route('getCreateVariable', $data->id) }}"
+                                                class="btn btn-info">
+                                                <i class="lni lni-archive" style="color: whitesmoke"></i>
+                                            </a> --}}
                                             <form action="{{ route('get.DeleteLppd', $data->id) }}" method="POST"
                                                 class="d-inline">
                                                 @csrf
@@ -151,224 +104,11 @@ LPPD
         </div>
     </div>
 </section>
-
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Form Data LPPD</h5>
-            </div>
-            <form action="{{ route('get.StoreLppd') }}" method="POST">
-                @csrf
-                <div class="modal-body">
-                    <div class="col-12">
-                        <div class="input-style-1">
-                            <label>Nama Indikator</label>
-                            <input type="text" class="@error('indikator') is-invalid @enderror" name="indikator" />
-                            @error('indikator')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                            @enderror
-                        </div>
-                    </div>
-                    <div class="col-12">
-                        <div class="input-style-1">
-                            <label>Untuk pengguna</label>
-                            <select name="user_id" class="form-control" required>
-                                <option value="-- Pilih tahun --">-- Pilih pengguna --</option>
-                                @foreach ( $user as $users )
-                                @if($users->name)
-                                <option value="{{ $users->id }}">{{ $users->name }}</option>
-                                @else
-                                @if($users->email)
-                                <option value="{{ $users->id }}"">{{ $users->email }}</option>
-                                @endif
-                                @endif
-                                @endforeach
-                            </select>
-                        </div>
-                    </div>
-                    <div class=" col-12">
-                                    <div class="input-style-1">
-                                        <label>Tahun Indikator</label>
-                                        <input type="date" class="@error('tahun') is-invalid @enderror" name="tahun" />
-                                        @error('tahun')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                        @enderror
-                                    </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-                        <button type="submit" class="btn btn-primary">Kirim</button>
-                    </div>
-            </form>
-        </div>
-    </div>
-</div>
-
-@foreach ( $lppd as $data )
-<div class="modal fade" id="exampleModal-{{ $data->id }}" tabindex="-1" role="dialog"
-    aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Form Data IKU</h5>
-            </div>
-            <form action="{{ route('get.UpdateLppd', $data->id) }}" method="POST">
-                @method('PUT')
-                @csrf
-                <div class="modal-body">
-                    <div class="col-12">
-                        <div class="input-style-1">
-                            <label>Nama Indikator</label>
-                            <input type="text" value="{{ $data->indikator }}"
-                                class="@error('indikator') is-invalid @enderror" name="indikator" />
-                            @error('indikator')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                            @enderror
-                        </div>
-                    </div>
-                    <div class="col-12">
-                        <div class="input-style-1">
-                            <label>Untuk pengguna</label>
-                            <select name="user_id" class="form-control" required>
-                                <option value="">{{ $data->User->name }}</option>
-                                <option value="-- Pilih tahun --">-- Pilih pengguna --</option>
-                                @foreach ( $user as $users )
-                                @if($users->name)
-                                <option value="{{ $users->id }}">{{ $users->name }}</option>
-                                @else
-                                @if($users->email)
-                                <option value="{{ $users->id }}"">{{ $users->email }}</option>
-                                @endif
-                                @endif
-                                @endforeach
-                            </select>
-                        </div>
-                    </div>
-                    <div class=" col-12">
-                                    <div class="input-style-1">
-                                        <label>Tahun Indikator</label>
-                                        <input type="date" value="{{ $data->tahun }}"
-                                            class="@error('tahun') is-invalid @enderror" name="tahun" />
-                                        @error('tahun')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                        @enderror
-                                    </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-                        <button type="submit" class="btn btn-primary">Kirim</button>
-                    </div>
-            </form>
-        </div>
-    </div>
-</div>
-@endforeach
-
-<div class="modal fade" id="exampleModalThead" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Form Tabel IKU</h5>
-            </div>
-            <form action="{{ route('get.UpdateTheadLppd', $thead->id) }}" method="POST">
-                @method('PUT')
-                @csrf
-                <div class="modal-body">
-                    <div class="col-12">
-                        <div class="input-style-1">
-                            <input type="text" value="{{ $thead->indikator }}"
-                                class="@error('indikator') is-invalid @enderror" name="indikator" />
-                            @error('indikator')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                            @enderror
-                        </div>
-                    </div>
-                    <div class="col-12">
-                        <div class="input-style-1">
-                            <input type="text" value="{{ $thead->bidang }}"
-                                class="@error('bidang') is-invalid @enderror" name="bidang" />
-                            @error('bidang')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                            @enderror
-                        </div>
-                    </div>
-                    <div class="col-12">
-                        <div class="input-style-1">
-                            <input type="text" value="{{ $thead->tahun }}" class="@error('tahun') is-invalid @enderror"
-                                name="tahun" />
-                            @error('tahun')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                            @enderror
-                        </div>
-                    </div>
-                    <div class="col-12">
-                        <div class="input-style-1">
-                            <input type="text" value="{{ $thead->a }}" class="@error('a') is-invalid @enderror"
-                                name="a" />
-                            @error('a')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                            @enderror
-                        </div>
-                    </div>
-                    <div class="col-12">
-                        <div class="input-style-1">
-                            <input type="text" value="{{ $thead->b }}" class="@error('b') is-invalid @enderror"
-                                name="b" />
-                            @error('b')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                            @enderror
-                        </div>
-                    </div>
-                    <div class="col-12">
-                        <div class="input-style-1">
-                            <input type="text" value="{{ $thead->hasil }}" class="@error('hasil') is-invalid @enderror"
-                                name="hasil" />
-                            @error('hasil')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                            @enderror
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-                    <button type="submit" class="btn btn-primary">Kirim</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-
 @endsection
 
 @push('add-script')
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
-    // SweetAlert Delete Confirmation
     document.addEventListener('DOMContentLoaded', () => {
         const deleteButtons = document.querySelectorAll('.delete-btn');
         deleteButtons.forEach((button) => {
@@ -394,12 +134,25 @@ LPPD
         });
     });
 </script>
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('select[name="tahun"]').on('change', function() {
+            var selectedYear = $(this).val();
+
+            $('#table tbody tr').each(function() {
+                var rowYear = $(this).find('td:eq(2)').text();
+
+                if (selectedYear === '-- Pilih tahun --' || selectedYear === rowYear) {
+                    $(this).show();
+                } else {
+                    $(this).hide();
+                }
+            });
+        });
+    });
 </script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
-    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
-</script>
+
 <script>
     const dataTable = new simpleDatatables.DataTable("#table", {
       searchable: true,

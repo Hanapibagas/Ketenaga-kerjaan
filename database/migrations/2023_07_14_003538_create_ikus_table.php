@@ -15,12 +15,10 @@ return new class extends Migration
     {
         Schema::create('ikus', function (Blueprint $table) {
             $table->id();
-            $table->string('indikator');
-            $table->date('tahun');
-            $table->integer('a')->nullable();
-            $table->integer('b')->nullable();
-            $table->foreignId('user_id')->constrained('users')->onDelete('cascade')->onUpdate('cascade');
-            $table->integer('hasil')->nullable();
+            $table->string('nama_iku');
+            $table->foreignId('role_id')->constrained('users')->onDelete('cascade')->onUpdate('cascade');
+            $table->string('thead_html');
+            $table->year('tahun');
             $table->timestamps();
         });
     }

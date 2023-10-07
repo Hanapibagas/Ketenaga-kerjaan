@@ -27,6 +27,25 @@ class IkuController extends Controller
         return view('components.super-admin.iku.index', compact('iku', 'results', 'user', 'thead'));
     }
 
+    public function getCreate()
+    {
+        $user = User::where('id', '>', 2)->whereIn('roles', ['upt', 'kab/kota'])->get();
+        return view('components.super-admin.iku.create', compact('user'));
+    }
+
+    public function getEditIku($id)
+    {
+        $iku = Iku::where('id', $id)->first();
+        $user = User::where('id', '>', 2)->whereIn('roles', ['upt', 'kab/kota'])->get();
+        return view('components.super-admin.iku.update', compact('iku', 'user'));
+    }
+
+    public function getDetailsIku($id)
+    {
+        $iku = Iku::where('id', $id)->first();
+        return view('components.super-admin.iku.details', compact('iku'));
+    }
+
     public function getStore(Request $request)
     {
         $message = [
@@ -34,17 +53,19 @@ class IkuController extends Controller
         ];
 
         $this->validate($request, [
-            'indikator' => 'required',
-            'tahun' => 'required',
+            'nama_iku' => 'required',
+            'role_id' => 'required',
+            'thead_html' => 'required'
         ], $message);
 
         Iku::create([
-            'indikator' => $request->input('indikator'),
+            'nama_iku' => $request->input('nama_iku'),
+            'role_id' => $request->input('role_id'),
+            'thead_html' => $request->input('thead_html'),
             'tahun' => $request->input('tahun'),
-            'user_id' => $request->input('user_id'),
         ]);
 
-        return redirect()->back()->with('status', 'Selamat iku berhasil ditambahkan');
+        return redirect()->route('get.IndexIku')->with('status', 'Selamat iku berhasil ditambahkan');
     }
 
     public function getUpdate(Request $request, $id)
@@ -52,12 +73,13 @@ class IkuController extends Controller
         $iku = Iku::where('id', $id)->first();
 
         $iku->update([
-            'indikator' => $request->input('indikator'),
-            'user_id' => $request->input('user_id'),
+            'nama_iku' => $request->input('nama_iku'),
+            'role_id' => $request->input('role_id'),
+            'thead_html' => $request->input('thead_html'),
             'tahun' => $request->input('tahun'),
         ]);
 
-        return redirect()->back()->with('status', 'Selamat iku berhasil diperbarui');
+        return redirect()->route('get.IndexIku')->with('status', 'Selamat iku berhasil diperbarui');
     }
 
     public function getDestroy($id)

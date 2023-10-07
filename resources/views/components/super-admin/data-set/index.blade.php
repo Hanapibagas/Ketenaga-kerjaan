@@ -46,12 +46,24 @@ Dataset
                 <div class="col-lg-12">
                     <div class="card-style mb-30">
                         <h6 class="mb-10">Dataset Data Table</h6>
+                        <div class="input-style-1">
+                            <label>Tahun</label>
+                            @php
+                            $year = date('Y');
+                            @endphp
+                            <select name="tahun" class="form-control">
+                                <option value="-- Pilih tahun --">-- Pilih tahun --</option>
+                                @for ($i=2018; $i <= $year; $i++) <option value="{{ $i }}">{{ $i }}</option>
+                                    @endfor
+                            </select>
+                        </div>
                         <div class="table-responsive">
                             <table id="table" class="table">
                                 <thead>
                                     <tr>
                                         <th>Nama Dataset</th>
-                                        <th>Role Target</th>
+                                        <th>Bidang Terkait</th>
+                                        <th>Tahun Dataset</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
@@ -60,6 +72,7 @@ Dataset
                                     <tr>
                                         <td>{{ Str::limit($data->nama_dataset, 25) }}</td>
                                         <td>{{ $data->role->name }}</td>
+                                        <td>{{ $data->tahun }}</td>
                                         <td>
                                             <a href="{{ route('edit_dataset', $data->id) }}" class="btn btn-primary">
                                                 <i class="lni lni-pencil" style="color: whitesmoke"></i>
@@ -68,9 +81,10 @@ Dataset
                                                 class="btn btn-info">
                                                 <i class="lni lni-eye" style="color: whitesmoke"></i>
                                             </a>
-                                            <a href="{{ route('getCreateVariable', $data->id) }}" class="btn btn-info">
+                                            {{-- <a href="{{ route('getCreateVariable', $data->id) }}"
+                                                class="btn btn-info">
                                                 <i class="lni lni-archive" style="color: whitesmoke"></i>
-                                            </a>
+                                            </a> --}}
                                             <input type="hidden" class="delete_id" value="{{ $data->id }}">
                                             <form action="{{ route('destroy_dataset', $data->id) }}" method="POST"
                                                 class="d-inline">
@@ -80,7 +94,6 @@ Dataset
                                                     <i class="lni lni-trash-can"></i>
                                                 </button>
                                             </form>
-                                            </p>
                                         </td>
                                     </tr>
                                     @endforeach
@@ -96,6 +109,24 @@ Dataset
 @endsection
 
 @push('add-script')
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('select[name="tahun"]').on('change', function() {
+            var selectedYear = $(this).val();
+
+            $('#table tbody tr').each(function() {
+                var rowYear = $(this).find('td:eq(2)').text();
+
+                if (selectedYear === '-- Pilih tahun --' || selectedYear === rowYear) {
+                    $(this).show();
+                } else {
+                    $(this).hide();
+                }
+            });
+        });
+    });
+</script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script>
     $(document).ready(function () {

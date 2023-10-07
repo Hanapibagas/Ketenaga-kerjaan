@@ -1,7 +1,7 @@
 @extends('layouts.dashboardadminsuper')
 
 @section('title')
-Dataset
+IKU
 @endsection
 
 @section('content')
@@ -11,7 +11,7 @@ Dataset
             <div class="row align-items-center">
                 <div class="col-md-6">
                     <div class="title mb-30">
-                        <h2>Tambah Dataset</h2>
+                        <h2>Tambah IKU</h2>
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -19,7 +19,7 @@ Dataset
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item">
-                                    <a href="{{ route('index_dataset') }}">
+                                    <a href="{{ route('get.IndexIku') }}">
                                         <i>
                                             <- Kembali </i>
                                     </a>
@@ -35,28 +35,27 @@ Dataset
             <div class="row">
                 <div class="col-lg-12">
                     <div class="card-style mb-30">
-                        <h6 class="mb-25">Dataset</h6>
-                        <form action="{{ route('store_dataset') }}" method="POST">
+                        <h6 class="mb-25">IKU</h6>
+                        <form action="{{ route('get.UpdateIku', $iku->id) }}" method="POST"
+                            enctype="multipart/form-data">
                             @csrf
+                            @method('PUT')
                             <div class="row">
                                 <div class="col-12">
                                     <div class="input-style-1">
-                                        <label>Nama Dataset</label>
-                                        <input type="text" class="@error('nama_dataset') is-invalid @enderror"
-                                            name="nama_dataset" placeholder="Nama Dataset" />
-                                        @error('nama_dataset')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                        @enderror
+                                        <label>Nama IKU</label>
+                                        <input type="text" value="{{ $iku->nama_iku }}" name="nama_iku"
+                                            placeholder="Nama Dataset" />
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="input-style-1">
-                                        <label>Target Dataset</label>
-                                        <select class="form-select" name="role_id" aria-label="Default select example">
+                                        <label>Target IKU <i class="text-danger" style="font-size: 10px;">(Perhatikan
+                                                target iku ini)</i></label>
+                                        <select class="form-select" name="role_id" required>
+                                            {{-- <option>-- Silahkan Pilih --</option> --}}
                                             @foreach ($user as $item)
-                                            <option value={{ $item->id }} selected>{{ $item->name }}</option>
+                                            <option value={{ $item->id }}>{{ $item->name }}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -68,6 +67,8 @@ Dataset
                                         $year = date('Y');
                                         @endphp
                                         <select name="tahun" class="form-control">
+                                            <option value="{{ $iku->tahun }}">Tahun saat ini {{ $iku->tahun }}
+                                            </option>
                                             <option value="-- Pilih tahun --">-- Pilih tahun --</option>
                                             @for ($i=2018; $i <= $year; $i++) <option value="{{ $i }}"> {{ $i }}
                                                 </option>
@@ -77,16 +78,17 @@ Dataset
                                 </div>
                                 <div class="col-12">
                                     <div class="col-12">
-                                        <textarea id="editor" name="thead_html"></textarea>
+                                        <textarea id="editor" name="thead_html">{!! $iku->thead_html !!}</textarea>
                                     </div>
                                 </div>
-                                <div class=" col-12">
+                                <div class="col-12">
                                     <div class="button-group d-flex justify-content-center flex-wrap">
                                         <button class="main-btn success-btn btn-hover m-2">
                                             Simpan Data
                                         </button>
                                     </div>
                                 </div>
+                            </div>
                         </form>
                     </div>
                 </div>
@@ -97,6 +99,19 @@ Dataset
 @endsection
 
 @push('add-script')
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var targetDatasetSelect = document.getElementById('targetDataset');
+        var form = document.querySelector('form'); // Gantilah dengan selektor form yang sesuai
+
+        form.addEventListener('submit', function (e) {
+            if (targetDatasetSelect.value === '') {
+                e.preventDefault(); // Mencegah pengiriman form jika target dataset kosong
+                alert('Harap pilih target dataset terlebih dahulu.');
+            }
+        });
+    });
+</script>
 <script src="https://cdn.ckeditor.com/ckeditor5/39.0.2/classic/ckeditor.js"></script>
 <script>
     ClassicEditor

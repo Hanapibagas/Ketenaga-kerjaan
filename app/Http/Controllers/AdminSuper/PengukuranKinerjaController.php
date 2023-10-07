@@ -28,6 +28,25 @@ class PengukuranKinerjaController extends Controller
         return view('components.super-admin.pengukuran-kinerja.index', compact('pengukuran', 'results', 'user', 'thead'));
     }
 
+    public function getCreatePengukuran()
+    {
+        $user = User::where('id', '>', 2)->whereIn('roles', ['upt', 'kab/kota'])->get();
+        return view('components.super-admin.pengukuran-kinerja.create', compact('user'));
+    }
+
+    public function getDetailsPengukuran($id)
+    {
+        $pengukuran = PengukuranKinerja::where('id', $id)->first();
+        return view('components.super-admin.pengukuran-kinerja.details', compact('pengukuran'));
+    }
+
+    public function getEditPengukuran($id)
+    {
+        $pengukuran = PengukuranKinerja::where('id', $id)->first();
+        $user = User::where('id', '>', 2)->whereIn('roles', ['upt', 'kab/kota'])->get();
+        return view('components.super-admin.pengukuran-kinerja.update', compact('user', 'pengukuran'));
+    }
+
     public function getStore(Request $request)
     {
         $message = [
@@ -35,17 +54,19 @@ class PengukuranKinerjaController extends Controller
         ];
 
         $this->validate($request, [
-            'indikator' => 'required',
-            'tahun' => 'required',
+            'nama_pengukuran' => 'required',
+            'role_id' => 'required',
+            'thead_html' => 'required',
         ], $message);
 
         PengukuranKinerja::create([
-            'indikator' => $request->input('indikator'),
-            'user_id' => $request->input('user_id'),
+            'nama_pengukuran' => $request->input('nama_pengukuran'),
+            'role_id' => $request->input('role_id'),
+            'thead_html' => $request->input('thead_html'),
             'tahun' => $request->input('tahun'),
         ]);
 
-        return redirect()->back()->with('status', 'Selamat pengukuran kinerja berhasil ditambahkan');
+        return redirect()->route('get.IndexPengukuranKinerja')->with('status', 'Selamat pengukuran kinerja berhasil ditambahkan');
     }
 
     public function getUpdate(Request $request, $id)
@@ -53,12 +74,13 @@ class PengukuranKinerjaController extends Controller
         $pengukuran = PengukuranKinerja::where('id', $id)->first();
 
         $pengukuran->update([
-            'indikator' => $request->input('indikator'),
-            'user_id' => $request->input('user_id'),
-            'tahun' => $request->input('tahun')
+            'nama_pengukuran' => $request->input('nama_pengukuran'),
+            'role_id' => $request->input('role_id'),
+            'thead_html' => $request->input('thead_html'),
+            'tahun' => $request->input('tahun'),
         ]);
 
-        return redirect()->back()->with('status', 'Selamat pengukuran kinerja berhasil diperbarui');
+        return redirect()->route('get.IndexPengukuranKinerja')->with('status', 'Selamat pengukuran kinerja berhasil diperbarui');
     }
 
     public function getDestroy($id)

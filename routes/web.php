@@ -212,6 +212,9 @@ Route::middleware('auth', 'checkroll:admin super')->group(function () {
     Route::get('/admin-super', [DashboarAdminSuperdController::class, 'index_admin_super'])->name('index_admin_super');
     //
     Route::get('/pengukuran-kinerja-admin-super', [PengukuranKinerjaController::class, 'getIndex'])->name('get.IndexPengukuranKinerja');
+    Route::get('/pengukuran-kinerja-admin-super/create', [PengukuranKinerjaController::class, 'getCreatePengukuran'])->name('getCreatePengukuran');
+    route::get('/pengukuran-kinerja-admin-super/edit/{id}', [PengukuranKinerjaController::class, 'getEditPengukuran'])->name('getEditPengukuran');
+    Route::get('/pengukuran-kinerja-admin-super/details/{id}', [PengukuranKinerjaController::class, 'getDetailsPengukuran'])->name('getDetailsPengukuran');
     Route::post('/pengukuran-kinerja-admin-super', [PengukuranKinerjaController::class, 'getFilterTahun'])->name('get.TahunPengukuranKinerjaSuper');
     Route::put('/pengukuran-kinerja-admin-super/update/thead/{id})', [PengukuranKinerjaController::class, 'getUpdateThead'])->name('get.UpdateTheadPengukuran');
     Route::post('/pengukuran-kinerja-admin-super/post', [PengukuranKinerjaController::class, 'getStore'])->name('get.StorePengukuranKinerja');
@@ -219,6 +222,9 @@ Route::middleware('auth', 'checkroll:admin super')->group(function () {
     Route::delete('/pengukuran-kinerja-admin-super/delete/{id}', [PengukuranKinerjaController::class, 'getDestroy'])->name('get.DeletePengukuranKinerja');
     //
     Route::get('/iku-admin-super', [IkuController::class, 'getIndex'])->name('get.IndexIku');
+    Route::get('/iku-admin-super/create', [IkuController::class, 'getCreate'])->name('getCreateIku');
+    Route::get('/iku-admin-super/edit/{id}', [IkuController::class, 'getEditIku'])->name('getEditIku');
+    Route::get('/iku-admin-super/details/{id}', [IkuController::class, 'getDetailsIku'])->name('getDetailsIku');
     Route::post('/iku-admin-super', [IkuController::class, 'getFilterTahun'])->name('get.TahunIkuSuper');
     Route::post('/iku-admin-super/post', [IkuController::class, 'getStore'])->name('get.StoreIku');
     Route::put('iku-admin-super/update/thead/{id}', [IkuController::class, 'getUpdateThead'])->name('get.UpdateThead');
@@ -226,6 +232,9 @@ Route::middleware('auth', 'checkroll:admin super')->group(function () {
     Route::delete('/iku-admin-super/delete/{id}', [IkuController::class, 'getDestroy'])->name('get.DeleteIku');
     //
     Route::get('/lppd-admin-super', [LppdController::class, 'getIndex'])->name('get.IndexLppd');
+    Route::get('/lppd-admin-super/create', [LppdController::class, 'getCreateLppd'])->name('getCreateLppd');
+    Route::get('lppd-admin-super/details/{id}', [LppdController::class, 'getDetailsLppd'])->name('getDetailsLppd');
+    Route::get('/lppd-admin-super/edit/{id}', [LppdController::class, 'getEditLppd'])->name('getEditLppd');
     Route::post('/lppd-admin-super', [LppdController::class, 'getFilterTahun'])->name('get.TahunLppdSuper');
     Route::post('/lppd-admin-super/post', [LppdController::class, 'getStore'])->name('get.StoreLppd');
     Route::put('/lppd-admin-super/update/thead/{id}', [LppdController::class, 'getUpdateThead'])->name('get.UpdateTheadLppd');
@@ -246,6 +255,7 @@ Route::middleware('auth', 'checkroll:admin super')->group(function () {
     Route::post('/dataset-admin-super/details/{id}', [DataSeAdminSupertController::class, 'filter_dataset_admin_super'])->name('filter_dataset_admin_super');
     //
     Route::get('/laporan-admin-super', [LaporanAdminSuperController::class, 'index_laporan_admin_super'])->name('index_laporan_admin_super');
+    Route::get('/laporan-admin-super/{id}', [LaporanAdminSuperController::class, 'getDetails'])->name('getDetails');
     Route::get('/export-laporan-admin-super', [LaporanAdminSuperController::class, 'export_excel_laporan'])->name('export_excel_laporan');
     //
     // Route::get('/metadata-admin-super', [MetadataVariableAdminSuperController::class, 'index_metadata'])->name('index_metadata');

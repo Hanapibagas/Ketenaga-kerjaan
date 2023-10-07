@@ -38,7 +38,7 @@
                 </a>
             </li>
             <li
-                class="nav-item {{ request()->is('iku-admin-super') || request()->is('iku-admin-super/filter') ? 'active' : '' }}">
+                class="nav-item {{ request()->is('iku-admin-super') || request()->is('iku-admin-super/details/*') || request()->is('iku-admin-super/edit/*') || request()->is('iku-admin-super/create') ? 'active' : '' }}">
                 <a href="{{ route('get.IndexIku') }}">
                     <span class="icon">
                         <svg width="18" height="20" viewBox="0 0 18 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -52,7 +52,7 @@
                 </a>
             </li>
             <li
-                class="nav-item {{ request()->is('lppd-admin-super') || request()->is('lppd-admin-super/filter') ? 'active' : '' }}">
+                class="nav-item {{ request()->is('lppd-admin-super') || request()->is('lppd-admin-super/create') || request()->is('lppd-admin-super/details/*') || request()->is('lppd-admin-super/edit/*') ? 'active' : '' }}">
                 <a href="{{ route('get.IndexLppd') }}">
                     <span class="icon">
                         <svg width="18" height="20" viewBox="0 0 18 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -80,7 +80,7 @@
                 </a>
             </li> --}}
             <li
-                class="nav-item {{ request()->is('pengukuran-kinerja-admin-super') || request()->is('pengukuran-kinerja-admin-super/filter') ? 'active' : '' }}">
+                class="nav-item {{ request()->is('pengukuran-kinerja-admin-super') || request()->is('pengukuran-kinerja-admin-super/details/*')  || request()->is('pengukuran-kinerja-admin-super/edit/*') || request()->is('pengukuran-kinerja-admin-super/create') ? 'active' : '' }}">
                 <a href="{{ route('get.IndexPengukuranKinerja') }}">
                     <span class="icon">
                         <svg width="18" height="20" viewBox="0 0 18 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -106,7 +106,7 @@
                     </span>
                 </a>
             </li>
-            <li
+            {{-- <li
                 class="nav-item {{ request()->is('permintaan-admin-super') || request()->is('permintaan-admin-super/details/*') ? 'active' : '' }}">
                 <a href="{{ route('index_permintaan') }}">
                     <span class="icon">
@@ -119,7 +119,7 @@
                         Permintaan Data Informasi Publik
                     </span>
                 </a>
-            </li>
+            </li> --}}
             <li
                 class="nav-item {{ request()->is('penguna-admin-super') || request()->is('penguna-admin-super/create') ? 'active' : '' }}">
                 <a href="{{ route('index_tambah_penguuna') }}">

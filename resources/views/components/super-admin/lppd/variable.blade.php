@@ -36,15 +36,18 @@ Dataset
                 <div class="col-lg-12">
                     <div class="card-style mb-30">
                         <h6 class="mb-25">Dataset</h6>
-                        <form action="{{ route('store_dataset') }}" method="POST">
+                        <form action="{{ route('getPostDetails') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="row">
                                 <div class="col-12">
                                     <div class="input-style-1">
                                         <label>Nama Dataset</label>
-                                        <input type="text" class="@error('nama_dataset') is-invalid @enderror"
-                                            name="nama_dataset" placeholder="Nama Dataset" />
-                                        @error('nama_dataset')
+                                        <input type="hidden" value="{{ $dataset->id }}"
+                                            class="@error('dataset_id') is-invalid @enderror" name="dataset_id"
+                                            readonly />
+                                        <input type="text" value="{{ $dataset->nama_dataset }}"
+                                            class="@error('dataset_id') is-invalid @enderror" readonly />
+                                        @error('dataset_id')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
@@ -53,40 +56,36 @@ Dataset
                                 </div>
                                 <div class="col-12">
                                     <div class="input-style-1">
-                                        <label>Target Dataset</label>
-                                        <select class="form-select" name="role_id" aria-label="Default select example">
-                                            @foreach ($user as $item)
-                                            <option value={{ $item->id }} selected>{{ $item->name }}</option>
-                                            @endforeach
-                                        </select>
+                                        <label>Tahun</label>
+                                        <input type="date" class="@error('tahun') is-invalid @enderror" name="tahun"
+                                            required />
+                                        @error('tahun')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="input-style-1">
-                                        <label>Tahun</label>
-                                        @php
-                                        $year = date('Y');
-                                        @endphp
-                                        <select name="tahun" class="form-control">
-                                            <option value="-- Pilih tahun --">-- Pilih tahun --</option>
-                                            @for ($i=2018; $i <= $year; $i++) <option value="{{ $i }}"> {{ $i }}
-                                                </option>
-                                                @endfor
-                                        </select>
+                                        <label>Variable</label>
+                                        <input type="text" class="@error('variable') is-invalid @enderror"
+                                            name="variable" required />
+                                        @error('variable')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="col-12">
-                                    <div class="col-12">
-                                        <textarea id="editor" name="thead_html"></textarea>
-                                    </div>
-                                </div>
-                                <div class=" col-12">
                                     <div class="button-group d-flex justify-content-center flex-wrap">
                                         <button class="main-btn success-btn btn-hover m-2">
-                                            Simpan Data
+                                            Kirim Data
                                         </button>
                                     </div>
                                 </div>
+                            </div>
                         </form>
                     </div>
                 </div>
@@ -97,15 +96,8 @@ Dataset
 @endsection
 
 @push('add-script')
-<script src="https://cdn.ckeditor.com/ckeditor5/39.0.2/classic/ckeditor.js"></script>
+<script src="https://cdn.ckeditor.com/4.19.1/standard/ckeditor.js"></script>
 <script>
-    ClassicEditor
-            .create(document.querySelector('#editor'))
-            .then(editor => {
-                console.log(editor);
-            })
-            .catch(error => {
-                console.error(error);
-            });
+    CKEDITOR.replace('deskripsi');
 </script>
 @endpush

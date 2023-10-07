@@ -44,67 +44,42 @@ Dataset
                                 <div class="col-12">
                                     <div class="input-style-1">
                                         <label>Nama Dataset</label>
-                                        <input type="text" value="{{ $dataset->nama_dataset }}"
-                                            class="@error('nama_dataset') is-invalid @enderror" name="nama_dataset"
-                                            placeholder="Masukkan Nama Dataset" />
-                                        @error('nama_dataset')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                        @enderror
+                                        <input type="text" value="{{ $dataset->nama_dataset }}" name="nama_dataset"
+                                            placeholder="Nama Dataset" />
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="input-style-1">
-                                        <label>Kategori</label>
-                                        <input type="text" value="{{ $dataset->kategori }}"
-                                            class="@error('kategori') is-invalid @enderror" name="kategori"
-                                            placeholder="Masukkan Kategori" />
-                                        @error('kategori')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                        @enderror
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <div class="input-style-1">
-                                        <label>OPD</label>
-                                        <input type="text" value="{{ $dataset->opd }}"
-                                            class="@error('opd') is-invalid @enderror" name="opd"
-                                            placeholder="Masukkan OPD" />
-                                        @error('opd')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                        @enderror
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <div class="input-style-1">
-                                        <label>Satuan</label>
-                                        <input type="text" value="{{ $dataset->satuan }}"
-                                            class="@error('satuan') is-invalid @enderror" name="satuan"
-                                            placeholder="Masukkan Satuan" />
-                                        @error('satuan')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                        @enderror
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <div class="input-style-1">
-                                        <label>Untuk pengguna</label>
-                                        <select name="user_id" class="form-control" required>
-                                            <option value="{{ $dataset->User->name  }}">Pengguna saat ini {{
-                                                $dataset->User->name }}
-                                            </option>
-                                            <option value="-- Pilih tahun --">-- Pilih pengguna --</option>
-                                            @foreach ( $user as $users )
-                                            <option value="{{ $users->id }}">{{ $users->name }}</option>
+                                        <label>Target Dataset <i class="text-danger"
+                                                style="font-size: 10px;">(Perhatikan
+                                                target dataset ini)</i></label>
+                                        <select class="form-select" name="role_id" required>
+                                            {{-- <option>-- Silahkan Pilih --</option> --}}
+                                            @foreach ($user as $item)
+                                            <option value={{ $item->id }}>{{ $item->name }}</option>
                                             @endforeach
                                         </select>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="input-style-1">
+                                        <label>Tahun</label>
+                                        @php
+                                        $year = date('Y');
+                                        @endphp
+                                        <select name="tahun" class="form-control">
+                                            <option value="{{ $dataset->tahun }}">Tahun saat ini {{ $dataset->tahun }}
+                                            </option>
+                                            <option value="-- Pilih tahun --">-- Pilih tahun --</option>
+                                            @for ($i=2018; $i <= $year; $i++) <option value="{{ $i }}"> {{ $i }}
+                                                </option>
+                                                @endfor
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="col-12">
+                                        <textarea id="editor" name="thead_html">{!! $dataset->thead_html !!}</textarea>
                                     </div>
                                 </div>
                                 <div class="col-12">
@@ -125,8 +100,28 @@ Dataset
 @endsection
 
 @push('add-script')
-<script src="https://cdn.ckeditor.com/4.19.1/standard/ckeditor.js"></script>
 <script>
-    CKEDITOR.replace('deskripsi');
+    document.addEventListener('DOMContentLoaded', function () {
+        var targetDatasetSelect = document.getElementById('targetDataset');
+        var form = document.querySelector('form'); // Gantilah dengan selektor form yang sesuai
+
+        form.addEventListener('submit', function (e) {
+            if (targetDatasetSelect.value === '') {
+                e.preventDefault(); // Mencegah pengiriman form jika target dataset kosong
+                alert('Harap pilih target dataset terlebih dahulu.');
+            }
+        });
+    });
+</script>
+<script src="https://cdn.ckeditor.com/ckeditor5/39.0.2/classic/ckeditor.js"></script>
+<script>
+    ClassicEditor
+            .create(document.querySelector('#editor'))
+            .then(editor => {
+                console.log(editor);
+            })
+            .catch(error => {
+                console.error(error);
+            });
 </script>
 @endpush

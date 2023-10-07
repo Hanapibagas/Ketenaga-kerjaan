@@ -10,16 +10,14 @@ class Iku extends Model
     use HasFactory;
 
     protected $fillable = [
-        'indikator',
-        'tahun',
-        'a',
-        'b',
-        'hasil',
-        'user_id'
+        'nama_iku',
+        'role_id',
+        'thead_html',
+        'tahun'
     ];
 
-    public function User()
+    public function Role()
     {
-        return $this->belongsTo(User::class, 'user_id');
+        return $this->BelongsTo(User::class, 'role_id');
     }
 }

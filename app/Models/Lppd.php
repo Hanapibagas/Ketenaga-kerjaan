@@ -10,17 +10,14 @@ class Lppd extends Model
     use HasFactory;
 
     protected $fillable = [
-        'indikator',
-        'tahun',
-        'a',
-        'b',
-        'link_terkait',
-        'hasil',
-        'user_id'
+          'role_id',
+      'nama_lppd',
+        'thead_html',
+        'tahun'
     ];
 
-    public function User()
+    public function Role()
     {
-        return $this->belongsTo(User::class, 'user_id');
+        return $this->BelongsTo(User::class, 'role_id');
     }
 }
