@@ -110,9 +110,9 @@ $profile = ProfieDinas::first();
     </div>
 </section> --}}
 
-<section class="container py-5 my-md-3 my-lg-5">
+{{-- <section class="container py-5 my-md-3 my-lg-5">
     <div class="d-lg-flex align-items-center justify-content-between py-4 mt-lg-2">
-        <h1 class="me-3">Struktur Organisasi Disnakertrans Prov Sulsel</h1>
+        <h1 class="me-3"></h1>
         <div class="position-relative" style="min-width: 300px;">
             <form action="{{ route('cari_data_pegarawai') }}">
                 <input type="text" name="search" class="form-control pe-5" placeholder="Search courses">
@@ -257,7 +257,7 @@ $profile = ProfieDinas::first();
         </div>
     </div>
     @endforeach
-</section>
+</section> --}}
 @endsection
 
 @push('js')

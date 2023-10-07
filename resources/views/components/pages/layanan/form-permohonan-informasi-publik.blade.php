@@ -65,42 +65,22 @@ Layanan
                         <div class="col-sm-12 mb-4">
                             <label for="fn" class="form-label">Email<i class="text-danger"
                                     style="font-size: 14px;">*</i></label>
-                            <input type="text" class="form-control @error('email') is-invalid @enderror" name="email">
-                            @error('email')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                            @enderror
+                            <input type="text" class="form-control" name="email">
                         </div>
                         <div class="col-sm-12 mb-4">
                             <label for="fn" class="form-label">Nama<i class="text-danger"
                                     style="font-size: 14px;">*</i></label>
-                            <input type="text" class="form-control @error('nama') is-invalid @enderror" name="nama">
-                            @error('nama')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                            @enderror
+                            <input type="text" class="form-control " name="nama">
                         </div>
                         <div class="col-sm-12 mb-4">
                             <label for="fn" class="form-label">Nomor Handphone<i class="text-danger"
                                     style="font-size: 14px;">*</i></label>
-                            <input type="text" class="form-control @error('no_hp') is-invalid @enderror" name="no_hp">
-                            @error('no_hp')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                            @enderror
+                            <input type="text" class="form-control " name="no_hp">
                         </div>
                         <div class="col-sm-12 mb-4">
                             <label for="fn" class="form-label">Nomor KTP<i class="text-danger"
                                     style="font-size: 14px;">*</i></label>
-                            <input type="text" class="form-control @error('no_ktp') is-invalid @enderror" name="no_ktp">
-                            @error('no_ktp')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                            @enderror
+                            <input type="text" class="form-control" name="no_ktp">
                         </div>
                         <div class="col-sm-12 mb-4">
                             <label for="fn" class="form-label">Nomor Pengesahan</label>
@@ -109,93 +89,50 @@ Layanan
                         <div class="col-sm-12 mb-4">
                             <label for="fn" class="form-label">Alamat<i class="text-danger"
                                     style="font-size: 14px;">*</i></label>
-                            <input type="text" class="form-control @error('alamat') is-invalid @enderror" name="alamat">
-                            @error('alamat')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                            @enderror
+                            <input type="text" class="form-control" name="alamat">
                         </div>
                         <div class="col-sm-12 mb-4">
                             <label for="fn" class="form-label">Pekerjaan<i class="text-danger"
                                     style="font-size: 14px;">*</i></label>
-                            <input type="text" class="form-control @error('pekerjaan') is-invalid @enderror"
-                                name="pekerjaan">
-                            @error('pekerjaan')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                            @enderror
+                            <input type="text" class="form-control " name="pekerjaan">
                         </div>
                         <div class="col-sm-12 mb-4">
                             <label for="fn" class="form-label">Tanggal<i class="text-danger"
                                     style="font-size: 14px;">*</i></label>
-                            <input type="date" class="form-control @error('tahun') is-invalid @enderror" name="tahun">
-                            @error('tahun')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                            @enderror
+                            <input type="date" class="form-control" name="tahun">
                         </div>
                         <div class="col-sm-12 mb-4">
                             <label for="fn" class="form-label ">Rincian Informasi Yang Dibutuhkan<i class="text-danger"
                                     style="font-size: 14px;">*</i></label>
-                            <textarea type="text" class="form-control @error('rincian') is-invalid @enderror"
-                                name="rincian"></textarea>
-                            @error('rincian')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                            @enderror
+                            <textarea type="text" class="form-control" name="rincian"></textarea>
                         </div>
                         <div class="col-sm-12 mb-4">
                             <label for="fn" class="form-label">Tujuan Permohonan Informasi<i class="text-danger"
                                     style="font-size: 14px;">*</i></label>
-                            <textarea type="text" class="form-control @error('tujuan') is-invalid @enderror"
-                                name="tujuan"></textarea>
-                            @error('tujuan')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                            @enderror
+                            <textarea type="text" class="form-control" name="tujuan"></textarea>
                         </div>
                         <div class="col-sm-12 mb-4">
                             <label for="fn" class="form-label">Upload Foto KTP<i class="text-danger"
                                     style="font-size: 14px;">*</i></label>
-                            <input type="file" class="form-control @error('foto_ktp') is-invalid @enderror"
-                                name="foto_ktp">
-                            @error('foto_ktp')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                            @enderror
+                            <input type="file" class="form-control " name="foto_ktp">
                         </div>
                         <div class="col-sm-12 mb-4">
                             <label for="fn" class="form-label">Enter Captcha</label>
-                            <input id="captcha" type="text" class="form-control @error('captcha') is-invalid @enderror"
-                                placeholder="Enter Captcha" name="captcha">
-                            @error('captcha')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                            @enderror
+                            <input id="captcha" type="text" class="form-control" placeholder="Enter Captcha"
+                                name="captcha">
                         </div>
                         <div class="col-sm-12 mb-4">
-                            <label for="fn" class="form-label">Captcha</label>
+                            <label for="captcha" class="form-label">Captcha</label>
                             <div class="col-md-6 captcha">
-                                <span style="width: 100px;">{!! captcha_img() !!}</span>
-                                {{-- <button type="button" class="btn btn-danger" class="reload" id="reload">
+                                <span id="captchaContainer">{!! captcha_img('default') !!}</span>
+                                <button type="button" class="btn btn-danger" id="reload" onclick="reloadCaptcha()">
                                     &#x21bb;
-                                </button> --}}
+                                </button>
                             </div>
-                            @error('tujuan_pengguna')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                            @enderror
                         </div>
                         <div class="col-12 text-center pt-2 pt-md-3 pt-lg-4">
-                            <button class="btn btn-primary shadow-primary btn-lg">Kirim Permohonan Publik</button>
+                            <button class="btn btn-primary shadow-primary btn-lg" type="submit">Kirim Permohonan
+                                Publik</button>
                         </div>
                     </form>
                 </div>
@@ -217,6 +154,48 @@ Layanan
 @endsection
 
 @push('js')
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        // Menangani pengiriman formulir
+        $('form').submit(function(event) {
+            var emptyFields = false;
+
+            // Loop melalui semua elemen input dalam formulir
+            $(this).find('input, textarea, select').each(function() {
+                if ($(this).attr('name') === 'nomor_pengesahaan') {
+                    return true; // Lewati input ini
+                }
+                if ($(this).val() === '') {
+                    emptyFields = true;
+                    $(this).addClass('is-invalid'); // Tambahkan kelas is-invalid ke input kosong
+                } else {
+                    $(this).removeClass('is-invalid'); // Hapus kelas is-invalid dari input yang diisi
+                }
+            });
+
+            // Jika ada input yang kosong, mencegah pengiriman formulir
+            if (emptyFields) {
+                event.preventDefault();
+                alert('Harap isi semua kolom yang diperlukan.');
+            }
+        });
+    });
+    // Fungsi untuk mereload gambar captcha
+    function reloadCaptcha() {
+        // Mendapatkan elemen kontainer captcha
+        var captchaContainer = document.getElementById('captchaContainer');
+
+        // Membuat elemen gambar captcha baru
+        var newCaptchaImage = document.createElement('img');
+        newCaptchaImage.src = "{{ captcha_src('default') }}" + "?" + Date.now();
+        newCaptchaImage.alt = "Captcha Image";
+
+        // Mengganti elemen gambar captcha yang ada dengan yang baru
+        captchaContainer.innerHTML = ''; // Menghapus elemen gambar captcha yang ada
+        captchaContainer.appendChild(newCaptchaImage); // Menambahkan elemen gambar captcha yang baru
+    }
+</script>
 <script src="https://cdn.ckeditor.com/4.19.1/standard/ckeditor.js"></script>
 <script>
     CKEDITOR.replace('rincian');

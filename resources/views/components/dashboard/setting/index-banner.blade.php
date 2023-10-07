@@ -81,7 +81,7 @@ Setting Banner
                 <div class="modal-body">
                     <div class="col-12">
                         <div class="input-style-1">
-                            <label for="logo">Gambar Logo</label>
+                            <label for="logo">Gambar Banner</label>
                             <input type="file" accept="image/*" id="logo" class="@error('logo') is-invalid @enderror"
                                 name="gambar" />
                             <div class="mt-2 previewImage" id="gambar_logo"></div>

@@ -53,9 +53,9 @@ Setting Pengajuan Keberatan
                                             <img src="{{ Storage::url($data->gambar) }}" alt="" style="width: 150px"
                                                 class="img-thumbnail">
                                         </td>
-                                        <td>{!! Str::limit($data->deskripsi, 200) !!}</td>
+                                        <td>{!! Str::limit($data->deskripsi, 100) !!}</td>
                                         <td>
-                                            <a data-toggle="modal" data-target="#exampleModal-{{ $data->id }}"
+                                            <a href="{{ route('get.CreatePengajuankeberatanId', $data->id) }}"
                                                 class="btn btn-primary">
                                                 <i class="lni lni-pencil" style="color: whitesmoke"></i>
                                             </a>
@@ -72,48 +72,9 @@ Setting Pengajuan Keberatan
     </div>
 </section>
 
-@foreach ( $keberatan as $data )
-<div class="modal fade" id="exampleModal-{{ $data->id }}" tabindex="-1" role="dialog"
-    aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <form action="{{ route('get.UpdatePengajuanKeberatan', $data->id) }}" method="POST"
-                enctype="multipart/form-data">
-                @method('PUT')
-                @csrf
-                <div class="modal-body">
-                    <div class="col-12">
-                        <div class="input-style-1">
-                            <label for="logo">Gambar Logo</label>
-                            <input type="file" accept="image/*" id="logo" class="@error('logo') is-invalid @enderror"
-                                name="gambar" />
-                            <div class="mt-2 previewImage" id="gambar_logo"></div>
-                        </div>
-                    </div>
-                    <div class="col-12">
-                        <div class="input-style-1">
-                            <label>Nama Logo</label>
-                            <textarea name="deskripsi" id="" cols="30" rows="10">{!! $data->deskripsi !!}</textarea>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-                    <button type="submit" class="btn btn-primary">Kirim</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-@endforeach
-
 @endsection
 
 @push('add-script')
-<script src="https://cdn.ckeditor.com/4.19.1/standard/ckeditor.js"></script>
-<script>
-    CKEDITOR.replace('deskripsi');
-</script>
 <script>
     $(document).ready(function() {
         // Function to preview the images

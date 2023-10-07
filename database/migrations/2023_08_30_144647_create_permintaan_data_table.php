@@ -25,6 +25,7 @@ return new class extends Migration
             $table->longText('tujuan');
             $table->string('foto_ktp');
             $table->string('foto_pengajuan');
+            $table->string('status')->default('proses');
             $table->timestamps();
         });
     }

@@ -53,9 +53,9 @@ Setting Informasi Publik
                                             <img src="{{ Storage::url($data->gambar) }}" alt="" style="width: 150px"
                                                 class="img-thumbnail">
                                         </td>
-                                        <td>{!! Str::limit($data->deskripsi, 200) !!}</td>
+                                        <td>{!! Str::limit($data->deskripsi, 100) !!}</td>
                                         <td>
-                                            <a data-toggle="modal" data-target="#exampleModal-{{ $data->id }}"
+                                            <a href="{{ route('getEditInformasiPublik', $data->id) }}"
                                                 class="btn btn-primary">
                                                 <i class="lni lni-pencil" style="color: whitesmoke"></i>
                                             </a>

@@ -28,10 +28,12 @@ class InformasiSertaMertaController extends Controller
         $this->validate($request, [
             'nama' => 'required',
             'link' => 'required',
+            'nama_link' => 'required',
         ], $message);
 
         InformasiSertaMerta::create([
             'nama' => $request->input('nama'),
+            'nama_link' => $request->input('nama_link'),
             'link' => $request->input('link'),
         ]);
 
@@ -50,6 +52,7 @@ class InformasiSertaMertaController extends Controller
 
         $sertamerta->update([
             'nama' => $request->input('nama'),
+            'nama_link' => $request->input('nama_link'),
             'link' => $request->input('link'),
         ]);
 

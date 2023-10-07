@@ -41,9 +41,9 @@ Setiap Saat
                             <div class="row">
                                 <div class="col-12">
                                     <div class="input-style-1">
-                                        <label>Nama<i class="text-danger" style="font-size: 14px;">*</i></label>
+                                        <label>Informasi<i class="text-danger" style="font-size: 14px;">*</i></label>
                                         <input type="text" class="@error('nama') is-invalid @enderror" name="nama"
-                                            placeholder="Masukkan Nama" />
+                                            placeholder="Masukkan Informasi" />
                                         @error('nama')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -53,8 +53,26 @@ Setiap Saat
                                 </div>
                                 <div class="col-12">
                                     <div class="input-style-1">
-                                        <label>File</label>
-                                        <input name="file" type="file" />
+                                        <label>Nama Link<i class="text-danger" style="font-size: 14px;">*</i></label>
+                                        <input type="text" class="@error('nama_link') is-invalid @enderror"
+                                            name="nama_link" placeholder="Masukkan Nama Link" />
+                                        @error('nama_link')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="input-style-1">
+                                        <label>Link<i class="text-danger" style="font-size: 14px;">*</i></label>
+                                        <input type="text" class="@error('link') is-invalid @enderror" name="link"
+                                            placeholder="Masukkan Link" />
+                                        @error('link')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="col-12">

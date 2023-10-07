@@ -50,13 +50,16 @@ Setiap Saat
                                 </div>
                                 <div class="col-12">
                                     <div class="input-style-1">
-                                        <label>File</label>
-                                        <small>Pilih file jika ingin mengubah</small>
-                                        <input name="file" type="file" value="{{ $setiapsaat->file }}">
-                                        @if ( $setiapsaat->file )
-                                        @else
-                                        <p>File Tidak Sedia</p>
-                                        @endif
+                                        <label>Nama Link</label>
+                                        <input type="text" value="{{ $setiapsaat->nama_link }}" name="nama_link"
+                                            placeholder="Masukkan Judul" />
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="input-style-1">
+                                        <label>Link</label>
+                                        <input type="text" value="{{ $setiapsaat->link }}" name="link"
+                                            placeholder="Masukkan Judul" />
                                     </div>
                                 </div>
                                 <div class="col-12">

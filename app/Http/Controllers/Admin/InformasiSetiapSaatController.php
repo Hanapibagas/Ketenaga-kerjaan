@@ -28,6 +28,8 @@ class InformasiSetiapSaatController extends Controller
 
         $this->validate($request, [
             'nama' => 'required',
+            'nama_link' => 'required',
+            'link' => 'required',
         ], $message);
 
         if ($request->file('file')) {
@@ -36,7 +38,8 @@ class InformasiSetiapSaatController extends Controller
 
         InformasiSetiapSaat::create([
             'nama' => $request->input('nama'),
-            'file' => $file
+            'nama_link' => $request->input('nama_link'),
+            'link' => $request->input('link'),
         ]);
 
         return redirect()->route('index_setiap_saat')->with('status', 'Selamat data setiap saat berhasil ditambahkan');
@@ -51,21 +54,22 @@ class InformasiSetiapSaatController extends Controller
     public function update_setiap_saat(Request $request, $id)
     {
         $setiapsaat = InformasiSetiapSaat::where('id', $id)->first();
-        if ($request->file('file')) {
-            $file = $request->file('file')->store('data-setiap-saat', 'public');
-            if ($setiapsaat->file && file_exists(storage_path('app/public/' . $setiapsaat->file))) {
-                Storage::delete('public/' . $setiapsaat->file);
-                $file = $request->file('file')->store('data-setiap-saat', 'public');
-            }
-        }
+        // if ($request->file('file')) {
+        //     $file = $request->file('file')->store('data-setiap-saat', 'public');
+        //     if ($setiapsaat->file && file_exists(storage_path('app/public/' . $setiapsaat->file))) {
+        //         Storage::delete('public/' . $setiapsaat->file);
+        //         $file = $request->file('file')->store('data-setiap-saat', 'public');
+        //     }
+        // }
 
-        if ($request->file('file') === null) {
-            $file = $setiapsaat->file;
-        }
+        // if ($request->file('file') === null) {
+        //     $file = $setiapsaat->file;
+        // }
 
         $setiapsaat->update([
             'nama' => $request->input('nama'),
-            'file' => $file
+            'nama_link' => $request->input('nama_link'),
+            'link' => $request->input('link'),
         ]);
 
         return redirect()->route('index_setiap_saat')->with('status', 'Selamat data setiap saat berhasil diperbarui');

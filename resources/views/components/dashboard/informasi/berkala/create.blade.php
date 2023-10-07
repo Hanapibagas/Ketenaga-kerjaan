@@ -1,7 +1,7 @@
 @extends('layouts.dashboard')
 
 @section('title')
-Berkala
+Informasi Pulik-Berkala
 @endsection
 
 @section('content')
@@ -11,7 +11,7 @@ Berkala
             <div class="row align-items-center">
                 <div class="col-md-6">
                     <div class="title mb-30">
-                        <h2>Tambah Berkala</h2>
+                        <h2>Tambah Informasi Pulik-Berkala</h2>
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -35,15 +35,15 @@ Berkala
             <div class="row">
                 <div class="col-lg-12">
                     <div class="card-style mb-30">
-                        <h6 class="mb-25">Berkala</h6>
+                        <h6 class="mb-25">Informasi Pulik-Berkala</h6>
                         <form action="{{ route('store_berkala') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="row">
                                 <div class="col-12">
                                     <div class="input-style-1">
-                                        <label>Nama<i class="text-danger" style="font-size: 14px;">*</i></label>
+                                        <label>Informasi<i class="text-danger" style="font-size: 14px;">*</i></label>
                                         <input type="text" class="@error('nama') is-invalid @enderror" name="nama"
-                                            placeholder="Masukkan Nama" />
+                                            placeholder="Masukkan Informasi" />
                                         @error('nama')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -53,10 +53,34 @@ Berkala
                                 </div>
                                 <div class="col-12">
                                     <div class="input-style-1">
+                                        <label>Nama Link<i class="text-danger" style="font-size: 14px;">*</i></label>
+                                        <input type="text" class="@error('nama_link') is-invalid @enderror"
+                                            name="nama_link" placeholder="Masukkan Nama Link" />
+                                        @error('nama_link')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="input-style-1">
+                                        <label>Link<i class="text-danger" style="font-size: 14px;">*</i></label>
+                                        <input type="text" class="@error('link') is-invalid @enderror" name="link"
+                                            placeholder="Masukkan Link" />
+                                        @error('link')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+                                    </div>
+                                </div>
+                                {{-- <div class="col-12">
+                                    <div class="input-style-1">
                                         <label>File</label>
                                         <input name="file" type="file" />
                                     </div>
-                                </div>
+                                </div> --}}
                                 <div class="col-12">
                                     <div class="button-group d-flex justify-content-center flex-wrap">
                                         <button class="main-btn success-btn btn-hover m-2">

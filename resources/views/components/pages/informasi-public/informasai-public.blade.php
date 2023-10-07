@@ -99,7 +99,7 @@ Informamsi Public
                         <tr>
                             <th>{{ $data->nama }}</th>
                             <th>
-                                <a href="storage/{{ $data->file }}" target="_blank">download</a>
+                                <a href="{{ $data->link }}" target="_blank">{{ $data->nama_link }}</a>
                             </th>
                         </tr>
                         @endforeach
@@ -148,7 +148,7 @@ Informamsi Public
                         @foreach ( $sertamerta as $data )
                         <tr>
                             <th>{{ $data->nama }}</th>
-                            <th><a target="_blank" href="{{ $data->link }}">{{ $data->link }}</a></th>
+                            <th><a target="_blank" href="{{ $data->link }}">{{ $data->nama_link }}</a></th>
                         </tr>
                         @endforeach
                     </thead>
@@ -214,7 +214,7 @@ Informamsi Public
                         <tr>
                             <th>{{ $data->nama }}</th>
                             <th>
-                                <a href="storage/{{ $data->file }}" target="_blank">download</a>
+                                <a href="{{ $data->link }}" target="_blank">{{ $data->nama_link }}</a>
                             </th>
                         </tr>
                         @endforeach

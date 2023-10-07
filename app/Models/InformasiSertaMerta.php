@@ -10,6 +10,7 @@ class InformasiSertaMerta extends Model
     use HasFactory;
     protected $fillable = [
         'nama',
+        'nama_link',
         'link'
     ];
 }

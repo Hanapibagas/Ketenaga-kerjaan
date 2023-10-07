@@ -20,7 +20,7 @@
             </div>
             <style>
                 .perubahan {
-                    margin-left: 550px;
+                    margin-left: 420px;
                 }
 
                 @media screen and (max-width: 992px) {
@@ -36,7 +36,7 @@
                     </li>
                     <li
                         class="nav-item {{ request()->is('profile') || request()->is('profil-pencarian-data-pegawai') ? 'active' : '' }}">
-                        <a href="{{ route('profile_home') }}" class="nav-link">Profile</a>
+                        <a href="{{ route('profile_home') }}" class="nav-link">Profil</a>
                     </li>
                     <li
                         class="nav-item {{ request()->is('dataset') || request()->is('dataset/details/*') || request()->is('dataset/pencacrian-data') || request()->is('dataset/filter-tahun-dataset/*') ? 'active' : '' }}">
@@ -46,10 +46,14 @@
                         class="nav-item {{ request()->is('infografis') || request()->is('infografis/*') ? 'active' : '' }}">
                         <a href="{{ route('index_infografis') }}" class="nav-link">Infografis</a>
                     </li>
+                    <li
+                        class="nav-item {{ request()->is('publikasi') || request()->is('publikasi/*') ? 'active' : '' }}">
+                        <a href="{{ route('index_publikasi') }}" class="nav-link">Publikasi</a>
+                    </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle {{ request()->is('simpas') || request()->is('permintaan-data') || request()->is('permintaan-data/guest') || request()->is('permohonan-informasi-publik/form-pengaduan-publik') || request()->is('lapor') || request()->is('keran-sulsel') || request()->is('permohonan-keberatan-informasi-publik') || request()->is('permohonan-informasi-publik') ? 'active' : '' }}"
                             data-bs-toggle="dropdown">Layanan</a>
-                        <ul class="dropdown-menu">
+                        <ul class="dropdown-menu" style="margin-left: -180px;">
                             <li>
                                 <a href="{{ route('permohonan_publik') }}"
                                     class="dropdown-item {{ request()->is('permohonan-informasi-publik') || request()->is('permohonan-informasi-publik/form-pengaduan-publik') ? 'active' : '' }}">Permohonan
@@ -68,22 +72,41 @@
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle {{ request()->is('informasi-public') || request()->is('login') || request()->is('pengumuman') || request()->is('berita') || request()->is('berita/*') || request()->is('publikasi') || request()->is('publikasi/*') ? 'active' : '' }}"
-                            data-bs-toggle="dropdown">Lainnya</a>
-                        <ul class="dropdown-menu">
+                        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Lainnya</a>
+                        <ul class="dropdown-menu" style="margin-left: -120px;">
                             <li>
                                 <a href="{{ route('index_informasi_public') }}"
-                                    class="dropdown-item {{ request()->is('informasi-public') ? 'active' : '' }}">Informasi</a>
+                                    class="dropdown-item {{ request()->is('informasi-public') ? 'active' : '' }}">Informasi
+                                    Publik</a>
                             </li>
-                            <li>
+                            {{-- <li>
                                 <a href="{{ route('rekapitulasi_home') }}"
                                     class="dropdown-item {{ request()->is('rekapitulasi-permohonan-informasi-publik') || request()->is('rekapitulasi-permohonan-informasi-publik/filter-tahun') ? 'active' : '' }}">Rekapitulasi
                                     Informasi Publik</a>
-                            </li>
+                            </li> --}}
                             <li>
                                 <a href="{{ route('login') }}"
                                     class="dropdown-item {{ request()->is('login') ? 'active' : '' }}">Login</a>
                             </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Kunjungi</a>
+                        <ul class="dropdown-menu" style="margin-left: -90px;">
+                            @php
+                            $kunjungi = App\Models\Kunjungi::all();
+                            @endphp
+                            @foreach ( $kunjungi as $item )
+                            <li>
+                                <a href="{{ $item->link }}" target="_blank" class="dropdown-item">{{
+                                    Str::limit($item->name, 30)
+                                    }}</a>
+                            </li>
+                            @endforeach
+                            {{-- <li>
+                                <a href="https://ppid.sulselprov.go.id/" target="_blank" class="dropdown-item">Website
+                                    PPID Utama S...</a>
+                            </li> --}}
                         </ul>
                     </li>
                 </ul>

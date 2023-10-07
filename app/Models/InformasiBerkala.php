@@ -10,6 +10,7 @@ class InformasiBerkala extends Model
     use HasFactory;
     protected $fillable = [
         'nama',
-        'file'
+        'link',
+        'nama_link'
     ];
 }
