@@ -37,6 +37,10 @@ Dataset
         margin-top: 0;
     }
 
+    table {
+        width: 100%;
+    }
+
     table thead {
         background-color: #007bff;
         color: white;
@@ -91,7 +95,7 @@ Dataset
                 </div>
             </div>
             <div class="tab-content" id="tab2">
-                <canvas id="myChart" height="100px"></canvas>
+                <canvas id="barChart" width="400" height="200"></canvas>
             </div>
             <div class="tab-content" id="tab3">
                 <h6>Dataset Diperbarui : <span style="color: grey">{{ $dataset->updated_at }}</span>
@@ -99,12 +103,7 @@ Dataset
                 <h6>Dataset Dibuat : <span style="color: grey">{{ $dataset->created_at }}</span></h6>
                 <h6>Produsen Data : <span style="color: grey">{{ $dataset->role->name }}</span></h6>
                 <h6>Satuan Dataset : <span style="color: grey">{{ $dataset->satuan }}</span></h6>
-                <h6>Deskripsi : <span style="color: grey">{{ $dataset->deskripsi }}</span></h6>
-                {{-- <h6>
-                    <i class="bx bx-download fs-xl me-1"></i>
-                    <a href="{{asset('storage/'. $dataset->file_data)}}" target="_blank"><span
-                            style="color: grey; text-decoration: none;">download file</span></a>
-                </h6> --}}
+                {{-- <h6>Deskripsi : <span style="color: grey">{{ $dataset->deskripsi }}</span></h6> --}}
             </div>
         </div>
     </div>
@@ -112,54 +111,67 @@ Dataset
 @endsection
 
 @push('js')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
-    let table = document.getElementsByTagName('table')[0];
+    var table = document.querySelector('table');
+    var rows = table.getElementsByTagName('tr');
+    var labels = Array.from(rows[0].getElementsByTagName('th')).slice(1).map(th => th.textContent);
+    var data = [];
+    var labelsForDataset = Array.from(rows).slice(1).map(row => row.cells[0].textContent);
 
-        table.classList.add('table', 'backhitam');
+    for (var i = 1; i < rows.length; i++) {
+        var cells = rows[i].getElementsByTagName('td');
+        var rowData = [];
+        for (var j = 1; j < cells.length; j++) {
+            rowData.push(parseInt(cells[j].textContent.replace(/[^0-9]/g, '')));
+        }
+        data.push(rowData);
+    }
+
+    var ctx = document.getElementById('barChart').getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: labels,
+            datasets: data.map(function (row, index) {
+                return {
+                    label: labelsForDataset[index],
+                    data: row,
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1
+                };
+            })
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            },
+            plugins: {
+                legend: {
+                    display: true,
+                    position: 'top'
+                }
+            }
+        }
+    });
 </script>
 <script>
     function openTab(event, tabName) {
-  var i, tabContent, tabLinks;
-  tabContent = document.getElementsByClassName("tab-content");
-  for (i = 0; i < tabContent.length; i++) {
-    tabContent[i].style.display = "none";
-  }
-  tabLinks = document.getElementsByClassName("tab-link");
-  for (i = 0; i < tabLinks.length; i++) {
-    tabLinks[i].className = tabLinks[i].className.replace(" active", "");
-  }
-  document.getElementById(tabName).style.display = "block";
-  event.currentTarget.className += " active";
+    var i, tabContent, tabLinks;
+    tabContent = document.getElementsByClassName("tab-content");
+    for (i = 0; i < tabContent.length; i++) {
+        tabContent[i].style.display = "none";
+    }
+    tabLinks = document.getElementsByClassName("tab-link");
+    for (i = 0; i < tabLinks.length; i++) {
+        tabLinks[i].className = tabLinks[i].className.replace(" active", "");
+    }
+    document.getElementById(tabName).style.display = "block";
+    event.currentTarget.className += " active";
 }
-</script>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-<script type="text/javascript">
-    var labels =  {{ Js::from($labels) }};
-      var users =  {{ Js::from($grafik) }};
-
-      const data = {
-        labels: labels,
-        datasets: [{
-          label: 'Diagram Data Permohonan Informasi',
-          backgroundColor: 'rgb(255, 99, 132)',
-          borderColor: 'rgb(255, 99, 132)',
-          data: users,
-        }]
-      };
-
-      const config = {
-        type: 'bar',
-        data: data,
-        options: {}
-      };
-
-      const myChart = new Chart(
-        document.getElementById('myChart'),
-        config
-      );
-
 </script>
 @endpush

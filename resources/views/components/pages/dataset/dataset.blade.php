@@ -55,22 +55,14 @@ Dataset
             <div class="col-lg-5 col-md-4">
                 <h1 class="mb-2 mb-md-0">Daftar dataset</h1>
             </div>
-            <div class="col-lg-7 col-md-8">
-                <div class="row gy-2">
-                    <div class="col-lg-7 col-sm-6">
-                        <form action="{{ route('cari_dataset') }}">
-                            <div class="input-group cari">
-                                <input type="text" name="search" class="form-control pe-5 rounded"
-                                    placeholder="Search the dataset...">
-                                <i
-                                    class="bx bx-search position-absolute top-50 end-0 translate-middle-y me-3 zindex-5 fs-lg"></i>
-                            </div>
-                        </form>
-                    </div>
-                </div>
+            <div class="col-lg-2" style="margin-left: 106px;">
+                <select id="filterYear" class="form-control">
+                </select>
+            </div>
+            <div class="col-lg-4">
+                <input type="text" id="searchDataset" class="form-control" placeholder="Cari dataset...">
             </div>
         </div>
-
         @foreach ( $dataset as $datas )
         <article class="card border-0 shadow-sm overflow-hidden mb-4">
             <div class="row g-0">
@@ -83,7 +75,7 @@ Dataset
                             <a href="{{ route('details_dataset', $datas->nama_dataset) }}">{{ $datas->nama_dataset
                                 }}</a>
                         </h3>
-                        <p>{{ $datas->opd }}</p>
+                        <p>{{ $datas->role->name }} <br> Tahun : {{ $datas->tahun }}</p>
                         <hr class="my-4">
                     </div>
                 </div>
@@ -91,6 +83,52 @@ Dataset
         </article>
         @endforeach
     </section>
-
 </div>
 @endsection
+
+@push('js')
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+            var years = [];
+            $("#filterYear").append("<option value=''>Tahun</option>");
+            $(".card").each(function() {
+                var year = $(this).find("p").text().match(/Tahun : (\d+)/);
+                if (year && year[1]) {
+                    year = year[1];
+                    if (years.indexOf(year) === -1) {
+                        years.push(year);
+                        $("#filterYear").append("<option value='" + year + "'>" + year + "</option>");
+                    }
+                }
+            });
+
+            $("#filterYear").change(function() {
+                var selectedYear = $(this).val();
+                $(".card").each(function() {
+                    var cardYear = $(this).find("p").text().match(/Tahun : (\d+)/);
+                    if (cardYear && cardYear[1]) {
+                        cardYear = cardYear[1];
+                        if (selectedYear === "" || selectedYear === cardYear) {
+                            $(this).show();
+                        } else {
+                            $(this).hide();
+                        }
+                    }
+                });
+            });
+
+            $("#searchDataset").on("input", function() {
+                var searchTerm = $(this).val().toLowerCase();
+                $(".card").each(function() {
+                    var datasetName = $(this).find("h3 a").text().toLowerCase();
+                    if (datasetName.includes(searchTerm)) {
+                        $(this).show();
+                    } else {
+                        $(this).hide();
+                    }
+                });
+            });
+        });
+</script>
+@endpush
