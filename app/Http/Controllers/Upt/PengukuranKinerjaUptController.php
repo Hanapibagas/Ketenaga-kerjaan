@@ -12,7 +12,7 @@ class PengukuranKinerjaUptController extends Controller
     public function getIndex()
     {
         $user = Auth::user();
-        $pengukuran = PengukuranKinerja::where('user_id', $user->id)->get();
+        $pengukuran = PengukuranKinerja::where('role_id', $user->id)->get();
         $results = [];
 
         foreach ($pengukuran as $data) {
@@ -23,6 +23,13 @@ class PengukuranKinerjaUptController extends Controller
         $total = array_sum($results) / 100;
 
         return view('components.admin-upt.pengukuran-kinerja.index', compact('pengukuran', 'results'));
+    }
+
+    public function getDetailsPengukuran($id)
+    {
+        $pengukuran = PengukuranKinerja::where('id', $id)->first();
+
+        return view('components.admin-upt.pengukuran-kinerja.details', compact('pengukuran'));
     }
 
     public function getFilterTahun(Request $request)
@@ -43,15 +50,14 @@ class PengukuranKinerjaUptController extends Controller
         return view('components.admin-upt.pengukuran-kinerja.index', compact('pengukuran', 'results'));
     }
 
-    public function getUpdate(Request $request)
+    public function getUpdate(Request $request, $id)
     {
-        foreach($request->a as $key => $item) {
-            $pengukuran = PengukuranKinerja::findOrFail($request->id[$key]);
-            $pengukuran->a = $request->a[$key];
+        $dataset = PengukuranKinerja::findOrFail($id);
 
-            $pengukuran->b = $request->b[$key];
-            $pengukuran->save();
-        }
-        return redirect()->back()->with('status', 'Selamat data triwulan berhasil diperbaui');
+        $dataset->update([
+            'thead_html' => $request->input('thead_html'),
+        ]);
+
+        return redirect()->route('get.IndexPengkuranUpt')->with('status', 'Selamat data details dataset berhasil diperbaui');
     }
 }

@@ -6,20 +6,21 @@ use App\Http\Controllers\Controller;
 use App\Models\DataSet;
 use App\Models\DetailsDataset;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class DatasetAdminKabController extends Controller
 {
     public function index_kab()
     {
-        $dataset = DataSet::all();
+        $user = Auth::user();
+        $dataset = DataSet::where('role_id', $user->id)->get();
         return view('components.admin-kab.data-set.index', compact('dataset'));
     }
 
-    public function details_dataset_kab(Request $request, $id)
+    public function details_dataset_kab($id)
     {
         $dataset = DataSet::where('id', $id)->first();
-        $detailsdataset = DetailsDataset::all();
-        return view('components.admin-kab.data-set.details', compact('dataset', 'detailsdataset'));
+        return view('components.admin-kab.data-set.details', compact('dataset'));
     }
 
     public function filter_dataset_kab(Request $request, $id)
@@ -75,13 +76,12 @@ class DatasetAdminKabController extends Controller
 
     public function update_dataset_admin_kab(Request $request, $id)
     {
-        $detailsdataset = DetailsDataset::findOrFail($id);
+        $dataset = DataSet::findOrFail($id);
 
-        $detailsdataset->laki_laki = $request->input('laki_laki');
-        $detailsdataset->perempuan = $request->input('perempuan');
+        $dataset->update([
+            'thead_html' => $request->input('thead_html'),
+        ]);
 
-        $detailsdataset->save();
-
-        return redirect()->back()->with('status', 'Selamat data details dataset berhasil diperbaui');
+        return redirect()->route('index_kab')->with('status', 'Selamat data details dataset berhasil diperbaui');
     }
 }

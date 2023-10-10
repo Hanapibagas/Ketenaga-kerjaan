@@ -1,4 +1,4 @@
-@extends('layouts.dashboardadminsuper')
+@extends('layouts.dashboardadminupt')
 
 @section('title')
 Laporan
@@ -156,10 +156,7 @@ Laporan
     integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
 </script>
 <script>
-    // Mengambil elemen tabel dengan tag 'table'
-        let table = document.getElementsByTagName('table')[0];
-
-        // Menambahkan atribut 'class' dengan nilai 'table' ke elemen tabel
+    let table = document.getElementsByTagName('table')[0];
         table.classList.add('table', 'backhitam');
 </script>
 <script>

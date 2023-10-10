@@ -21,22 +21,7 @@ Laporan
             <div class="row align-items-center">
                 <div class="col-md-6">
                     <div class="title mb-30">
-                        <h2>Daftar Laporan Masyarakat</h2>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="breadcrumb-wrapper mb-30">
-                        <nav aria-label="breadcrumb">
-                            <ul class="buttons-group">
-                                <li class="breadcrumb-item">
-                                    <a href="{{ route('export_excel_laporan_kab') }}"
-                                        class="main-btn success-btn rounded-md btn-hover">
-                                        <i class="lni lni-download" style="margin-right: 20px; margin-left: -10px"></i>
-                                        Download
-                                    </a>
-                                </li>
-                            </ul>
-                        </nav>
+                        <h2>Daftar Laporan</h2>
                     </div>
                 </div>
             </div>
@@ -45,33 +30,82 @@ Laporan
             <div class="row">
                 <div class="col-lg-12">
                     <div class="card-style mb-30">
+                        <div class="input-style-1">
+                            <label>Tahun</label>
+                            @php
+                            $year = date('Y');
+                            @endphp
+                            <select name="tahun" class="form-control">
+                                <option value="-- Pilih tahun --">-- Pilih tahun --</option>
+                                @for ($i=2018; $i <= $year; $i++) <option value="{{ $i }}">{{ $i }}</option>
+                                    @endfor
+                            </select>
+                        </div>
                         <div class="table-responsive">
                             <table id="table" class="table">
                                 <thead>
                                     <tr>
-                                        <th>No</th>
-                                        <th>Pemohonan</th>
-                                        <th>Rincian</th>
-                                        <th>Tujuan</th>
-                                        <th>Status</th>
+                                        <th>Nama</th>
+                                        <th>Nama Laporan</th>
+                                        <th>Tahun</th>
+                                        <th>Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ( $laporan as $key => $data )
+                                    @foreach ( $dataset as $data )
                                     <tr>
-                                        <th>{{ $key+1 }}</th>
                                         <td>
-                                            {{ $data->nama }}
-                                            {{ $data->email }}
+                                            {{ Str::limit($data->nama_dataset, 50) }}
                                         </td>
+                                        <td>Dataset</td>
+                                        <td>{{ $data->tahun }}</td>
                                         <td>
-                                            {!! Str::limit($data->rincian, 100) !!}
+                                            <a href="{{ route('getDetailsLaporanUpt', $data->id) }}"
+                                                class="btn btn-info">
+                                                <i class="lni lni-eye" style="color: whitesmoke"></i>
+                                            </a>
                                         </td>
+                                    </tr>
+                                    @endforeach
+                                    @foreach ( $iku as $data )
+                                    <tr>
                                         <td>
-                                            {!! Str::limit($data->tujuan, 100) !!}
+                                            {{ Str::limit($data->nama_iku, 50) }}
                                         </td>
+                                        <td>IKU</td>
+                                        <td>{{ $data->tahun }}</td>
                                         <td>
-                                            {{ $data->status }}
+                                            <a href="{{ route('getDetails', $data->id) }}" class="btn btn-info">
+                                                <i class="lni lni-eye" style="color: whitesmoke"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    @endforeach
+                                    @foreach ( $lppd as $data )
+                                    <tr>
+                                        <td>
+                                            {{ Str::limit($data->nama_lppd, 50) }}
+                                        </td>
+                                        <td>LPPD</td>
+                                        <td>{{ $data->tahun }}</td>
+                                        <td>
+                                            <a href="{{ route('getDetails', $data->id) }}" class="btn btn-info">
+                                                <i class="lni lni-eye" style="color: whitesmoke"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    @endforeach
+                                    @foreach ( $pengukur as $data )
+                                    <tr>
+                                        <td>
+                                            {{ Str::limit($data->nama_pengukuran, 50) }}
+                                        </td>
+                                        <td>Pengukuran Kinerja</td>
+                                        <td>{{ $data->tahun }}</td>
+                                        <td>
+                                            <a href="{{ route('getDetails', $data->id) }}" class="btn btn-info">
+                                                <i class="lni lni-eye" style="color: whitesmoke"></i>
+                                            </a>
                                         </td>
                                     </tr>
                                     @endforeach
@@ -87,55 +121,53 @@ Laporan
 @endsection
 
 @push('add-script')
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
-    $(document).ready(function () {
+    // SweetAlert Delete Confirmation
+    document.addEventListener('DOMContentLoaded', () => {
+        const deleteButtons = document.querySelectorAll('.delete-btn');
+        deleteButtons.forEach((button) => {
+            button.addEventListener('click', (e) => {
+                e.preventDefault();
+                const form = button.parentNode;
+                const id = button.getAttribute('data-id');
 
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
-
-        $('.btndelete').click(function (e) {
-            e.preventDefault();
-
-            var deleteid = $(this).closest("tr").find('.delete_id').val();
-
-            swal({
-                    title: "Apakah anda yakin?",
-                    text: "Anda tidak dapat memulihkan data ini lagi!",
-                    icon: "warning",
-                    buttons: true,
-                    dangerMode: true,
-                })
-                .then((willDelete) => {
-                    if (willDelete) {
-
-                        var data = {
-                            "_token": $('input[name=_token]').val(),
-                            'id': deleteid,
-                        };
-                        $.ajax({
-                            type: "DELETE",
-                            url: 'berita/delete/' + deleteid,
-                            data: data,
-                            success: function (response) {
-                                swal(response.status, {
-                                        icon: "success",
-                                    })
-                                    .then((result) => {
-                                        location.reload();
-                                    });
-                            }
-                        });
+                Swal.fire({
+                    title: 'Apakah anda yakin?',
+                    text: "Anda tidak akan dapat mengembalikan ini!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#d33',
+                    cancelButtonColor: '#3085d6',
+                    confirmButtonText: 'Ya, Hapus data ini!',
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        form.submit();
                     }
                 });
+            });
         });
-
     });
-
 </script>
+<script>
+    $(document).ready(function() {
+        $('select[name="tahun"]').on('change', function() {
+            var selectedYear = $(this).val();
+
+            $('#table tbody tr').each(function() {
+                var rowYear = $(this).find('td:eq(2)').text();
+
+                if (selectedYear === '-- Pilih tahun --' || selectedYear === rowYear) {
+                    $(this).show();
+                } else {
+                    $(this).hide();
+                }
+            });
+        });
+    });
+</script>
+
 <script>
     const dataTable = new simpleDatatables.DataTable("#table", {
       searchable: true,

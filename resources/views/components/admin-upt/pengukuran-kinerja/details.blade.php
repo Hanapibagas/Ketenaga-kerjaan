@@ -1,7 +1,7 @@
 @extends('layouts.dashboardadminupt')
 
 @section('title')
-Dataset
+Pengukuran Kinerja
 @endsection
 
 @section('content')
@@ -35,14 +35,13 @@ Dataset
 </style>
 @endpush
 
-
 <section class="tab-components">
     <div class="container-fluid">
         <div class="title-wrapper pt-30">
             <div class="row align-items-center">
                 <div class="col-md-6">
                     <div class="title mb-30">
-                        <h2>Dataset</h2>
+                        <h2>Pengukuran Kinerja</h2>
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -50,7 +49,7 @@ Dataset
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item">
-                                    <a href="{{ route('index_dataset_upt') }}">
+                                    <a href="{{ route('get.IndexPengkuranUpt') }}">
                                         <i>
                                             <- Kembali </i>
                                     </a>
@@ -66,21 +65,21 @@ Dataset
             <div class="row">
                 <div class="col-lg-12">
                     <div class="card-style mb-30">
-                        <h6 class="mb-25">Dataset</h6>
+                        <h6 class="mb-25">Pengukuran Kinerja</h6>
                         <div class="row">
                             <div class="col-12">
                                 <div class="input-style-1">
-                                    <label>Nama Dataset</label>
-                                    {{ $dataset->nama_dataset }}
+                                    <label>Nama Pengukuran Kinerja</label>
+                                    {{ $pengukuran->nama_pengukuran }}
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="input-style-1">
-                                    <label>Tahun Dataset</label>
-                                    {{ $dataset->tahun }}
+                                    <label>Tahun Pengukuran Kinerja</label>
+                                    {{ $pengukuran->tahun }}
                                 </div>
                             </div>
-                            <form action="{{ route('updateData', $dataset->id) }}" method="POST">
+                            <form action="{{ route('get.UpdatePengukuranUpt', $pengukuran->id) }}" method="POST">
                                 @method('put')
                                 @csrf
                                 <div class="col-12">
@@ -88,7 +87,7 @@ Dataset
                                         <label>Table</label>
                                         <div style="color: white">
                                             <textarea id="editor"
-                                                name="thead_html">{!! $dataset->thead_html !!}</textarea>
+                                                name="thead_html">{!! $pengukuran->thead_html !!}</textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -115,22 +114,15 @@ Dataset
         });
 </script>
 <script>
-    // Mengambil elemen tabel dengan tag 'table'
-        let table = document.getElementsByTagName('table')[0];
-
-        // Menambahkan atribut 'class' dengan nilai 'table' ke elemen tabel
+    let table = document.getElementsByTagName('table')[0];
         table.classList.add('table', 'backhitam');
 </script>
 <script>
     var tableElement = document.querySelector(".table");
-
-        // Ambil semua elemen TD yang memiliki isi "&nbsp;" di dalam tabel
         var tdElements = tableElement.querySelectorAll("td");
 
-        // Loop melalui elemen-elemen TD yang ditemukan
         tdElements.forEach(function(td) {
             if (td.innerHTML === "&nbsp;") {
-                // Ganti isi "&nbsp;" dengan tag <input>
                 td.innerHTML = "<input>";
             }
         });

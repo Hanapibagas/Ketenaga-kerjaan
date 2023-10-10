@@ -106,6 +106,7 @@ Dataset
                                     </div>
                                 </div>
                             </div>
+                            {{-- <button id="exportButton">Export to Excel</button> --}}
                         </div>
                     </div>
                 </div>
@@ -115,6 +116,7 @@ Dataset
 @endsection
 
 @push('add-script')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.4/xlsx.full.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
     integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
 </script>
@@ -132,4 +134,6 @@ Dataset
         // Menambahkan atribut 'class' dengan nilai 'table' ke elemen tabel
         table.classList.add('table', 'backhitam');
 </script>
+
+
 @endpush

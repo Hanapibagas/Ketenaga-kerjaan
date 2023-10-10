@@ -25,7 +25,10 @@ use App\Http\Controllers\AdminSuper\TambahPenggunaAdminSuperController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Kab\DashboardKabKotaController;
 use App\Http\Controllers\Kab\DatasetAdminKabController;
+use App\Http\Controllers\Kab\IkuKabKotaController;
 use App\Http\Controllers\Kab\LaporanAdminKabController;
+use App\Http\Controllers\Kab\LppdKabKotaController;
+use App\Http\Controllers\Kab\PengukuranKinerjaKabKotaController;
 use App\Http\Controllers\kab\UpdatePasswordAdminKabController;
 use App\Http\Controllers\Masyarakat\DasboardMasyrakatController;
 use App\Http\Controllers\Masyarakat\PermintaanDataMasyarakatController;
@@ -279,6 +282,18 @@ Route::middleware('auth', 'checkroll:admin super')->group(function () {
 Route::middleware('auth', 'checkroll:kab/kota')->group(function () {
     Route::get('/admin-kab-kota', [DashboardKabKotaController::class, 'dashboard_kab'])->name('dashboard_kab');
     //
+    Route::get('/pengukuran-kinerja-admin-kab-kota', [PengukuranKinerjaKabKotaController::class, 'getIndexPengukuranKabKota'])->name('getIndexPengukuranKabKota');
+    Route::get('/pengukuran-kinerja-admin-kab-kota/details/{id}', [PengukuranKinerjaKabKotaController::class, 'getDetailsPengkuranKabKota'])->name('getDetailsPengkuranKabKota');
+    Route::put('/pengukuran-kinerja-admin-kab-kota/update/{id}', [PengukuranKinerjaKabKotaController::class, 'putDetailsPengukuranKabKota'])->name('putDetailsPengukuranKabKota');
+    //
+    Route::get('/lppd-admin-kab-kota', [LppdKabKotaController::class, 'getIndexLppdKab'])->name('getIndexLppdKab');
+    Route::get('/lppd-admin-kab-kota/details/{id}', [LppdKabKotaController::class, 'getDetailsKabKotaLppd'])->name('getDetailsKabKotaLppd');
+    Route::put('/lppd-admin-kab-kota/update/{id}', [LppdKabKotaController::class, 'putUpdateKabKotaLppd'])->name('putUpdateKabKotaLppd');
+    //
+    Route::get('/iku-admin-kab-kota', [IkuKabKotaController::class, 'getIndexKabKotaIku'])->name('getIndexKabKotaIku');
+    Route::get('/iku-admin-kab-kota/details/{id}', [IkuKabKotaController::class, 'getDetailsKabKotaIku'])->name('getDetailsKabKotaIku');
+    Route::put('/iku-admin-kab-kota/update/{id}', [IkuKabKotaController::class, 'putDetailsKabKota'])->name('putDetailsKabKota');
+    //
     Route::get('/dataset-admin-kab-kota', [DatasetAdminKabController::class, 'index_kab'])->name('index_kab');
     Route::post('/dataset-admin-kab-kota/{id}', [DatasetAdminKabController::class, 'filter_dataset_kab'])->name('filter_dataset_kab');
     Route::get('/dataset-admin-kab-kota/{id}', [DatasetAdminKabController::class, 'details_dataset_kab'])->name('details_dataset_kab');
@@ -291,6 +306,7 @@ Route::middleware('auth', 'checkroll:kab/kota')->group(function () {
     Route::put('pengguna-admin-kab-kota/post', [UpdatePasswordAdminKabController::class, 'update_password'])->name('update_password');
     //
     Route::get('/laporan-admin-kab-kota', [LaporanAdminKabController::class, 'index_laporan_kab'])->name('index_laporan_kab');
+    Route::get('/laporan-admin-kab-kota/details/{id}', [LaporanAdminKabController::class, 'getDetails'])->name('getDetailsKabKota');
     Route::get('/export-laporan-admin-kab-kota', [LaporanAdminKabController::class, 'export_excel_laporan_kab'])->name('export_excel_laporan_kab');
 });
 
@@ -299,15 +315,19 @@ Route::middleware('auth', 'checkroll:upt')->group(function () {
     Route::get('/admin-upt', [DashboardAdminUptController::class, 'dashboard_upt'])->name('dashboard_upt');
     //
     Route::get('/pengkuran-kinerja-admin-upt', [PengukuranKinerjaUptController::class, 'getIndex'])->name('get.IndexPengkuranUpt');
-    Route::put('/pengkuran-kinerja-admin-upt/update', [PengukuranKinerjaUptController::class, 'getUpdate'])->name('get.UpdatePengukuranUpt');
+    Route::get('/pengkuran-kinerja-admin-upt/details/{id}', [PengukuranKinerjaUptController::class, 'getDetailsPengukuran'])->name('getDetailsPengukuran');
+    Route::put('/pengkuran-kinerja-admin-upt/update/{id}', [PengukuranKinerjaUptController::class, 'getUpdate'])->name('get.UpdatePengukuranUpt');
     Route::post('/pengkuran-kinerja-admin-upt', [PengukuranKinerjaUptController::class, 'getFilterTahun'])->name('get.TahunPengukuran');
     //
     Route::get('/lppd-admin-upt', [LppdUptController::class, 'getIndex'])->name('get.IndexLppdUpt');
-    Route::put('/lppd-admin-upt/update', [LppdUptController::class, 'getUpdate'])->name('get.UpdateLppdUpt');
+    Route::get('/lppd-admin-upt/details/{id}', [LppdUptController::class, 'getDetailsLppd'])->name('getDetailsLppd');
+    Route::put('/lppd-admin-upt/update/{id}', [LppdUptController::class, 'getUpdate'])->name('get.UpdateLppdUpt');
     Route::post('/lppd-admin-upt', [LppdUptController::class, 'getFilterTahun'])->name('get.TahunLppd');
     //
     Route::get('/iku-admin-upt', [IkuUptController::class, 'getIndex'])->name('get.IndexIkuUpt');
-    Route::put('/iku-admin-upt/update', [IkuUptController::class, 'getUpdate'])->name('get.UpdateIkuUpt');
+    Route::get('/iku-admin-upt/details/{id}', [IkuUptController::class, 'getDetailsIKUUpt'])->name('getDetailsIKUUpt');
+    Route::put('/iku-admin-upt/update/{id}', [IkuUptController::class, 'updateData'])->name('updateDataIku');
+    // Route::put('/iku-admin-upt/update', [IkuUptController::class, 'getUpdate'])->name('get.UpdateIkuUpt');
     Route::post('/iku-admin-upt', [IkuUptController::class, 'getFilterTahun'])->name('get.TahunIku');
     //
     Route::get('/dataset-admin-upt', [DatasetAdminUptController::class, 'index_dataset_upt'])->name('index_dataset_upt');
@@ -317,11 +337,13 @@ Route::middleware('auth', 'checkroll:upt')->group(function () {
     Route::post('/dataset-admin-upt/store', [DatasetAdminUptController::class, 'store_dataset_upt_admin'])->name('store_dataset_upt_admin');
     Route::get('/dataset-admin-upt/edit/{id}', [DatasetAdminUptController::class, 'edit_dataset_admin_upt'])->name('edit_dataset_admin_upt');
     Route::put('dataset-admin-upt/update/{id}', [DatasetAdminUptController::class, 'update_dataset_admin_upt'])->name('update_dataset_admin_upt');
+    Route::put('dataset-admin-upt/update-thead/{id}', [DatasetAdminUptController::class, 'updateData'])->name('updateData');
     //
     Route::get('pengguna-admin-upt', [UpdatePasswordAdminUptController::class, 'index_password'])->name('index_password_upt');
     Route::put('pengguna-admin-upt/post', [UpdatePasswordAdminUptController::class, 'update_password'])->name('update_password_upt');
     //
     Route::get('/laporan-admin-upt', [LaporanAdminUptController::class, 'index_laporan_upt'])->name('index_laporan_upt');
+    Route::get('/laporan-admin-upt/details/{id}', [LaporanAdminUptController::class, 'getDetails'])->name('getDetailsLaporanUpt');
     Route::get('/export-laporan-admin-upt', [LaporanAdminUptController::class, 'export_excel_laporan_upt'])->name('export_excel_laporan_upt');
 });
 

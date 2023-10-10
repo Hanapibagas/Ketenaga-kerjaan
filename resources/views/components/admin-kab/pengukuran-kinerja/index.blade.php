@@ -1,4 +1,4 @@
-@extends('layouts.dashboardadminupt')
+@extends('layouts.dashboardadminkab')
 
 @section('title')
 Pengukuran Kinerja
@@ -59,7 +59,7 @@ Pengukuran Kinerja
                                         <td>{{ Str::limit($data->nama_pengukuran, 25) }}</td>
                                         <td>{{ $data->tahun }}</td>
                                         <td>
-                                            <a href="{{ route('getDetailsPengukuran', $data->id) }}"
+                                            <a href="{{ route('getDetailsPengkuranKabKota', $data->id) }}"
                                                 class="btn btn-info">
                                                 <i class="lni lni-eye" style="color: whitesmoke"></i>
                                             </a>

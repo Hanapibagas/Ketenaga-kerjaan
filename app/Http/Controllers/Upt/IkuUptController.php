@@ -12,7 +12,7 @@ class IkuUptController extends Controller
     public function getIndex()
     {
         $user = Auth::user();
-        $iku = Iku::where('user_id', $user->id)->get();
+        $iku = Iku::where('role_id', $user->id)->get();
         $results = [];
 
         foreach ($iku as $data) {
@@ -23,6 +23,23 @@ class IkuUptController extends Controller
         $total = array_sum($results) / 100;
 
         return view('components.admin-upt.iku.index', compact('iku', 'results'));
+    }
+
+    public function getDetailsIKUUpt($id)
+    {
+        $iku = Iku::where('id', $id)->first();
+        return view('components.admin-upt.iku.details', compact('iku'));
+    }
+
+    public function updateData(Request $request, $id)
+    {
+        $dataset = Iku::findOrFail($id);
+
+        $dataset->update([
+            'thead_html' => $request->input('thead_html'),
+        ]);
+
+        return redirect()->route('get.IndexIkuUpt')->with('status', 'Selamat data details dataset berhasil diperbaui');
     }
 
     public function getFilterTahun(Request $request)
@@ -45,7 +62,7 @@ class IkuUptController extends Controller
 
     public function getUpdate(Request $request)
     {
-        foreach($request->a as $key => $item) {
+        foreach ($request->a as $key => $item) {
             $iku = Iku::findOrFail($request->id[$key]);
             $iku->a = $request->a[$key];
 

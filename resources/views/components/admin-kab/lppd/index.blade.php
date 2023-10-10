@@ -1,7 +1,7 @@
-@extends('layouts.dashboardadminupt')
+@extends('layouts.dashboardadminkab')
 
 @section('title')
-Pengukuran Kinerja
+LPPD
 @endsection
 
 @section('content')
@@ -15,14 +15,13 @@ Pengukuran Kinerja
 </script>
 @endif
 
-
 <section class="tab-components">
     <div class="container-fluid">
         <div class="title-wrapper pt-30">
             <div class="row align-items-center">
                 <div class="col-md-6">
                     <div class="title mb-30">
-                        <h2>Data Pengukuran Kinerja</h2>
+                        <h2>Data LPPD</h2>
                     </div>
                 </div>
             </div>
@@ -54,12 +53,12 @@ Pengukuran Kinerja
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ( $pengukuran as $data )
+                                    @foreach ( $lppd as $data )
                                     <tr>
-                                        <td>{{ Str::limit($data->nama_pengukuran, 25) }}</td>
+                                        <td>{{ Str::limit($data->nama_lppd, 25) }}</td>
                                         <td>{{ $data->tahun }}</td>
                                         <td>
-                                            <a href="{{ route('getDetailsPengukuran', $data->id) }}"
+                                            <a href="{{ route('getDetailsKabKotaLppd', $data->id) }}"
                                                 class="btn btn-info">
                                                 <i class="lni lni-eye" style="color: whitesmoke"></i>
                                             </a>

@@ -1,4 +1,4 @@
-@extends('layouts.dashboardadminsuper')
+@extends('layouts.dashboardadminkab')
 
 @section('title')
 Laporan
@@ -62,7 +62,7 @@ Laporan
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item">
-                                    <a href="{{ route('index_laporan_admin_super') }}">
+                                    <a href="{{ route('index_laporan_kab') }}">
                                         <i>
                                             <- Kembali </i>
                                     </a>
@@ -89,8 +89,8 @@ Laporan
                                     {{ $iku->nama_iku }}
                                     @elseif ($lppd)
                                     {{ $lppd->nama_lppd }}
-                                    @elseif ($pengukur)
-                                    {{ $pengukur->nama_pengukuran }}
+                                    @elseif ($pengukuran)
+                                    {{ $pengukuran->nama_pengukuran }}
                                     @endif
                                 </div>
                             </div>
@@ -103,7 +103,7 @@ Laporan
                                     Laporan IKU
                                     @elseif ($lppd)
                                     Laporan LPPD
-                                    @elseif ($pengukur)
+                                    @elseif ($pengukuran)
                                     Laporan Pengukuran Kinerja
                                     @endif
                                 </div>
@@ -156,10 +156,7 @@ Laporan
     integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
 </script>
 <script>
-    // Mengambil elemen tabel dengan tag 'table'
-        let table = document.getElementsByTagName('table')[0];
-
-        // Menambahkan atribut 'class' dengan nilai 'table' ke elemen tabel
+    let table = document.getElementsByTagName('table')[0];
         table.classList.add('table', 'backhitam');
 </script>
 <script>

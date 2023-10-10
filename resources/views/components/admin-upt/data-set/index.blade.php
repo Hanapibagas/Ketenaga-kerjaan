@@ -31,14 +31,23 @@ Dataset
                 <div class="col-lg-12">
                     <div class="card-style mb-30">
                         <h6 class="mb-10">Dataset Data Table</h6>
+                        <div class="input-style-1">
+                            <label>Filter Tahun</label>
+                            @php
+                            $year = date('Y');
+                            @endphp
+                            <select id="filterTahun" class="form-control">
+                                <option value="">-- Semua Tahun --</option>
+                                @for ($i = 2018; $i <= $year; $i++) <option value="{{ $i }}">{{ $i }}</option>
+                                    @endfor
+                            </select>
+                        </div>
                         <div class="table-responsive">
                             <table id="table" class="table">
                                 <thead>
                                     <tr>
                                         <th>Nama Dataset</th>
-                                        <th>Topik</th>
-                                        <th>OPD</th>
-                                        <th>Satuan</th>
+                                        <th>Tahun Dataset</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
@@ -46,9 +55,7 @@ Dataset
                                     @foreach ( $dataset as $data )
                                     <tr>
                                         <td>{{ Str::limit($data->nama_dataset, 25) }}</td>
-                                        <td>{{ $data->kategori }}</td>
-                                        <td>{{ Str::limit($data->opd, 25) }}</td>
-                                        <td>{{ $data->satuan }}</td>
+                                        <td>{{ $data->tahun }}</td>
                                         <td>
                                             <a href="{{ route('details_dataset_upt', $data->id) }}"
                                                 class="btn btn-info">
@@ -69,6 +76,26 @@ Dataset
 @endsection
 
 @push('add-script')
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#filterTahun").change(function () {
+            var selectedYear = $(this).val();
+
+            if (selectedYear === "") {
+                $("#table tbody tr").show();
+            } else {
+                $("#table tbody tr").hide();
+
+                $("#table tbody tr td:nth-child(2)").each(function () {
+                    if ($(this).text() === selectedYear) {
+                        $(this).parent().show();
+                    }
+                });
+            }
+        });
+    });
+</script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script>
     $(document).ready(function () {

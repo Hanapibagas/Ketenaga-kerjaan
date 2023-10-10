@@ -36,6 +36,29 @@ Dataset
     .tab-content h2 {
         margin-top: 0;
     }
+
+    table thead {
+        background-color: #007bff;
+        color: white;
+    }
+
+    table th {
+        padding: 10px;
+        border: 1px solid #ddd;
+    }
+
+    table tbody tr:nth-child(odd) {
+        background-color: #f2f2f2;
+    }
+
+    table tbody tr:hover {
+        background-color: #e0e0e0;
+    }
+
+    table td {
+        border: 1px solid #ddd;
+        padding: 10px;
+    }
 </style>
 
 <div class="container">
@@ -63,106 +86,25 @@ Dataset
                 <button class="tab-link" onclick="openTab(event, 'tab3')">METADATA</button>
             </div>
             <div class="tab-content" id="tab1">
-                <form action="{{ route('filter_dataset_home', $dataset->nama_dataset) }}" method="POST">
-                    @csrf
-                    <div class="d-md-flex mb-3">
-                        @php
-                        $year = date('Y');
-                        @endphp
-                        <select name="tahun" class="form-select me-md-4 mb-2 mb-md-0" style="min-width: 240px;">
-                            <option value="-- Pilih tahun --">- - Pilih tahun - -</option>
-                            @for ($i=2022; $i <= $year; $i++) <option value="{{ $i }}"> {{ $i }}
-                                </option>
-                                @endfor
-                        </select>
-                        <button class="btn btn-primary btn-lg shadow-primary">Filter Tahun</button>
-                    </div>
-                </form>
-                <table id="table" class="table">
-                    <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>Variabel</th>
-                            <th>Tahun</th>
-                            <th>Laki-Laki</th>
-                            <th>Perempuan</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ( $filtertahun as $key => $data )
-                        <tr>
-                            <td>{{ $key+1 }}</td>
-                            <td>{{ $data->variable }}</td>
-                            <td>{{ $data->tahun }}</td>
-                            <td>{{ $data->laki_laki }}</td>
-                            <td>{{ $data->perempuan }}</td>
-                        </tr>
-                        @endforeach
-                    </tbody>
-                </table>
+                <div>
+                    {!! $dataset->thead_html !!}
+                </div>
             </div>
             <div class="tab-content" id="tab2">
-                <form action="{{ route('filter_dataset_home', $dataset->nama_dataset) }}" method="POST">
-                    @csrf
-                    <div class="d-md-flex mb-3">
-                        @php
-                        $year = date('Y');
-                        @endphp
-                        <select name="tahun" class="form-select me-md-4 mb-2 mb-md-0" style="min-width: 240px;">
-                            <option value="-- Pilih tahun --">- - Pilih tahun - -</option>
-                            @for ($i=2022; $i <= $year; $i++) <option value="{{ $i }}"> {{ $i }}
-                                </option>
-                                @endfor
-                        </select>
-                        <button class="btn btn-primary btn-lg shadow-primary">Filter Tahun</button>
-                    </div>
-                </form>
                 <canvas id="myChart" height="100px"></canvas>
             </div>
             <div class="tab-content" id="tab3">
-                {{-- <table id="table" class="table">
-                    <thead>
-                        <tr>
-                            <th>Nama Master Data</th>
-                            <th>Deskripsi</th>
-                            <th>Aksi</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ( $metadata as $data )
-                        <tr>
-                            <td>{{ $data->nama_master_data }}</td>
-                            <td>{!! Str::limit($data->deskripsi,50) !!}</td>
-                            <td>
-                                <a href="{{ route('edit_metadata', $data->id) }}" class="btn btn-primary">
-                                    <i class="lni lni-pencil" style="color: whitesmoke"></i>
-                                </a>
-                                <input type="hidden" class="delete_id" value="{{ $data->id }}">
-                                <form action="{{ route('destroy_metadata', $data->id) }}" method="POST"
-                                    class="d-inline">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button class="btn btn-danger btndelete">
-                                        <i class="lni lni-trash-can"></i>
-                                    </button>
-                                </form>
-                                </p>
-                            </td>
-                        </tr>
-                        @endforeach
-                    </tbody>
-                </table> --}}
                 <h6>Dataset Diperbarui : <span style="color: grey">{{ $dataset->updated_at }}</span>
                 </h6>
                 <h6>Dataset Dibuat : <span style="color: grey">{{ $dataset->created_at }}</span></h6>
-                <h6>Produsen Data : <span style="color: grey">{{ $dataset->opd }}</span></h6>
+                <h6>Produsen Data : <span style="color: grey">{{ $dataset->role->name }}</span></h6>
                 <h6>Satuan Dataset : <span style="color: grey">{{ $dataset->satuan }}</span></h6>
                 <h6>Deskripsi : <span style="color: grey">{{ $dataset->deskripsi }}</span></h6>
-                <h6>
+                {{-- <h6>
                     <i class="bx bx-download fs-xl me-1"></i>
                     <a href="{{asset('storage/'. $dataset->file_data)}}" target="_blank"><span
                             style="color: grey; text-decoration: none;">download file</span></a>
-                </h6>
+                </h6> --}}
             </div>
         </div>
     </div>
@@ -170,6 +112,11 @@ Dataset
 @endsection
 
 @push('js')
+<script>
+    let table = document.getElementsByTagName('table')[0];
+
+        table.classList.add('table', 'backhitam');
+</script>
 <script>
     function openTab(event, tabName) {
   var i, tabContent, tabLinks;

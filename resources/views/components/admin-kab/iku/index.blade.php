@@ -1,7 +1,7 @@
-@extends('layouts.dashboardadminupt')
+@extends('layouts.dashboardadminkab')
 
 @section('title')
-Pengukuran Kinerja
+IKU
 @endsection
 
 @section('content')
@@ -15,14 +15,13 @@ Pengukuran Kinerja
 </script>
 @endif
 
-
 <section class="tab-components">
     <div class="container-fluid">
         <div class="title-wrapper pt-30">
             <div class="row align-items-center">
                 <div class="col-md-6">
                     <div class="title mb-30">
-                        <h2>Data Pengukuran Kinerja</h2>
+                        <h2>Data IKU</h2>
                     </div>
                 </div>
             </div>
@@ -32,7 +31,7 @@ Pengukuran Kinerja
             <div class="row">
                 <div class="col-lg-12">
                     <div class="card-style mb-30">
-                        <h6 class="mb-10">LPPD Data Table</h6>
+                        <h6 class="mb-10">IKU Data Table</h6>
                         <div class="input-style-1">
                             <label>Tahun</label>
                             @php
@@ -48,18 +47,18 @@ Pengukuran Kinerja
                             <table id="table" class="table">
                                 <thead>
                                     <tr>
-                                        <th>Nama LPPD</th>
-                                        <th>Tahun LPPD</th>
+                                        <th>Nama IKU</th>
+                                        <th>Tahun IKU</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ( $pengukuran as $data )
+                                    @foreach ( $iku as $data )
                                     <tr>
-                                        <td>{{ Str::limit($data->nama_pengukuran, 25) }}</td>
+                                        <td>{{ Str::limit($data->nama_iku, 25) }}</td>
                                         <td>{{ $data->tahun }}</td>
                                         <td>
-                                            <a href="{{ route('getDetailsPengukuran', $data->id) }}"
+                                            <a href="{{ route('getDetailsKabKotaIku', $data->id) }}"
                                                 class="btn btn-info">
                                                 <i class="lni lni-eye" style="color: whitesmoke"></i>
                                             </a>
@@ -100,5 +99,5 @@ Pengukuran Kinerja
     const dataTable = new simpleDatatables.DataTable("#table", {
       searchable: true,
     });
-</script>
+</>
 @endpush

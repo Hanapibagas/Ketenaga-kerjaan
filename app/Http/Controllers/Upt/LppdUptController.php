@@ -12,7 +12,7 @@ class LppdUptController extends Controller
     public function getIndex()
     {
         $user = Auth::user();
-        $lppd = Lppd::where('user_id', $user->id)->get();
+        $lppd = Lppd::where('role_id', $user->id)->get();
         $results = [];
 
         foreach ($lppd as $data) {
@@ -23,6 +23,13 @@ class LppdUptController extends Controller
         $total = array_sum($results) / 100;
 
         return view('components.admin-upt.lppd.index', compact('lppd', 'results'));
+    }
+
+    public function getDetailsLppd($id)
+    {
+        $lppd = Lppd::where('id', $id)->first();
+
+        return view('components.admin-upt.lppd.details', compact('lppd'));
     }
 
     public function getFilterTahun(Request $request)
@@ -43,18 +50,14 @@ class LppdUptController extends Controller
         return view('components.admin-upt.lppd.index', compact('lppd', 'results'));
     }
 
-    public function getUpdate(Request $request)
+    public function getUpdate(Request $request, $id)
     {
-        foreach($request->a as $key => $item) {
-            $lppd = Lppd::findOrFail($request->id[$key]);
-            $lppd->a = $request->a[$key];
+        $dataset = Lppd::findOrFail($id);
 
-            $lppd->b = $request->b[$key];
+        $dataset->update([
+            'thead_html' => $request->input('thead_html'),
+        ]);
 
-            $lppd->link_terkait = $request->link_terkait[$key];
-            $lppd->save();
-        }
-
-        return redirect()->back()->with('status', 'Selamat data LPPD berhasil diperbaui');
+        return redirect()->route('get.IndexLppdUpt')->with('status', 'Selamat data details dataset berhasil diperbaui');
     }
 }

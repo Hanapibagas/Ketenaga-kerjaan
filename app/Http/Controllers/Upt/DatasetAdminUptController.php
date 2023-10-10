@@ -13,7 +13,7 @@ class DatasetAdminUptController extends Controller
     public function index_dataset_upt()
     {
         $user = Auth::user();
-        $dataset = DataSet::where('user_id', $user->id)->get();
+        $dataset = DataSet::where('role_id', $user->id)->get();
         return view('components.admin-upt.data-set.index', compact('dataset'));
     }
 
@@ -85,5 +85,16 @@ class DatasetAdminUptController extends Controller
         $detailsdataset->save();
 
         return redirect()->back()->with('status', 'Selamat data details dataset berhasil diperbaui');
+    }
+
+    public function updateData(Request $request, $id) 
+    {
+        $dataset = DataSet::findOrFail($id);
+
+        $dataset->update([
+            'thead_html' => $request->input('thead_html'),
+        ]);
+
+        return redirect()->route('index_dataset_upt')->with('status', 'Selamat data details dataset berhasil diperbaui');
     }
 }

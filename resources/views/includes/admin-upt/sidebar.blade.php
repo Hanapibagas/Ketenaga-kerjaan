@@ -37,7 +37,8 @@
                     </span>
                 </a>
             </li>
-            <li class="nav-item {{ request()->is('iku-admin-upt')  ? 'active' : '' }}">
+            <li
+                class="nav-item {{ request()->is('iku-admin-upt') || request()->is('iku-admin-upt/*')  ? 'active' : '' }}">
                 <a href="{{ route('get.IndexIkuUpt') }}">
                     <span class="icon">
                         <svg width="18" height="20" viewBox="0 0 18 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -50,7 +51,8 @@
                     </span>
                 </a>
             </li>
-            <li class="nav-item {{ request()->is('lppd-admin-upt')  ? 'active' : '' }}">
+            <li
+                class="nav-item {{ request()->is('lppd-admin-upt') || request()->is('lppd-admin-upt/details/*')  ? 'active' : '' }}">
                 <a href="{{ route('get.IndexLppdUpt') }}">
                     <span class="icon">
                         <svg width="18" height="20" viewBox="0 0 18 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -63,7 +65,8 @@
                     </span>
                 </a>
             </li>
-            <li class="nav-item {{ request()->is('pengkuran-kinerja-admin-upt') ? 'active' : '' }}">
+            <li
+                class="nav-item {{ request()->is('pengkuran-kinerja-admin-upt') || request()->is('pengkuran-kinerja-admin-upt/details/*') ? 'active' : '' }}">
                 <a href="{{ route('get.IndexPengkuranUpt') }}">
                     <span class="icon">
                         <svg width="18" height="20" viewBox="0 0 18 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -76,7 +79,8 @@
                     </span>
                 </a>
             </li>
-            <li class="nav-item {{ request()->is('laporan-admin-upt') ? 'active' : '' }}">
+            <li
+                class="nav-item {{ request()->is('laporan-admin-upt') || request()->is('laporan-admin-upt/details/*') ? 'active' : '' }}">
                 <a href="{{ route('index_laporan_upt') }}">
                     <span class="icon">
                         <svg width="18" height="20" viewBox="0 0 18 20" fill="none" xmlns="http://www.w3.org/2000/svg">
