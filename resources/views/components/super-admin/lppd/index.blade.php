@@ -77,7 +77,8 @@ LPPD
                                             <a href="{{ route('getEditLppd', $data->id) }}" class="btn btn-primary">
                                                 <i class="lni lni-pencil" style="color: whitesmoke"></i>
                                             </a>
-                                            <a href="{{ route('getDetailsLppd', $data->id) }}" class="btn btn-info">
+                                            <a href="{{ route('getDetailsLppdSuper', $data->id) }}"
+                                                class="btn btn-info">
                                                 <i class="lni lni-eye" style="color: whitesmoke"></i>
                                             </a>
                                             {{-- <a href="{{ route('getCreateVariable', $data->id) }}"

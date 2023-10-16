@@ -217,7 +217,7 @@ Route::middleware('auth', 'checkroll:admin super')->group(function () {
     Route::get('/pengukuran-kinerja-admin-super', [PengukuranKinerjaController::class, 'getIndex'])->name('get.IndexPengukuranKinerja');
     Route::get('/pengukuran-kinerja-admin-super/create', [PengukuranKinerjaController::class, 'getCreatePengukuran'])->name('getCreatePengukuran');
     route::get('/pengukuran-kinerja-admin-super/edit/{id}', [PengukuranKinerjaController::class, 'getEditPengukuran'])->name('getEditPengukuran');
-    Route::get('/pengukuran-kinerja-admin-super/details/{id}', [PengukuranKinerjaController::class, 'getDetailsPengukuran'])->name('getDetailsPengukuran');
+    Route::get('/pengukuran-kinerja-admin-super/details/{id}', [PengukuranKinerjaController::class, 'getDetailsPengukuran'])->name('getDetailsPengukuranSuper');
     Route::post('/pengukuran-kinerja-admin-super', [PengukuranKinerjaController::class, 'getFilterTahun'])->name('get.TahunPengukuranKinerjaSuper');
     Route::put('/pengukuran-kinerja-admin-super/update/thead/{id})', [PengukuranKinerjaController::class, 'getUpdateThead'])->name('get.UpdateTheadPengukuran');
     Route::post('/pengukuran-kinerja-admin-super/post', [PengukuranKinerjaController::class, 'getStore'])->name('get.StorePengukuranKinerja');
@@ -236,7 +236,7 @@ Route::middleware('auth', 'checkroll:admin super')->group(function () {
     //
     Route::get('/lppd-admin-super', [LppdController::class, 'getIndex'])->name('get.IndexLppd');
     Route::get('/lppd-admin-super/create', [LppdController::class, 'getCreateLppd'])->name('getCreateLppd');
-    Route::get('lppd-admin-super/details/{id}', [LppdController::class, 'getDetailsLppd'])->name('getDetailsLppd');
+    Route::get('lppd-admin-super/details/{id}', [LppdController::class, 'getDetailsLppd'])->name('getDetailsLppdSuper');
     Route::get('/lppd-admin-super/edit/{id}', [LppdController::class, 'getEditLppd'])->name('getEditLppd');
     Route::post('/lppd-admin-super', [LppdController::class, 'getFilterTahun'])->name('get.TahunLppdSuper');
     Route::post('/lppd-admin-super/post', [LppdController::class, 'getStore'])->name('get.StoreLppd');

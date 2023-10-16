@@ -78,7 +78,7 @@ Pengukuran Kinerja
                                                 class="btn btn-primary">
                                                 <i class="lni lni-pencil" style="color: whitesmoke"></i>
                                             </a>
-                                            <a href="{{ route('getDetailsPengukuran', $data->id) }}"
+                                            <a href="{{ route('getDetailsPengukuranSuper', $data->id) }}"
                                                 class="btn btn-info">
                                                 <i class="lni lni-eye" style="color: whitesmoke"></i>
                                             </a>
